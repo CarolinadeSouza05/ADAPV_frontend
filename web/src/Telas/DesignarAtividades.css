@@ -1,0 +1,384 @@
+@import url( "https://fonts.googleapis.com/css?family=Montserrat:400,700,500,400italic,800");
+
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+:root {
+  --black: rgba(0, 0, 0, 1);
+  --cod-gray-2: rgba(12, 12, 12, 0.298);
+  --cod-gray: rgba(12, 12, 12, 1);
+  --pelorous: rgba(58, 177, 185, 1);
+  --alto: rgba(217, 217, 217, 1);
+  --mercury: rgba(230, 230, 230, 1);
+  --concrete: rgba(242, 242, 242, 1);
+
+  --font-size-g: 12px;
+  --font-size-m: 16px;
+  --font-size-l: 24px;
+  --font-size-xl: 32px;
+  --font-size-xxl: 38.8px;
+  --font-size-xxxl: 48px;
+
+  --font-family-montserrat:"Montserrat";
+}
+
+/* DesignarAtividade e LancEntrada */
+
+.designaratvRootRoot {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 152px 284px 398px 284px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  overflow: hidden;
+}
+.designarAtividadesParaVoluntrios {
+  align-self: center;
+  margin: 0px 0px 28px 0px;
+  color: #3ab1b9;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: Montserrat;
+  line-height: 48px;
+  text-align: center;
+  white-space: nowrap;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+.groupdes {
+  width: 656px;
+  gap: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-self: center;
+  align-items: center;
+  margin: 0px 0px 40px 0px;
+  box-sizing: border-box;
+}
+
+.botao_atividade {
+  width: 19.51%;
+  gap: 22.2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px 8.94px;
+  border-width: 2px;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #3ab1b9;
+  box-sizing: border-box;
+  color: #0c0c0c;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: Montserrat;
+  line-height: 24px;
+  box-sizing: border-box;
+  background-color: #F2F2F2;
+}
+
+.botao_login {
+  align-items : center;
+  background-color : var(--pelorous);
+  border-radius : 8px;
+  cursor: pointer;
+  display: flex;
+  gap: 8px ;
+  justify-content : center;
+  padding: 12px 24px;
+  position : relative;
+  width: fit-content ;
+  }
+
+  .login {
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-top: -1px;
+    font-family: Montserrat;
+    font-weight: bold;
+    position : relative;
+    white-space: nowrap;
+    width: fit-content ;
+    color: #F2F2F2;
+    border-color: #3ab1b9;
+    
+    }
+
+.vectorda {
+  width: 17.9px;
+  min-width: 0px;
+  min-height: 0px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+.rua1 {
+  width: 37.8%;
+  gap: 29px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px;
+  border-width: 2px;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #3ab1b9;
+  box-sizing: border-box;
+  background-color: #F2F2F2;
+}
+
+.rua1::placeholder {
+  color: #000000;
+  font-size: 12px; 
+  font-family: Montserrat;
+}
+.rua2::placeholder {
+  color: #000000;
+  font-size: 12px; 
+  font-family: Montserrat;
+}
+
+.faaUmaBuscaEspecfica {
+  color: #000;
+  font-size: 12px;
+  font-family: Montserrat;
+  line-height: 24px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.rua2 {
+  width: 20.51%;
+  gap: 7px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0px 10px 0px 0px;
+  padding: 8px 8.6px;
+  border-width: 2px;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #3ab1b9;
+  box-sizing: border-box;
+  background-color: #F2F2F2;
+}
+.nome3 {
+  width: 100%;
+  height: 100%;
+  gap: 8px;
+  padding: 18px 36px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #3ab1b9;
+  box-sizing: border-box;
+  background-color: #F2F2F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.vector2 {
+  width: 14.4px;
+  min-width: 0px;
+  min-height: 0px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.deleteButton {
+  border: none;
+}
+
+.editButton{
+  border: none;
+}
+
+.botaoprimariodes {
+  width: 16.16%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #3ab1b9;
+}
+.buscar {
+  color: #f2f2f2;
+  font-weight: 700;
+  font-family: Montserrat;
+  line-height: 24px;
+  box-sizing: border-box;
+  border-color: #3AB1B9;
+}
+.listaDeVoluntrios {
+  align-self: center;
+  margin: 0px 0px 26px 0px;
+  color: #3ab1b9;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: Montserrat;
+  line-height: 48px;
+  text-align: center;
+  white-space: nowrap;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  margin-bottom: 10%;
+}
+
+.group1 {
+  width: 869px;
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 0px 111px 55px 111px;
+  box-sizing: border-box;
+}
+
+.nome {
+  width: 381px;
+  height: 56px;
+  padding: 16px 16.5px;
+  box-sizing: border-box;
+  background-color: #e6e6e6;
+  font-family: 'Montserrat';
+}
+
+.janeDoe {
+  color: #0c0c0c;
+  font-weight: 500;
+  font-family: Montserrat;
+  line-height: 24px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.atividade1 {
+  color: #0c0c0c;
+  font-weight: 500;
+  font-family: Montserrat;
+  line-height: 24px;
+  box-sizing: border-box;
+}
+.nome1 {
+  width: 240px;
+  height: 56px;
+  padding: 16px;
+  box-sizing: border-box;
+  background-color: #e6e6e6;
+  font-family: 'Montserrat';
+}
+.nome2 {
+  width: 136px;
+  height: 56px;
+  box-sizing: border-box;
+  background-color: #e6e6e6;
+  font-family: 'Montserrat';
+}
+
+.nome33 {
+  width: 383px;
+  height: 60px;
+  color: #000000;
+  padding: 16px;
+  font-family: 'Montserrat';
+  border-width: 2px;
+  border-radius: 8px 0px 0px 0px;
+  border-style: solid;
+  border-color: #3ab1b9;
+  box-sizing: border-box;
+  background-color: #F2F2F2;
+  text-align: left;
+}
+.nome34 {
+  width: 245px;
+  height: 60px;
+  color: #000000;
+  padding: 16px;
+  font-family: 'Montserrat';
+  border-width: 2px;
+  border-style: solid;
+  border-color: #3ab1b9;
+  box-sizing: border-box;
+  background-color: #F2F2F2;
+  text-align: left;
+}
+.nome35 {
+  width: 138px;
+  color: #000000;
+  height: 60px;
+  font-family: 'Montserrat';
+  padding: 16px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #3ab1b9;
+  box-sizing: border-box;
+  background-color: #F2F2F2;
+  text-align: left;
+}
+.nome36 {
+  width: 130px;
+  height: 58px;
+  font-family: 'Montserrat';
+  border-style: solid;
+  border-color: #3ab1b9;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  background-color: #3ab1b9;
+}
+
+.nome32{
+  color: #0c0c0c;
+  font-weight: 700;
+  font-family: Montserrat;
+  line-height: 24px;
+  box-sizing: border-box;
+}
+/* .tabela{
+  width: 869px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+} */
+
+.container-atividades {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  margin-top: 0%;
+}
+
+.table-atividades {
+  width: 64%;
+  border-collapse: collapse;
+}
+
+.nome-col {
+  width: 30%;
+}
+
+.atividade-col {
+  width: 40%;
+}
+
+.data-col {
+  width: 20%;
+}
+
+.edicao-col {
+  width: 10%;
+  text-align: center;
+}

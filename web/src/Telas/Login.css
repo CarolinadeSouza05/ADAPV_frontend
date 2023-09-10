@@ -1,0 +1,180 @@
+:root {
+  --black: rgba(0, 0, 0, 1);
+  --cod-gray-2: rgba(12, 12, 12, 0.298);
+  --cod-gray: rgba(12, 12, 12, 1);
+  --pelorous: rgba(58, 177, 185, 1);
+  --alto: rgba(217, 217, 217, 1);
+  --mercury: rgba(230, 230, 230, 1);
+  --concrete: rgba(242, 242, 242, 1);
+
+  --font-size-g: 12px;
+  --font-size-m: 16px;
+  --font-size-l: 24px;
+  --font-size-xl: 32px;
+  --font-size-xxl: 38.8px;
+  --font-size-xxxl: 48px;
+
+  --font-family-montserrat: "Montserrat";
+}
+.form-login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: fit-content;
+  width: auto;
+  margin: 0 auto;
+  margin-top: -60px;
+}
+
+.form-login-header {
+  flex-direction: column;
+  gap: 33px;
+  margin: 0 auto;
+  max-width: 557px;
+  text-align: center;
+}
+
+/* .img_login{
+  scale: 90%;
+} */
+
+.form-login-header .form-login-titulo {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 5px;
+  margin-right: auto;
+  width: 95%;
+}
+
+.form-login-titulo svg:nth-child(1) {
+  color: #3ab1b9;
+  height: 72px;
+  width: 80px;
+}
+
+.form-login-titulo svg:nth-child(3) {
+  margin-left: auto;
+}
+
+.form-login-titulo h1 {
+  font-size: 48px;
+  font-weight: bold;
+  width: auto;
+}
+
+.form-login-titulo h1 span {
+  color: #3ab1b9;
+}
+
+.form-login-header .form-login-header-subtitulo {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.form-login-header h2 {
+  color: #3ab1b9;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 40px;
+}
+
+/* .section {
+  height: auto;
+  width: 100%;
+} */
+
+ .section .section-container {
+  align-items: flex-start;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 28px;
+  width: 100%;
+}
+
+.section-container .section-title {
+  max-width: 481px;
+}
+
+.section-container .section-form {
+  align-items: flex-start;
+  height: 100%;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.section-form h3 {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.section-form h3 span {
+  color: #3ab1b9;
+}
+
+.section form {
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+form .section-form-input {
+  border: 2px solid #3ab1b9;
+  border-radius: 8px;
+  flex-direction: row;
+  gap: 8px;
+  height: 50px;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.section-form-input svg{
+  width: 26px;
+}
+
+form p {
+  align-items: flex-start;
+  color: #3ab1b9;
+  font-weight: 500;
+  text-decoration: underline;
+  width: 100%;
+}
+
+.container-button {
+  align-items: flex-end;
+  width: 100%;
+}
+
+.container-button .btn {
+  border-radius: 8px;
+  cursor: pointer;
+  height: 42px;
+  transition: all 1s;
+}
+
+.container-button .register_login {
+  background-color: var(--pelorous);
+  border-color: var(--concrete);
+  font-family: var(--font-family-montserrat);
+
+  border: 2px solid ;
+  color: var(--concrete);
+  width: 160px;
+}
+
+.modalLogin {
+  cursor: pointer;
+  transition: .5s;
+}
+
+.modalLogin:hover{
+  color: #3ab1b9;
+}
+
+/* .register:hover {
+  background-color: #3ab1b9;
+  color: white;
+} */
