@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/CarolinadeSouza05/ADAPV_frontend/static/css/main.cdbf2ee8.css",
+    "main.js": "/CarolinadeSouza05/ADAPV_frontend/static/js/main.fe04b932.js",
+    "index.html": "/CarolinadeSouza05/ADAPV_frontend/index.html",
+    "main.cdbf2ee8.css.map": "/CarolinadeSouza05/ADAPV_frontend/static/css/main.cdbf2ee8.css.map",
+    "main.fe04b932.js.map": "/CarolinadeSouza05/ADAPV_frontend/static/js/main.fe04b932.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cdbf2ee8.css",
+    "static/js/main.fe04b932.js"
+  ]
+}
