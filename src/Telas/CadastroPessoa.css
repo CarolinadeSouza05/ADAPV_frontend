@@ -1,0 +1,78 @@
+.form-cadastro-header svg{
+  width: auto;
+  margin-top: 50px;
+  
+}
+
+.form-cadastro-pessoa {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+  gap: 1rem;
+}
+.titulo_usuarios{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* texto */
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  /* letter-spacing: 0; */
+  line-height: normal;
+  gap: 8px;
+}
+
+form.form-input {
+  gap: 8px;
+}
+
+::placeholder{
+  font-family: "Montserrat";
+}
+.form-input label {
+  padding-left: 5px;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family:"Montserrat" ;
+}
+
+.input-container svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.input-container input {
+  font-size: 16px;
+}
+
+.form-input .form-input-endereco {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 28% 12% 28% 28%;
+}
+
+.form-input-endereco .input-container {
+  width: 100%;
+}
+
+.form-input-endereco .input-container input {
+  width: 100%;
+}
+
+.container-main.form-cadastro form {
+  gap: 1.5rem;
+  height: 90%;
+  width: 100%;
+}
+
+.modalPessoa {
+  transition: .5s;
+  cursor: pointer;
+}
+
+.modalPessoa:hover{
+  color: #3ab1b9;
+}

@@ -1,0 +1,135 @@
+:root{
+  --font-family-montserrat: "Montserrat";
+}
+.container-table-denuncia{
+  flex-direction: column;
+  height: auto!important;
+  gap: 10px;
+
+}
+
+Table {
+  font-family: var(--font-family-montserrat);
+  margin-top: 50px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  width: min-content;
+  font-family: var(--font-family-montserrat);
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  background-color: var(--pelorous);
+  color: var(--pelorous);
+}
+
+.group_pesquisa {
+  width: 736px;
+  /* position: relative; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin:0 auto;
+  box-sizing: border-box;
+}
+
+.search_denuncia{
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  width: auto;
+}
+
+.searchButton {
+  position: relative;
+  color: #f2f2f2;
+  font-weight: 700;
+  font-family: Montserrat;
+  line-height: 24px;
+  border-width: 0px;
+  box-sizing: border-box;
+  background: none;
+  cursor: pointer;
+}
+.botaoprimario {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 8px 24px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #3ab1b9;
+  width: auto!important;
+}
+.searchInput_denuncia {
+  width: 99.16%;
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 8px 16px;
+  /* border-width: 1px; */
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #3ab1b9;
+  box-sizing: border-box;
+  color: rgba(13, 13, 13, 0.3);
+  font-size: 16px;
+  font-family: Montserrat;
+  line-height: 24px;
+  white-space: nowrap;
+  /* background-color: #f2f2f2; */
+}
+
+.botao_table{
+  background-color: var(--pelorous);
+  border-color: var(--concrete);
+  border: 2px solid;
+  height: auto;
+  width: auto;
+  
+}
+.botao_table:hover{
+  background-color: var(--concrete);
+  border-color: var(--pelorous);
+  color: var(--pelorous);
+}
+.botao_table:active{
+  background-color: var(--concrete);
+  border-color: var(--pelorous);
+  color: var(--pelorous);
+}
+
+.botao_denuncia_tab {
+  align-items : center;
+  background-color : var(--pelorous);
+  border-style: solid;
+  border-radius : 8px;
+  border-color: var(--pelorous) ;
+  cursor: pointer;
+  display: flex;
+  gap: 8px ;
+  justify-content : center;
+  padding: 12px 24px;
+  position : relative;
+  width: fit-content ;
+  margin-top: 20px;
+  margin-right: 3px;
+ }
+
+.botao_denuncia_tab:hover{
+  color: var(--pelorous);
+  background-color : var(--concrete);
+}
