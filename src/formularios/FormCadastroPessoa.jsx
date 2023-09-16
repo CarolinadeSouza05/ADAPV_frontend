@@ -4,6 +4,8 @@ import { InputsForm } from "../components/InputsForm";
 import { ObjectEmptyValue } from "../util";
 import { formCadastroInputProps } from "../Telas/CadastroPessoa";
 import { createRegisterLogin, editRegisterLogin, getAllRegisterLogin, getRegisterEmail } from "../api";
+import vector3 from "../imagens/vector-3.svg"
+
 
 export function FormCadastroPessoa(props) {
   const { formCadastroInput, setFormCadastroInput, setRegisterFormCadastro, setModal } = props;
@@ -148,7 +150,7 @@ export function FormCadastroPessoa(props) {
     <div className="form-cadastro flex-col">
       <div className="form-cadastro-header">
       <div className="titulo_usuarios">
-      <img className="vector vectorEntrada" src={"vector-3.svg"} alt="Vector" />
+      <img className="vector vectorEntrada" src={vector3} alt="Vector" />
         <span className="span0"> Cadastro </span><span className="span1"> de Usuários</span></div>
 
         <Cards size={32} onClick={() => setModal(true)} />

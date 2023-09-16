@@ -4,7 +4,9 @@ import { Footer } from "../components/Footer";
 import { FormLogin } from "../formularios/FormLogin";
 import { useState } from "react";
 import { Modal } from "../components/Modal";
-import "./Login.css"
+import "./Login.css";
+import image_login from "../imagens/imgLogin.png";
+
 
 export const formProps = {
   email: "",
@@ -25,7 +27,7 @@ export function Login() {
       <Cabecalho />
       <main>
         <section className="container-main  cadastros ">
-          <img src="imgLogin.png" alt="imagem-fundo-login" className="img_login" />
+          <img src={image_login} alt="imagem-fundo-login" className="img_login" />
         </section>
 
         <section className="container-main form-cadastro alinhamento">

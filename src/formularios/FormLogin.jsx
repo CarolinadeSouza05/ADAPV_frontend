@@ -2,6 +2,7 @@ import React from "react";
 import { EnvelopeSimple, Key,} from "@phosphor-icons/react";
 import { InputsForm } from "../components/InputsForm";
 import { formProps } from "../Telas/Login";
+import vector3 from "../imagens/vector-3.svg"
 
 export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, loginsAll }) {
   const inputsForm = [
@@ -51,7 +52,7 @@ export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, log
     <div className="form-login-container">
       <header className="form-login-header alinhamento">
         <div className="form-login-titulo alinhamento">
-        <img class="vector" src={"vector-3.svg"} alt="Vector" />
+        <img class="vector" src={vector3} alt="Vector" />
           <h1>
             Pet<span>Adopte</span>
           </h1>

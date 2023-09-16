@@ -5,6 +5,8 @@ import { Inputs } from "../components/inputs";
 import { Select } from "../components/Select";
 import { Textarea } from "../components/textarea";
 import "./CadastroDeProduto.css";
+import vector3 from "../imagens/vector-3.svg"
+import img_produtos from "../imagens/gatinhoo.png"
 
 import { Cards } from "@phosphor-icons/react";
 
@@ -116,7 +118,7 @@ export function CadastroProduto(props) {
           <div className="titulo">
               <img
                 className="vector vectoranimais"
-                src={"vector-3.svg"}
+                src={vector3}
                 alt="Vector"
               />
               <>
@@ -206,7 +208,7 @@ export function CadastroProduto(props) {
 
         <div className="alinha">
           <img
-            src="gatinhoo.png"
+            src={img_produtos}
             alt="imagem-fundo-produtos"
             className="img_produto"
           />

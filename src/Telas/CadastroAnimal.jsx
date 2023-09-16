@@ -5,6 +5,8 @@ import { Inputs } from "../components/inputs";
 import { Select } from "../components/Select";
 import { Textarea } from "../components/textarea";
 import "./CadastroAnimal.css";
+import vector3 from "../imagens/vector-3.svg"
+import img_animais from "../imagens/cadastroanimal.png"
 
 import { Cards } from "@phosphor-icons/react";
 
@@ -140,7 +142,7 @@ export function CadastroAnimal(props) {
             <div className="titulo">
               <img
                 className="vector vectoranimais"
-                src={"vector-3.svg"}
+                src={vector3}
                 alt="Vector"
               />
               <>
@@ -281,7 +283,7 @@ export function CadastroAnimal(props) {
 
         <div className="alinha">
           <img
-            src={"cadastroanimal.png"}
+            src={img_animais}
             alt="imagem-fundo-animais"
             className="img_animais"
           />

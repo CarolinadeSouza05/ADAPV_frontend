@@ -3,6 +3,7 @@ import { Footer } from '../components/Footer'
 import './Home.css'
 import { LinkContainer } from 'react-router-bootstrap';
 import { NavLink } from 'react-bootstrap';
+import image_home from "../imagens/img_home.png"
 
 export function Home() {
     return (
@@ -20,7 +21,7 @@ export function Home() {
                     </div>
                 </div>
                 <div className='text_home_right'>
-                    <img src='img_home.png' className='img_home'/>
+                    <img src={image_home} className='img_home'/>
                 </div>
             </main>
             <Footer />

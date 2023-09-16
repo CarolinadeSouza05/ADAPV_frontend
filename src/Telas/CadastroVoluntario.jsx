@@ -10,6 +10,7 @@ import { FormCadastroVoluntario } from "../formularios/FormCadastroVoluntario";
 import { useEffect } from "react";
 import { deleteRegisterVoluntario, getAllRegisterVoluntario } from "../api";
 
+
 export const inputsFormValidate = {
   nome: "",
   telefone: "",
