@@ -1,13 +1,25 @@
 {
   "files": {
     "main.css": "/ADAPV_frontend/static/css/main.cdbf2ee8.css",
-    "main.js": "/ADAPV_frontend/static/js/main.fe04b932.js",
+    "main.js": "/ADAPV_frontend/static/js/main.09bc047e.js",
+    "static/media/imgLogin.png": "/ADAPV_frontend/static/media/imgLogin.2ff19eef65e372a913ee.png",
+    "static/media/img_home.png": "/ADAPV_frontend/static/media/img_home.26afe86cd52f2166ce8b.png",
+    "static/media/gatinhoo.png": "/ADAPV_frontend/static/media/gatinhoo.3b9ab0dc61a7599eb2cd.png",
+    "static/media/cadastroanimal.png": "/ADAPV_frontend/static/media/cadastroanimal.c155db333ec2581104b1.png",
+    "static/media/money_cat.png": "/ADAPV_frontend/static/media/money_cat.76819a836a77feadffa0.png",
+    "static/media/logo_ong.png": "/ADAPV_frontend/static/media/logo_ong.1cba24116b5882ccf507.png",
+    "static/media/vector-2.svg": "/ADAPV_frontend/static/media/vector-2.be6b969b23ef9068ea788a3b43a5c4b6.svg",
+    "static/media/vector-1.svg": "/ADAPV_frontend/static/media/vector-1.66f4b4c5c848bff9c0c8932f33d0d7e6.svg",
+    "static/media/logotipo.svg": "/ADAPV_frontend/static/media/logotipo.ab9aef7f49ab1a12bdcfe1cd516fc374.svg",
+    "static/media/vector-3.svg": "/ADAPV_frontend/static/media/vector-3.5db8d58864e31ef14ecca5d93286a2b4.svg",
     "index.html": "/ADAPV_frontend/index.html",
+    "static/media/line-1.svg": "/ADAPV_frontend/static/media/line-1.267f840b90cc7a83fec879f7991c532b.svg",
+    "static/media/line-4.svg": "/ADAPV_frontend/static/media/line-4.79abca72ccd607f03c754505413998ff.svg",
     "main.cdbf2ee8.css.map": "/ADAPV_frontend/static/css/main.cdbf2ee8.css.map",
-    "main.fe04b932.js.map": "/ADAPV_frontend/static/js/main.fe04b932.js.map"
+    "main.09bc047e.js.map": "/ADAPV_frontend/static/js/main.09bc047e.js.map"
   },
   "entrypoints": [
     "static/css/main.cdbf2ee8.css",
-    "static/js/main.fe04b932.js"
+    "static/js/main.09bc047e.js"
   ]
 }
