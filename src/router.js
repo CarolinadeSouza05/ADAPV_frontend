@@ -11,6 +11,7 @@ import Pagpets from './Telas/Pagpets'
 import { CadastroAnimal } from './Telas/CadastroAnimal'
 import { CadastroProduto } from './Telas/CadastroDeProduto'
 import { SobreNos } from './Telas/SobreNos'
+import { Admin } from './Telas/Admin'
 
 export function Router(){
     return(
@@ -27,6 +28,7 @@ export function Router(){
                 <Route path='/cadastro-animal' element={<CadastroAnimal />} />
                 <Route path="/cadastro-produto" element={<CadastroProduto />} />
                 <Route path="/sobre" element={<SobreNos />} />
+                <Route path="/admin" element={<Admin />}/>
             </Routes>
         </BrowserRouter>
     )
