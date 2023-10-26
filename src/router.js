@@ -1,20 +1,21 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Login } from './Telas/Login'
-import { Home } from './Telas/Home'
 import { CadastroDenuncia } from './Telas/CadastroDenuncia'
+import { Home } from './Telas/Home'
+import { Login } from './Telas/Login'
 
-// import { CadastroVoluntario } from './Telas/RegisterVolunteer'
-import {CadastroDesignar} from './Telas/CadastroDesignar'
+import { Adm } from './Telas/Adm'
+import { CadastroAdocao } from './Telas/CadastroAdocao'
+import { CadastroAgendamento } from './Telas/CadastroAgendamento'
+import { CadastroAnimal } from './Telas/CadastroAnimal'
+import { CadastroCategoria } from './Telas/CadastroDeCategoria'
+import { CadastroProduto } from './Telas/CadastroDeProduto'
+import { CadastroDesignar } from './Telas/CadastroDesignar'
 import LancamentoEntrada from './Telas/LancamentoEntrada'
 import Pagpets from './Telas/Pagpets'
-import { CadastroAnimal } from './Telas/CadastroAnimal'
-import { CadastroProduto } from './Telas/CadastroDeProduto'
+import { RegisterDonation } from './Telas/RegisterDonation'
+import { RegisterVolunteer } from "./Telas/RegisterVolunteer"
 import { SobreNos } from './Telas/SobreNos'
-import {CadastroCategoria} from './Telas/CadastroDeCategoria';
-import {CadastroAdocao} from './Telas/CadastroAdocao';
-import {CadastroAgendamento} from './Telas/CadastroAgendamento'
-import {RegisterDonation} from './Telas/RegisterDonation';
 
 export function Router(){
     return(
@@ -23,7 +24,7 @@ export function Router(){
                 <Route path='*' element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path="/cadastro-denuncia" element={<CadastroDenuncia />} />
-                {/* <Route path='/cadastro-voluntario' element={<CadastroVoluntario />} /> */}
+                <Route path='/cadastro-voluntario' element={<RegisterVolunteer />} />
                 <Route path="cadastro-categoria" element={<CadastroCategoria />} />               
                 <Route path="/designar-voluntario" element={<CadastroDesignar />} />
                 <Route path="/lancar-entrada" element={<LancamentoEntrada/>} />
@@ -34,6 +35,7 @@ export function Router(){
                 <Route path='/cadastro-adocao' element={<CadastroAdocao />} />
                 <Route path='/cadastro-agendamento' element={<CadastroAgendamento />} />
                 <Route path='/doacao' element={<RegisterDonation />} />
+                <Route path='/adm' element={<Adm />}  />
             </Routes>
         </BrowserRouter>
     )

@@ -19,6 +19,8 @@
 
 .form-cadastro-header .popover-trigger{
   border: none;
+  height: min-content;
+  margin: auto 0;
 }
 
 .popover-trigger:focus-visible, .popover-content:focus-visible, .button-popover-trigger:focus-visible{
@@ -62,23 +64,6 @@ form.form-input {
 
 .form-cadastro-aceitafazer{
   justify-content: space-between;
-}
-
-.form-input .input-container {
-  border-radius: 8px;
-  border: 2px solid #3ab1b9;
-  flex-direction: row;
-  gap: 1rem;
-  height: 2.5rem;
-  padding: 8px;
-  width: 100%;
-}
-
-.input-container input {
-  border: none;
-  height: 100%;
-  outline: none;
-  width: 100%;
 }
 
 form .container-checkboxs {

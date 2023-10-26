@@ -7,7 +7,7 @@ import { inputsFormValidate } from '../../Telas/RegisterVolunteer';
 import { createRegisterVoluntario, createRegisterVoluntarioAceitafazer, getAllRegisterVoluntario, getRegisterTel } from "../../api";
 import { CheckboxDropdownAcceptToDo } from "../../components/CheckboxDropdownAcceptToDo";
 import { InputsForm } from "../../components/InputsForm";
-import { ObjectEmptyValue, disponibilidadeArray, NameToAccepToDoAllFromVolunteer, periodoArray } from "../../util";
+import { ObjectEmptyValue, NameToAccepToDoAllFromVolunteer, disponibilidadeArray, periodoArray } from "../../util";
 
 
 export function FormCadastroVoluntario(props) {

@@ -1,4 +1,4 @@
-.form-check input {
+.form-check input[type="text"], .form-check input[type="tel"], .form-check input[type="password"] {
   border: none;
   height: 100%;
   outline: none;
