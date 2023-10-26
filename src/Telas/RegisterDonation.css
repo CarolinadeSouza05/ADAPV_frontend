@@ -1,0 +1,65 @@
+.main-donation{
+    align-items: center;
+    justify-content: center;
+    padding: 0 60px;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .main-donation {
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      height: calc(100vh - 108px)!important;
+    }
+  }
+
+.main-donation-img{
+    background-size: cover;
+    height: 100%;
+    inset: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.main-donation > section{
+    background: transparent!important;
+    z-index: 100;
+}
+
+.container-main .aside-header{
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-start;
+}
+
+.container-main .aside-header img{
+    height: 35px;
+    width: 35px;
+}
+
+.container-main .aside-header h2{
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.aside-header h2 > span{
+    color: var(--pelorous);
+}
+
+.container-main .aside-body{
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+    font-weight: bold;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.aside-body p > span{
+    color: var(--pelorous);
+}
+
+.container-main.form-cadastro{
+    justify-content: flex-end;
+}

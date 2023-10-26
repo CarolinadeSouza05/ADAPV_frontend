@@ -3,6 +3,8 @@ import { Cabecalho } from "../components/Cabecalho";
 import { Footer } from "../components/Footer";
 import { Inputs } from "../components/inputs";
 import "./LancamentoEntrada.css";
+import vector3 from "../imagens/vector-3.svg"
+import img_entradas from "../imagens/money_cat.png"
 
 import { Cards } from "@phosphor-icons/react";
 
@@ -106,10 +108,10 @@ export default function LancamentoEntrada(props) {
       <main className="mainSectionEntrada">
         <section className="FormEntrada_container">
           <div className="form-entradas-titulo centro_logo">
-            <div className="titulo_usuarios">
+            <div className="tituloEntrada">
               <img
                 className="vector vectorEntrada"
-                src={"vector-3.svg"}
+                src={vector3}
                 alt="Vector"
               />
               <span className="span0"> Lançamento </span><span className="span1"> de Entradas</span></div>
@@ -172,7 +174,7 @@ export default function LancamentoEntrada(props) {
 
         <div className="alinha">
           <img
-            src="money_cat.png"
+            src={img_entradas}
             alt="imagem-fundo-entradas"
             className="img_entrada"
           />

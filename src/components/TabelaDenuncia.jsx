@@ -2,6 +2,7 @@ import { Button, Container, Table } from "react-bootstrap";
 import { FaEdit, FaSearch, FaTrash } from "react-icons/fa";
 import "./TabelaDenuncia.css";
 import { urLBase } from "../api/index.js";
+import vector3 from "../imagens/vector-3.svg"
 
 
 export  function TabelaDenuncia(props) {
@@ -59,7 +60,7 @@ export  function TabelaDenuncia(props) {
       <div className="titulo_tabela_denuncias">
               <img
                 className="vector vectorEntrada"
-                src={"vector-3.svg"}
+                src={vector3}
                 alt="Vector"
               />
               <div>

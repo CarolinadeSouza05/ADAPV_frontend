@@ -1,0 +1,223 @@
+﻿.page_container {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: 50%;
+  float: left
+}
+
+.montserrat-bold-pelorous-16px {
+  color: var(--pelorous);
+  font-family: var(--font-family-montserrat);
+  font-size: var(-font-size-m);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-bold-cod-gray-12px {
+  color: var(--cod-gray);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-s);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-medium-concrete-12px {
+  color: var(-concrete);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-g);
+  font-weight: 500;
+  font-style: normal;
+}
+
+.montserrat-normal-cod-gray-12px {
+  color: var(--cod-gray-2);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-s);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.montserrat-medium-cod-gray-12px {
+  color: var(--cod-greay);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-s);
+  font-weight: 500;
+  font-style: normal;
+}
+
+.montserrat-bold-cod-gray-38-8px {
+  color: var(--cod-gray);
+  font-family: var(--font-family-montserrat);
+  font-size: var(-font-size-xxl);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-medium-cod-gray-16px {
+  color: var(--cod-gray);
+  font-family: var(--font-family-montserrat);
+  font-size: var(-font-size-m);
+  font-weight: 500;
+  font-style: normal;
+}
+
+.montserrat-bold-pelorous-32Px {
+  color: var(--pelorous);
+  font-family: var(-font-family-montserrat);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-bold-pelorous-38-8px {
+  color: var(-pelorous);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-bold-conc rete-12px {
+  color: var(--concrete);
+  font-family: var(-font-family-montserrat);
+  font-size: var(--font-size-s);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserreat-bold-white-38-8px {
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-medium-concrete-16px {
+  color: var(--concrete);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  font-style: normal;
+}
+
+.montserrat-bold-concrete-16px {
+  color: var(--concrete);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-bold-cod-gray-16px {
+  color: var(--cod-gray);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-bold-cod-gray-32px {
+  color: var(--cod-gray);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-bold-cod-gray-48px {
+  color: var(--cod-gray);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxxl);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-normal-cod-gray-16px {
+  color: var(--cod-gray);
+  font-family: var(--font-family-montserrat);
+  font-size: var(-font-size-m);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-bold-white-48px {
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxxl);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-bold-cod-gray-12px {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.botao_agendar {
+  align-items: center;
+  background-color: var(--pelorous);
+  border-style: solid;
+  border-radius: 8px;
+  border-color: var(--pelorous);
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px 18px;
+  position: relative;
+  width: fit-content;
+  margin-right: 3px;
+}
+
+.botao_agendar:hover {
+  color: var(--pelorous);
+  background-color: var(--concrete);
+}
+
+.flex-row-item {
+  border: 2px solid;
+  border-color: var(--pelorous);
+  background-color: var(--concrete);
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-left: 10px;
+  font-family: var(--font-family-montserrat);
+}
+
+.flex-row-item::placeholder {
+  font-family: var(--font-family-montserrat);
+}
+
+.form_agenda {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
+  width: fit-content;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  
+}
+
+.form_agenda label{
+width: 100px;
+text-align: right;
+}
+
+.titulo_agenda {
+  width: fit-content;
+  margin: 0 auto;
+ margin-top: 20px;
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-l);
+  font-weight: 700;
+
+}
+
+.alinha_button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}

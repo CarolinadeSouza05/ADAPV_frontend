@@ -1,0 +1,56 @@
+﻿.barrabusca{
+    display: flex; 
+    justify-content: space-between;
+    padding: 2px;
+    margin: 0;
+    margin-top: 0px;
+    border: 2px solid  #3ab1b9;;
+    border-radius: 8px;
+    width: 100%;
+    /* box-shadow: 4px 3px 3px rgba(46, 45, 45, 0.473); */
+}
+
+.barrabusca svg{
+    margin: 2px;
+    align-self: center;
+}
+
+.barrabusca input[type='text']{
+    display: inline;
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    flex-grow: 1;
+    font-family: var(--font-family-montserrat);
+    min-width: 250px; /* Defina o valor mínimo de largura */
+    max-width: 80%; /* Defina o valor máximo de largura */
+}
+
+.resultado{
+    margin-top: 5px;
+    width: 100%;
+}
+
+.resultado ul{
+    /* display: none; */
+    position: absolute;
+    float: left;
+    border: 1px;
+    box-shadow: 4px 3px 3px rgba(46, 45, 45, 0.473);
+    padding: 2px;
+    background-color: whitesmoke;
+    width: 80%; 
+}
+
+.resultado li{
+    list-style-type: none;
+    margin: 0;
+    padding: 3px;
+    border-bottom: 1px;
+}
+
+.resultado li:hover{
+    background-color: var(--pelorous);;
+    color: var(--concrete);
+}

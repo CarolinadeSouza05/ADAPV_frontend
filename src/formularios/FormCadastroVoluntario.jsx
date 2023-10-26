@@ -5,6 +5,7 @@ import { InputsForm } from "../components/InputsForm";
 import { inputsFormValidate } from '../Telas/CadastroVoluntario'
 import { createRegisterVoluntario, getAllRegisterVoluntario, getRegisterTel } from "../api";
 import { editRegisterVoluntario } from "../api";
+import vector3 from "../imagens/vector-3.svg"
 
 export function FormCadastroVoluntario(props) {
   const { formValidate, setFormValidate, setRegisterVolunteers, setModal } = props;
@@ -116,7 +117,7 @@ export function FormCadastroVoluntario(props) {
         <div className="titulo_usuarios">
       <img
                 className="vector vectorEntrada"
-                src={"vector-3.svg"}
+                src={vector3}
                 alt="Vector"
               />
         <span className="span0"> Cadastro </span><span className="span1"> de Voluntários</span></div>

@@ -1,0 +1,38 @@
+.aside-accepttodo-header,
+.title-accepttodo-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.aside-accepttodo-header {
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.title-accepttodo-header {
+    gap: 1rem;
+    padding: 20px 0;
+}
+
+.aside-accepttodo-header .search {
+    align-items: center;
+    background-color: white;
+    border: 1px solid #3ab1b9;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    gap: 8px;
+    padding: 8px 4px;
+    width: 30%;
+    margin-bottom: 10px;
+}
+
+.aside-accepttodo-header .search input {
+    border: none;
+    color: black;
+    font-size: 16px;
+    outline: none;
+    width: 100%;
+}

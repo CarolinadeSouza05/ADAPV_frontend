@@ -1,3 +1,5 @@
+import { getAllRegisterAcceptToDo, getAllRegisterOffice, getAllRegisterUsers, getAllRegisterVoluntario, getAllRegisterVoluntarioAceitafazer } from "../api";
+
 export const disponibilidadeArray = [
   {
     class: "form-check-input",
@@ -97,64 +99,6 @@ export const periodoArray = [
   },
 ];
 
-export const aceitarFazerArray = [
-  {
-    class: "form-check-input",
-    type: "radio",
-    value: "veterinario-parceiro",
-    name: "oQueAceitariaFazer",
-    id: "veterinario-parceiro",
-    label: "Veterinario Parceiro",
-    labelClass: "form-check-label",
-    labelFor: "veterinario-parceiro",
-    checked: false,
-  },
-  {
-    class: "form-check-input",
-    type: "radio",
-    value: "limpeza",
-    name: "oQueAceitariaFazer",
-    id: "limpeza",
-    label: "Limpeza",
-    labelClass: "form-check-label",
-    labelFor: "limpeza",
-    checked: false,
-  },
-  {
-    class: "form-check-input",
-    type: "radio",
-    value: "venda-bazares",
-    name: "oQueAceitariaFazer",
-    id: "venda-bazares",
-    label: "Venda nos bazares",
-    labelClass: "form-check-label",
-    labelFor: "venda-bazares",
-    checked: false,
-  },
-  {
-    class: "form-check-input",
-    type: "radio",
-    value: "producao-bolos-doces",
-    name: "oQueAceitariaFazer",
-    id: "producao-bolos-doces",
-    label: "Produção de bolos e doces p/ vender ",
-    labelClass: "form-check-label",
-    labelFor: "producao-bolos-doces",
-    checked: false,
-  },
-  {
-    class: "form-check-input",
-    type: "radio",
-    value: "ir-comercios-ajuda",
-    name: "oQueAceitariaFazer",
-    id: "ir-comercios-ajuda",
-    label: "Ir nos comércios pedir ajuda",
-    labelClass: "form-check-label",
-    labelFor: "ir-comercios-ajuda",
-    checked: false,
-  },
-];
-
 export const listadedenuncias = [
   {
       id:"1",
@@ -189,71 +133,37 @@ export function onChangeInput(name, value, setFormInput, formInput) {
   setFormInput({ ...formInput, [name]: value });
 }
 
+export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll){
+  const volunteers = await getAllRegisterVoluntario();
+  const acceptToDoAllAux = await getAllRegisterAcceptToDo();
+  const allAcceptToDoVolunteer = await getAllRegisterVoluntarioAceitafazer();
 
-///matheus
-export const BASE_URL = "http://localhost:4000";
+    volunteers.forEach((volunteer) => {
+      volunteer.oQueAceitariaFazer = [];
+      allAcceptToDoVolunteer.forEach((accept) => {
+        if (volunteer.id === accept.id_voluntario) {
+          const auxIndexOfAccepTodo = acceptToDoAllAux.find(acceptToDo => acceptToDo.id === accept.id_aceitafazer).name;
+          volunteer.oQueAceitariaFazer.push(auxIndexOfAccepTodo);
+        }
+      });
+    });
 
-export const fetchData = async (url) => {
-  const response = await fetch(`${BASE_URL}${url}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  if (!response.ok) {
-    throw new Error(`Erro ao buscar dados: ${response.status}`);
-  }
-  const responseData = await response.json();
-  return responseData;
-};
-
-export const postData = async (url, data) => {
-  const response = await fetch(`${BASE_URL}${url}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  if (!response.ok) {
-    throw new Error(`Erro ao adicionar dados: ${response.status}`);
-  }
-  const responseData = await response.json();
-  return responseData;
-};
-
-export async function putData (url, data) {
-  try {
-    await fetch(`${BASE_URL}${url}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-    .then(()=> alert('Entrada editada com sucesso!'))
-  } catch (error) {
-    console.log('Erro na requisição:', error);
-  }
+    setRegisterVolunteers(volunteers);
+    setAcceptToDoAll(acceptToDoAllAux);
 }
 
-export const deleteData = async (url) => {
-  const response = await fetch(`${BASE_URL}${url}`, {
-    method: 'DELETE',
-  });
-  if (!response.ok) {
-    throw new Error(`Erro ao excluir dados: ${response.status}`);
-  }
-};
+export async function NameToOfficeFromUser(setRegisterUser, setOffices){
+  const users = await getAllRegisterUsers();
+  const offices = await getAllRegisterOffice();
 
-export async function getEntradas() {
-  let aux = [];
-  await fetch(BASE_URL+'/entradas', {
-      method: "GET",
-  })
-      .then((data) => data.json())
-      .then((res) => (aux = res))
-      .catch(e => console.log(e));
+    users.forEach((user) => {
+      offices.forEach((office) => {
+        if (user.id_office === office.id) {
+          user.id_office = office.name;
+        }
+      })
+    });
 
-  return aux;
+    setRegisterUser(users);
+    setOffices(offices);
 }

@@ -1,0 +1,14 @@
+﻿.caixadeSelecao{
+    margin-top: 0px;
+    border: 2px solid  #3ab1b9;;
+    border-radius: 8px;
+    /* box-shadow: 4px 3px 3px rgba(46, 45, 45, 0.473); */
+    font-family: var(--font-family-montserrat);
+    width: 100%;
+}
+
+
+.options_selecao{
+    font-family: var(--font-family-montserrat);
+    
+}
