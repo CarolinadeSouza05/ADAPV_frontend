@@ -1,0 +1,36 @@
+.container-main-adm{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    width: 100vw;
+}
+
+.container-main-adm svg{
+    color: #000;
+    height: 2rem;
+    width: 2rem;
+}
+
+.container-dashboard-adm{
+    height: 100%;
+    width: 100%;
+}
+
+@media (prefers-color-scheme: dark){
+    .container-main-adm{
+        background-color: #191A1E;
+    }
+
+    .container-main-adm svg{
+        color: #fff;
+    }
+}
+
+@media (min-width: 768px) {
+    .container-dashboard-adm{
+        height: 100%;
+        width: 100%;
+    }
+}
