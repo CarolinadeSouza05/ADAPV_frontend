@@ -13,55 +13,9 @@
     color: #000;
 }
 
-.container-dashboard-adm{
+.container-adm{
     height: 100%;
     width: 100%;
-}
-
-.container-dashboard-adm .dashboard-adm-header{
-    align-items: center;
-    background-color: #FAFAFA;
-    display: flex;
-    justify-content: space-between;
-    height: auto;
-    padding: 4px 4px 4px 24px;
-    width: 100%;
-}
-
-.dashboard-adm-header .h1{
-    color: #3AB1B9;
-    font-size: 26px;
-    font-weight: bold;
-    margin: 0;
-}
-
-.dashboard-adm-header.menu{
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 16px;
-    width: 100%;
-}
-
-.dashboard-adm-header.menu-themes{
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-    width: auto;
-}
-
-.dashboard-adm-header.menu-themes svg{
-    cursor: pointer;
-}
-
-.dashboard-adm-header.profile{
-    background: url("/src/imagens/Rectangle1.png");
-    border-radius: 50%;
-    cursor: pointer;
-    height: 2rem;
-    width: 2rem;
 }
 
 .container-dashboard-adm-main{
@@ -147,7 +101,7 @@
 }
 
 @media (min-width: 768px) {
-    .container-dashboard-adm{
+    .container-adm{
         height: 100%;
         width: 100%;
     }

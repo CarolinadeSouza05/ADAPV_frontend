@@ -5,6 +5,7 @@ import { Home } from './Telas/Home'
 import { Login } from './Telas/Login'
 
 import { Adm } from './Telas/Adm'
+import { AdmRegister } from './Telas/Adm/AdmRegister'
 import { CadastroAdocao } from './Telas/CadastroAdocao'
 import { CadastroAgendamento } from './Telas/CadastroAgendamento'
 import { CadastroAnimal } from './Telas/CadastroAnimal'
@@ -36,6 +37,7 @@ export function Router(){
                 <Route path='/cadastro-agendamento' element={<CadastroAgendamento />} />
                 <Route path='/doacao' element={<RegisterDonation />} />
                 <Route path='/adm' element={<Adm />}  />
+                <Route path='/adm/cadastro' element={<AdmRegister />}  />
             </Routes>
         </BrowserRouter>
     )

@@ -4,6 +4,7 @@ import { CgMenuGridO } from "react-icons/cg";
 import { BiSolidDashboard } from "react-icons/bi";
 import { TbReportSearch } from "react-icons/tb";
 import { BsPeopleFill } from "react-icons/bs"
+import { Link } from "react-router-dom";
 
 export function AsideAdm(){
     const [menu, setMenu] = useState(false);
@@ -22,7 +23,9 @@ export function AsideAdm(){
                         </li>
                         
                         <li className="list-menu">
-                            <BsPeopleFill size={26} />
+                            <Link to="/adm/cadastro">
+                                <BsPeopleFill size={26} />
+                            </Link>
                         </li>
 
                         <li className="list-menu">
