@@ -26,6 +26,11 @@
     width: 100%;
 }
 
+.aside-menu-header svg{
+    height: 2.3rem;
+    width: 2.3rem;
+}
+
 .container-aside-adm.true .aside-adm-main{
     width: 40%;
 }
@@ -45,26 +50,65 @@
         height: 100%;
         inset: 0;
         position: relative;
-        width: min-content;
-    }
-
-    .container-aside-adm .aside-adm-main{
-        padding: 10px 5px;
+        width: 48px;
     }
 
     .container-aside-adm .aside-menu-header{
-        background-color: #FAFAFA;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .container-aside-adm .aside-adm-main{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .aside-adm-main .aside-menu-main{
+        height: 80%;
+        margin-top: auto;
+        width: 100%;
+    }
+
+    .aside-menu-main .container-list-menu{
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        height: auto;
+        padding: 0;
+        width: 100%;
+    }
+    
+    .container-list-menu .list-menu{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 6px 0;
+        width: 100%;
+    }
+
+    .container-list-menu .list-menu:hover{
+        background-color: #458ACE;
+    }
+
+    .list-menu svg{
+        cursor: pointer;
+    }
+    
+    .container-aside-adm .aside-menu-header{
         height: min-content;
         position: relative;
     }
 
     .container-aside-adm .aside-menu-header::after{
-        border-bottom: 2px solid #fff;
-        bottom: -8px;
+        border-bottom: 1px solid #fff;
+        bottom: -6px;
         content: "";
         display: block;
         height: 1px;
-        letter-spacing: 1rem;
         position: absolute;
         width: 100%;
     }

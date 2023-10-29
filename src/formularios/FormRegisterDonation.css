@@ -26,28 +26,6 @@ form .container-inputs-type{
     width: 80%;
 }
 
-.container-inputs-type .btn{
-    font-size: 1.1rem;
-    font-weight: bold;
-    width: 100%;
-}
-
-.container-inputs-type .btn.money{
-    background-color: var(--pelorous);
-    border-radius: 8px 0 0 8px;
-    color: white;
-}
-
-.container-inputs-type .btn.product{
-    background-color: white;
-    border-radius: 0 8px 8px 0;
-    color: var(--pelorous);
-}
-
-.container-form-donation form .container-button{
-    justify-content: center;
-}
-
 form .container-qrcode{
     margin: 0 auto;
 }

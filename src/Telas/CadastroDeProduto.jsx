@@ -6,6 +6,8 @@ import { Select } from "../components/Select";
 import { Textarea } from "../components/textarea";
 import * as Popover from '@radix-ui/react-popover';
 import "./CadastroDeProduto.css";
+import vector3 from "../imagens/vector-3.svg"
+import img_produtos from "../imagens/gatinhoo.png"
 
 import vetor3 from "../imagens/vector-3.svg"
 import gatinhoo from "../imagens/gatinhoo.png"
@@ -148,7 +150,7 @@ export function CadastroProduto() {
             <div className="titulo">
               <img
                 className="vector vectoranimais"
-                src={vetor3}
+                src={"vector-3.svg"}
                 alt="Vector"
               />
               <>
@@ -264,8 +266,12 @@ export function CadastroProduto() {
 
         </section>
 
-        <div className="alinha_produto">
-          <img src={gatinhoo} alt="imagem-fundo-produtos" className="img_produto" />
+        <div className="alinha">
+          <img
+            src="gatinhoo.png"
+            alt="imagem-fundo-produtos"
+            className="img_produto"
+          />
         </div>
       </main>
 

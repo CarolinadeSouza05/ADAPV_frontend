@@ -39,11 +39,6 @@ export function FormRegisterDonation(){
     <>
       <div className="container-form-donation">
         <form action="" onSubmit={e => handleGenerateQRCode(e)}>
-          <div className="container-inputs-type">
-            <button className="btn money">Dinheiro</button>
-            <button className="btn product">Produtos</button>
-          </div>
-
           {inputsForm.map((input, index) => (
             <div className="form-input flex-col" key={index}>
               <label htmlFor={input.name}>{input.placeholder}</label>

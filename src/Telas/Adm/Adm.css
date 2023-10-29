@@ -9,13 +9,79 @@
 
 .container-main-adm svg{
     color: #000;
-    height: 2rem;
-    width: 2rem;
 }
 
 .container-dashboard-adm{
     height: 100%;
+    padding: 14px 24px;
     width: 100%;
+}
+
+.container-dashboard-adm .dashboard-adm-header{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    width: 100%;
+}
+
+.dashboard-adm-header .h1{
+    color: #458ACE;
+    font-size: 26px;
+}
+
+.dashboard-adm-header.menu{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 16px;
+    width: 100%;
+}
+
+.dashboard-adm-header.menu-themes{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    width: auto;
+}
+
+.dashboard-adm-header.menu-themes svg{
+    cursor: pointer;
+}
+
+.dashboard-adm-header.profile{
+    background: url("/src/imagens/Rectangle1.png");
+    border-radius: 50%;
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+}
+
+.container-dashboard-adm-main{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: calc(100% - 40px);
+    width: 100%;
+}
+
+.dashboard-adm-main-analytics, .analytics-cards{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.dashboard-adm-main-analytics{
+    align-items: flex-start;
+}
+
+.analytics-cards{
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 @media (prefers-color-scheme: dark){
@@ -25,6 +91,20 @@
 
     .container-main-adm svg{
         color: #fff;
+    }
+
+    .dashboard-adm-header .h1{
+        color: #fff;
+    }
+
+    .dashboard-adm-header.menu-themes svg:last-child{
+        color: #f00;
+    }
+}
+
+@media (prefers-color-scheme: light){
+    .dashboard-adm-header.menu-themes svg:first-child{
+        color: #f00;
     }
 }
 

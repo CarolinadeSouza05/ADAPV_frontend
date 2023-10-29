@@ -1,0 +1,45 @@
+.card{
+    align-items: center;
+    background-color: #202528;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 132px;
+    padding: 14px 22px;
+    width: 100%;
+}
+
+.card .card-title{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-grapich{
+    align-items: center;
+    border: 8px solid #16A34A;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    width: 100px;
+}
+
+.card-grapich h3{
+    width: 100%;
+}
+
+.card-grapich .card-ball{
+    background-color: #202528;
+    border-radius: 50%;
+    bottom: 10%;
+    height: 30px;
+    position: absolute;
+    right: -15px;
+    width: 30px;
+}
