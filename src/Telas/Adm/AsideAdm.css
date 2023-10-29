@@ -17,6 +17,7 @@
 }
 
 .aside-adm-main{
+    background-color: #FAFAFA;
     height: 100%;
     width: 100%;
 }
@@ -50,7 +51,7 @@
         height: 100%;
         inset: 0;
         position: fixed;
-        width: 3%;
+        width: 4%;
     }
 
     .container-aside-adm .aside-menu-header{
@@ -92,6 +93,10 @@
 
     .container-list-menu .list-menu:hover{
         background-color: #458ACE;
+    }
+    
+    .container-list-menu .list-menu:hover svg{
+        color: #fff;
     }
 
     .list-menu svg{

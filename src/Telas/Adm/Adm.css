@@ -1,11 +1,12 @@
 .container-main-adm{
     align-items: center;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     height: auto;
     position: relative;
     margin-left: auto;
-    width: calc(100vw - 3%);
+    width: calc(100vw - 4%);
 }
 
 .container-main-adm svg{
@@ -14,21 +15,24 @@
 
 .container-dashboard-adm{
     height: 100%;
-    padding: 14px 24px;
     width: 100%;
 }
 
 .container-dashboard-adm .dashboard-adm-header{
     align-items: center;
+    background-color: #FAFAFA;
     display: flex;
     justify-content: space-between;
     height: auto;
+    padding: 4px 4px 4px 24px;
     width: 100%;
 }
 
 .dashboard-adm-header .h1{
-    color: #458ACE;
+    color: #3AB1B9;
     font-size: 26px;
+    font-weight: bold;
+    margin: 0;
 }
 
 .dashboard-adm-header.menu{
@@ -66,13 +70,14 @@
     justify-content: space-between;
     flex-direction: column;
     height: calc(100% - 40px);
-    gap: 24px;
-    padding: 24px;
+    gap: 16px;
+    padding: 14px 48px;
     width: 100%;
 }
 
 .container-dashboard-adm-main h2{
     font-size: 1.7rem;
+    font-weight: bold;
 }
 
 .dashboard-adm-main-analytics, .analytics-cards, .dashboard-adm-main-new-users, .new-user-card, .dashboard-adm-main-registers-recents{
@@ -86,7 +91,6 @@
 .dashboard-adm-main-analytics, .dashboard-adm-main-new-users, .dashboard-adm-main-registers-recents{
     align-items: flex-start;
 }
-
 .analytics-cards{
     flex-direction: row;
     gap: 24px;
@@ -95,7 +99,8 @@
 
 .dashboard-adm-main-new-users .container-new-users{
     align-items: center;
-    background-color: #202528;
+    background-color: #F2F2F2;
+    color: #3AB1B9;
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
@@ -117,16 +122,21 @@
         background-color: #191A1E;
     }
 
-    .container-main-adm svg{
-        color: #fff;
+    .container-dashboard-adm .dashboard-adm-header{
+        background-color: #202528;
     }
 
-    .dashboard-adm-header .h1{
+    .container-main-adm svg, .dashboard-adm-header .h1{
         color: #fff;
     }
 
     .dashboard-adm-header.menu-themes svg:last-child{
         color: #f00;
+    }
+
+    .container-new-users{
+        background-color: #202528;
+        color: #fff!important;
     }
 }
 
