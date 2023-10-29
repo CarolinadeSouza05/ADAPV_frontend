@@ -1,0 +1,12 @@
+.new-user-card{
+    gap: 8px;
+}
+
+.new-user-card svg:last-child{
+    cursor: pointer;
+}
+
+.new-user-card .h4{
+    font-size: 22px;
+    margin: 0;
+}

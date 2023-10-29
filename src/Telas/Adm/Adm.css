@@ -2,9 +2,10 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: auto;
     position: relative;
-    width: 100vw;
+    margin-left: auto;
+    width: calc(100vw - 3%);
 }
 
 .container-main-adm svg{
@@ -63,25 +64,52 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     height: calc(100% - 40px);
+    gap: 24px;
+    padding: 24px;
     width: 100%;
 }
 
-.dashboard-adm-main-analytics, .analytics-cards{
+.container-dashboard-adm-main h2{
+    font-size: 1.7rem;
+}
+
+.dashboard-adm-main-analytics, .analytics-cards, .dashboard-adm-main-new-users, .new-user-card, .dashboard-adm-main-registers-recents{
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 10px;
     width: 100%;
 }
 
-.dashboard-adm-main-analytics{
+.dashboard-adm-main-analytics, .dashboard-adm-main-new-users, .dashboard-adm-main-registers-recents{
     align-items: flex-start;
 }
 
 .analytics-cards{
     flex-direction: row;
+    gap: 24px;
     justify-content: space-between;
+}
+
+.dashboard-adm-main-new-users .container-new-users{
+    align-items: center;
+    background-color: #202528;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 18px 0;
+    width: 100%;
+}
+
+.dashboard-adm-main-registers-recents table{
+    margin: 0;
+}
+
+.dashboard-adm-main-registers-recents table thead th{
+    color: white;
 }
 
 @media (prefers-color-scheme: dark){
