@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { deleteRegisterAccepToDo, getAllRegisterAcceptToDo } from "../api";
 import { AsideAccepToDo } from "../components/AsideAcceptToDo";
-import { Cabecalho } from "../components/Cabecalho";
-import { Footer } from "../components/Footer";
+import { HeaderAdm } from "../components/HeaderAdm";
 import { FormRegisterAcceptToDo } from "../formularios/FormRegisterAcceptToDo";
 import { FormEditAcceptToDo } from "../formularios/FormRegisterAcceptToDo/FormEditAcceptToDo";
+import { AsideAdm } from "./Adm/AsideAdm";
 import "./RegisterVolunteer.css";
 
 export const inputsFormValidateAccepToDoProps = {
@@ -26,31 +26,30 @@ export function RegisterAcceptToDo() {
 
   return (
     <>
-      <Cabecalho />
-      <main>
-            <section className="container-main cadastros flex-col aside-cadastro-aceitafazer">
-              <AsideAccepToDo 
-                infoAll={acceptToDoAll}
-                titleTable={"Registro de Categoria"}
-                editRegister={editAccepToDo} 
-                deleteRegister={deleteAccepToDo} 
-              />
-            </section>
+      <AsideAdm />
+      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+      <main className="main-adm-register">
+        <section className="container-main cadastros flex-col aside-cadastro-aceitafazer">
+          <AsideAccepToDo 
+            infoAll={acceptToDoAll}
+            titleTable={"Registro de Tarefa"}
+            editRegister={editAccepToDo} 
+            deleteRegister={deleteAccepToDo} 
+          />
+        </section>
 
-            <section className="container-main form-cadastro alinhamento">
-              {formValidateAccepToDo.edit === -1 ? (
-                <FormRegisterAcceptToDo 
-                  setAcceptToDoAll={setAcceptToDoAll} 
-                  formValidateAccepToDo={formValidateAccepToDo} 
-                  setFormValidateAccepToDo={setFormValidateAccepToDo} 
-                />
-              ) : (
-                <FormEditAcceptToDo setAcceptToDoAll={setAcceptToDoAll} formValidateAccepToDo={formValidateAccepToDo} setFormValidateAccepToDo={setFormValidateAccepToDo} />
-              )}
-            </section>
+        <section className="container-main form-cadastro alinhamento">
+          {formValidateAccepToDo.edit === -1 ? (
+            <FormRegisterAcceptToDo 
+              setAcceptToDoAll={setAcceptToDoAll} 
+              formValidateAccepToDo={formValidateAccepToDo} 
+              setFormValidateAccepToDo={setFormValidateAccepToDo} 
+            />
+          ) : (
+            <FormEditAcceptToDo setAcceptToDoAll={setAcceptToDoAll} formValidateAccepToDo={formValidateAccepToDo} setFormValidateAccepToDo={setFormValidateAccepToDo} />
+          )}
+        </section>
       </main>
-      <Footer />
-
       <ToastContainer />
     </>
   );

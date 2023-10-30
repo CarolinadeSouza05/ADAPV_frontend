@@ -1,5 +1,4 @@
 import { Modal } from "../components/ModalProduto";
-import { Cabecalho } from "../components/Cabecalho";
 import { Footer } from "../components/Footer";
 import { Inputs } from "../components/inputs";
 import { Select } from "../components/Select";
@@ -8,14 +7,13 @@ import * as Popover from '@radix-ui/react-popover';
 import "./CadastroDeProduto.css";
 import vector3 from "../imagens/vector-3.svg"
 import img_produtos from "../imagens/gatinhoo.png"
-
-import vetor3 from "../imagens/vector-3.svg"
-import gatinhoo from "../imagens/gatinhoo.png"
 import { Cards, DotsThreeVertical, PlusCircle } from "@phosphor-icons/react";
+import { HeaderAdm } from "../components/HeaderAdm";
 
 import { useState, useEffect } from "react";
 import { getProdutos, handleSubmit, editarProdutos, } from "../api/index"; // Importar função getCategorias
 import { useNavigate } from "react-router-dom";
+import { AsideAdm } from "./Adm/AsideAdm";
 
 export function CadastroProduto() {
   const navigate = useNavigate();
@@ -143,14 +141,15 @@ export function CadastroProduto() {
 
   return (
     <>
-      <Cabecalho />
-      <main className="mainSection">
+      <AsideAdm />
+      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+      <main className="mainSection main-adm-register">
         <section className="FormProduto_container">
           <div className="form-produtos-titulo centro_logo">
             <div className="titulo">
               <img
                 className="vector vectoranimais"
-                src={"vector-3.svg"}
+                src={vector3}
                 alt="Vector"
               />
               <>
@@ -268,7 +267,7 @@ export function CadastroProduto() {
 
         <div className="alinha">
           <img
-            src="gatinhoo.png"
+            src={img_produtos}
             alt="imagem-fundo-produtos"
             className="img_produto"
           />
@@ -286,9 +285,6 @@ export function CadastroProduto() {
           categories={categories} 
         />
       ) : null}
-
-
-      <Footer />
     </>
   );
 }

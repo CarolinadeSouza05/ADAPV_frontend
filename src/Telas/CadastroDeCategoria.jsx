@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { getAllCategorias, createRegisterCategoria, editRegisterCategoria,} from "../api/index";
-import { Cabecalho } from "../components/Cabecalho";
-import { Footer } from "../components/Footer";
 import { Inputs } from "../components/inputs";
 import { ArrowLeft } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { AsideCategoria } from "../components/AsideCategoria";
 import vetor3 from "../imagens/vector-3.svg"
 import "./CadastroDeProduto.css";
+import { AsideAdm } from "./Adm/AsideAdm";
+import { HeaderAdm } from "../components/HeaderAdm";
 
 const menuProps = "CadatroProduto" || "CadatroCategoria"
 
@@ -84,8 +84,9 @@ export function CadastroCategoria(props) {
 
   return (
     <>
-      <Cabecalho />
-      <main className="mainSection" >
+      <AsideAdm />
+      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+      <main className="mainSection main-adm-register">
         <section className="FormProduto_container">
           <div className="form-produtos-titulo centro_logo">
             <div className="titulo">
@@ -145,12 +146,10 @@ export function CadastroCategoria(props) {
 
         <div className="alinha">
           <section className="table-container container-main cadastros flex-col aside-cadastro-aceitafazer">
-          <AsideCategoria setFormCategoria={setCategoria} onInsert={resetForm} />
+            <AsideCategoria setFormCategoria={setCategoria} onInsert={resetForm} />
           </section>
         </div>
       </main>
-
-      <Footer />
     </>
   );
 }

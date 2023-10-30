@@ -19,7 +19,9 @@ export function AsideAdm(){
                 <div className="aside-menu-main">
                     <ul className="container-list-menu">
                         <li className="list-menu">
-                            <BiSolidDashboard size={26} />
+                            <Link to="/adm">
+                                <BiSolidDashboard size={26} />
+                            </Link>
                         </li>
                         
                         <li className="list-menu">

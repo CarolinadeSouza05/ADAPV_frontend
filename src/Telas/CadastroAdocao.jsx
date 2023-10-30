@@ -1,12 +1,12 @@
-﻿import { useState, useEffect } from "react";
+﻿import { useEffect, useState } from "react";
 // import Barradebusca from "../components/Barradebusca";
-import { Cabecalho } from "../components/Cabecalho";
 import { urLBase } from "../api/index.js";
-import FormAdocao from "../formularios/FormAdocao.jsx"
-import { Footer } from "../components/Footer";
-import "./CadastroAdocao.css"
-import vetor3 from "../imagens/vector-3.svg"
+import { HeaderAdm } from "../components/HeaderAdm";
 import { TabelaAdocao } from "../components/TabelaAdocao";
+import FormAdocao from "../formularios/FormAdocao.jsx";
+import vetor3 from "../imagens/vector-3.svg";
+import { AsideAdm } from "./Adm/AsideAdm";
+import "./CadastroAdocao.css";
 
 export function CadastroAdocao(props) {
     const [adocao, setAdocao] = useState(props.adocao);
@@ -67,10 +67,11 @@ export function CadastroAdocao(props) {
         })
     }, []);
     return (
-        <div>
-            <Cabecalho />
+        <>
+            <AsideAdm />
+            <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
 
-            <div className="page_container">
+            <div className="page_container main-adm-register">
                 <div className="titulo_agenda">
                     <img
                         className="vector vectoranimais"
@@ -89,7 +90,7 @@ export function CadastroAdocao(props) {
                     setAdocaoEmEdicao={setAdocaoEmEdicao}
                 />
             </div>
-            <div className="page_container">
+            <div className="page_container main-adm-register">
                 <div className="titulo_agenda">
                     <img
                         className="vector vectoranimais"
@@ -106,9 +107,7 @@ export function CadastroAdocao(props) {
                     setAdocao={setAdocao}
                     setAdocaoEmEdicao={setAdocaoEmEdicao} />
             </div>
-
-            <Footer />
-        </div>
+        </>
 
     )
 }

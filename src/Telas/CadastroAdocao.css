@@ -6,6 +6,10 @@
   float: left
 }
 
+.page_container:last-child{
+  background-color: #f2f2f2;
+}
+
 .montserrat-bold-pelorous-16px {
   color: var(--pelorous);
   font-family: var(--font-family-montserrat);

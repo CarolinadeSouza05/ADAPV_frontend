@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { deleteRegisterOffice, getAllRegisterOffice } from "../api";
 import { AsideAccepToDo } from "../components/AsideAcceptToDo";
 import { Cabecalho } from "../components/Cabecalho";
@@ -7,6 +7,8 @@ import { Footer } from "../components/Footer";
 import { FormRegisterOffice } from "../formularios/FormRegisterOffice";
 import { FormEditOffice } from "../formularios/FormRegisterOffice/FormEditOffice";
 import "./RegisterVolunteer.css";
+import { AsideAdm } from "./Adm/AsideAdm";
+import { HeaderAdm } from "../components/HeaderAdm";
 
 
 export const inputsFormValidateOfficeProps = {
@@ -27,14 +29,16 @@ export function RegisterOffice() {
 
   return (
     <>
-      <Cabecalho />
-      <main>
+      <AsideAdm />
+      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+
+      <main className="main-adm-register">
             <section className="container-main cadastros flex-col aside-cadastro-aceitafazer">
                 <AsideAccepToDo 
-                infoAll={officeAll}
-                titleTable={"Registro de Cargos"}
-                editRegister={editUser} 
-                deleteRegister={deleteUser} 
+                  infoAll={officeAll}
+                  titleTable={"Registro de Cargos"}
+                  editRegister={editOffice} 
+                  deleteRegister={deleteOffice} 
               />
             </section>
 
@@ -46,12 +50,12 @@ export function RegisterOffice() {
               )}
             </section>
       </main>
-      <Footer />
+      <ToastContainer />
     </>
   );
 
-  function editUser(user) {
-    const { edit, ...rest } = user;
+  function editOffice(office) {
+    const { edit, ...rest } = office;
     const aux = {
         edit: 1,
         ...rest
@@ -60,9 +64,9 @@ export function RegisterOffice() {
     setFormValidateOffice(aux);
   }
 
-  async function deleteUser(user) {
-      if (window.confirm(`Quer mesmo deletar o cargo ${user.name}?`)) {
-          const message = await deleteRegisterOffice(user);
+  async function deleteOffice(office) {
+      if (window.confirm(`Quer mesmo deletar o cargo ${office.name}?`)) {
+          const message = await deleteRegisterOffice(office);
           setOfficeAll(await getAllRegisterOffice());
 
           if (message?.errno === 1451) {
@@ -77,7 +81,7 @@ export function RegisterOffice() {
                   theme: "light",
               })
           } else {
-              toast.success(message, {
+              toast.success(message.mensagem, {
                   position: "bottom-left",
                   autoClose: 5000,
                   hideProgressBar: false,

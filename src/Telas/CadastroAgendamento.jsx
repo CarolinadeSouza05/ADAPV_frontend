@@ -7,6 +7,8 @@ import { Footer } from "../components/Footer";
 import "./CadastroAgendamento.css"
 import vetor3 from "../imagens/vector-3.svg"
 import { TabelaAgenda } from "../components/TabelaAgenda";
+import { AsideAdm } from "./Adm/AsideAdm";
+import { HeaderAdm } from "../components/HeaderAdm";
 
 export function CadastroAgendamento(props) {
     const [agendamento, setAgendamento] = useState(props.agendamento);
@@ -69,10 +71,11 @@ export function CadastroAgendamento(props) {
         })
     }, []);
     return (
-        <div>
-            <Cabecalho />
+        <>
+            <AsideAdm />
+            <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
 
-            <div className="page_container">
+            <div className="page_container main-adm-register">
                 <div className="titulo_agenda">
                     <img
                         className="vector vectoranimais"
@@ -91,7 +94,7 @@ export function CadastroAgendamento(props) {
                     setAgendamentoEmEdicao={setAgendamentoEmEdicao}
                 />
             </div>
-            <div className="page_container">
+            <div className="page_container main-adm-register">
                 <div className="titulo_agenda">
                     <img
                         className="vector vectoranimais"
@@ -108,9 +111,6 @@ export function CadastroAgendamento(props) {
                     setAgendamento={setAgendamento}
                     setAgendamentoEmEdicao={setAgendamentoEmEdicao} />
             </div>
-
-            <Footer />
-        </div>
-
+        </>
     )
 }

@@ -69,7 +69,8 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
-
+  margin-left: auto;
+  width: 96%;
 }
 
 .form_control {

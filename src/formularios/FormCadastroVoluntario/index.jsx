@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidate } from '../../Telas/RegisterVolunteer';
+import vector_3 from "../../imagens/vector-3.svg"
 import { createRegisterVoluntario, createRegisterVoluntarioAceitafazer, getAllRegisterVoluntario, getRegisterTel } from "../../api";
 import { CheckboxDropdownAcceptToDo } from "../../components/CheckboxDropdownAcceptToDo";
 import { InputsForm } from "../../components/InputsForm";
@@ -69,7 +70,7 @@ export function FormCadastroVoluntario(props) {
           <div className="titulo-usuarios">
             <img
               className="vector vectorEntrada"
-              src={"vector-3.svg"}
+              src={vector_3}
               alt="Vector"
             />
             <span className="span0"> Cadastro </span><span className="span1"> de Voluntários</span></div>

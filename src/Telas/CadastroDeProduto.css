@@ -51,7 +51,7 @@
 }
 
 .mainSection {
-    height: auto;
+    height: calc(100vh - 108px);
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
@@ -290,7 +290,7 @@
     flex-direction: column;
 }
 
-.aside-cadastro-aceitafazer {
+.aside-cadastro-produto {
     height: calc(100vh - 108px)!important;
 }
 
@@ -347,4 +347,8 @@
 td{
     font-family: var(--font-family-montserrat);
     font-size: 16px;
+}
+
+.table-container{
+    height: 100%!important;
 }

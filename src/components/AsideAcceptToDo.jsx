@@ -1,5 +1,6 @@
 import { MagnifyingGlass, Pencil, Trash } from "@phosphor-icons/react";
 import { useState } from "react";
+import vector_3 from "../imagens/vector-3.svg"
 import "./AsideAcceptToDo.css";
 
 export function AsideAccepToDo({ infoAll, titleTable, editRegister, deleteRegister }) {
@@ -11,7 +12,7 @@ export function AsideAccepToDo({ infoAll, titleTable, editRegister, deleteRegist
                 <div className="title-accepttodo-header">
                     <img
                         className="vector vectorEntrada"
-                        src={"vector-3.svg"}
+                        src={vector_3}
                         alt="Vector"
                     />
                     <h2>{titleTable}</h2>
@@ -39,7 +40,7 @@ export function AsideAccepToDo({ infoAll, titleTable, editRegister, deleteRegist
                     </tr>
                 </thead>
                 <tbody>
-                    {infoAll !== undefined && infoAll?.filter((info) => Object.values(info.name)
+                    {infoAll !== undefined && infoAll.length > 0 && infoAll?.filter((info) => Object.values(info.name)
                         .join("")
                         .toLowerCase()
                         .includes(search.toLowerCase()))

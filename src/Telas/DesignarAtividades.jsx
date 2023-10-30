@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Cabecalho } from '../components/Cabecalho'
-import { Footer } from '../components/Footer'
-import './DesignarAtividades.css'
+import { HeaderAdm } from '../components/HeaderAdm';
+import { AsideAdm } from './Adm/AsideAdm';
+import './DesignarAtividades.css';
 
 export function DesignarAtividades(props) {
   const [atividade, setAtividade] = useState('');
@@ -99,123 +99,123 @@ export function DesignarAtividades(props) {
 
   return (
     <>
-    <Cabecalho />
-    <div className="designaratvRootRoot">
-      <h1 className="designarAtividadesParaVoluntrios">Designar atividades para voluntários</h1>
-      <div className="groupdes">
-        <form className="groupdes" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            id="atividade"
-            className="botao_atividade"
-            placeholder="Atividade"
-            value={atividade}
-            onChange={handleAtividadeChange}
-          />
-          <input
-            type="text"
-            id="busca"
-            placeholder="Selecione um voluntário..."
-            className="rua1 faaUmaBuscaEspecfica"
-            value={busca}
-            onChange={handleBuscaChange}
-          />
-          <input
-            type="date"
-            id="data"
-            className="rua2 atividade"
-            value={data}
-            onChange={handleDataChange}
-          />
-          <button type="submit" id="buscar" className="botao_login login">
-            Designar
-          </button>
-        </form>
-      </div>
+      <AsideAdm />
+      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+      <div className="designaratvRootRoot main-adm-register">
+        <h1 className="designarAtividadesParaVoluntrios">Designar atividades para voluntários</h1>
+        <div className="groupdes">
+          <form className="groupdes" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              id="atividade"
+              className="botao_atividade"
+              placeholder="Atividade"
+              value={atividade}
+              onChange={handleAtividadeChange}
+            />
+            <input
+              type="text"
+              id="busca"
+              placeholder="Selecione um voluntário..."
+              className="rua1 faaUmaBuscaEspecfica"
+              value={busca}
+              onChange={handleBuscaChange}
+            />
+            <input
+              type="date"
+              id="data"
+              className="rua2 atividade"
+              value={data}
+              onChange={handleDataChange}
+            />
+            <button type="submit" id="buscar" className="botao_login login">
+              Designar
+            </button>
+          </form>
+        </div>
 
-      <h2 className="listaDeVoluntrios">Lista de voluntários</h2>
-      <div className="container-atividades">
-        <table className="table-atividades">
-          <thead>
-            <tr>
-              <th className="nome33">Nome</th>
-              <th className="nome34">Atividade</th>
-              <th className="nome35">Data</th>
-              <th className="nome36">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {volunteers.map((volunteer, index) => (
-              <tr key={index}>
-                <td className="nome">
-                  {editMode && editingVolunteer === volunteer ? (
-                    <input
-                      type="text"
-                      value={editingNome}
-                      onChange={(e) => setEditingNome(e.target.value)}
-                    />
-                  ) : (
-                    volunteer.nome
-                  )}
-                </td>
-                <td className="nome1">
-                  {editMode && editingVolunteer === volunteer ? (
-                    <input
-                      type="text"
-                      value={editingAtividade}
-                      onChange={(e) => setEditingAtividade(e.target.value)}
-                    />
-                  ) : (
-                    volunteer.atividade
-                  )}
-                </td>
-                <td className="nome2">
-                  {editMode && editingVolunteer === volunteer ? (
-                    <input
-                      type="date"
-                      value={editingData}
-                      onChange={(e) => setEditingData(e.target.value)}
-                    />
-                  ) : (
-                    volunteer.data
-                  )}
-                </td>
-                <td className="nome3">
-                  {editMode && editingVolunteer === volunteer ? (
-                    <>
-                      <button className="saveButton" onClick={handleSaveEdit}>
-                        Save
-                      </button>
-                      <button className="cancelButton" onClick={handleCancelEdit}>
-                        Cancel
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <button className="deleteButton" onClick={() => handleDeleteVolunteer(index)}>
-                        <img
-                          className="vector2"
-                          src="https://file.rendit.io/n/0g6kigcGeXMwjbnZhsjn.svg"
-                          alt="Delete"
-                        />
-                      </button>
-                      <button className="editButton" onClick={() => handleEditVolunteer(index)}>
-                        <img
-                          className="vector2"
-                          src="https://file.rendit.io/n/9dOign94pFv0x3CzVfoM.svg"
-                          alt="Edit"
-                        />
-                      </button>
-                    </>
-                  )}
-                </td>
+        <h2 className="listaDeVoluntrios">Lista de voluntários</h2>
+        <div className="container-atividades">
+          <table className="table-atividades">
+            <thead>
+              <tr>
+                <th className="nome33">Nome</th>
+                <th className="nome34">Atividade</th>
+                <th className="nome35">Data</th>
+                <th className="nome36">Ações</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {volunteers.map((volunteer, index) => (
+                <tr key={index}>
+                  <td className="nome">
+                    {editMode && editingVolunteer === volunteer ? (
+                      <input
+                        type="text"
+                        value={editingNome}
+                        onChange={(e) => setEditingNome(e.target.value)}
+                      />
+                    ) : (
+                      volunteer.nome
+                    )}
+                  </td>
+                  <td className="nome1">
+                    {editMode && editingVolunteer === volunteer ? (
+                      <input
+                        type="text"
+                        value={editingAtividade}
+                        onChange={(e) => setEditingAtividade(e.target.value)}
+                      />
+                    ) : (
+                      volunteer.atividade
+                    )}
+                  </td>
+                  <td className="nome2">
+                    {editMode && editingVolunteer === volunteer ? (
+                      <input
+                        type="date"
+                        value={editingData}
+                        onChange={(e) => setEditingData(e.target.value)}
+                      />
+                    ) : (
+                      volunteer.data
+                    )}
+                  </td>
+                  <td className="nome3">
+                    {editMode && editingVolunteer === volunteer ? (
+                      <>
+                        <button className="saveButton" onClick={handleSaveEdit}>
+                          Save
+                        </button>
+                        <button className="cancelButton" onClick={handleCancelEdit}>
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button className="deleteButton" onClick={() => handleDeleteVolunteer(index)}>
+                          <img
+                            className="vector2"
+                            src="https://file.rendit.io/n/0g6kigcGeXMwjbnZhsjn.svg"
+                            alt="Delete"
+                          />
+                        </button>
+                        <button className="editButton" onClick={() => handleEditVolunteer(index)}>
+                          <img
+                            className="vector2"
+                            src="https://file.rendit.io/n/9dOign94pFv0x3CzVfoM.svg"
+                            alt="Edit"
+                          />
+                        </button>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-    <Footer />
     </>
   );
 }

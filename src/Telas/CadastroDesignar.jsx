@@ -1,13 +1,12 @@
-﻿import { Cabecalho } from "../components/Cabecalho";
+﻿import { Cards } from "@phosphor-icons/react";
+import React, { useEffect, useState } from "react";
+import { urLBase } from "../api/index";
+import { HeaderAdm } from "../components/HeaderAdm";
 import { Modal } from "../components/ModalDesignar";
-import { Footer } from "../components/Footer";
-import React from "react";
 import FormDesignarTarefas from "../formularios/FormDesignarTarefas.jsx";
-import './CadastroDesignar.css';
 import vetor3 from '../imagens/vector-3.svg';
-import {urLBase} from "../api/index";
-import { useState, useEffect } from "react";
-import { Cards } from "@phosphor-icons/react";
+import { AsideAdm } from "./Adm/AsideAdm";
+import './CadastroDesignar.css';
 
 export function CadastroDesignar() {
     // Estado para controlar o modal
@@ -69,26 +68,26 @@ export function CadastroDesignar() {
       }
     
     return (
-        <div >
-            <Cabecalho />
-            <div>
-                <div className="titulo_designar">
-                    <img
-                        className="vector vectoranimais"
-                        src={vetor3}
-                        alt="Vector"
-                    />
-                    <>
-                        Designar atividades <span className="span1">para voluntários</span>
-                    </>
-                    <Cards
-                        className="svg-modal"
-                        size={32}
-                        onClick={() => setModal(true)}
-                    /></div></div>
+        < >
+            <AsideAdm />
+            <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+            <div className="titulo_designar">
+                <img
+                    className="vector vectoranimais"
+                    src={vetor3}
+                    alt="Vector"
+                />
+                <>
+                    Designar atividades <span className="span1">para voluntários</span>
+                </>
+                <Cards
+                    className="svg-modal"
+                    size={32}
+                    onClick={() => setModal(true)}
+                />
+            </div>
             <div className="main_designar">
                 <FormDesignarTarefas  setAllRegisters={setAllRegisters} />
-
             </div>
 
             {modal ? (
@@ -102,7 +101,6 @@ export function CadastroDesignar() {
                     onDeleteClick={apagarTarefa}
                 />
             ) : null}
-            <Footer />
-        </div>
+        </>
     );
 }

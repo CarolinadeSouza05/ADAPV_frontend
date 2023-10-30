@@ -34,9 +34,10 @@
   text-align: center;
 }
 
-/* .img_login{
-  scale: 90%;
-} */
+.img_login{
+  height: 100%;
+  width: 100%;
+}
 
 .form-login-header .form-login-titulo {
   align-items: center;

@@ -1,8 +1,9 @@
 import { Clipboard } from "@phosphor-icons/react";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidateOfficeProps } from "../../Telas/RegisterOffice";
+import vector_3 from "../../imagens/vector-3.svg"
 import { editRegisterOffice, getAllRegisterOffice } from "../../api";
 import { InputsForm } from "../../components/InputsForm";
 import { ObjectEmptyValue } from "../../util";
@@ -29,7 +30,7 @@ export function FormEditOffice({ setOffice, formValidateOffice, setFormValidateO
                     <div className="titulo-usuarios">
                         <img
                             className="vector vectorEntrada"
-                            src={"vector-3.svg"}
+                            src={vector_3}
                             alt="Vector"
                         />
                         <span className="span0">Cadastro</span>
@@ -57,8 +58,6 @@ export function FormEditOffice({ setOffice, formValidateOffice, setFormValidateO
                     <button type="submit">Editar</button>
                 </div>
             </form>
-            
-            <ToastContainer />
         </>
     );
 
@@ -68,7 +67,7 @@ export function FormEditOffice({ setOffice, formValidateOffice, setFormValidateO
             const message = await editRegisterOffice(formValidateOffice);
             setValidado(false);
             
-            toast.success(message, {
+            toast.success(message.mensagem, {
                 position: "bottom-left",
                 autoClose: 5000,
                 hideProgressBar: false,

@@ -69,6 +69,7 @@ main {
   padding: 2rem;
 }
 
+
 @media (min-width: 768px) {
   main {
     flex-direction: row;
@@ -78,6 +79,10 @@ main {
   .container-main.form-cadastro {
     height: auto;
     /* width: 50%; */
+  }
+
+  .main-adm-register{
+    height: calc(100vh - 48px);
   }
 }
 

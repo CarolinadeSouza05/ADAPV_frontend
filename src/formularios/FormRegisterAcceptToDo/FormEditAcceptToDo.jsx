@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidateAccepToDoProps } from "../../Telas/RegisterAcceptToDo";
+import vector_3 from "../../imagens/vector-3.svg"
 import { editRegisterAccepToDo, getAllRegisterAcceptToDo } from "../../api";
 import { InputsForm } from "../../components/InputsForm";
 import { ObjectEmptyValue } from "../../util";
@@ -29,7 +30,7 @@ export function FormEditAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo, se
                     <div className="titulo-usuarios">
                         <img
                             className="vector vectorEntrada"
-                            src={"vector-3.svg"}
+                            src={vector_3}
                             alt="Vector"
                         />
                         <span className="span0">Edição</span>
