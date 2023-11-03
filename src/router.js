@@ -19,6 +19,7 @@ import Pagpets from './Telas/Pagpets'
 import { RegisterDonation } from './Telas/RegisterDonation'
 import { RegisterVolunteer } from "./Telas/RegisterVolunteer"
 import { SobreNos } from './Telas/SobreNos'
+import { RegisterUser } from './Telas/RegisterUser'
 
 export function Router(){
     return(
@@ -35,6 +36,7 @@ export function Router(){
                 <Route path='/adm/cadastro' element={<AdmRegister />}  />
                 <Route path='/adm/cadastro/animal' element={<CadastroAnimal />} />
                 <Route path='/adm/cadastro/voluntario' element={<RegisterVolunteer />} />
+                <Route path='/adm/cadastro/usuario' element={<RegisterUser />} />
                 <Route path="/adm/cadastro/produto" element={<CadastroProduto />} />
                 <Route path="/adm/cadastro/designar-voluntario" element={<CadastroDesignar />} />
                 <Route path='/adm/cadastro/adocao' element={<CadastroAdocao />} />

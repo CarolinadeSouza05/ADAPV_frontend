@@ -3,12 +3,12 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { deleteRegisterVoluntario, getAllRegisterVoluntario } from "../api";
 import { Aside } from "../components/Aside";
-import { Cabecalho } from "../components/Cabecalho";
-import { Footer } from "../components/Footer";
+import { HeaderAdm } from "../components/HeaderAdm";
 import { Modal } from "../components/Modal";
 import { FormCadastroVoluntario } from "../formularios/FormCadastroVoluntario";
 import { FormEditVoluntario } from "../formularios/FormCadastroVoluntario/FormEditVoluntario";
-import { disponibilidadeArray, NameToAccepToDoAllFromVolunteer, periodoArray } from "../util";
+import { NameToAccepToDoAllFromVolunteer, disponibilidadeArray, periodoArray } from "../util";
+import { AsideAdm } from "./Adm/AsideAdm";
 import "./RegisterVolunteer.css";
 
 export const inputsFormValidate = {
@@ -38,8 +38,9 @@ export function RegisterVolunteer() {
 
   return (
     <>
-      <Cabecalho />
-      <main>
+      <AsideAdm />
+      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+      <main className="main-adm-register">
             <section className="container-main cadastros flex-col">
               <Aside />
             </section>
@@ -66,7 +67,6 @@ export function RegisterVolunteer() {
               )}
             </section>          
       </main>
-      <Footer />
       {modal && (
         <Modal
           title={"Cadastro de Voluntários"}

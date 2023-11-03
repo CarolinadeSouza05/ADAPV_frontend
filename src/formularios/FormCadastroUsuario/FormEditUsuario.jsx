@@ -1,10 +1,10 @@
 import { Cards, DotsThreeVertical } from "@phosphor-icons/react";
 import * as Popover from "@radix-ui/react-popover";
 import React, { useState } from "react";
-import { ToastContainer } from "react-bootstrap";
 import { AiOutlineMail, AiOutlinePhone, AiOutlineUser } from "react-icons/ai";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import vector_3 from "../../imagens/vector-3.svg"
 import { inputsFormValidate } from "../../Telas/RegisterUser";
 import { editRegisterUser, getAllRegisterUsers } from "../../api";
 import { CheckboxDropdownAcceptToDo } from "../../components/CheckboxDropdownAcceptToDo";
@@ -79,7 +79,7 @@ export function FormEditUsuario(props) {
             <div className="titulo">
               <img
                 className="vector vectorEntrada"
-                src={"vector-3.svg"}
+                src={vector_3}
                 alt="Vector"
               />
               <span className="span0">Edição</span>{" "}<span className="span1">de Usuários</span></div>

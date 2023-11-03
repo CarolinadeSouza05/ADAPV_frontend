@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { deleteRegisterUser, getAllRegisterUsers } from "../api";
 import { Aside } from "../components/Aside";
-import { Cabecalho } from "../components/Cabecalho";
-import { Footer } from "../components/Footer";
+import { HeaderAdm } from "../components/HeaderAdm";
 import { Modal } from "../components/Modal";
 import { FormCadastroUsuario } from "../formularios/FormCadastroUsuario";
 import { FormEditUsuario } from "../formularios/FormCadastroUsuario/FormEditUsuario";
-import './RegisterUser.css';
-import { deleteRegisterUser, getAllRegisterOffice, getAllRegisterUsers } from "../api";
 import { NameToOfficeFromUser } from "../util";
-import { ToastContainer, toast } from "react-toastify";
+import { AsideAdm } from "./Adm/AsideAdm";
+import './RegisterUser.css';
 
 export const inputsFormValidate = {
   id: 0,
@@ -42,8 +42,9 @@ export function RegisterUser() {
   
   return (
     <>
-      <Cabecalho />
-      <main>
+      <AsideAdm />
+      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+      <main className="main-adm-register">
         <section className="container-main cadastros flex-col">
           <Aside />
         </section>
@@ -70,7 +71,6 @@ export function RegisterUser() {
           )}
         </section>
       </main>
-      <Footer />
 
       {modal ? (
         <Modal

@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { deleteRegisterOffice, getAllRegisterOffice } from "../api";
 import { AsideAccepToDo } from "../components/AsideAcceptToDo";
-import { Cabecalho } from "../components/Cabecalho";
-import { Footer } from "../components/Footer";
+import { HeaderAdm } from "../components/HeaderAdm";
 import { FormRegisterOffice } from "../formularios/FormRegisterOffice";
 import { FormEditOffice } from "../formularios/FormRegisterOffice/FormEditOffice";
-import "./RegisterVolunteer.css";
 import { AsideAdm } from "./Adm/AsideAdm";
-import { HeaderAdm } from "../components/HeaderAdm";
+import "./RegisterVolunteer.css";
 
 
 export const inputsFormValidateOfficeProps = {

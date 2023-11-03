@@ -1,10 +1,9 @@
-import { BsMoon, BsSun } from "react-icons/bs";
-import "./Adm.css";
-import { AsideAdm } from "./AsideAdm";
-import { CardsAnalyticsAdm } from "../../components/CardsAnalyticsAdm";
 import { AiOutlinePlus, AiOutlineUser } from "react-icons/ai";
 import { CardNewUser } from "../../components/CardNewUser";
+import { CardsAnalyticsAdm } from "../../components/CardsAnalyticsAdm";
 import { HeaderAdm } from "../../components/HeaderAdm";
+import "./Adm.css";
+import { AsideAdm } from "./AsideAdm";
 
 export function Adm(){
     const cardsAdmArray = [
@@ -57,7 +56,8 @@ export function Adm(){
             sizeIcon: 64, 
             h4Text: "Adicionar",
             h4Class: "h4 add",
-            spanText: "Novo Usuário"
+            spanText: "Novo Usuário",
+            redirection: true,
         },
     ]
 
@@ -95,6 +95,7 @@ export function Adm(){
                                     h4Text={cardNewUser.h4Text}
                                     h4Class={cardNewUser.h4Class}
                                     spanText={cardNewUser.spanText}
+                                    redirection={cardNewUser.redirection}
                                 />
                             ))}
                         </div>

@@ -47,3 +47,9 @@
     height: 2rem;
     width: 2rem;
 }
+
+@media (prefers-color-scheme: dark){
+    .dashboard-adm-header{
+        background-color: #202528;
+    }
+}

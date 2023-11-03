@@ -5,6 +5,7 @@ import { AiOutlineMail, AiOutlinePhone, AiOutlineUser } from "react-icons/ai";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidate } from "../../Telas/RegisterUser";
+import vector_3 from "../../imagens/vector-3.svg"
 import { createRegisterUser, getAllRegisterUsers } from "../../api";
 import { CheckboxDropdownAcceptToDo } from "../../components/CheckboxDropdownAcceptToDo";
 import { InputsForm } from "../../components/InputsForm";
@@ -78,7 +79,7 @@ export function FormCadastroUsuario(props) {
             <div className="titulo">
               <img
                 className="vector vectorEntrada"
-                src={"vector-3.svg"}
+                src={vector_3}
                 alt="Vector"
               />
               <span className="span0">Cadastro</span>{" "}<span className="span1">de Usuários</span></div>
