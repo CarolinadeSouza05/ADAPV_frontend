@@ -9,6 +9,12 @@
     .main-donation {
       display: grid;
       grid-template-columns: repeat(2, 50%);
+      height: calc(130vh - 108px)!important;
+    }
+  }
+
+  @media (min-width: 2516px) {
+    .main-donation {
       height: calc(100vh - 108px)!important;
     }
   }

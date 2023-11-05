@@ -71,6 +71,7 @@
     color: white;
 }
 
+
 @media (prefers-color-scheme: dark){
     .container-main-adm{
         background-color: #191A1E;
