@@ -100,7 +100,7 @@ export function CadastroCategoria(props) {
               </>
             </div>
 
-            <Link to={"/cadastro-produto"}>
+            <Link to={"/adm/cadastro/produto"}>
               <ArrowLeft className="arrow" size={32} onClick={() => setMenu("CadastroProduto")} />
             </Link>
           </div>

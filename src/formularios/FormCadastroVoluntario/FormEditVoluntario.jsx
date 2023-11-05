@@ -9,6 +9,8 @@ import { editRegisterVoluntario, editRegisterVoluntarioAceitafazer, getAllRegist
 import { CheckboxDropdownAcceptToDo } from "../../components/CheckboxDropdownAcceptToDo";
 import { InputsForm } from "../../components/InputsForm";
 import { NameToAccepToDoAllFromVolunteer, ObjectEmptyValue, disponibilidadeArray, periodoArray } from "../../util";
+import { Link } from "react-router-dom";
+import { BiTask } from "react-icons/bi";
 
 
 export function FormEditVoluntario(props) {
@@ -87,6 +89,11 @@ export function FormEditVoluntario(props) {
                   <Cards size={32} />
                   <span>Modal</span>
                 </button>
+
+                <Link to="/adm/cadastro/aceitafazer" className="button-popover-trigger" onClick={() => setModal(true)} >
+                    <BiTask size={32} />
+                    <span>Cadastro Aceita Fazer</span>
+                  </Link>
               </Popover.Content>
             </Popover.Portal>
           </Popover.Root>

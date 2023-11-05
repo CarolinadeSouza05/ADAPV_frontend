@@ -83,9 +83,9 @@ export function CadastroProduto() {
     setMenu(selectedMenu);
 
     if (selectedMenu === "CadastroProduto") {
-      navigate("/cadastro-produto");
+      navigate("/adm/cadastro/produto");
     } else if (selectedMenu === "CadastroCategoria") {
-      navigate("/cadastro-categoria");
+      navigate("/adm/cadastro/categoria");
     }
   }
 

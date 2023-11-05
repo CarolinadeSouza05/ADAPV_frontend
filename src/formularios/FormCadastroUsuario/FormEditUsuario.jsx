@@ -10,6 +10,8 @@ import { editRegisterUser, getAllRegisterUsers } from "../../api";
 import { CheckboxDropdownAcceptToDo } from "../../components/CheckboxDropdownAcceptToDo";
 import { InputsForm } from "../../components/InputsForm";
 import { NameToOfficeFromUser, ObjectEmptyValue } from "../../util";
+import { Link } from "react-router-dom";
+import { SiMicrosoftoffice } from "react-icons/si";
 
 export function FormEditUsuario(props) {
   const { formCadastroInput, setFormCadastroInput, setRegisterFormCadastro, setModal, officeAllInfos, setOfficeAllInfos } = props;
@@ -96,6 +98,11 @@ export function FormEditUsuario(props) {
                     <Cards size={32} />
                     <span>Modal</span>
                   </button>
+
+                  <Link to="/adm/cadastro/cargo" className="button-popover-trigger" onClick={() => setModal(true)} >
+                    <SiMicrosoftoffice size={32} />
+                    <span>Cadastro de Cargos</span>
+                  </Link>
                 </Popover.Content>
               </Popover.Portal>
           </Popover.Root>
