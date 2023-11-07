@@ -255,6 +255,10 @@ section{
   width: 100%;
 }
 
+.button-qrCode {
+  justify-content: center;
+}
+
 .container-button button {
   background-color: #3ab1b9;
   border: 2px solid;
