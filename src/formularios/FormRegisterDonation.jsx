@@ -7,7 +7,7 @@ import { QrCodePix } from "qrcode-pix";
 import "./FormRegisterDonation.css";
 
 const donationValues = {
-  chavePix: "ChavePixONG",
+  chavePix: "associacaodosdefensores@gmail.com",
   value: 0,
 };
 export function FormRegisterDonation() {
