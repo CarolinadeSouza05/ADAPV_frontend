@@ -68,7 +68,7 @@ export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, log
         <h2>Não perca tempo, adote um pet hoje mesmo!</h2>
       </header>
 
-      <section className="section">
+      <section className="section section-login">
         <div className="section-container alinhamento">
           <section className="section-form alinhamento">
             <h3>

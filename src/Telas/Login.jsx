@@ -25,12 +25,12 @@ export function Login() {
   return (
     <>
       <Cabecalho />
-      <main>
-        <section className="container-main  cadastros ">
+      <main className="main-adm-register main-login">
+        <section className="container-main  cadastros section-img-login">
           <img src={image_login} alt="imagem-fundo-login" className="img_login" />
         </section>
 
-        <section className="container-main form-cadastro alinhamento">
+        <section className="container-main form-cadastro alinhamento container-form-login">
           <FormLogin formInput={formInput} setFormInput={setFormInput} setModal={setModal} setLoginsAll={setLoginsAll} loginsAll={loginsAll} />
         </section>
       </main>

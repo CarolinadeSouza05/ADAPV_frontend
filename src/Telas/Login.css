@@ -16,14 +16,23 @@
 
   --font-family-montserrat: "Montserrat";
 }
+
+.main-login{
+  display: grid!important;
+  grid-template-columns: 45% 55%;
+}
+
+.container-form-login{
+  padding: 0 1rem!important;
+}
+
 .form-login-container {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  height: fit-content;
-  width: auto;
+  height: 100%;
+  width: 85%;
   margin: 0 auto;
-  margin-top: -60px;
 }
 
 .form-login-header {
@@ -32,6 +41,10 @@
   margin: 0 auto;
   max-width: 557px;
   text-align: center;
+}
+
+.section-img-login{
+  height: calc(100vh - 48px)!important;
 }
 
 .img_login{
@@ -86,13 +99,17 @@
   width: 100%;
 } */
 
- .section .section-container {
-  align-items: flex-start;
-  height: 100%;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 28px;
-  width: 100%;
+.section-login{
+  margin-top: 0;
+}
+
+.section .section-container {
+align-items: flex-start;
+height: 100%;
+flex-direction: column;
+justify-content: flex-start;
+gap: 28px;
+width: 100%;
 }
 
 .section-container .section-title {
