@@ -1,3 +1,10 @@
+.form-check input[type="text"], .form-check input[type="tel"], .form-check input[type="password"], .form-check input[type="number"], .form-check input[type="email"] {
+  border: none;
+  height: 100%;
+  outline: none;
+  width: 100%;
+}
+
 .form-check-input {
   --bs-form-check-bg: #fff;
   width: 1em;

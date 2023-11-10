@@ -3,6 +3,7 @@ import { EnvelopeSimple, Key,} from "@phosphor-icons/react";
 import { InputsForm } from "../components/InputsForm";
 import { formProps } from "../Telas/Login";
 import vector3 from "../imagens/vector-3.svg"
+import { getAllRegisterAcceptToDo, getRegisterEmailPassword } from "../api";
 
 export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, loginsAll }) {
   const inputsForm = [
@@ -30,12 +31,12 @@ export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, log
     },
   ];
 
-  function submitForm(e) {
+  async function submitForm(e) {
     e.preventDefault();
 
     if(ObjectEmptyValue(formInput)){
-      setLoginsAll([...loginsAll, formInput]);
-      setFormInput(formProps);
+      const registerInfo = await getRegisterEmailPassword({ email: formInput.email, senha: formInput.password });
+      const getAccepTodo = await getAllRegisterAcceptToDo(registerInfo.message.token, registerInfo.message.id);
     }
     else
       alert("Preencha os campos vazios!");

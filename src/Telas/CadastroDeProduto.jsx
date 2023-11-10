@@ -1,26 +1,27 @@
+import * as Popover from '@radix-ui/react-popover';
 import { Modal } from "../components/ModalProduto";
-import { Cabecalho } from "../components/Cabecalho";
-import { Footer } from "../components/Footer";
-import { Inputs } from "../components/inputs";
 import { Select } from "../components/Select";
+import { Inputs } from "../components/inputs";
 import { Textarea } from "../components/textarea";
+import { HeaderAdm } from "../components/HeaderAdm";
+import img_produtos from "../imagens/gatinhoo.png";
+import vector3 from "../imagens/vector-3.svg";
 import "./CadastroDeProduto.css";
-import vector3 from "../imagens/vector-3.svg"
-import img_produtos from "../imagens/gatinhoo.png"
 
-import { Cards } from "@phosphor-icons/react";
+import { Cards, DotsThreeVertical, PlusCircle } from "@phosphor-icons/react";
 
-import { useState, useEffect } from "react";
-import {
-  getProdutos,
-  handleSubmit,
-  editarProdutos,
-} from "../api/index";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { editarProdutos, getProdutos, handleSubmit, } from "../api/index"; // Importar função getCategorias
+import { AsideAdm } from "./Adm/AsideAdm";
 
-export function CadastroProduto(props) {
+export function CadastroProduto() {
+  const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const [allRegisters, setAllRegisters] = useState([]);
+  const [menu, setMenu] = useState("CadastroProduto");
 
+  const apiCategoria = "http://localhost:4000/categoria";
   const tableHead = ["Codigo", "Nome", "Preço", "Descrição", "Categoria"];
 
   const [validado, setValidated] = useState(false);
@@ -29,30 +30,63 @@ export function CadastroProduto(props) {
     nome: "",
     preco: "",
     descricao: "",
-    categoria: "",
+    categoria: "", // Alterado para uma string vazia para categoria
     edit: -1,
   });
+
+  const [categories, setCategories] = useState([]);
+  const [loadingCategories, setLoadingCategories] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       const produtos = await getProdutos();
       setAllRegisters(produtos);
+      try {
+        const response = await fetch(apiCategoria);
+        const data = await response.json();
+
+        if (response.ok) {
+          setCategories(data); // Defina as categorias recuperadas da API
+        } else {
+          console.error("Erro ao buscar categorias:", data);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar categorias:", error);
+      } finally {
+        setLoadingCategories(false);
+      }
     }
     fetchData();
   }, []);
 
   function maskPrice(event) {
     var price = event.target.value;
-    price = price.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
-    price = price.replace(/(\d)(\d{2})$/, "$1.$2"); // Insere o separador decimal
-    price = price.replace(/(?=(\d{3})+(\D))\B/g, ""); // Remove o separador de milhar
-    event.target.value = "R$" + price; // Adiciona o símbolo "R$"
+    price = price.replace(/\D/g, "");
+    price = price.replace(/(\d)(\d{2})$/, "$1.$2");
+    price = price.replace(/(?=(\d{3})+(\D))\B/g, "");
+    event.target.value = "R$" + price;
   }
 
   function handleChange(e) {
     const { id, value } = e.target;
     console.log("O elemento " + id + " tem um novo valor " + value);
-    setProduto({ ...produto, [id]: value });
+    if (id === "categoriaNome") {
+      // Extrai o ID da categoria selecionada
+      const categoriaId = categories.find(category => category.nome === value)?.id;
+      setProduto({ ...produto, categoria: categoriaId });
+    } else {
+      setProduto({ ...produto, [id]: value });
+    }
+  }
+
+  function handleMenuChange(selectedMenu) {
+    setMenu(selectedMenu);
+
+    if (selectedMenu === "CadastroProduto") {
+      navigate("/adm/cadastro/produto");
+    } else if (selectedMenu === "CadastroCategoria") {
+      navigate("/adm/cadastro/categoria");
+    }
   }
 
   async function handleFormSubmit(e) {
@@ -63,32 +97,28 @@ export function CadastroProduto(props) {
     } else {
       handleAtualizacao();
     }
+    console.log("Formulário enviado");
   }
 
   async function handleCadastro() {
-    // Verifique se todos os campos estão preenchidos
     if (
       produto.nome &&
       produto.preco &&
       produto.descricao &&
       produto.categoria
     ) {
-      // Remove o símbolo "R$" e qualquer caractere não numérico do campo de preço
       const preco = produto.preco.replace(/[^\d.]/g, "");
       const produtoAtualizado = { ...produto, preco };
-  
+
       await handleSubmit(produtoAtualizado);
-      // Limpe os campos do formulário
       resetForm();
     } else {
-      // Exiba o alerta
       setValidated(true);
     }
-  
+
     const produtos = await getProdutos();
     setAllRegisters(produtos);
   }
-  
 
   async function handleAtualizacao() {
     await editarProdutos(produto, setProduto);
@@ -111,11 +141,12 @@ export function CadastroProduto(props) {
 
   return (
     <>
-      <Cabecalho />
-      <main className="mainSection">
+      <AsideAdm />
+      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+      <main className="mainSection main-adm-register">
         <section className="FormProduto_container">
           <div className="form-produtos-titulo centro_logo">
-          <div className="titulo">
+            <div className="titulo">
               <img
                 className="vector vectoranimais"
                 src={vector3}
@@ -125,11 +156,25 @@ export function CadastroProduto(props) {
                 Cadastro de <span className="span1">Produtos</span>
               </>
             </div>
-            <Cards
-              className="svg-modal"
-              size={32}
-              onClick={() => setModal(true)}
-            />
+            <Popover.Root>
+              <Popover.Trigger className="popover-trigger">
+                <DotsThreeVertical size={32} />
+              </Popover.Trigger>
+
+              <Popover.Portal>
+                <Popover.Content className="popover-content">
+                  <button className="button-popover-trigger" onClick={() => setModal(true)}>
+                    <Cards size={32} />
+                    <span>Modal</span>
+                  </button>
+
+                  <button className="button-popover-trigger" onClick={() => handleMenuChange("CadastroCategoria")}>
+                    <PlusCircle size={32} />
+                    <span>Cadastrar Categoria</span>
+                  </button>
+                </Popover.Content>
+              </Popover.Portal>
+            </Popover.Root>
           </div>
 
           <form noValidate onSubmit={handleFormSubmit}>
@@ -182,16 +227,30 @@ export function CadastroProduto(props) {
               className={validado && !produto.descricao ? "input-invalid" : ""}
             />
 
-            <Select
-              text="Selecione a Categoria"
-              name="categoria"
-              id="categoria"
-              value={produto.categoria}
-              onChange={handleChange}
-              options={["Comidas", "Brinquedos", "Remedios", "Outro"]}
-              required
-              className={validado && !produto.categoria ? "input-invalid" : ""}
-            />
+            {(
+              <>
+                <Select
+                  text="Selecione a Categoria"
+                  name="categoriaNome"
+                  id="categoriaNome"
+                  value={categories.find(category => category.id === produto.categoria)?.nome || ''}
+                  onChange={handleChange}
+                  options={categories.map(category => category.nome)}
+                  required
+                  className={validado && !produto.categoria ? "input-invalid" : ""}
+                />
+
+                {/* Campo oculto para armazenar o ID da categoria */}
+                <input
+                  type="hidden"
+                  name="categoria"
+                  id="categoria"
+                  value={produto.categoria}
+                  onChange={handleChange}
+                />
+              </>
+            )}
+
 
             <div className="btnProduto mainSection">
               <button type="submit">
@@ -200,9 +259,9 @@ export function CadastroProduto(props) {
             </div>
           </form>
 
-          {/* {validado && (
+          {validado && (
             <div className="alert">Por favor, preencha todos os campos!</div>
-          )} */}
+          )}
 
         </section>
 
@@ -223,10 +282,9 @@ export function CadastroProduto(props) {
           registerAll={allRegisters}
           setRegisterAll={setAllRegisters}
           setFormValidate={setProduto}
+          categories={categories} 
         />
       ) : null}
-
-      <Footer />
     </>
   );
 }

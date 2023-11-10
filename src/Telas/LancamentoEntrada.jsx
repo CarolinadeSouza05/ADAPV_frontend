@@ -108,7 +108,7 @@ export default function LancamentoEntrada(props) {
       <main className="mainSectionEntrada">
         <section className="FormEntrada_container">
           <div className="form-entradas-titulo centro_logo">
-            <div className="titulo_usuarios">
+            <div className="tituloEntrada">
               <img
                 className="vector vectorEntrada"
                 src={vector3}

@@ -1,18 +1,13 @@
 import React from "react";
 import {
+  FaDonate,
   FaHome,
-  FaDog,
-  FaUserAlt,
-  FaHandHoldingHeart,
-  FaChartBar,
   FaRegWindowClose,
-  FaSignInAlt,
-  FaListUl,
-  FaBoxOpen,
+  FaUserAlt
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import { SidebarItem } from "./SidebarItem";
-import { Link } from "react-router-dom";
 
 export function Sidebar({ active }) {
   return (
@@ -23,30 +18,12 @@ export function Sidebar({ active }) {
         </Link>
         <Link to="/login">
             <SidebarItem Icon={FaUserAlt} Text="Login" />
-        </Link>
-        <Link to="/cadastro">
-            <SidebarItem Icon={FaSignInAlt} Text="Usuários" />
-        </Link>
-        {/* <Link to="/pets">
-            <SidebarItem Icon={FaDog} Text="Animais" />
-        </Link> */}
-        <Link to="/cadastro-animal">
-            <SidebarItem Icon={FaDog} Text="Cad. Animais" />
-        </Link>
-        <Link to="/cadastro-voluntario">
-            <SidebarItem Icon={FaHandHoldingHeart} Text="Voluntários" />
-        </Link>
-        <Link to="/designar-voluntario">
-            <SidebarItem Icon={FaListUl} Text="Desig. Ativid." />
-        </Link>
-        <Link to="/cadastro-produto">
-            <SidebarItem Icon={FaChartBar} Text="Produtos" />
-        </Link>
-        <Link to="/lancar-entrada">
-            <SidebarItem Icon={FaBoxOpen} Text="Entradas" />
-        </Link>
+        </Link> 
         <Link to="/cadastro-denuncia">
             <SidebarItem Icon={FaRegWindowClose} Text="Denuncias" />
+        </Link>
+        <Link to="/doacao">
+            <SidebarItem Icon={FaDonate} Text="Doação" />
         </Link>
       </div>
     </div>

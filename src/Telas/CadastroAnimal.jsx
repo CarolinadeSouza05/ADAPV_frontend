@@ -1,21 +1,22 @@
 import { Modal } from "../components/ModalAnimal";
-import { Cabecalho } from "../components/Cabecalho";
-import { Footer } from "../components/Footer";
-import { Inputs } from "../components/inputs";
 import { Select } from "../components/Select";
-import { Textarea } from "../components/textarea";
+import { Inputs } from "../components/inputs";
+import img_animais from "../imagens/cadastroanimal.png";
+import vector3 from "../imagens/vector-3.svg";
 import "./CadastroAnimal.css";
 import vector3 from "../imagens/vector-3.svg"
 import img_animais from "../imagens/cadastroanimal.png"
 
 import { Cards } from "@phosphor-icons/react";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
+  editarAnimais,
   getAnimais,
   handleSubmitAnimais,
-  editarAnimais,
 } from "../api/index"; // Importando as funções de requisição
+import { HeaderAdm } from "../components/HeaderAdm";
+import { AsideAdm } from "./Adm/AsideAdm";
 
 export function CadastroAnimal(props) {
   // Estado para controlar o modal
@@ -135,8 +136,10 @@ export function CadastroAnimal(props) {
 
   return (
     <>
-      <Cabecalho />
-      <main className="mainSectionAnimal">
+      <AsideAdm />
+      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+
+      <main className="mainSectionAnimal ">
         <section className="Formanimais_container">
           <div className="form-animais-titulo centro_logo">
             <div className="titulo">
@@ -300,8 +303,6 @@ export function CadastroAnimal(props) {
           setFormValidate={setAnimal}
         />
       ) : null}
-
-      <Footer />
     </>
   );
 }

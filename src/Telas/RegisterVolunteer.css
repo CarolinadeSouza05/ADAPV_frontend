@@ -1,0 +1,120 @@
+.form-cadastro-voluntario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.form-cadastro-header .titulo-usuarios{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: .8rem;
+  justify-content: center;
+}
+
+.form-cadastro-header .titulo-usuarios span{
+  font-size: 1.8rem;
+}
+
+.form-cadastro-header .popover-trigger{
+  border: none;
+  height: min-content;
+  margin: auto 0;
+}
+
+.popover-trigger:focus-visible, .popover-content:focus-visible, .button-popover-trigger:focus-visible{
+  outline: none;
+}
+
+.popover-content, .button-popover-trigger{
+  background-color: whitesmoke;
+  display: flex;
+  gap: 8px;
+}
+
+.popover-content{
+  border-radius: 8px;
+  border: 1px solid rgb(212 212 216);
+  flex-direction: column;
+  overflow: hidden;
+  padding: 8px 4px;
+  z-index: 50;
+}
+
+.popover-content .button-popover-trigger{
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  flex-direction: row;
+  padding: 4px;
+}
+
+.popover-content .button-popover-trigger:hover{
+  background-color: #e5e5e5;
+}
+
+.popover-content > svg{
+  cursor: pointer;
+}
+
+form.form-input {
+  gap: 8px;
+}
+
+.form-cadastro-aceitafazer{
+  justify-content: space-between;
+}
+
+form .container-checkboxs {
+  height: auto;
+  gap: 18px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.container-checkboxs h3 {
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.checkboxs {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 15px;
+  padding-left: 2rem;
+}
+
+.aceitar-fazer-inputs {
+  width: 100%;
+}
+
+.checkbox {
+  align-items: center;
+  display: inline-flex;
+  padding-bottom: 0.7rem;
+}
+
+.checkboxs-oque-fazer {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+  padding-left: 1rem;
+}
+
+.modalVoluntario{
+  cursor: pointer;
+  transition: .5s;
+}
+
+.modalVoluntario:hover{
+  color:#3ab1b9;
+}
+
+@media screen and (min-width: 768px) {
+  .checkboxs-oque-fazer {
+    grid-template-columns: repeat(3, minmax(0, 1fr))!important;
+  }
+}

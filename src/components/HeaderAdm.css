@@ -1,0 +1,55 @@
+.dashboard-adm-header{
+    align-items: center;
+    background-color: #FAFAFA;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    padding: 4px 4px 4px 24px;
+    width: 100%;
+}
+
+.dashboard-adm-header.true{
+    padding: 4px 4px 4px 72px;
+}
+
+.dashboard-adm-header .h1{
+    color: #3AB1B9;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.dashboard-adm-header.menu{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 16px;
+    width: 100%;
+}
+
+.dashboard-adm-header.menu-themes{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    width: auto;
+}
+
+.dashboard-adm-header.menu-themes svg{
+    cursor: pointer;
+}
+
+.dashboard-adm-header.profile{
+    background: url("/src/imagens/Rectangle1.png");
+    border-radius: 50%;
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+}
+
+@media (prefers-color-scheme: dark){
+    .dashboard-adm-header{
+        background-color: #202528;
+    }
+}

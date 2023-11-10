@@ -1,0 +1,127 @@
+.container-aside-adm{
+    height: 2rem;
+    left: 0;
+    position: absolute;
+    top: 5px;
+    width: 2rem;
+}
+
+.container-aside-adm .svg-menu-adm{
+    cursor: pointer;
+}
+
+.container-aside-adm.true{
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+}
+
+.aside-adm-main{
+    background-color: #FAFAFA;
+    height: 100%;
+    width: 100%;
+}
+
+.aside-adm-main .aside-menu-header{
+    height: 100%;
+    width: 100%;
+}
+
+.aside-menu-header svg{
+    height: 2.3rem;
+    width: 2.3rem;
+}
+
+.container-aside-adm.true .aside-adm-main{
+    width: 40%;
+}
+
+@media (prefers-color-scheme: dark){
+    .aside-adm-main{
+        background-color: #202528;
+    }
+
+    .container-aside-adm .aside-menu-header::after{
+        background-color: #fff!important;
+    }
+}
+
+@media (min-width: 768px) {
+    .container-aside-adm{
+        height: 100%;
+        inset: 0;
+        position: fixed;
+        width: 4%;
+    }
+
+    .container-aside-adm .aside-menu-header{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .container-aside-adm .aside-adm-main{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .aside-adm-main .aside-menu-main{
+        height: 80%;
+        margin-top: auto;
+        width: 100%;
+    }
+
+    .aside-menu-main .container-list-menu{
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        height: auto;
+        padding: 0;
+        width: 100%;
+    }
+    
+    
+    .container-list-menu .list-menu{
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        padding: 6px 0;
+        width: 100%;
+    }
+
+    .container-list-menu .list-menu:hover{
+        background-color: #458ACE;
+    }
+    
+    .container-list-menu .list-menu:hover svg{
+        color: #fff;
+    }
+
+    .list-menu svg{
+        cursor: pointer;
+    }
+    
+    .container-aside-adm .aside-menu-header{
+        height: min-content;
+        position: relative;
+    }
+
+    .container-aside-adm .aside-menu-header::after{
+        border-bottom: 1px solid #fff;
+        bottom: -6px;
+        content: "";
+        display: block;
+        height: 1px;
+        position: absolute;
+        width: 100%;
+    }
+
+    .container-aside-adm .svg-menu-adm{
+       position: relative;
+       top: 0;
+    }
+}

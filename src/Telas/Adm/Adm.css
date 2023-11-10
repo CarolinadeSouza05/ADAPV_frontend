@@ -1,0 +1,121 @@
+.container-main-adm{
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    position: relative;
+    margin-left: auto;
+    width: calc(100vw - 4%);
+}
+
+.container-main-adm svg{
+    color: #000;
+}
+
+.container-adm{
+    height: 100%;
+    width: 100%;
+}
+
+.container-dashboard-adm-main{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: calc(100% - 40px);
+    gap: 16px;
+    padding: 14px 48px;
+    width: 100%;
+}
+
+.container-dashboard-adm-main h2{
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.dashboard-adm-main-analytics, .analytics-cards, .dashboard-adm-main-new-users, .new-user-card, .dashboard-adm-main-registers-recents{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.dashboard-adm-main-analytics, .dashboard-adm-main-new-users, .dashboard-adm-main-registers-recents{
+    align-items: flex-start;
+}
+.analytics-cards{
+    flex-direction: row;
+    gap: 24px;
+    justify-content: space-between;
+}
+
+.dashboard-adm-main-new-users .container-new-users{
+    align-items: center;
+    background-color: #F2F2F2;
+    color: #3AB1B9;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 18px 0;
+    width: 100%;
+}
+
+.dashboard-adm-main-registers-recents table{
+    margin: 0;
+}
+
+.dashboard-adm-main-registers-recents table thead th{
+    color: white;
+}
+
+
+@media (prefers-color-scheme: dark){
+    .container-main-adm{
+        background-color: #191A1E;
+    }
+
+    .container-dashboard-adm .dashboard-adm-header{
+        background-color: #202528;
+    }
+
+    .container-main-adm svg, .dashboard-adm-header .h1{
+        color: #fff;
+    }
+    
+    .container-dashboard-adm-main h2{
+        color: white;
+    }
+
+    .dashboard-adm-header.menu-themes svg:last-child{
+        color: #f00;
+    }
+
+    .container-new-users{
+        background-color: #202528!important;
+        color: #fff!important;
+    }
+
+    .dashboard-adm-main-registers-recents table tbody tr{
+        color: #fff;
+    }
+
+    .dashboard-adm-main-registers-recents table tbody tr:nth-child(even){
+        color: #000;
+    }
+}
+
+@media (prefers-color-scheme: light){
+    .dashboard-adm-header.menu-themes svg:first-child{
+        color: #f00;
+    }
+}
+
+@media (min-width: 768px) {
+    .container-adm{
+        height: 100%;
+        width: 100%;
+    }
+}
