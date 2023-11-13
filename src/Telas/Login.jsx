@@ -5,6 +5,8 @@ import { Modal } from "../components/Modal";
 import { FormLogin } from "../formularios/FormLogin";
 import image_login from "../imagens/imgLogin.png";
 import "./Login.css";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
 
 
 export const formProps = {
@@ -44,6 +46,8 @@ export function Login() {
             setModal={setModal}
         />
       ) : null}
+
+      <ToastContainer />
     </>
   );
 }

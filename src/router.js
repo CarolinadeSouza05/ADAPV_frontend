@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { CadastroDenuncia } from './Telas/CadastroDenuncia'
 import { Home } from './Telas/Home'
@@ -20,8 +20,18 @@ import { RegisterDonation } from './Telas/RegisterDonation'
 import { RegisterVolunteer } from "./Telas/RegisterVolunteer"
 import { SobreNos } from './Telas/SobreNos'
 import { RegisterUser } from './Telas/RegisterUser'
+import { StoreContext } from './context'
 
 export function Router(){
+    const useStore = useContext(StoreContext);
+    const { user } = useStore();
+
+    useEffect(() => {
+        if(window.location.pathname.includes("/adm") && user.role !== "ADMIN"){
+            window.location.href = "/";
+        }
+    }, []);
+
     return(
         <BrowserRouter>
             <Routes>

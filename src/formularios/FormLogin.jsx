@@ -4,6 +4,7 @@ import { getRegisterEmailPassword } from "../api";
 import { InputsForm } from "../components/InputsForm";
 import { StoreContext } from "../context";
 import vector3 from "../imagens/vector-3.svg";
+import { toast } from "react-toastify";
 
 export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, loginsAll }) {
   const useStore = useContext(StoreContext);
@@ -87,14 +88,32 @@ export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, log
 
   async function submitForm(e) {
     e.preventDefault();
-    debugger;
 
     if(ObjectEmptyValue(formInput)){
       const registerInfo = await getRegisterEmailPassword({ email: formInput.email, senha: formInput.password });
       setUser(registerInfo.message.user);
+      toast.success("Login realizado!", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
     else
-      alert("Preencha os campos vazios!");
+      toast.error("Preencha os campos vazios!", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
   }
 
   function ObjectEmptyValue(array) {
