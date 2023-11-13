@@ -1,7 +1,7 @@
 ﻿import { Button, Container, Table } from "react-bootstrap";
-import { FaEdit, FaSearch, FaTrash } from "react-icons/fa";
-import "./TabelaDenuncia.css";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { urLBase } from "../api/index.js";
+import "./TabelaDenuncia.css";
 
 
 export function TabelaAgenda(props) {

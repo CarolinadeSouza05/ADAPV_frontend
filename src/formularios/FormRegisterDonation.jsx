@@ -1,9 +1,8 @@
+import { QrCodePix } from "qrcode-pix";
 import { useState } from "react";
-import { BsKey } from "react-icons/bs";
-import "./FormRegisterDonation.css";
+import { BsFillPersonVcardFill } from "react-icons/bs";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { InputsForm } from "../components/InputsForm";
-import { QrCodePix } from "qrcode-pix";
 import "./FormRegisterDonation.css";
 
 const donationValues = {
@@ -22,6 +21,7 @@ export function FormRegisterDonation() {
       name: "nome",
       id: "nome",
       placeholder: "Digite seu Nome",
+      icon: BsFillPersonVcardFill,
       value: inputsValidateDonation.nome,
       required: true,
     },

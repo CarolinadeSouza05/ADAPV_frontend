@@ -4,9 +4,6 @@ import { Inputs } from "../components/inputs";
 import img_animais from "../imagens/cadastroanimal.png";
 import vector3 from "../imagens/vector-3.svg";
 import "./CadastroAnimal.css";
-import vector3 from "../imagens/vector-3.svg"
-import img_animais from "../imagens/cadastroanimal.png"
-
 import { Cards } from "@phosphor-icons/react";
 
 import { useEffect, useState } from "react";
