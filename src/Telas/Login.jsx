@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Cabecalho } from "../components/Cabecalho";
 import { Footer } from "../components/Footer";
-import { FormLogin } from "../formularios/FormLogin";
-import { useState } from "react";
 import { Modal } from "../components/Modal";
-import "./Login.css";
+import { FormLogin } from "../formularios/FormLogin";
 import image_login from "../imagens/imgLogin.png";
+import "./Login.css";
 
 
 export const formProps = {
@@ -20,8 +19,7 @@ export function Login() {
   const tableHead = [
     "Email",
     "Password",
-  ]
-  
+  ];  
   return (
     <>
       <Cabecalho />
