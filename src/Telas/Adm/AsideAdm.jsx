@@ -18,17 +18,17 @@ export function AsideAdm(){
 
                 <div className="aside-menu-main">
                     <ul className="container-list-menu">
-                        <li className="list-menu">
-                            <Link to="/adm">
+                        <Link to="/adm">
+                            <li className="list-menu">
                                 <BiSolidDashboard size={26} />
-                            </Link>
-                        </li>
+                            </li>
+                        </Link>
                         
-                        <li className="list-menu">
-                            <Link to="/adm/cadastro">
+                        <Link to="/adm/cadastro">
+                            <li className="list-menu">
                                 <BsPeopleFill size={26} />
-                            </Link>
-                        </li>
+                            </li>
+                        </Link>
 
                         <li className="list-menu">
                             <TbReportSearch size={26} />

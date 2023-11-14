@@ -27,7 +27,9 @@ export function CadastroAnimal(props) {
 
   // Estado para controlar a validação do formulário
   const [validado, setValidated] = useState(false);
+  
   // Estado para armazenar os dados do animal
+  const [image, setImage] = useState(null)
   const [animal, setAnimal] = useState({
     nome: "",
     idade: "",
@@ -37,7 +39,6 @@ export function CadastroAnimal(props) {
     necessidadesEspeciais: "",
     vacinas: "",
     castrado: "",
-    foto: "",//armazenar a imagem como um arquivo blob
     edit: -1,
   });
 
@@ -86,10 +87,13 @@ export function CadastroAnimal(props) {
       animal.porte &&
       animal.necessidadesEspeciais &&
       animal.vacinas &&
-      animal.castrado &&
-      animal.foto
+      animal.castrado
     ) {
-      await handleSubmitAnimais(animal);
+      const reader = new FileReader();
+      reader.onload = handleReaderLoaded.bind(this);
+      const testReader = reader.readAsBinaryString(image);
+      const aux = await handleSubmitAnimais(animal);
+      console.log(aux, testReader, image);
       // Limpe os campos do formulário
       resetForm();
     } else {
@@ -102,6 +106,14 @@ export function CadastroAnimal(props) {
     setAllRegisters(animais);
     resetForm();
   }
+
+  function handleReaderLoaded(e){
+    let binaryString = e.target.result;
+    console.log(e);
+    setImage({
+      base64Data: btoa(binaryString)
+    });
+  };
 
   // Função para lidar com a atualização de animais
   async function handleAtualizacao() {
@@ -128,6 +140,13 @@ export function CadastroAnimal(props) {
       edit: -1,
     });
     setValidated(false);
+  }
+
+  function readURL(event){
+    debugger;
+    if (event.target.files && event.target.files[0]) {
+      setImage(event.target.files[0]);
+    }
   }
 
 
@@ -249,17 +268,11 @@ export function CadastroAnimal(props) {
             />
 
             {/* <div className="file_entrada"> */}
-              <Inputs
-                type="text"
-                text="Foto do Animal"
-                //  accept="image/*" // Aceitar apenas arquivos de imagem
-                id="foto"
-                name="foto"
-                value={animal.foto}
-                onChange={handleChange} // Lidar com a seleção de arquivo de imagem
-                className={validado && !animal.foto ? "input-invalid" : ""}
-                required
-              />
+            <div className="foto-animal-container">
+                <span className="foto-span">Foto do Animal</span>
+                <label htmlFor="foto" className="foto-label">Foto do Animal</label>
+                <input type="file" name="foto" id="foto" onChange={readURL} />
+            </div>
               {/* {animal.foto && (
             <img
               src={URL.createObjectURL(animal.foto)} // Exibir a imagem selecionada

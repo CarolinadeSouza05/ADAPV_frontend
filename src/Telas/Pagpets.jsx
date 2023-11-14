@@ -8,17 +8,17 @@ export default function Pagpets() {
     <>
       <Cabecalho />
       <div className="pagpetsRootRoot">
-        <h2 className="title2">PETS ESPERANDO POR UM LAR</h2>
         <div className="group">
-          <div>
+          <h2 className="title2">PETS ESPERANDO POR UM LAR</h2>
+          <div className="search-container">
             <input
               type="text"
               className="searchInput"
               label="Pesquisar um pet"
             />
-          </div>
-          <div className="botaoprimario">
-            <button className="searchButton">Pesquisar</button>
+            <div className="botaoprimario">
+              <button className="searchButton">Pesquisar</button>
+            </div>
           </div>
         </div>
         <div className="container-pet">
@@ -84,6 +84,7 @@ export default function Pagpets() {
           <div className="group2">
             <div className="pet">
               <img
+                alt=""
                 className=""
                 src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
               />
@@ -97,6 +98,7 @@ export default function Pagpets() {
                 </div>
                 <div className="botaoprimario1">
                   <img
+                    alt=""
                     className="vectorpet"
                     src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
                   />
@@ -106,6 +108,7 @@ export default function Pagpets() {
             </div>
             <div className="pet">
               <img
+                alt=""
                 className=""
                 src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
               />
@@ -119,6 +122,7 @@ export default function Pagpets() {
                 </div>
                 <div className="botaoprimario1">
                   <img
+                    alt=""
                     className="vectorpet"
                     src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
                   />
@@ -128,6 +132,7 @@ export default function Pagpets() {
             </div>
             <div className="pet">
               <img
+                alt=""
                 className=""
                 src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
               />
@@ -141,6 +146,7 @@ export default function Pagpets() {
                 </div>
                 <div className="botaoprimario1">
                   <img
+                    alt=""
                     className="vectorpet"
                     src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
                   />
@@ -150,6 +156,7 @@ export default function Pagpets() {
             </div>
             <div className="pet">
               <img
+                alt=""
                 className=""
                 src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
               />
@@ -163,6 +170,7 @@ export default function Pagpets() {
                 </div>
                 <div className="botaoprimario1">
                   <img
+                    alt=""
                     className="vectorpet"
                     src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
                   />
@@ -172,6 +180,7 @@ export default function Pagpets() {
             </div>
             <div className="pet">
               <img
+                alt=""
                 className=""
                 src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
               />
@@ -185,6 +194,7 @@ export default function Pagpets() {
                 </div>
                 <div className="botaoprimario1">
                   <img
+                    alt=""
                     className="vectorpet"
                     src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
                   />
@@ -194,6 +204,7 @@ export default function Pagpets() {
             </div>
             <div className="pet">
               <img
+                alt=""
                 className=""
                 src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
               />
@@ -207,6 +218,7 @@ export default function Pagpets() {
                 </div>
                 <div className="botaoprimario1">
                   <img
+                    alt=""
                     className="vectorpet"
                     src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
                   />
@@ -216,6 +228,7 @@ export default function Pagpets() {
             </div>
             <div className="pet">
               <img
+                alt=""
                 className=""
                 src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
               />
@@ -229,6 +242,7 @@ export default function Pagpets() {
                 </div>
                 <div className="botaoprimario1">
                   <img
+                    alt=""
                     className="vectorpet"
                     src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
                   />
@@ -238,6 +252,7 @@ export default function Pagpets() {
             </div>
             <div className="pet">
               <img
+                alt=""
                 className=""
                 src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
               />
@@ -251,6 +266,7 @@ export default function Pagpets() {
                 </div>
                 <div className="botaoprimario1">
                   <img
+                    alt=""
                     className="vectorpet"
                     src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
                   />
@@ -260,6 +276,7 @@ export default function Pagpets() {
             </div>
             <div className="pet">
               <img
+                alt=""
                 className=""
                 src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
               />
@@ -273,6 +290,7 @@ export default function Pagpets() {
                 </div>
                 <div className="botaoprimario1">
                   <img
+                    alt=""
                     className="vectorpet"
                     src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
                   />

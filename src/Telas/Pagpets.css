@@ -23,16 +23,25 @@
   align-items: center;
 }
 .group {
-  width: 736px;
-  gap: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: space-between;
+  width: 98%;
 }
+
+.search-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 100%;
+}
+
 .searchInput {
-  width: 99.16%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -72,11 +81,14 @@
 }
 
 .container-pet {
-  width: 1129px;
+  width: calc(95% - 17.27%);
   gap: 24px;
   display: flex;
+  height: auto;
   align-items: center;
+  margin-left: auto;
   box-sizing: border-box;
+  position: relative;
   padding: 0 15px;
 }
 .filtersWrapper {
@@ -85,15 +97,14 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-start; */
   align-self: flex-start;
-  /* align-items: flex-start; */
-  /* margin: 0px 16px 0px 0px; */
   padding: 16px;
+  left: 1%;
   border-radius: 8px;
   box-sizing: border-box;
   background-color: #e6e6e6;
   box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.25);
+  position: fixed;
 }
 .filtersTitle {
   margin: 0px 0px 2px 0px;
@@ -136,9 +147,19 @@
 
 .group2 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
+  width: 100%;
 }
+
+.pet{
+  width: min-content;
+}
+
+.pet img{
+  border-radius: 8px 8px 0px 0px;
+}
+
 .group5 {
   width: 80px;
   gap: 8px;
@@ -277,8 +298,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 16px 42px 11px 42px;
-  border-radius: 0px 0px 8px 8px;
+  padding: 16px 0;
+  border-radius: 8px;
   box-sizing: border-box;
   background-color: #e6e6e6;
 }
