@@ -500,6 +500,22 @@ export async function excluirAnimais(id) {
   }
 }
 
+export async function getAnimalsPagination(register){
+  console.log(register);
+  const aux = await fetch(`${apiAnimais}/pagination`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(register)
+  })
+  .then((data) => data.json())
+  .then((res) => res)
+  .catch((err) => err)
+
+  return aux;
+}
+
 //================== API-Produtos ==================//
 
 export async function getProdutos() {
