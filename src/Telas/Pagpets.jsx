@@ -34,7 +34,7 @@ export default function Pagpets() {
   return (
     <>
       <Cabecalho />
-      <div className="pagpetsRootRoot">
+      <main className="pagpetsRootRoot">
         <div className="group">
           <h2 className="title2">PETS ESPERANDO POR UM LAR</h2>
           <div className="search-container">
@@ -115,7 +115,7 @@ export default function Pagpets() {
                   <img
                     alt=""
                     className=""
-                    src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
+                    src={`data:image;base64,${animal.foto}`}
                   />
                   <div className="rectangle2">
                     <div className="group12">
@@ -147,7 +147,7 @@ export default function Pagpets() {
           <span>{page}</span>
           <FaAnglesRight size={32} onClick={() => page !== Math.ceil(animaisAll.length / 12) && setPage(page + 1)} />
         </div>
-      </div>
+      </main>
 
       <Footer />
     </>

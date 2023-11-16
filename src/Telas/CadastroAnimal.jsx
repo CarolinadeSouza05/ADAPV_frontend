@@ -5,31 +5,20 @@ import img_animais from "../imagens/cadastroanimal.png";
 import vector3 from "../imagens/vector-3.svg";
 import "./CadastroAnimal.css";
 import { Cards } from "@phosphor-icons/react";
-
 import { useEffect, useState } from "react";
 import {
   editarAnimais,
   getAnimais,
   handleSubmitAnimais,
-} from "../api/index"; // Importando as funções de requisição
+} from "../api/index";
 import { HeaderAdm } from "../components/HeaderAdm";
 import { AsideAdm } from "./Adm/AsideAdm";
 
 export function CadastroAnimal(props) {
-  // Estado para controlar o modal
   const [modal, setModal] = useState(false);
-
-  // Estado para armazenar todos os registros de animais
   const [allRegisters, setAllRegisters] = useState([]);
-
-  //Cabeçalho para o Modal
   const tableHead = ["Código", "Nome", "Idade", "Pelagem", "Genero", "Porte", "Especial", "Vacinado", "Castrado", "Foto"];
-
-  // Estado para controlar a validação do formulário
-  const [validado, setValidated] = useState(false);
-  
-  // Estado para armazenar os dados do animal
-  const [image, setImage] = useState(null)
+  const [validado, setValidated] = useState(false);  
   const [animal, setAnimal] = useState({
     nome: "",
     idade: "",
@@ -39,6 +28,7 @@ export function CadastroAnimal(props) {
     necessidadesEspeciais: "",
     vacinas: "",
     castrado: "",
+    foto: "",
     edit: -1,
   });
 
@@ -89,31 +79,18 @@ export function CadastroAnimal(props) {
       animal.vacinas &&
       animal.castrado
     ) {
-      const reader = new FileReader();
-      reader.onload = handleReaderLoaded.bind(this);
-      const testReader = reader.readAsBinaryString(image);
-      const aux = await handleSubmitAnimais(animal);
-      console.log(aux, testReader, image);
-      // Limpe os campos do formulário
+      await handleSubmitAnimais(animal);
+      console.log(animal);
+
       resetForm();
     } else {
-      // Exibir o alerta se algum campo estiver faltando
       setValidated(true);
     }
 
-    // Atualizar a lista de animais após o cadastro
     const animais = await getAnimais();
     setAllRegisters(animais);
     resetForm();
   }
-
-  function handleReaderLoaded(e){
-    let binaryString = e.target.result;
-    console.log(e);
-    setImage({
-      base64Data: btoa(binaryString)
-    });
-  };
 
   // Função para lidar com a atualização de animais
   async function handleAtualizacao() {
@@ -142,12 +119,23 @@ export function CadastroAnimal(props) {
     setValidated(false);
   }
 
-  function readURL(event){
-    debugger;
-    if (event.target.files && event.target.files[0]) {
-      setImage(event.target.files[0]);
+  function onChange(e){
+    console.log("file uploaded: ", e.target.files[0]);
+    let file = e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = handleReaderLoaded;
+      reader.readAsBinaryString(file);
     }
-  }
+  };
+
+  function handleReaderLoaded(e){
+    console.log("file uploaded 2: ", e);
+    let binaryString = e.target.result;
+    console.log(e);
+    setAnimal({ ...animal, "foto": btoa(binaryString)});
+  };
 
 
   return (
@@ -271,14 +259,12 @@ export function CadastroAnimal(props) {
             <div className="foto-animal-container">
                 <span className="foto-span">Foto do Animal</span>
                 <label htmlFor="foto" className="foto-label">Foto do Animal</label>
-                <input type="file" name="foto" id="foto" onChange={readURL} />
+                <input type="file" name="foto" id="foto" onChange={onChange} />
             </div>
-              {/* {animal.foto && (
-            <img
-              src={URL.createObjectURL(animal.foto)} // Exibir a imagem selecionada
-              alt={`Imagem de ${animal.nome}`}
-              
-            />)}</div>*/}
+            
+            {animal.foto.length > 0 && (
+              <img src={`data:image;base64,${animal.foto}`} alt="" />
+            )}
 
             <div className="btnanimais mainSectionAnimal">
               <button type="submit">
