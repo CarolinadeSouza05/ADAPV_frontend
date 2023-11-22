@@ -26,7 +26,7 @@ export function Cabecalho() {
             Sobre Nós
           </Link>
           <Link to="/cadastro-denuncia" className="faca_denuncia montserrat-bold-cod-gray-16px">
-            Faça uma denúncia
+            Denuncie
           </Link>
         </div>
         <Menu />
