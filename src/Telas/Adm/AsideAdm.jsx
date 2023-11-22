@@ -1,13 +1,28 @@
 import { useState } from "react";
-import "./AsideAdm.css";
-import { CgMenuGridO } from "react-icons/cg";
+import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import { BiSolidDashboard } from "react-icons/bi";
+import { BsPeopleFill } from "react-icons/bs";
+import { CgMenuGridO } from "react-icons/cg";
+import { FaBoxOpen, FaHands, FaTasks, FaUser } from "react-icons/fa";
+import { MdCategory, MdOutlinePets, MdOutlineVolunteerActivism } from "react-icons/md";
 import { TbReportSearch } from "react-icons/tb";
-import { BsPeopleFill } from "react-icons/bs"
+import { TfiAgenda } from "react-icons/tfi";
 import { Link } from "react-router-dom";
+import "./AsideAdm.css";
 
 export function AsideAdm(){
     const [menu, setMenu] = useState(false);
+    const cards = [
+        { id: 1, name: "Cadastro de Voluntários", icon: MdOutlineVolunteerActivism, path: "/adm/cadastro/voluntario" },
+        { id: 2, name: "Cadastro de Tarefas", icon: FaTasks, path: "/adm/cadastro/aceitafazer" },
+        { id: 3, name: "Cadastro de Usuário", icon: FaUser, path: "/adm/cadastro/usuario" },
+        { id: 4, name: "Cadastro de Produtos", icon: FaBoxOpen, path: "/adm/cadastro/produto" },
+        { id: 5, name: "Cadastro de Categoria", icon: MdCategory, path: "/adm/cadastro/categoria" },
+        { id: 6, name: "Cadastro de Animais", icon: MdOutlinePets, path: "/adm/cadastro/animal" },
+        { id: 7, name: "Adoções", icon: FaHands, path: "/adm/cadastro/adocao" },
+        { id: 8, name: "Designar Atividades", icon: AiOutlineDeliveredProcedure, path: "/adm/cadastro/designar-voluntario" },
+        { id: 9, name: "Agendamento", icon: TfiAgenda, path: "/adm/cadastro/agendamento" },
+    ];
 
     return(
         <aside className={`container-aside-adm ${menu}`}>
@@ -18,17 +33,24 @@ export function AsideAdm(){
 
                 <div className="aside-menu-main">
                     <ul className="container-list-menu">
-                        <Link to="/adm">
                             <li className="list-menu">
                                 <BiSolidDashboard size={26} />
                             </li>
-                        </Link>
                         
-                        <Link to="/adm/cadastro">
-                            <li className="list-menu">
+                            <li className="list-menu menu-registers">
                                 <BsPeopleFill size={26} />
+
+                                <ul className="container-list-menu-registers">
+                                    {cards.sort((card1, card2) => card1.name.localeCompare(card2.name)).map((card) => (
+                                        <>
+                                            <Link key={card.id} to={card.path}>
+                                                <card.icon />
+                                                <span>{card.name}</span>
+                                            </Link>
+                                        </>
+                                    ))}
+                                </ul>
                             </li>
-                        </Link>
 
                         <li className="list-menu">
                             <TbReportSearch size={26} />

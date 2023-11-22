@@ -40,7 +40,7 @@ export function AsideCategoria({ setFormCategoria, onInsert }) {
             console.error("Erro ao excluir a categoria:", error);
           }
         }
-      }  
+      }
 
     return (
         <>
@@ -68,7 +68,7 @@ export function AsideCategoria({ setFormCategoria, onInsert }) {
                 </thead>
 
                 <tbody>
-                    {allRegisters.map((categoria) => (
+                    {Array.isArray(allRegisters) && allRegisters.map((categoria) => (
                         <tr key={categoria.id}>
                             <td>{categoria.id}</td>
                             <td>{categoria.nome}</td>

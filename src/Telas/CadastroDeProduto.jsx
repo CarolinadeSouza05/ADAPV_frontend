@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { editarProdutos, getProdutos, handleSubmit, } from "../api/index"; // Importar função getCategorias
 import { AsideAdm } from "./Adm/AsideAdm";
+import { format } from 'date-fns';
 
 export function CadastroProduto() {
   const navigate = useNavigate();
@@ -108,8 +109,15 @@ export function CadastroProduto() {
       produto.categoria
     ) {
       const preco = produto.preco.replace(/[^\d.]/g, "");
-      const produtoAtualizado = { ...produto, preco };
+      const dataAux = new Date();
+      const formatData = format(dataAux, "yyyy-MM-dd");
 
+      const produtoAtualizado = {
+        ...produto,
+        preco,
+        data: formatData 
+      };
+      
       await handleSubmit(produtoAtualizado);
       resetForm();
     } else {

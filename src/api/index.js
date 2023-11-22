@@ -94,7 +94,6 @@ export async function getRegisterTel(telefone) {
 
 // --------------------------------- Router AceitariaFazer ---------------------------------
 export async function getAllRegisterAcceptToDo(token, id) {
-  console.log(token, id);
   let aux = await fetch(`${apiAcceptToDo}/${id}`, {
       method: "GET",
       headers: {

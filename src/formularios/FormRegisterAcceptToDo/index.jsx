@@ -1,15 +1,19 @@
 import { Clipboard } from "@phosphor-icons/react";
-import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { format } from "date-fns";
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidateAccepToDoProps } from "../../Telas/RegisterAcceptToDo";
-import vector_3 from "../../imagens/vector-3.svg"
 import { createRegisterAccepToDo, getAllRegisterAcceptToDo } from "../../api";
 import { InputsForm } from "../../components/InputsForm";
+import vector_3 from "../../imagens/vector-3.svg";
 import { ObjectEmptyValue } from "../../util";
+import { StoreContext } from "../../context";
 
 export function FormRegisterAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo, setFormValidateAccepToDo }) {
     const [validado, setValidado] = useState(false);
+    const useStore = useContext(StoreContext);
+    const { user } = useStore();
 
     const inputForm = [
         {
@@ -34,7 +38,7 @@ export function FormRegisterAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo
                             alt="Vector"
                         />
                         <span className="span0">Cadastro</span>
-                        <span className="span1"> de Aceitaria Fazer</span>
+                        <span className="span1"> de Tarefas</span>
                     </div>
 
                 </div>
@@ -58,15 +62,21 @@ export function FormRegisterAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo
                     <button type="submit">Cadastrar</button>
                 </div>
             </form>
-            
-            <ToastContainer />
         </>
     );
 
     async function submit(e){
         e.preventDefault();
         if(ObjectEmptyValue(formValidateAccepToDo)){
-            const message = await createRegisterAccepToDo(formValidateAccepToDo);
+            const dataAux = new Date();
+            const formatData = format(dataAux, "yyyy-MM-dd");
+            const { ...rest } = formValidateAccepToDo;
+            const register = {
+                data: formatData,
+                ...rest 
+            };
+
+            const message = await createRegisterAccepToDo(register);
             setValidado(false);
             toast.success(message, {
                 position: "bottom-left",
@@ -85,7 +95,7 @@ export function FormRegisterAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo
 
         setFormValidateAccepToDo(inputsFormValidateAccepToDoProps);
         setTimeout(async () => {
-            setAcceptToDoAll(await getAllRegisterAcceptToDo());
+            setAcceptToDoAll(await getAllRegisterAcceptToDo(user.token, user.id));
         }, 6000)
     }
 }

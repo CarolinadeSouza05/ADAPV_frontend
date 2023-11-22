@@ -34,7 +34,7 @@ export function FormEditAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo, se
                             alt="Vector"
                         />
                         <span className="span0">Edição</span>
-                        <span className="span1"> de Aceitaria Fazer</span>
+                        <span className="span1"> de Tarefas</span>
                     </div>
                 </div>
 

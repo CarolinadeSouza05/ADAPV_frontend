@@ -83,6 +83,8 @@ main {
 
   .main-adm-register{
     height: calc(100vh - 48px);
+    margin-left: auto;
+    width: calc(100% - 4%);
   }
 }
 
