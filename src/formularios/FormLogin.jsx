@@ -91,7 +91,11 @@ export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, log
 
     if(ObjectEmptyValue(formInput)){
       const registerInfo = await getRegisterEmailPassword({ email: formInput.email, senha: formInput.password });
-      setUser(registerInfo.message.user === undefined ? {} : registerInfo.message.user);
+      setUser(registerInfo.message.user === undefined ? {} : {
+        id: registerInfo.message.user.id,
+        role: registerInfo.message.user.role,
+        token: registerInfo.message.token,
+      });
       toast.success("Login realizado!", {
         position: "bottom-left",
         autoClose: 5000,

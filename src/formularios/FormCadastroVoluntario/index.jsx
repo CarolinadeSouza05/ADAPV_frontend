@@ -11,6 +11,7 @@ import { InputsForm } from "../../components/InputsForm";
 import { ObjectEmptyValue, NameToAccepToDoAllFromVolunteer, disponibilidadeArray, periodoArray } from "../../util";
 import { Link } from "react-router-dom";
 import { BiTask } from "react-icons/bi";
+import { format } from "date-fns";
 
 
 export function FormCadastroVoluntario(props) {
@@ -160,8 +161,16 @@ export function FormCadastroVoluntario(props) {
           })
         }
         else {
+          const dataAux = new Date();
+          const formatData = format(dataAux, "yyyy-MM-dd");
+          
+          const { ...rest } = formValidate;
+          const register = {
+            data: formatData,
+            ...rest 
+          };
           const auxOqueAceitariaFazer = formValidate.oQueAceitariaFazer;
-          const message = await createRegisterVoluntario(formValidate);
+          const message = await createRegisterVoluntario(register);
           await createRegisterVoluntarioAceitafazer({ id_voluntario: message.id, ids_aceitafazer: auxOqueAceitariaFazer });
           setValidado(false);
           toast.success(message.mensagem && "Voluntário Cadastrado com sucesso", {

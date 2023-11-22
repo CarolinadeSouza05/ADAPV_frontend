@@ -12,7 +12,6 @@ import { CadastroAnimal } from './Telas/CadastroAnimal'
 import { CadastroCategoria } from './Telas/CadastroDeCategoria'
 import { CadastroProduto } from './Telas/CadastroDeProduto'
 import { CadastroDesignar } from './Telas/CadastroDesignar'
-import { RegisterOffice } from "./Telas/RegisterOffice";
 import { RegisterAcceptToDo } from "./Telas/RegisterAcceptToDo";
 import LancamentoEntrada from './Telas/LancamentoEntrada'
 import Pagpets from './Telas/Pagpets'
@@ -52,7 +51,6 @@ export function Router(){
                 <Route path='/adm/cadastro/adocao' element={<CadastroAdocao />} />
                 <Route path='/adm/cadastro/agendamento' element={<CadastroAgendamento />} />
                 <Route path="/adm/cadastro/categoria" element={<CadastroCategoria />} />
-                <Route path="/adm/cadastro/cargo" element={<RegisterOffice />} />
                 <Route path="/adm/cadastro/aceitafazer" element={<RegisterAcceptToDo />} />
             </Routes>
         </BrowserRouter>

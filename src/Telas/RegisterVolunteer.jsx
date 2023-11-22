@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { deleteRegisterVoluntario, getAllRegisterVoluntario } from "../api";
@@ -10,6 +10,7 @@ import { FormEditVoluntario } from "../formularios/FormCadastroVoluntario/FormEd
 import { NameToAccepToDoAllFromVolunteer, disponibilidadeArray, periodoArray } from "../util";
 import { AsideAdm } from "./Adm/AsideAdm";
 import "./RegisterVolunteer.css";
+import { StoreContext } from "../context";
 
 export const inputsFormValidate = {
   id: 0,
@@ -27,10 +28,12 @@ export function RegisterVolunteer() {
   const [acceptToDoAll, setAcceptToDoAll] = useState([]);
   const [registerVolunteers, setRegisterVolunteers] = useState([]);
   const [modal, setModal] = useState(false);
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
 
   useEffect(() => {
     (async function () {
-      await NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll);
+      await NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, user.token, user.id);
     })();
   }, []);
 

@@ -13,6 +13,9 @@ import {
 } from "../api/index";
 import { HeaderAdm } from "../components/HeaderAdm";
 import { AsideAdm } from "./Adm/AsideAdm";
+import { format } from "date-fns";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export function CadastroAnimal(props) {
   const [modal, setModal] = useState(false);
@@ -77,12 +80,20 @@ export function CadastroAnimal(props) {
       animal.porte &&
       animal.necessidadesEspeciais &&
       animal.vacinas &&
-      animal.castrado
+      animal.castrado &&
+      animal.foto
     ) {
-      await handleSubmitAnimais(animal);
-      console.log(animal);
+      const dataAux = new Date();
+      const formatData = format(dataAux, "yyyy-MM-dd");
+      const { ...rest } = animal;
+      const register = {
+        data: formatData,
+        ...rest,
+      }
 
-      resetForm();
+      const aux = await handleSubmitAnimais(register);
+      
+      toastMessageLogin(aux);
     } else {
       setValidated(true);
     }
@@ -133,10 +144,26 @@ export function CadastroAnimal(props) {
   function handleReaderLoaded(e){
     console.log("file uploaded 2: ", e);
     let binaryString = e.target.result;
-    console.log(e);
     setAnimal({ ...animal, "foto": btoa(binaryString)});
   };
 
+  function toastMessageLogin(message) {
+    const toastMessage = {
+      message: message.status ? message.mensagem : "Erro ao cadastrar Animal",
+      status: message.status ? "success" : "error",
+    };
+
+    toast[toastMessage.status](toastMessage.message, {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
 
   return (
     <>
@@ -299,6 +326,8 @@ export function CadastroAnimal(props) {
           setFormValidate={setAnimal}
         />
       ) : null}
+
+      <ToastContainer />
     </>
   );
 }

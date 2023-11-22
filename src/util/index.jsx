@@ -133,9 +133,9 @@ export function onChangeInput(name, value, setFormInput, formInput) {
   setFormInput({ ...formInput, [name]: value });
 }
 
-export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll){
+export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, token, id){
   const volunteers = await getAllRegisterVoluntario();
-  const acceptToDoAllAux = await getAllRegisterAcceptToDo();
+  const acceptToDoAllAux = await getAllRegisterAcceptToDo(token, id);
   const allAcceptToDoVolunteer = await getAllRegisterVoluntarioAceitafazer();
 
     volunteers.forEach((volunteer) => {

@@ -60,7 +60,6 @@ export function CheckboxDropdownAcceptToDo({
   );
 
   function checkedOption(optionId) {
-    debugger;
     if (acceptToDoHandleVoluntter?.length === 0) {
       const indexOfOption = acceptToDoHandleVoluntter.indexOf(optionId);
       return indexOfOption !== -1 && true;

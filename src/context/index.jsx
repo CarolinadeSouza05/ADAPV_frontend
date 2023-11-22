@@ -13,6 +13,7 @@ export const UserValueDefault = {
 const UserDTOValuesDefault = {
     id: "",
     role: "",
+    token: ""
 }
 
 const StoreContext = createContext();

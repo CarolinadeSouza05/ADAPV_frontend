@@ -94,6 +94,7 @@ export async function getRegisterTel(telefone) {
 
 // --------------------------------- Router AceitariaFazer ---------------------------------
 export async function getAllRegisterAcceptToDo(token, id) {
+  console.log(token, id);
   let aux = await fetch(`${apiAcceptToDo}/${id}`, {
       method: "GET",
       headers: {
@@ -173,7 +174,8 @@ export async function createRegisterUser(register) {
       },
       body: JSON.stringify(register),
   })
-      .then(() => "Usuário cadastrado com sucesso")
+      .then((res) => res.json())
+      .then((data) => data)
       .catch((err) => err)
 
   return aux;
@@ -458,14 +460,18 @@ export async function getAnimais() {
 }
 
 export async function handleSubmitAnimais(animal) {
-  await fetch(apiAnimais, {
+  const aux = await fetch(apiAnimais, {
       method: "POST",
       headers: {
           "Content-Type": "application/json"
       },
       body: JSON.stringify(animal)
   })
-    .then(()=> alert('animal Cadastrado com sucesso!'))
+    .then((data) => data.json())
+    .then((res) => res)
+    .catch((err) => err);
+
+  return aux;
 }
 
 export async function editarAnimais(animal) {

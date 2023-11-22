@@ -3,20 +3,19 @@ import * as Popover from "@radix-ui/react-popover";
 import React, { useState } from "react";
 import { AiOutlineMail, AiOutlinePhone, AiOutlineUser } from "react-icons/ai";
 import { SiMicrosoftoffice } from "react-icons/si";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidate } from "../../Telas/RegisterUser";
-import vector_3 from "../../imagens/vector-3.svg"
 import { createRegisterUser, getAllRegisterUsers } from "../../api";
-import { CheckboxDropdownAcceptToDo } from "../../components/CheckboxDropdownAcceptToDo";
 import { InputsForm } from "../../components/InputsForm";
-import { NameToOfficeFromUser, ObjectEmptyValue } from "../../util";
-import { Link } from "react-router-dom";
+import vector_3 from "../../imagens/vector-3.svg";
+import { ObjectEmptyValue } from "../../util";
+import { format } from "date-fns";
 
 export function FormCadastroUsuario(props) {
-  const { formCadastroInput, setFormCadastroInput, setRegisterFormCadastro, setModal, officeAllInfos, setOfficeAllInfos } = props;
+  const { formCadastroInput, setFormCadastroInput, setRegisterFormCadastro, setModal } = props;
   const [validado, setValidado] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
 
   function maskCel(event) {
@@ -125,18 +124,6 @@ export function FormCadastroUsuario(props) {
             </div>
           ))}
 
-            <CheckboxDropdownAcceptToDo 
-              inputs={officeAllInfos}
-              formValidate={formCadastroInput} 
-              setFormValidate={setFormCadastroInput}
-              titleCheckbox={"Cargos"}
-              type="radio" 
-              name="id_office"
-              handleChangeInput={handleChangeInput}
-              setIsOpen={setIsOpen}
-              isOpen={isOpen}
-            />
-
           <div className="container-button alinhamento">
             <button type="submit">Cadastrar</button>
           </div>
@@ -147,9 +134,13 @@ export function FormCadastroUsuario(props) {
 
   async function submit(e) {
     e.preventDefault();
+    const dataAux = new Date();
+    const formatData = format(dataAux, "yyyy-MM-dd");
+    
     const { ...rest } = formCadastroInput;
     const register = {
       role: "USER",
+      data: formatData,
       ...rest 
     };
 
@@ -157,7 +148,7 @@ export function FormCadastroUsuario(props) {
         const message = await createRegisterUser(register);
         setValidado(false);
 
-        toast.success(message, {
+        toast.success(message.mensagem, {
             position: "bottom-left",
             autoClose: 5000,
             hideProgressBar: false,
@@ -185,13 +176,5 @@ export function FormCadastroUsuario(props) {
     setTimeout(() => {
       setFormCadastroInput(inputsFormValidate);
     }, 6000);
-    setIsOpen(false);
-    await NameToOfficeFromUser(setRegisterFormCadastro, setOfficeAllInfos);
-  }
-
-  function handleChangeInput(e, index){
-    const { name, value } = e.target;
-
-    setFormCadastroInput({...formCadastroInput, [name]: value});
   }
 }
