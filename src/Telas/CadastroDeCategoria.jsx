@@ -10,6 +10,7 @@ import vetor3 from "../imagens/vector-3.svg"
 import "./CadastroDeProduto.css";
 import { AsideAdm } from "./Adm/AsideAdm";
 import { HeaderAdm } from "../components/HeaderAdm";
+import { format } from "date-fns";
 
 const menuProps = "CadatroProduto" || "CadatroCategoria"
 
@@ -52,7 +53,12 @@ export function CadastroCategoria(props) {
 
   async function handleCadastro() {
     if (categoria.nome) {
-      const categoriaAtualizado = { ...categoria };
+      const dataAux = new Date();
+      const formatData = format(dataAux, "yyyy-MM-dd");
+      const categoriaAtualizado = { 
+        ...categoria,
+        data: formatData,
+      };
 
       await createRegisterCategoria(categoriaAtualizado);
       resetForm();

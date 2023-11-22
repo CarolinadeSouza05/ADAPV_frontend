@@ -2,21 +2,19 @@ import { Cards, DotsThreeVertical } from "@phosphor-icons/react";
 import * as Popover from "@radix-ui/react-popover";
 import React, { useState } from "react";
 import { AiOutlineMail, AiOutlinePhone, AiOutlineUser } from "react-icons/ai";
+import { SiMicrosoftoffice } from "react-icons/si";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import vector_3 from "../../imagens/vector-3.svg"
 import { inputsFormValidate } from "../../Telas/RegisterUser";
 import { editRegisterUser, getAllRegisterUsers } from "../../api";
-import { CheckboxDropdownAcceptToDo } from "../../components/CheckboxDropdownAcceptToDo";
 import { InputsForm } from "../../components/InputsForm";
-import { NameToOfficeFromUser, ObjectEmptyValue } from "../../util";
-import { Link } from "react-router-dom";
-import { SiMicrosoftoffice } from "react-icons/si";
+import vector_3 from "../../imagens/vector-3.svg";
+import { ObjectEmptyValue } from "../../util";
 
 export function FormEditUsuario(props) {
-  const { formCadastroInput, setFormCadastroInput, setRegisterFormCadastro, setModal, officeAllInfos, setOfficeAllInfos } = props;
+  const { formCadastroInput, setFormCadastroInput, setRegisterFormCadastro, setModal } = props;
   const [validado, setValidado] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
 
   function maskCel(event) {
@@ -125,17 +123,6 @@ export function FormEditUsuario(props) {
             </div>
           ))}
 
-            <CheckboxDropdownAcceptToDo 
-              inputs={officeAllInfos}
-              formValidate={formCadastroInput} 
-              titleCheckbox={"Cargos"}
-              type="radio" 
-              name="id_office"
-              handleChangeInput={handleChangeInput}
-              setIsOpen={setIsOpen}
-              isOpen={isOpen}
-            />
-
           <div className="container-button alinhamento">
             <button type="submit">Editar</button>
           </div>
@@ -181,13 +168,5 @@ export function FormEditUsuario(props) {
     setTimeout(() => {
       setFormCadastroInput(inputsFormValidate);
     }, 6000);
-    setIsOpen(false);
-    await NameToOfficeFromUser(setRegisterFormCadastro, setOfficeAllInfos);
-  }
-
-  function handleChangeInput(e){
-    const { name, value } = e.target;
-
-    setFormCadastroInput({...formCadastroInput, [name]: value});
   }
 }

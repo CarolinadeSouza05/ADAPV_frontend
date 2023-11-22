@@ -1,11 +1,15 @@
-import React from "react";
-import { EnvelopeSimple, Key,} from "@phosphor-icons/react";
+import { EnvelopeSimple, Key, } from "@phosphor-icons/react";
+import React, { useContext } from "react";
+import { getRegisterEmailPassword } from "../api";
 import { InputsForm } from "../components/InputsForm";
-import { formProps } from "../Telas/Login";
-import vector3 from "../imagens/vector-3.svg"
-import { getAllRegisterAcceptToDo, getRegisterEmailPassword } from "../api";
+import { StoreContext } from "../context";
+import vector3 from "../imagens/vector-3.svg";
+import { toast } from "react-toastify";
 
 export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, loginsAll }) {
+  const useStore = useContext(StoreContext);
+  const { setUser } = useStore();
+
   const inputsForm = [
     {
       type: "email",
@@ -30,24 +34,6 @@ export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, log
       minLength: 3,
     },
   ];
-
-  async function submitForm(e) {
-    e.preventDefault();
-
-    if(ObjectEmptyValue(formInput)){
-      const registerInfo = await getRegisterEmailPassword({ email: formInput.email, senha: formInput.password });
-      const getAccepTodo = await getAllRegisterAcceptToDo(registerInfo.message.token, registerInfo.message.id);
-    }
-    else
-      alert("Preencha os campos vazios!");
-  }
-
-  function ObjectEmptyValue(array) {
-    for (let chave in array) {
-      if (array.hasOwnProperty(chave) && array[chave] === "") return false;
-    }
-    return true;
-  }
 
   return (
     <div className="form-login-container">
@@ -99,4 +85,45 @@ export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, log
       </section>
     </div>
   );
+
+  async function submitForm(e) {
+    e.preventDefault();
+
+    if(ObjectEmptyValue(formInput)){
+      const registerInfo = await getRegisterEmailPassword({ email: formInput.email, senha: formInput.password });
+      setUser(registerInfo.message.user === undefined ? {} : {
+        id: registerInfo.message.user.id,
+        role: registerInfo.message.user.role,
+        token: registerInfo.message.token,
+      });
+      toast.success("Login realizado!", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    else
+      toast.error("Preencha os campos vazios!", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+  }
+
+  function ObjectEmptyValue(array) {
+    for (let chave in array) {
+      if (array.hasOwnProperty(chave) && array[chave] === "") return false;
+    }
+    return true;
+  }
 }

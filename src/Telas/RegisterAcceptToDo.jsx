@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { deleteRegisterAccepToDo, getAllRegisterAcceptToDo } from "../api";
 import { AsideAccepToDo } from "../components/AsideAcceptToDo";
@@ -7,6 +7,7 @@ import { FormRegisterAcceptToDo } from "../formularios/FormRegisterAcceptToDo";
 import { FormEditAcceptToDo } from "../formularios/FormRegisterAcceptToDo/FormEditAcceptToDo";
 import { AsideAdm } from "./Adm/AsideAdm";
 import "./RegisterVolunteer.css";
+import { StoreContext } from "../context";
 
 export const inputsFormValidateAccepToDoProps = {
   id: 0,
@@ -17,10 +18,12 @@ export const inputsFormValidateAccepToDoProps = {
 export function RegisterAcceptToDo() {
   const [formValidateAccepToDo, setFormValidateAccepToDo] = useState(inputsFormValidateAccepToDoProps);
   const [acceptToDoAll, setAcceptToDoAll] = useState([]);
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
 
   useEffect(() => {
     (async function () {
-      setAcceptToDoAll(await getAllRegisterAcceptToDo());
+      setAcceptToDoAll(await getAllRegisterAcceptToDo(user.token, user.id));
     })()
   }, [])
 

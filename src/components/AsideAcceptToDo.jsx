@@ -1,6 +1,6 @@
 import { MagnifyingGlass, Pencil, Trash } from "@phosphor-icons/react";
 import { useState } from "react";
-import vector_3 from "../imagens/vector-3.svg"
+import vector_3 from "../imagens/vector-4.svg"
 import "./AsideAcceptToDo.css";
 
 export function AsideAccepToDo({ infoAll, titleTable, editRegister, deleteRegister }) {
@@ -30,7 +30,7 @@ export function AsideAccepToDo({ infoAll, titleTable, editRegister, deleteRegist
                     <MagnifyingGlass size={26} />
                 </div>
             </div>
-            <table>
+            <table className="table-acceptodo">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>

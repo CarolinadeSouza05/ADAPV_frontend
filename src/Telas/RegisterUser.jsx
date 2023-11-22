@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { deleteRegisterUser, getAllRegisterUsers } from "../api";
 import { Aside } from "../components/Aside";
@@ -6,7 +6,6 @@ import { HeaderAdm } from "../components/HeaderAdm";
 import { Modal } from "../components/Modal";
 import { FormCadastroUsuario } from "../formularios/FormCadastroUsuario";
 import { FormEditUsuario } from "../formularios/FormCadastroUsuario/FormEditUsuario";
-import { NameToOfficeFromUser } from "../util";
 import { AsideAdm } from "./Adm/AsideAdm";
 import './RegisterUser.css';
 
@@ -16,14 +15,12 @@ export const inputsFormValidate = {
   telefone: "",
   email: "",
   senha: "",
-  id_office: 0,
   edit: -1,
 }
 
 export function RegisterUser() {
   const [formCadastroInput, setFormCadastroInput] = useState(inputsFormValidate);
   const [registerFormCadastro, setRegisterFormCadastro] = useState([]);
-  const [officeAllInfos, setOfficeAllInfos] = useState([]);
   const [modal, setModal] = useState(false);
   const tableHead = [
     "Id",
@@ -33,12 +30,6 @@ export function RegisterUser() {
     "Senha",
     "Cargo"
   ];
-
-  useEffect(() => {
-    (async () => {
-      await NameToOfficeFromUser(setRegisterFormCadastro, setOfficeAllInfos);
-    })()
-  }, [])
   
   return (
     <>
@@ -56,8 +47,6 @@ export function RegisterUser() {
             setFormCadastroInput={setFormCadastroInput}
             setRegisterFormCadastro={setRegisterFormCadastro}
             setModal={setModal}
-            officeAllInfos={officeAllInfos}
-            setOfficeAllInfos={setOfficeAllInfos}
           />
           ) : (
               <FormEditUsuario
@@ -65,8 +54,6 @@ export function RegisterUser() {
                 setFormCadastroInput={setFormCadastroInput}
                 setRegisterFormCadastro={setRegisterFormCadastro}
                 setModal={setModal}
-                officeAllInfos={officeAllInfos}
-                setOfficeAllInfos={setOfficeAllInfos}
               />
           )}
         </section>
@@ -114,8 +101,6 @@ export function RegisterUser() {
         draggable: true,
         theme: "light",
       })
-
-      await NameToOfficeFromUser(setRegisterFormCadastro, setOfficeAllInfos);
     }
   }
 }

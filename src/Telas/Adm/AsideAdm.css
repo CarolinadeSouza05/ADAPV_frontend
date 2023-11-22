@@ -4,6 +4,7 @@
     position: absolute;
     top: 5px;
     width: 2rem;
+    z-index: 101;
 }
 
 .container-aside-adm .svg-menu-adm{
@@ -96,9 +97,56 @@
     .container-list-menu .list-menu:hover{
         background-color: #458ACE;
     }
-    
-    .container-list-menu .list-menu:hover svg{
+
+    .container-list-menu-ul{
+        align-items: center;
+        background-color: #85acd3;
+        border-radius: 8px;
+        display: none;
+        flex-direction: column;
+        gap: 1px;
+        height: auto;
+        left: 100%;
+        padding: 8px 0;
+        position: absolute;
+        list-style-type: none;
+        width: max-content;
+    }
+
+    .container-list-menu-ul.registers{
+        top: 15%;
+    }
+
+    .container-list-menu-ul.bulletins{
+        top: 35%;
+    }
+
+    .container-list-menu-ul a span, .container-list-menu-ul a svg, .container-list-menu-ul .list-menu:hover svg{
         color: #fff;
+    }
+
+    .container-list-menu-ul-registers a svg, .container-list-menu-ul-bulletins a svg{
+        height: 1.2rem;
+        width: 1.2rem;
+    }
+
+    .container-list-menu-ul a{
+        align-items: center;
+        border-radius: 8px;
+        color: #fff;
+        display: flex;
+        flex-direction: row;
+        gap: 6px;
+        padding: 5px 14px;
+        width: 100%;
+    }
+
+    .container-list-menu-ul a:hover{
+        background-color: #3b6ea1;
+    }
+
+    .list-menu.menu-registers:hover .container-list-menu-ul.registers, .list-menu.menu-bulletin:hover .container-list-menu-ul.bulletins{
+        display: flex;
     }
 
     .list-menu svg{

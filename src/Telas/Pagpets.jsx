@@ -1,24 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Pagpets.css";
 import { Cabecalho } from "../components/Cabecalho";
 import { Footer } from "../components/Footer";
+import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
+import { getAnimais, getAnimalsPagination } from "../api";
 
 export default function Pagpets() {
+  const [animaisAll, setAnimalsAll] = useState([]);
+  const [animalsAllFilter, setAnimalsAllFilter] = useState([]);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    (async () => {
+      const itensForPage = 12;
+      const animals = await getAnimalsPagination({ itensForPage, page });
+
+      if(Array.isArray(animals)){
+        setAnimalsAllFilter(animals);
+      }
+    })()
+  }, [page])
+
+  useEffect(() => {
+    (async () => {
+      const animalsAll = await getAnimais();
+
+      if(Array.isArray(animalsAll)){
+        setAnimalsAll(animalsAll);
+      }
+    })()
+  }, [])
+
   return (
     <>
       <Cabecalho />
-      <div className="pagpetsRootRoot">
-        <h2 className="title2">PETS ESPERANDO POR UM LAR</h2>
+      <main className="pagpetsRootRoot">
         <div className="group">
-          <div>
+          <h2 className="title2">PETS ESPERANDO POR UM LAR</h2>
+          <div className="search-container">
             <input
               type="text"
               className="searchInput"
               label="Pesquisar um pet"
             />
-          </div>
-          <div className="botaoprimario">
-            <button className="searchButton">Pesquisar</button>
+            <div className="botaoprimario">
+              <button className="searchButton">Pesquisar</button>
+            </div>
           </div>
         </div>
         <div className="container-pet">
@@ -82,207 +109,45 @@ export default function Pagpets() {
             </div>
           </div>
           <div className="group2">
-            <div className="pet">
-              <img
-                className=""
-                src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
-              />
-              <div className="rectangle2">
-                <div className="group12">
-                  <span className="petName">Billy</span>
-                  <div className="linepet"></div>
-                  <span className="petAge">1 ano</span>
-                  <div className="linepet"></div>
-                  <span className="petGender">Macho</span>
-                </div>
-                <div className="botaoprimario1">
+            {animalsAllFilter.length > 0 ? (
+              animalsAllFilter.map((animal) => (
+                <div className="pet">
                   <img
-                    className="vectorpet"
-                    src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
+                    alt=""
+                    className=""
+                    src={`data:image;base64,${animal.foto}`}
                   />
-                  <button className="applyFiltersButton">Quero adotar</button>
+                  <div className="rectangle2">
+                    <div className="group12">
+                      <span className="petName">{animal.nome}</span>
+                      <div className="linepet"></div>
+                      <span className="petAge">{animal.idade} ano</span>
+                      <div className="linepet"></div>
+                      <span className="petGender">{animal.genero}</span>
+                    </div>
+                    <div className="botaoprimario1">
+                      <img
+                        alt=""
+                        className="vectorpet"
+                        src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
+                      />
+                      <button className="applyFiltersButton">Quero adotar</button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="pet">
-              <img
-                className=""
-                src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
-              />
-              <div className="rectangle2">
-                <div className="group12">
-                  <span className="petName">Billy</span>
-                  <div className="linepet"></div>
-                  <span className="petAge">1 ano</span>
-                  <div className="linepet"></div>
-                  <span className="petGender">Macho</span>
-                </div>
-                <div className="botaoprimario1">
-                  <img
-                    className="vectorpet"
-                    src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
-                  />
-                  <button className="applyFiltersButton">Quero adotar</button>
-                </div>
-              </div>
-            </div>
-            <div className="pet">
-              <img
-                className=""
-                src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
-              />
-              <div className="rectangle2">
-                <div className="group12">
-                  <span className="petName">Billy</span>
-                  <div className="linepet"></div>
-                  <span className="petAge">1 ano</span>
-                  <div className="linepet"></div>
-                  <span className="petGender">Macho</span>
-                </div>
-                <div className="botaoprimario1">
-                  <img
-                    className="vectorpet"
-                    src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
-                  />
-                  <button className="applyFiltersButton">Quero adotar</button>
-                </div>
-              </div>
-            </div>
-            <div className="pet">
-              <img
-                className=""
-                src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
-              />
-              <div className="rectangle2">
-                <div className="group12">
-                  <span className="petName">Billy</span>
-                  <div className="linepet"></div>
-                  <span className="petAge">1 ano</span>
-                  <div className="linepet"></div>
-                  <span className="petGender">Macho</span>
-                </div>
-                <div className="botaoprimario1">
-                  <img
-                    className="vectorpet"
-                    src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
-                  />
-                  <button className="applyFiltersButton">Quero adotar</button>
-                </div>
-              </div>
-            </div>
-            <div className="pet">
-              <img
-                className=""
-                src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
-              />
-              <div className="rectangle2">
-                <div className="group12">
-                  <span className="petName">Billy</span>
-                  <div className="linepet"></div>
-                  <span className="petAge">1 ano</span>
-                  <div className="linepet"></div>
-                  <span className="petGender">Macho</span>
-                </div>
-                <div className="botaoprimario1">
-                  <img
-                    className="vectorpet"
-                    src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
-                  />
-                  <button className="applyFiltersButton">Quero adotar</button>
-                </div>
-              </div>
-            </div>
-            <div className="pet">
-              <img
-                className=""
-                src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
-              />
-              <div className="rectangle2">
-                <div className="group12">
-                  <span className="petName">Billy</span>
-                  <div className="linepet"></div>
-                  <span className="petAge">1 ano</span>
-                  <div className="linepet"></div>
-                  <span className="petGender">Macho</span>
-                </div>
-                <div className="botaoprimario1">
-                  <img
-                    className="vectorpet"
-                    src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
-                  />
-                  <button className="applyFiltersButton">Quero adotar</button>
-                </div>
-              </div>
-            </div>
-            <div className="pet">
-              <img
-                className=""
-                src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
-              />
-              <div className="rectangle2">
-                <div className="group12">
-                  <span className="petName">Billy</span>
-                  <div className="linepet"></div>
-                  <span className="petAge">1 ano</span>
-                  <div className="linepet"></div>
-                  <span className="petGender">Macho</span>
-                </div>
-                <div className="botaoprimario1">
-                  <img
-                    className="vectorpet"
-                    src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
-                  />
-                  <button className="applyFiltersButton">Quero adotar</button>
-                </div>
-              </div>
-            </div>
-            <div className="pet">
-              <img
-                className=""
-                src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
-              />
-              <div className="rectangle2">
-                <div className="group12">
-                  <span className="petName">Billy</span>
-                  <div className="linepet"></div>
-                  <span className="petAge">1 ano</span>
-                  <div className="linepet"></div>
-                  <span className="petGender">Macho</span>
-                </div>
-                <div className="botaoprimario1">
-                  <img
-                    className="vectorpet"
-                    src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
-                  />
-                  <button className="applyFiltersButton">Quero adotar</button>
-                </div>
-              </div>
-            </div>
-            <div className="pet">
-              <img
-                className=""
-                src="https://file.rendit.io/n/zVf5xPBnBN4XE50BWYfP.png"
-              />
-              <div className="rectangle2">
-                <div className="group12">
-                  <span className="petName">Billy</span>
-                  <div className="linepet"></div>
-                  <span className="petAge">1 ano</span>
-                  <div className="linepet"></div>
-                  <span className="petGender">Macho</span>
-                </div>
-                <div className="botaoprimario1">
-                  <img
-                    className="vectorpet"
-                    src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
-                  />
-                  <button className="applyFiltersButton">Quero adotar</button>
-                </div>
-              </div>
-            </div>
+              ))
+            ) : (
+              <div id="loading-animation" class="heading large-text"><p>l</p><p>o</p><p>a</p><p>d</p><p>i</p><p>n</p><p>g</p></div>
+            )}
           </div>
         </div>
-      </div>
+
+        <div className="container-pages-animals">
+          <FaAnglesLeft size={32} onClick={() => page !== 1 && setPage(page - 1)} />
+          <span>{page}</span>
+          <FaAnglesRight size={32} onClick={() => page !== Math.ceil(animaisAll.length / 12) && setPage(page + 1)} />
+        </div>
+      </main>
 
       <Footer />
     </>

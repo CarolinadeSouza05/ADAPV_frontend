@@ -173,7 +173,8 @@ export async function createRegisterUser(register) {
       },
       body: JSON.stringify(register),
   })
-      .then(() => "Usuário cadastrado com sucesso")
+      .then((res) => res.json())
+      .then((data) => data)
       .catch((err) => err)
 
   return aux;
@@ -458,14 +459,18 @@ export async function getAnimais() {
 }
 
 export async function handleSubmitAnimais(animal) {
-  await fetch(apiAnimais, {
+  const aux = await fetch(apiAnimais, {
       method: "POST",
       headers: {
           "Content-Type": "application/json"
       },
       body: JSON.stringify(animal)
   })
-    .then(()=> alert('animal Cadastrado com sucesso!'))
+    .then((data) => data.json())
+    .then((res) => res)
+    .catch((err) => err);
+
+  return aux;
 }
 
 export async function editarAnimais(animal) {
@@ -498,6 +503,22 @@ export async function excluirAnimais(id) {
     console.error("Erro ao excluir o animal:", error);
     throw error;
   }
+}
+
+export async function getAnimalsPagination(register){
+  console.log(register);
+  const aux = await fetch(`${apiAnimais}/pagination`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(register)
+  })
+  .then((data) => data.json())
+  .then((res) => res)
+  .catch((err) => err)
+
+  return aux;
 }
 
 //================== API-Produtos ==================//

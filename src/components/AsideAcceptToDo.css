@@ -1,5 +1,6 @@
 .aside-accepttodo-header,
 .title-accepttodo-header {
+    align-items: center;
     display: flex;
     flex-direction: row;
 }
@@ -7,12 +8,17 @@
 .aside-accepttodo-header {
     align-items: center;
     justify-content: space-between;
+    padding: 0 4px;
     width: 100%;
 }
 
 .title-accepttodo-header {
-    gap: 1rem;
+    gap: 0.5;
     padding: 20px 0;
+}
+
+.title-accepttodo-header h2, .table-acceptodo thead tr th, .table-acceptodo tbody tr td{
+    color: #fff;
 }
 
 .aside-accepttodo-header .search {
@@ -25,14 +31,17 @@
     height: fit-content;
     gap: 8px;
     padding: 8px 4px;
-    width: 30%;
-    margin-bottom: 10px;
+    width: 40%;
 }
 
 .aside-accepttodo-header .search input {
     border: none;
-    color: black;
+    color: #000;
     font-size: 16px;
     outline: none;
     width: 100%;
+}
+
+.table-acceptodo{
+    margin-top: 0;
 }

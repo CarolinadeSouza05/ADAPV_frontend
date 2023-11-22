@@ -47,7 +47,6 @@ export function InputsForm({ infoInput, index, formValidate, setFormValidate, cl
           minLength={infoInput.minlength}
           maxLength={infoInput.maxLength}
           onInput={infoInput.onInput}
-          
         />
         <label className={`infoInput.labelClass ${classNameLabel}`} htmlFor={infoInput.labelFor}>
           {infoInput.label}

@@ -4,8 +4,15 @@ import './Home.css'
 import { LinkContainer } from 'react-router-bootstrap';
 import { NavLink } from 'react-bootstrap';
 import image_home from "../imagens/img_home.png"
+import { StoreContext } from '../context';
+import { useContext } from 'react';
 
 export function Home() {
+    const useStore = useContext(StoreContext);
+    const { user } = useStore();
+
+    console.log(user);
+
     return (
         <>
             <Cabecalho />
@@ -21,7 +28,7 @@ export function Home() {
                     </div>
                 </div>
                 <div className='text_home_right'>
-                    <img src={image_home} className='img_home'/>
+                    <img src={image_home} alt="" className='img_home'/>
                 </div>
             </main>
             <Footer />

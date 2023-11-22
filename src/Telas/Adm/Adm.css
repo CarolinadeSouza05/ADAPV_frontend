@@ -3,7 +3,7 @@
     background-color: #fff;
     display: flex;
     justify-content: center;
-    height: auto;
+    height: 100vh;
     position: relative;
     margin-left: auto;
     width: calc(100vw - 4%);

@@ -234,6 +234,33 @@
   color: white;
 }
 
+.foto-animal-container{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.foto-span{
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.foto-label{
+  background-color: #fff;
+  border: 2px solid #3AB1B9;
+  border-radius: 8px;
+  color: #000;
+  cursor: pointer;
+  padding: 8px 16px;
+  width: 100%;
+}
+
+#foto{
+  display: none;
+  padding: 8px 16px;
+  width: 100%;
+}
+
 @media screen and (max-width: 768px) {
   .mainSectionAnimal {
     flex-direction: column;

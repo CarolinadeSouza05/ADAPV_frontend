@@ -8,7 +8,6 @@ import CaixadeSelecao from "../components/CaixadeSelecao";
 
 export default function FormDesignarTarefas(props) {
     const [validado, setValidado] = useState(false);
-    const [listadeVoluntarios, setListadeVoluntarios] = useState([]);
     const [VoluntarioSelecionado, setVoluntarioSelecionado] = useState({});
     const [atividadeSelecionada, setAtividadeSelecionada] = useState({});
     const [atividades, setAtividades] = useState();
