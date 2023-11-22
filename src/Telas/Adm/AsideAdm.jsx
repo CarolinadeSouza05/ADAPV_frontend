@@ -4,6 +4,7 @@ import { BiSolidDashboard } from "react-icons/bi";
 import { BsPeopleFill } from "react-icons/bs";
 import { CgMenuGridO } from "react-icons/cg";
 import { FaBoxOpen, FaHands, FaTasks, FaUser } from "react-icons/fa";
+import { GiArchiveRegister } from "react-icons/gi";
 import { MdCategory, MdOutlinePets, MdOutlineVolunteerActivism } from "react-icons/md";
 import { TbReportSearch } from "react-icons/tb";
 import { TfiAgenda } from "react-icons/tfi";
@@ -12,7 +13,7 @@ import "./AsideAdm.css";
 
 export function AsideAdm(){
     const [menu, setMenu] = useState(false);
-    const cards = [
+    const cardsRegister = [
         { id: 1, name: "Cadastro de Voluntários", icon: MdOutlineVolunteerActivism, path: "/adm/cadastro/voluntario" },
         { id: 2, name: "Cadastro de Tarefas", icon: FaTasks, path: "/adm/cadastro/aceitafazer" },
         { id: 3, name: "Cadastro de Usuário", icon: FaUser, path: "/adm/cadastro/usuario" },
@@ -23,6 +24,12 @@ export function AsideAdm(){
         { id: 8, name: "Designar Atividades", icon: AiOutlineDeliveredProcedure, path: "/adm/cadastro/designar-voluntario" },
         { id: 9, name: "Agendamento", icon: TfiAgenda, path: "/adm/cadastro/agendamento" },
     ];
+
+    const cardsBulletin = [
+        {
+            id: 1, name: "Relatório Geral de Cadastro", icon: GiArchiveRegister
+        }
+    ]
 
     return(
         <aside className={`container-aside-adm ${menu}`}>
@@ -40,8 +47,8 @@ export function AsideAdm(){
                             <li className="list-menu menu-registers">
                                 <BsPeopleFill size={26} />
 
-                                <ul className="container-list-menu-registers">
-                                    {cards.sort((card1, card2) => card1.name.localeCompare(card2.name)).map((card) => (
+                                <ul className="container-list-menu-ul registers">
+                                    {cardsRegister.sort((card1, card2) => card1.name.localeCompare(card2.name)).map((card) => (
                                         <>
                                             <Link key={card.id} to={card.path}>
                                                 <card.icon />
@@ -52,8 +59,19 @@ export function AsideAdm(){
                                 </ul>
                             </li>
 
-                        <li className="list-menu">
+                        <li className="list-menu menu-bulletin">
                             <TbReportSearch size={26} />
+
+                            <ul className="container-list-menu-ul bulletins">
+                                {cardsBulletin.sort((card1, card2) => card1.name.localeCompare(card2.name)).map((card) => (
+                                    <>
+                                        <Link key={card.id} to={card.path}>
+                                            <card.icon />
+                                            <span>{card.name}</span>
+                                        </Link>
+                                    </>
+                                ))}
+                            </ul>
                         </li>
                     </ul>
                 </div>
