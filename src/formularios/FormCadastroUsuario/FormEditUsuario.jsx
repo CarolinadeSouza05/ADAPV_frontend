@@ -12,6 +12,7 @@ import { InputsForm } from "../../components/InputsForm";
 import { NameToOfficeFromUser, ObjectEmptyValue } from "../../util";
 import { Link } from "react-router-dom";
 import { SiMicrosoftoffice } from "react-icons/si";
+import baixar from "../../imagens/baixar.png";
 
 export function FormEditUsuario(props) {
   const { formCadastroInput, setFormCadastroInput, setRegisterFormCadastro, setModal, officeAllInfos, setOfficeAllInfos } = props;
@@ -139,6 +140,14 @@ export function FormEditUsuario(props) {
           <div className="container-button alinhamento">
             <button type="submit">Editar</button>
           </div>
+          <a href='/manuais/manual_usuario.pdf' download="manual_usuario.pdf">
+            <img
+              className="vectorbaixar"
+              src={baixar}
+              alt="Baixar"
+            />
+            Manual do Usuário
+          </a>
         </form>
       </div>
     </>

@@ -7,6 +7,7 @@ import vector_3 from "../../imagens/vector-3.svg"
 import { createRegisterOffice, getAllRegisterOffice } from "../../api";
 import { InputsForm } from "../../components/InputsForm";
 import { ObjectEmptyValue } from "../../util";
+import baixar from "../../imagens/baixar.png";
 
 export function FormRegisterOffice({ setOffice, formValidateOffice, setFormValidateOffice }) {
     const [validado, setValidado] = useState(false);
@@ -57,6 +58,14 @@ export function FormRegisterOffice({ setOffice, formValidateOffice, setFormValid
                 <div className="container-button alinhamento">
                     <button type="submit">Cadastrar</button>
                 </div>
+                <a href='/manuais/manual_cargo.pdf' download="manual_cargo.pdf">
+            <img
+              className="vectorbaixar"
+              src={baixar}
+              alt="Baixar"
+            />
+            Manual do Usuário
+          </a>
             </form>
         </>
     );

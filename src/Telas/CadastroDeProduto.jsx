@@ -1,3 +1,4 @@
+import Tooltip from '@material-ui/core/Tooltip'; 
 import * as Popover from '@radix-ui/react-popover';
 import { Modal } from "../components/ModalProduto";
 import { Select } from "../components/Select";
@@ -5,6 +6,7 @@ import { Inputs } from "../components/inputs";
 import { Textarea } from "../components/textarea";
 import { HeaderAdm } from "../components/HeaderAdm";
 import img_produtos from "../imagens/gatinhoo.png";
+import baixar from "../imagens/baixar.png";
 import vector3 from "../imagens/vector-3.svg";
 import "./CadastroDeProduto.css";
 
@@ -145,6 +147,7 @@ export function CadastroProduto() {
       <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
       <main className="mainSection main-adm-register">
         <section className="FormProduto_container">
+        <Tooltip title="Preencha as informações do produto para cadastrá-lo no sistema." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
           <div className="form-produtos-titulo centro_logo">
             <div className="titulo">
               <img
@@ -176,6 +179,7 @@ export function CadastroProduto() {
               </Popover.Portal>
             </Popover.Root>
           </div>
+          </Tooltip>
 
           <form noValidate onSubmit={handleFormSubmit}>
             <Inputs
@@ -191,6 +195,8 @@ export function CadastroProduto() {
               className={validado && !produto.codigo ? "input-invalid" : ""}
             />
 
+        <Tooltip title="Insira o nome do produto a ser cadastrado." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+          <div>
             <Inputs
               type="text"
               text="Nome do Produto"
@@ -202,7 +208,11 @@ export function CadastroProduto() {
               required
               className={validado && !produto.nome ? "input-invalid" : ""}
             />
+          </div>
+        </Tooltip>
 
+        <Tooltip title="Defina o preço pelo qual o produto foi adquirido." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+          <div>
             <Inputs
               type="text"
               text="Preço Desejado"
@@ -215,7 +225,11 @@ export function CadastroProduto() {
               maskPrice={maskPrice}
               className={validado && !produto.preco ? "input-invalid" : ""}
             />
+          </div>
+        </Tooltip>
 
+        <Tooltip title="Descreva o produto detalhadamente." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+          <div>
             <Textarea
               text="Descrição"
               placeholder="Descrição"
@@ -226,38 +240,47 @@ export function CadastroProduto() {
               required
               className={validado && !produto.descricao ? "input-invalid" : ""}
             />
+          </div>
+        </Tooltip>
 
-            {(
-              <>
-                <Select
-                  text="Selecione a Categoria"
-                  name="categoriaNome"
-                  id="categoriaNome"
-                  value={categories.find(category => category.id === produto.categoria)?.nome || ''}
-                  onChange={handleChange}
-                  options={categories.map(category => category.nome)}
-                  required
-                  className={validado && !produto.categoria ? "input-invalid" : ""}
-                />
+        <Tooltip title="Selecione a categoria a qual pertence o produto." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+          <div>
+            <Select
+              text="Selecione a Categoria"
+              name="categoriaNome"
+              id="categoriaNome"
+              value={categories.find(category => category.id === produto.categoria)?.nome || ''}
+              onChange={handleChange}
+              options={categories.map(category => category.nome)}
+              required
+              className={validado && !produto.categoria ? "input-invalid" : ""}
+            />
+            {/* Campo oculto para armazenar o ID da categoria */}
+            <input
+              type="hidden"
+              name="categoria"
+              id="categoria"
+              value={produto.categoria}
+              onChange={handleChange}
+            />
+          </div>
+        </Tooltip>
 
-                {/* Campo oculto para armazenar o ID da categoria */}
-                <input
-                  type="hidden"
-                  name="categoria"
-                  id="categoria"
-                  value={produto.categoria}
-                  onChange={handleChange}
-                />
-              </>
-            )}
+        <div className="btnProduto mainSection">
+          <button type="submit">
+            {produto.edit === -1 ? "Cadastrar Produto" : "Atualizar Produto"}
+          </button>
+        </div>
 
-
-            <div className="btnProduto mainSection">
-              <button type="submit">
-                {produto.edit === -1 ? "Cadastrar Produto" : "Atualizar Produto"}
-              </button>
-            </div>
-          </form>
+        <a href='/manuais/manual_produto.pdf' download="manual_produto.pdf">
+          <img
+            className="vectorbaixar"
+            src={baixar}
+            alt="Baixar"
+          />
+          Manual do Usuário
+        </a>
+      </form>
 
           {validado && (
             <div className="alert">Por favor, preencha todos os campos!</div>

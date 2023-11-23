@@ -7,6 +7,7 @@ import { ArrowLeft } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { AsideCategoria } from "../components/AsideCategoria";
 import vetor3 from "../imagens/vector-3.svg"
+import baixar from "../imagens/baixar.png";
 import "./CadastroDeProduto.css";
 import { AsideAdm } from "./Adm/AsideAdm";
 import { HeaderAdm } from "../components/HeaderAdm";
@@ -136,6 +137,14 @@ export function CadastroCategoria(props) {
                 {categoria.edit === -1 ? "Cadastrar Categoria" : "Atualizar Categoria"}
               </button>
             </div>
+            <a href='/manuais/manual_categoria.pdf' download="manual_categoria.pdf">
+              <img
+                className="vectorbaixar"
+                src={baixar}
+                alt="Baixar"
+              />
+              Manual do Usuário
+            </a>
           </form>
 
           {validated && (

@@ -7,6 +7,7 @@ import vector_3 from "../../imagens/vector-3.svg"
 import { editRegisterAccepToDo, getAllRegisterAcceptToDo } from "../../api";
 import { InputsForm } from "../../components/InputsForm";
 import { ObjectEmptyValue } from "../../util";
+import baixar from "../../imagens/baixar.png";
 
 export function FormEditAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo, setFormValidateAccepToDo }) {
     const [validado, setValidado] = useState(false);
@@ -56,6 +57,14 @@ export function FormEditAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo, se
                 <div className="container-button alinhamento">
                     <button type="submit">Atualizar</button>
                 </div>
+                <a href='/manuais/manual_voluntario_aceita.pdf' download="manual_voluntario_aceita.pdf">
+                    <img
+                    className="vectorbaixar"
+                    src={baixar}
+                    alt="Baixar"
+                    />
+                    Manual do Usuário
+                </a>
             </form>
             
             <ToastContainer />

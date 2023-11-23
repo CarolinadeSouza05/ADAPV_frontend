@@ -1,7 +1,9 @@
+import Tooltip from '@material-ui/core/Tooltip'; 
 import { Modal } from "../components/ModalAnimal";
 import { Select } from "../components/Select";
 import { Inputs } from "../components/inputs";
 import img_animais from "../imagens/cadastroanimal.png";
+import baixar from "../imagens/baixar.png";
 import vector3 from "../imagens/vector-3.svg";
 import "./CadastroAnimal.css";
 import { Cards } from "@phosphor-icons/react";
@@ -139,12 +141,13 @@ export function CadastroAnimal(props) {
 
 
   return (
-    <>
-      <AsideAdm />
-      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+  <>
+    <AsideAdm />
+    <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
 
-      <main className="mainSectionAnimal ">
-        <section className="Formanimais_container">
+    <main className="mainSectionAnimal ">
+      <section className="Formanimais_container">
+        <Tooltip title="Preencha as informações do animal para cadastrá-lo no sistema." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
           <div className="form-animais-titulo centro_logo">
             <div className="titulo">
               <img
@@ -162,106 +165,140 @@ export function CadastroAnimal(props) {
               onClick={() => setModal(true)}
             />
           </div>
+        </Tooltip>
 
-          <form noValidate onSubmit={handleFormSubmit}>
-            <Inputs
-              type="text"
-              text="Digite o nome do animal"
-              placeholder="Billy"
-              value={animal.nome}
-              id="nome"
-              name="nome"
-              onChange={handleChange}
-              className={validado && !animal.nome ? "input-invalid" : ""}
-              required
-            />
+        <form noValidate onSubmit={handleFormSubmit}>
+          <Tooltip title="Informe o nome do animal, que ira ser cadastrado." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+            <div>
+              <Inputs
+                type="text"
+                text="Digite o nome do animal"
+                placeholder="Billy"
+                value={animal.nome}
+                id="nome"
+                name="nome"
+                onChange={handleChange}
+                className={validado && !animal.nome ? "input-invalid" : ""}
+                required
+              />
+            </div>
+          </Tooltip>
 
-            <Inputs
-              type="number"
-              text="Idade do animal"
-              placeholder="Digite a idade do animal"
-              value={animal.idade}
-              id="idade"
-              name="idade"
-              onChange={handleChange}
-              className={validado && !animal.idade ? "input-invalid" : ""}
-              required
-            />
+          <Tooltip title="Informe a idade do animal em anos." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+            <div>
+              <Inputs
+                type="number"
+                text="Idade do animal"
+                placeholder="Digite a idade do animal"
+                value={animal.idade}
+                id="idade"
+                name="idade"
+                onChange={handleChange}
+                className={validado && !animal.idade ? "input-invalid" : ""}
+                required
+              />
+            </div>
+          </Tooltip>
 
-            <Inputs
-              type="text"
-              text="Pelagem"
-              placeholder="Cor dos pelos"
-              value={animal.pelagem}
-              id="pelagem"
-              name="pelagem"
-              onChange={handleChange}
-              className={validado && !animal.pelagem ? "input-invalid" : ""}
-              required
-            />
+          <Tooltip title="Descreva a cor e/ou tipo de pelagem do animal." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+            <div> 
+              <Inputs
+                type="text"
+                text="Pelagem"
+                placeholder="Cor dos pelos"
+                value={animal.pelagem}
+                id="pelagem"
+                name="pelagem"
+                onChange={handleChange}
+                className={validado && !animal.pelagem ? "input-invalid" : ""}
+                required
+              />
+            </div>
+          </Tooltip>
 
-            <Select
-              text="Selecione o Genero"
-              name="genero"
-              id="genero"
-              value={animal.genero}
-              onChange={handleChange}
-              options={["Macho", "Femea"]}
-              className={validado && !animal.genero ? "input-invalid" : ""}
-              required
-            />
+          <Tooltip title="Selecione o gênero do animal." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+            <div>
+              <Select
+                text="Selecione o Genero"
+                name="genero"
+                id="genero"
+                value={animal.genero}
+                onChange={handleChange}
+                options={["Macho", "Femea"]}
+                className={validado && !animal.genero ? "input-invalid" : ""}
+                required
+              />
+            </div>
+          </Tooltip>
 
-            <Select
-              text="Selecione o Porte"
-              name="porte"
-              id="porte"
-              value={animal.porte}
-              onChange={handleChange}
-              className={validado && !animal.porte ? "input-invalid" : ""}
-              options={["Grande", "Medio", "Pequeno"]}
-              required
-            />
+          <Tooltip title="Escolha o porte do animal. Por exemplo: Pequeno, Médio ou Grande." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+            <div>
+              <Select
+                text="Selecione o Porte"
+                name="porte"
+                id="porte"
+                value={animal.porte}
+                onChange={handleChange}
+                className={validado && !animal.porte ? "input-invalid" : ""}
+                options={["Grande", "Medio", "Pequeno"]}
+                required
+              />
+            </div>
+          </Tooltip>
 
-            <Select
-              text="Possui necessidades especiais?"
-              name="necessidadesEspeciais"
-              id="necessidadesEspeciais"
-              value={animal.necessidadesEspeciais}
-              className={validado && !animal.necessidadesEspeciais ? "input-invalid" : ""}
-              onChange={handleChange}
-              options={["Sim", "Não"]}
-              required
-            />
+          <Tooltip title="O animal possui alguma necessidade especial, seja em alimentação ou locomoção? Selecione Sim ou Não." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+            <div>
+              <Select
+                text="Possui necessidades especiais?"
+                name="necessidadesEspeciais"
+                id="necessidadesEspeciais"
+                value={animal.necessidadesEspeciais}
+                className={validado && !animal.necessidadesEspeciais ? "input-invalid" : ""}
+                onChange={handleChange}
+                options={["Sim", "Não"]}
+                required
+              />
+            </div>
+          </Tooltip>
 
-            <Select
-              text="Está vacinado?"
-              name="vacinas"
-              id="vacinas"
-              value={animal.vacinas}
-              className={validado && !animal.vacinas ? "input-invalid" : ""}
-              onChange={handleChange}
-              options={["Sim", "Não"]}
-              required
-            />
+          <Tooltip title="O animal está com as vacinas em dia? Escolha Sim ou Não." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+            <div>
+              <Select
+                text="Está vacinado?"
+                name="vacinas"
+                id="vacinas"
+                value={animal.vacinas}
+                className={validado && !animal.vacinas ? "input-invalid" : ""}
+                onChange={handleChange}
+                options={["Sim", "Não"]}
+                required
+              />
+            </div>
+          </Tooltip>
 
-            <Select
-              text="Esta castrado?"
-              name="castrado"
-              id="castrado"
-              value={animal.castrado}
-              className={validado && !animal.castrado ? "input-invalid" : ""}
-              onChange={handleChange}
-              options={["Sim", "Não"]}
-              required
-            />
+          <Tooltip title="O animal está castrado? Escolha Sim ou Não." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+            <div>
+              <Select
+                text="Esta castrado?"
+                name="castrado"
+                id="castrado"
+                value={animal.castrado}
+                className={validado && !animal.castrado ? "input-invalid" : ""}
+                onChange={handleChange}
+                options={["Sim", "Não"]}
+                required
+              />
+            </div>
+          </Tooltip>
 
             {/* <div className="file_entrada"> */}
-            <div className="foto-animal-container">
-                <span className="foto-span">Foto do Animal</span>
-                <label htmlFor="foto" className="foto-label">Foto do Animal</label>
-                <input type="file" name="foto" id="foto" onChange={onChange} />
-            </div>
-            
+            <Tooltip title="Adicione uma foto do animal. Formatos aceitos: jpg, png." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+              <div className="foto-animal-container">
+                  <span className="foto-span">Foto do Animal</span>
+                  <label htmlFor="foto" className="foto-label">Foto do Animal</label>
+                  <input type="file" name="foto" id="foto" onChange={onChange} />
+              </div>
+            </Tooltip>
             {animal.foto.length > 0 && (
               <img src={`data:image;base64,${animal.foto}`} alt="" />
             )}
@@ -272,6 +309,14 @@ export function CadastroAnimal(props) {
               </button>
             </div>
           </form>
+          <a href='/manuais/manual_animais.pdf' download="manual_animais.pdf">
+            <img
+              className="vectorbaixar"
+              src={baixar}
+              alt="Baixar"
+            />
+            Manual do Usuário
+          </a>
           {/* 
           {validado && (
             <div className="alert">Por favor, preencha todos os campos!</div>

@@ -42,18 +42,18 @@ export function Router(){
                 <Route path='/pets' element={<Pagpets />} />
                 <Route path="/sobre" element={<SobreNos />} />
                 <Route path='/doacao' element={<RegisterDonation />} />
-                <Route path='/adm' element={<Adm />}  />
-                <Route path='/adm/cadastro' element={<AdmRegister />}  />
-                <Route path='/adm/cadastro/animal' element={<CadastroAnimal />} />
-                <Route path='/adm/cadastro/voluntario' element={<RegisterVolunteer />} />
-                <Route path='/adm/cadastro/usuario' element={<RegisterUser />} />
-                <Route path="/adm/cadastro/produto" element={<CadastroProduto />} />
-                <Route path="/adm/cadastro/designar-voluntario" element={<CadastroDesignar />} />
-                <Route path='/adm/cadastro/adocao' element={<CadastroAdocao />} />
-                <Route path='/adm/cadastro/agendamento' element={<CadastroAgendamento />} />
-                <Route path="/adm/cadastro/categoria" element={<CadastroCategoria />} />
-                <Route path="/adm/cadastro/cargo" element={<RegisterOffice />} />
-                <Route path="/adm/cadastro/aceitafazer" element={<RegisterAcceptToDo />} />
+                <Route path='' element={<Adm />}  />
+                <Route path='/cadastro' element={<AdmRegister />}  />
+                <Route path='/animal' element={<CadastroAnimal />} />
+                <Route path='/voluntario' element={<RegisterVolunteer />} />
+                <Route path='/usuario' element={<RegisterUser />} />
+                <Route path="/produto" element={<CadastroProduto />} />
+                <Route path="/designar-voluntario" element={<CadastroDesignar />} />
+                <Route path='/adocao' element={<CadastroAdocao />} />
+                <Route path='/agendamento' element={<CadastroAgendamento />} />
+                <Route path="/categoria" element={<CadastroCategoria />} />
+                <Route path="/cargo" element={<RegisterOffice />} />
+                <Route path="/aceitafazer" element={<RegisterAcceptToDo />} />
             </Routes>
         </BrowserRouter>
     )

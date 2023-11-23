@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 import { urLBase } from '../api/index.js';
 import Barradebusca from '../components/Barradebusca';
+import baixar from "../imagens/baixar.png";
+import Tooltip from '@material-ui/core/Tooltip'; 
 
 export default function FormAdocao(props) {
     const [animalSelecionado, setAnimalSelecionado] = useState({});
@@ -145,41 +147,56 @@ export default function FormAdocao(props) {
                     onChange={manupilaAlteracao}
                     hidden
                 />
-                <div>
-                    <Barradebusca
-                        placeHolder={'Informe o animal'}
-                        dados={animais}
-                        campoChave={"id"}
-                        campoBusca={"nome"}
-                        funcaoSelecao={setAnimalSelecionado}
-                    ></Barradebusca>
-                </div>
-                <div >
-                    <label htmlFor="adotante" className="montserrat-bold-cod-gray-12px">Adotante:</label>
-                    <input
-                        type="text"
-                        id="adotante"
-                        name="adotante"
-                        value={adocao.adotante}
-                        onChange={manupilaAlteracao}
-                        className="flex-row-item "
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="data" className="montserrat-bold-cod-gray-12px">Data:</label>
-                    <input
-                        type="date"
-                        id="data"
-                        name="data"
-                        value={adocao.data}
-                        onChange={manupilaAlteracao}
-                        className="flex-row-item"
-                        required
-                    />
-                </div>
+                <Tooltip title="Selecione um animal da lista para adoção." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+                    <div>
+                        <Barradebusca
+                            placeHolder={'Informe o animal'}
+                            dados={animais}
+                            campoChave={"id"}
+                            campoBusca={"nome"}
+                            funcaoSelecao={setAnimalSelecionado}
+                        ></Barradebusca>
+                    </div>
+                </Tooltip>
+                <Tooltip title="Digite o nome do adotante." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+                    <div >
+                        <label htmlFor="adotante" className="montserrat-bold-cod-gray-12px">Adotante:</label>
+                        <input
+                            type="text"
+                            id="adotante"
+                            name="adotante"
+                            value={adocao.adotante}
+                            onChange={manupilaAlteracao}
+                            className="flex-row-item "
+                            required
+                        />
+                    </div>
+                </Tooltip>
+                <Tooltip title="Defina a data da adoção." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+                    <div>
+                        <label htmlFor="data" className="montserrat-bold-cod-gray-12px">Data:</label>
+                        <input
+                            type="date"
+                            id="data"
+                            name="data"
+                            value={adocao.data}
+                            onChange={manupilaAlteracao}
+                            className="flex-row-item"
+                            required
+                        />
+                    </div>
+                </Tooltip>
                 <div className='alinha_button'>
-                    <button type="submit" className='botao_agendar montserrat-bold-concrete-16px'>{props.modoEdicao ? "Alterar" : "Adotado"}</button></div>
+                    <button type="submit" className='botao_agendar montserrat-bold-concrete-16px'>{props.modoEdicao ? "Alterar" : "Adotado"}</button>
+                </div>
+                <a href='/manuais/manual_adocao.pdf' download="manual_adocao.pdf">
+                    <img
+                        className="vectorbaixar"
+                        src={baixar}
+                        alt="Baixar"
+                    />
+                    Manual do Usuário
+                </a>
             </form>
         </div>
     );

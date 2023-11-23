@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 import { urLBase } from '../api/index.js';
 import Barradebusca from '../components/Barradebusca';
+import baixar from "../imagens/baixar.png";
+import Tooltip from '@material-ui/core/Tooltip'; 
 
 export default function FormAgendamento(props) {
     const [animalSelecionado, setAnimalSelecionado] = useState({});
@@ -161,92 +163,112 @@ export default function FormAgendamento(props) {
     }
     return (
         <div>
-            <form className='form_agenda'
-                onSubmit={gravarAgendamento}
-                noValidate
-                validated={validado}>
+          <form className='form_agenda'
+              onSubmit={gravarAgendamento}
+              noValidate
+              validated={validado}>
+            <input
+                type="text"
+                id="codag"
+                name="codag"
+                value={agendamento.codag}
+                onChange={manupilaAlteracao}
+                hidden
+            />
+            <Tooltip title="Selecione um animal para agendar um serviço." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+              <div>
+                <Barradebusca
+                    placeHolder={'Informe o animal'}
+                    dados={animais}
+                    campoChave={"id"}
+                    campoBusca={"nome"}
+                    funcaoSelecao={setAnimalSelecionado}
+                    limparCampoBusca={limparCampoBusca}
+                ></Barradebusca>
+              </div>
+            </Tooltip>
+            <Tooltip title="Escolha o serviço que deseja agendar." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+              <div >
+                <label htmlFor="servico" className="montserrat-bold-cod-gray-12px">Serviço:</label>
+                <select
+                    id="servico"
+                    name="servico"
+                    className="flex-row-item"
+                    value={agendamento.servico}
+                    onChange={manupilaAlteracao}
+                    required
+                >
+                    <option value="Selecione">Selecione</option>
+                    <option value="Castração">Castração</option>
+                    <option value="Consulta">Consulta</option>
+                    <option value="Internação">Internação</option>
+                </select>
+              </div>
+            </Tooltip>
+            <Tooltip title="Informe o nome do veterinário responsável pelo serviço." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+              <div >
+                <label htmlFor="veterinario" className="montserrat-bold-cod-gray-12px">Veterinário:</label>
                 <input
                     type="text"
-                    id="codag"
-                    name="codag"
-                    value={agendamento.codag}
+                    id="veterinario"
+                    name="veterinario"
+                    value={agendamento.veterinario}
                     onChange={manupilaAlteracao}
-                    hidden
+                    className="flex-row-item "
+                    required
                 />
-                <div>
-                    <Barradebusca
-                        placeHolder={'Informe o animal'}
-                        dados={animais}
-                        campoChave={"id"}
-                        campoBusca={"nome"}
-                        funcaoSelecao={setAnimalSelecionado}
-                        limparCampoBusca={limparCampoBusca}
-                    ></Barradebusca>
-                </div>
-                <div >
-                    <label htmlFor="servico" className="montserrat-bold-cod-gray-12px">Serviço:</label>
-                    <select
-                        id="servico"
-                        name="servico"
-                        className="flex-row-item"
-                        value={agendamento.servico}
-                        onChange={manupilaAlteracao}
-                        required
-                    >
-                        <option value="Selecione">Selecione</option>
-                        <option value="Castração">Castração</option>
-                        <option value="Consulta">Consulta</option>
-                        <option value="Internação">Internação</option>
-                    </select>
-                </div>
-                <div >
-                    <label htmlFor="veterinario" className="montserrat-bold-cod-gray-12px">Veterinário:</label>
-                    <input
-                        type="text"
-                        id="veterinario"
-                        name="veterinario"
-                        value={agendamento.veterinario}
-                        onChange={manupilaAlteracao}
-                        className="flex-row-item "
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="data" className="montserrat-bold-cod-gray-12px">Data:</label>
-                    <input
-                        type="date"
-                        id="data"
-                        name="data"
-                        value={agendamento.data}
-                        onChange={manupilaAlteracao}
-                        className="flex-row-item"
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="hora" className="montserrat-bold-cod-gray-12px">Hora:</label>
-                    <input
-                        type="time"
-                        id="hora"
-                        name="hora"
-                        value={agendamento.hora}
-                        onChange={manupilaAlteracao}
-                        className="flex-row-item"
-                        required
-                    />
-                </div>
-                <div className='alinha_button'>
-                    <button
-                        type="button"
-                        id="limpar"
-                        className="botao_denuncia montserrat-bold-concrete-16px"
-                        onClick={limparFormulario}
-                    >
-                        Limpar
-                    </button>
-                    <button type="submit" className='botao_agendar montserrat-bold-concrete-16px'>{props.modoEdicao ? "Remarcar" : "Agendar"}</button></div>
-            </form>
+              </div>
+            </Tooltip>
+            <Tooltip title="Defina a data para o agendamento do serviço." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+              <div>
+                <label htmlFor="data" className="montserrat-bold-cod-gray-12px">Data:</label>
+                <input
+                    type="date"
+                    id="data"
+                    name="data"
+                    value={agendamento.data}
+                    onChange={manupilaAlteracao}
+                    className="flex-row-item"
+                    required
+                />
+              </div>
+            </Tooltip>
+            <Tooltip title="Selecione o horário para o agendamento do serviço." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+              <div>
+                <label htmlFor="hora" className="montserrat-bold-cod-gray-12px">Hora:</label>
+                <input
+                    type="time"
+                    id="hora"
+                    name="hora"
+                    value={agendamento.hora}
+                    onChange={manupilaAlteracao}
+                    className="flex-row-item"
+                    required
+                />
+              </div>
+            </Tooltip>
+            <div className='alinha_button'>
+              <button
+                  type="button"
+                  id="limpar"
+                  className="botao_denuncia montserrat-bold-concrete-16px"
+                  onClick={limparFormulario}
+              >
+                  Limpar
+              </button>
+              <button type="submit" className='botao_agendar montserrat-bold-concrete-16px'>{props.modoEdicao ? "Remarcar" : "Agendar"}</button>
+            </div>
+            <a href='/manuais/manual_agendamento.pdf' download="manual_agendamento.pdf">
+              <img
+                className="vectorbaixar"
+                src={baixar}
+                alt="Baixar"
+              />
+              Manual do Usuário
+            </a>   
+          </form>
         </div>
-    );
+      );
+      
 }
 
