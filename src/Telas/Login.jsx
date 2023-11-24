@@ -25,7 +25,7 @@ export function Login() {
   return (
     <>
       <Cabecalho />
-      <main className="main-adm-register main-login">
+      <main className="main-adm-register_login main-login">
         <section className="container-main  cadastros section-img-login">
           <img src={image_login} alt="imagem-fundo-login" className="img_login" />
         </section>

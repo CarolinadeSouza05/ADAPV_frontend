@@ -1,6 +1,9 @@
 ﻿import { Cabecalho } from '../components/Cabecalho'
 import { Footer } from '../components/Footer'
 import './SobreNos.css'
+import pet1 from '../imagens/animal1.jpg';
+import pet2 from '../imagens/animal2.jpg';
+import pet3 from '../imagens/animal3.jpg';
 
 export function SobreNos() {
     return (
@@ -28,9 +31,9 @@ export function SobreNos() {
                 </p>
                 <br />
                 <div className='img_row_sobre'>
-                    <img src='animal1.jpg' />
-                    <img src='animal2.jpg' />
-                    <img src='animal3.jpg' />
+                    <img src={pet1} />
+                    <img src={pet2}  />
+                    <img src={pet3}  />
                 </div>
             </div>
             <Footer />

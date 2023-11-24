@@ -1,9 +1,12 @@
 ﻿import React from 'react';
 import { useEffect, useState } from 'react';
 import { urLBase } from '../api/index.js';
-import Barradebusca from '../components/Barradebusca';
+import CaixadeSelecao from '../components/CaixadeSelecao.jsx';
+import { Form, Row, Col } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 
 export default function FormAdocao(props) {
+    const location = useLocation();
     const [animalSelecionado, setAnimalSelecionado] = useState({});
     const [animais, setAnimais] = useState();
     const [validado, setValidado] = useState(false);
@@ -11,13 +14,17 @@ export default function FormAdocao(props) {
         codAdocao: 0,
         animal: {},
         adotante: "",
+        celular: "",
+        cpf: "",
+        email: "",
+        rua: "",
+        numero: "",
+        bairro: "",
+        cidade: "",
         data: "",
+        concordo: false,
+        status: false,
     })
-
-    useEffect(() => {
-        setAdocao(props.adocaoEmEdicao);
-    }, [props.adocaoEmEdicao]);
-
     //Recebendo os Dados do banco de dados
     useEffect(() => {
         fetch(urLBase + "/animais", {
@@ -34,11 +41,34 @@ export default function FormAdocao(props) {
         })
     }, []);
 
+    
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const animalId = searchParams.get('animalId');
+
+        // Verifica se animais é uma matriz e se animalId está definido
+        if (Array.isArray(animais) && animalId) {
+            const animalSelecionadoFake = animais.find(animal => String(animal.id) === animalId);
+            setAnimalSelecionado(animalSelecionadoFake || {});
+        }
+    }, [location.search, animais]);
+
+    useEffect(() => {
+        setAdocao(props.adocaoEmEdicao);
+    }, [props.adocaoEmEdicao]);
+
+
+
     function manupilaAlteracao(e) {
         const elemForm = e.currentTarget;
         const id = elemForm.id;
         const valor = elemForm.value;
         setAdocao({ ...adocao, [id]: valor });
+    }
+
+    function handleCheckboxChange(e) {
+        const isChecked = e.target.checked;
+        setAdocao({ ...adocao, concordo: isChecked });
     }
 
 
@@ -57,7 +87,16 @@ export default function FormAdocao(props) {
                         "codAdocao": adocao.codAdocao,
                         "animal": animalSelecionado,
                         "adotante": adocao.adotante,
-                        "data": adocao.data
+                        "celular": adocao.celular,
+                        "cpf": adocao.cpf,
+                        "email": adocao.email,
+                        "rua": adocao.rua,
+                        "numero": adocao.numero,
+                        "bairro": adocao.bairro,
+                        "cidade": adocao.cidade,
+                        "data": adocao.data,
+                        "concordo": adocao.concordo,
+                        "status": adocao.status
                     })
                 }).then((resposta) => {
                     return resposta.json();
@@ -90,7 +129,16 @@ export default function FormAdocao(props) {
                         "codAdocao": adocao.codAdocao,
                         "animal": animalSelecionado,
                         "adotante": adocao.adotante,
+                        "celular": adocao.celular,
+                        "cpf": adocao.cpf,
+                        "email": adocao.email,
+                        "rua": adocao.rua,
+                        "numero": adocao.numero,
+                        "bairro": adocao.bairro,
+                        "cidade": adocao.cidade,
                         "data": adocao.data,
+                        "concordo": adocao.concordo,
+                        "status": adocao.status
                     })
                 }).then((resposta) => {
                     return (resposta.json())
@@ -133,55 +181,218 @@ export default function FormAdocao(props) {
     }
     return (
         <div>
-            <form className='form_agenda'
-                onSubmit={gravarAdocao}
-                noValidate
-                validated={validado}>
-                <input
-                    type="text"
-                    id="codAdocao"
-                    name="codAdocao"
-                    value={adocao.codAdocao}
-                    onChange={manupilaAlteracao}
-                    hidden
-                />
-                <div>
-                    <Barradebusca
-                        placeHolder={'Informe o animal'}
-                        dados={animais}
-                        campoChave={"id"}
-                        campoBusca={"nome"}
-                        funcaoSelecao={setAnimalSelecionado}
-                    ></Barradebusca>
-                </div>
-                <div >
-                    <label htmlFor="adotante" className="montserrat-bold-cod-gray-12px">Adotante:</label>
-                    <input
+            <Form className='form-adocao' onSubmit={gravarAdocao}>
+
+                <Form.Group className="mb-3" >
+                    <Form.Control
+                        hidden
                         type="text"
-                        id="adotante"
-                        name="adotante"
-                        value={adocao.adotante}
-                        onChange={manupilaAlteracao}
-                        className="flex-row-item "
+                        id='codAdocao'
+                        name='codAdocao'
+                        value={adocao.codAdocao}
+                        onChange={manupilaAlteracao} /></Form.Group>
+
+                <Row>
+
+                    <Row className='alinhando_dados_animal'>
+                        <Form.Group as={Col} md='2' >
+                            <Form.Control
+                                type={'text'}
+                                name={'especie'}
+                                placeholder={'Espécie'}
+                                value={animalSelecionado.especie}
+                                className="flex-row-item_adocao"
+                                disabled={true}
+
+                            /></Form.Group>
+
+                        <Form.Group as={Col} md='2' >
+                            <Form.Control
+                                type={'text'}
+                                name={'nome'}
+                                placeholder={'Nome'}
+                                className="flex-row-item_adocao"
+                                value={animalSelecionado.nome}
+                                disabled={true}
+
+                            /></Form.Group>
+
+                        <Form.Group as={Col} md='2' >
+                            <Form.Control
+                                type={'text'}
+                                name={'genero'}
+                                placeholder={'Gênero'}
+                                value={animalSelecionado.genero}
+                                className="flex-row-item_adocao"
+                                disabled={true}
+
+                            /></Form.Group>
+
+                        <Form.Group as={Col} md='2' >
+                            <Form.Control
+                                type={'text'}
+                                name={'porte'}
+                                placeholder={'Porte'}
+                                value={animalSelecionado.porte}
+                                className="flex-row-item_adocao"
+                                disabled={true}
+
+                            /></Form.Group>
+                        <Form.Group as={Col} md='2'>
+                            <img
+                                src={`data:image;base64,${animalSelecionado.foto}`}
+                                alt={animalSelecionado.nome}
+                                className="imagem-animal"
+                            />
+                        </Form.Group>
+
+                    </Row>
+                    <Form.Group as={Col} md={10}  >
+                        {/* <Form.Label>Adotante</Form.Label> */}
+                        <Form.Control
+                            required
+                            type="text"
+                            id='adotante'
+                            name='adotante'
+                            placeholder='Nome do Adotante'
+                            className="flex-row-item_adocao"
+                            value={adocao.adotante}
+                            onChange={manupilaAlteracao} />
+                    </Form.Group></Row>
+                <Row>
+                    <Form.Group as={Col} md={5}   >
+                        {/* <Form.Label>Adotante</Form.Label> */}
+                        <Form.Control
+                            required
+                            type="text"
+                            id='celular'
+                            name='celular'
+                            placeholder='(18)99999-9999'
+                            className="flex-row-item_adocao"
+                            value={adocao.celular}
+                            onChange={manupilaAlteracao} />
+                    </Form.Group>
+                    <Form.Group as={Col} md={5}   >
+                        {/* <Form.Label>Adotante</Form.Label> */}
+                        <Form.Control
+                            required
+                            type="text"
+                            id='cpf'
+                            name='cpf'
+                            placeholder='999.999.999-99'
+                            className="flex-row-item_adocao"
+                            value={adocao.cpf}
+                            onChange={manupilaAlteracao} />
+                    </Form.Group>
+                </Row>
+                <Form.Group as={Col} md={10}  >
+                    {/* <Form.Label>Adotante</Form.Label> */}
+                    <Form.Control
                         required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="data" className="montserrat-bold-cod-gray-12px">Data:</label>
-                    <input
+                        type="text"
+                        id='email'
+                        name='email'
+                        placeholder='adapv@gmail.com'
+                        className="flex-row-item_adocao"
+                        value={adocao.email}
+                        onChange={manupilaAlteracao} />
+                </Form.Group>
+                <Row>
+                    <Form.Group as={Col} md={5}   >
+                        {/* <Form.Label>Adotante</Form.Label> */}
+                        <Form.Control
+                            required
+                            type="text"
+                            id='rua'
+                            name='rua'
+                            placeholder='Rua'
+                            className="flex-row-item_adocao"
+                            value={adocao.rua}
+                            onChange={manupilaAlteracao} />
+                    </Form.Group>
+                    <Form.Group as={Col} md={5}  >
+                        {/* <Form.Label>Adotante</Form.Label> */}
+                        <Form.Control
+                            required
+                            type="text"
+                            id='numero'
+                            name='numero'
+                            placeholder='Nº'
+                            className="flex-row-item_adocao"
+                            value={adocao.numero}
+                            onChange={manupilaAlteracao} />
+                    </Form.Group></Row>
+                <Row>
+                    <Form.Group as={Col} md={5}   >
+                        {/* <Form.Label>Adotante</Form.Label> */}
+                        <Form.Control
+                            required
+                            type="text"
+                            id='bairro'
+                            name='bairro'
+                            placeholder='Bairro'
+                            className="flex-row-item_adocao"
+                            value={adocao.bairro}
+                            onChange={manupilaAlteracao} />
+                    </Form.Group>
+                    <Form.Group as={Col} md={5}   >
+                        {/* <Form.Label>Adotante</Form.Label> */}
+                        <Form.Control
+                            required
+                            type="text"
+                            id='cidade'
+                            name='cidade'
+                            placeholder='Cidade'
+                            className="flex-row-item_adocao"
+                            value={adocao.cidade}
+                            onChange={manupilaAlteracao} />
+                    </Form.Group></Row>
+                <Form.Group as={Col} md={10}   >
+                    {/* <Form.Label>Adotante</Form.Label> */}
+                    <Form.Control
+                        required
                         type="date"
-                        id="data"
-                        name="data"
+                        id='data'
+                        name='data'
+                        // placeholder='(18)99999-9999'
+                        className="flex-row-item_adocao"
                         value={adocao.data}
-                        onChange={manupilaAlteracao}
-                        className="flex-row-item"
+                        onChange={manupilaAlteracao} />
+                </Form.Group>
+                <Form.Group as={Col} md={10}  >
+                    {/* <Form.Label>Adotante</Form.Label> */}
+                    <Form.Check
                         required
+                        type="checkbox"
+                        id='concordo'
+                        name='concordo'
+                        // className="flex-row-item_adocao"
+                        value={adocao.concordo}
+                        onChange={handleCheckboxChange}
+                        label={
+                            <span>
+                                Li e concordo com todos os{' '}
+                                <a href="#" onClick={(e) => { e.preventDefault(); props.exibirTermos() }}>
+                                    termos
+                                </a>.
+                            </span>
+                        }
                     />
-                </div>
-                <div className='alinha_button'>
-                    <button type="submit" className='botao_agendar montserrat-bold-concrete-16px'>{props.modoEdicao ? "Alterar" : "Adotado"}</button></div>
-            </form>
-        </div>
+                </Form.Group>
+                <Form.Group className="mb-3" >
+                    <Form.Control
+                        hidden
+                        type="text"
+                        id='status'
+                        name='status'
+                        value={adocao.status}
+                        onChange={manupilaAlteracao} /></Form.Group>
+                <div className='alinhando_botao_adocao'>
+                    <button type='button' className='botao_solicitar_adocao montserrat-bold-concrete-16px' >Voltar</button>
+                    <button type="submit" className='botao_solicitar_adocao montserrat-bold-concrete-16px'>Solicitar Adoção</button>
+                </div> </Form>
+
+        </div >
     );
 }
 

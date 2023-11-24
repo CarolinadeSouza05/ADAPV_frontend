@@ -5,6 +5,7 @@
   cursor: pointer;
 }
 
+
 .file_entrada {
   display: flex;
   justify-content: space-between;
@@ -27,7 +28,7 @@
   width: fit-content;
   /* padding: 35px; */
   /* height: 100%; */
-  padding-top: 50px;
+  padding-top: 30px;
   padding-bottom: 20px;
 }
 
@@ -37,15 +38,32 @@
   /* flex-direction: row; */
   justify-content: center;
   width: 100%;
-
   font-family: var(--font-family-montserrat);
   font-size: var(--font-size-l);
   font-weight: 700;
   /* letter-spacing: 0; */
   line-height: normal;
-  gap: 8px;
+  gap: 5px;
 }
 
+.modal-container-title .search_animais{
+  align-items: center;
+  border: 1px solid #3ab1b9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 6px 4px;
+  width: 40%;
+  margin-bottom: 10px;
+}
+
+.search_animais input{
+  border: none;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+}
 .form-animais-titulo .titulo h1 {
   font-weight: bold;
   margin: 0;
@@ -79,7 +97,7 @@
 }
 
 .form_control label {
-  margin-bottom: 0.6em;
+  margin-bottom: 0.5em;
   font-weight: bold;
 }
 
@@ -87,13 +105,32 @@
 .form_control select,
 .form_control textarea {
   width: 100%;
-  padding: 0.7em;
+  padding: 0.4em;
   outline: none;
   border: none;
   border: 2px solid #3AB1B9;
   border-radius: 8px;
   font-family: "Montserrat";
 }
+
+.form_control select
+ {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(13, 13, 13, 0.3);
+}
+
+.form_control select option
+ {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  color:black;
+}
+
 
 .form_control input::placeholder,
 .form_control textarea::placeholder {
@@ -109,6 +146,7 @@
   gap: 8px;
   height: auto;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .btnanimais button {
@@ -237,7 +275,23 @@
 .foto-animal-container{
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  width: 47%;
+  gap: 5px;
+  
+}
+
+.alinhando_img_import{
+  display: flex;
+  align-items: flex-start;
+  /* justify-content: space-between; */
+  width: 100%;
+  gap: 25px
+}
+.container_animal_import{
+ max-width: 47%;
+ max-height: 100px;
+ display: flex;
+ justify-content: center;
 }
 
 .foto-span{
@@ -249,7 +303,7 @@
   background-color: #fff;
   border: 2px solid #3AB1B9;
   border-radius: 8px;
-  color: #000;
+  color: rgba(13, 13, 13, 0.3);;
   cursor: pointer;
   padding: 8px 16px;
   width: 100%;

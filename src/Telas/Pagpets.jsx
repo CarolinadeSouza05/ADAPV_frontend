@@ -4,6 +4,7 @@ import { Cabecalho } from "../components/Cabecalho";
 import { Footer } from "../components/Footer";
 import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 import { getAnimais, getAnimalsPagination } from "../api";
+import { Link } from "react-router-dom";
 
 export default function Pagpets() {
   const [animaisAll, setAnimalsAll] = useState([]);
@@ -131,7 +132,10 @@ export default function Pagpets() {
                         className="vectorpet"
                         src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
                       />
-                      <button className="applyFiltersButton">Quero adotar</button>
+                       {/* Usando o Link para conectar com a página de adoção */}
+                       <Link to={`/adocao?animalId=${animal.id}`}>
+                        <button className="applyFiltersButton">Quero adotar</button>
+                      </Link>
                     </div>
                   </div>
                 </div>

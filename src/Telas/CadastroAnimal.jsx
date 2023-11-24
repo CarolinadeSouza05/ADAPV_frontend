@@ -16,13 +16,15 @@ import { AsideAdm } from "./Adm/AsideAdm";
 import { format } from "date-fns";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Form, Row, Col } from "react-bootstrap";
 
 export function CadastroAnimal(props) {
   const [modal, setModal] = useState(false);
   const [allRegisters, setAllRegisters] = useState([]);
-  const tableHead = ["Código", "Nome", "Idade", "Pelagem", "Genero", "Porte", "Especial", "Vacinado", "Castrado", "Foto"];
+  const tableHead = ["Código", "Especie", "Nome", "Idade", "Pelagem", "Genero", "Porte", "Especial", "Vacinado", "Castrado", "Foto"];
   const [validado, setValidated] = useState(false);  
   const [animal, setAnimal] = useState({
+    especie: "",
     nome: "",
     idade: "",
     pelagem: "",
@@ -73,6 +75,7 @@ export function CadastroAnimal(props) {
   async function handleCadastro() {
     // Verifique se todos os campos estão preenchidos
     if (
+      animal.especie &&
       animal.nome &&
       animal.idade &&
       animal.pelagem &&
@@ -116,6 +119,7 @@ export function CadastroAnimal(props) {
   // Função para redefinir os campos do formulário
   function resetForm() {
     setAnimal({
+      especie: "",
       nome: "",
       idade: "",
       pelagem: "",
@@ -191,6 +195,16 @@ export function CadastroAnimal(props) {
           </div>
 
           <form noValidate onSubmit={handleFormSubmit}>
+          <Select
+              text="Selecione a espécie"
+              name="especie"
+              id="especie"
+              value={animal.especie}
+              onChange={handleChange}
+              options={["Cachorro", "Gato"]}
+              className={validado && !animal.genero ? "input-invalid" : ""}
+              required
+            />
             <Inputs
               type="text"
               text="Digite o nome do animal"
@@ -228,7 +242,7 @@ export function CadastroAnimal(props) {
             />
 
             <Select
-              text="Selecione o Genero"
+              text="Selecione o Gênero"
               name="genero"
               id="genero"
               value={animal.genero}
@@ -250,7 +264,7 @@ export function CadastroAnimal(props) {
             />
 
             <Select
-              text="Possui necessidades especiais?"
+              text="Possui necessidades especiais"
               name="necessidadesEspeciais"
               id="necessidadesEspeciais"
               value={animal.necessidadesEspeciais}
@@ -260,42 +274,47 @@ export function CadastroAnimal(props) {
               required
             />
 
-            <Select
-              text="Está vacinado?"
-              name="vacinas"
-              id="vacinas"
-              value={animal.vacinas}
-              className={validado && !animal.vacinas ? "input-invalid" : ""}
-              onChange={handleChange}
-              options={["Sim", "Não"]}
-              required
-            />
+<Row>
+              <Col md={6}>
+                <Select
+                  text="Está vacinado"
+                  name="vacinas"
+                  id="vacinas"
+                  value={animal.vacinas}
+                  className={validado && !animal.vacinas ? "input-invalid" : ""}
+                  onChange={handleChange}
+                  options={["Sim", "Não"]}
+                  required
+                />
+              </Col>
+              <Col md={6}>
+                <Select
+                  text="Está castrado"
+                  name="castrado"
+                  id="castrado"
+                  value={animal.castrado}
+                  className={validado && !animal.castrado ? "input-invalid" : ""}
+                  onChange={handleChange}
+                  options={["Sim", "Não"]}
+                  required
+                />
+              </Col>
+            </Row>
 
-            <Select
-              text="Esta castrado?"
-              name="castrado"
-              id="castrado"
-              value={animal.castrado}
-              className={validado && !animal.castrado ? "input-invalid" : ""}
-              onChange={handleChange}
-              options={["Sim", "Não"]}
-              required
-            />
-
-            {/* <div className="file_entrada"> */}
+            <div className="alinhando_img_import"> 
             <div className="foto-animal-container">
-                <span className="foto-span">Foto do Animal</span>
-                <label htmlFor="foto" className="foto-label">Foto do Animal</label>
-                <input type="file" name="foto" id="foto" onChange={onChange} />
+              <span className="foto-span">Foto do Animal</span>
+              <label htmlFor="foto" className="foto-label">Foto do Animal</label>
+              <input type="file" name="foto" id="foto" onChange={onChange} />
             </div>
-            
+
             {animal.foto.length > 0 && (
-              <img src={`data:image;base64,${animal.foto}`} alt="" />
-            )}
+              <img src={`data:image;base64,${animal.foto}`} alt="" className="container_animal_import" />
+            )}</div>
 
             <div className="btnanimais mainSectionAnimal">
               <button type="submit">
-                {animal.edit === -1 ? "Cadastrar animais" : "Atualizar animais"}
+                {animal.edit === -1 ? "Cadastrar animal" : "Atualizar animal"}
               </button>
             </div>
           </form>

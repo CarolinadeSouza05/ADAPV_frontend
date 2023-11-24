@@ -46,10 +46,10 @@ export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, log
 
         </div>
 
-        <span className="form-login-header-subtitulo">
+        {/* <span className="form-login-header-subtitulo">
           Ao adotar um animal de estimação, você estará salvando uma vida e
           dando a ele uma segunda chance para ter um lar amoroso.
-        </span>
+        </span> */}
 
         <h2>Não perca tempo, adote um pet hoje mesmo!</h2>
       </header>

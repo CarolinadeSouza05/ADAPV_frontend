@@ -16,7 +16,7 @@ export function Modal(props) {
   }
 
   async function deletarAnimal(id) {
-    const confirmDelete = window.confirm("Tem certeza de que deseja excluir o Animal?");
+    const confirmDelete = window.confirm("Tem certeza de que deseja excluir o animal?");
     if (confirmDelete) {
       try {
         await excluirAnimais(id);
@@ -27,59 +27,12 @@ export function Modal(props) {
       }
     }
   }
-  async function obterImagem(id) {
-    try {
-      const response = await fetch(`http://localhost:4001/animais/${id}`);
-      const buffer = await response.arrayBuffer();
-      return { foto: { data: new Uint8Array(buffer) } };
-    } catch (error) {
-      console.error("Erro ao obter a imagem:", error);
-      return null;
-    }
-  }
-  async function obterImagemDoBanco(id) {
-    try {
-      const response = await obterImagem(id);
-  
-      console.log("Resposta da API:", response);
-  
-      if (response && response.foto && response.foto.data) {
-        const arrayBuffer = response.foto.data.buffer;
-        const base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(arrayBuffer)));
-
-        const imageUrl = `data:image/jpg;base64,${base64String}`;
-        console.log("Image URL:", imageUrl);
-        return imageUrl;
-      } else {
-        console.error(
-          "A resposta da API não possui o formato esperado:",
-          response
-        );
-        return null;
-      }
-    } catch (error) {
-      console.error("Erro ao obter a imagem:", error);
-      return null;
-    }
-  }
-  
-
-
-  async function carregarImagens() {
-    return Promise.all(registerAll.map(async (registerInput) => {
-      if (registerInput.foto) {
-        registerInput.imagemBase64 = await obterImagemDoBanco(registerInput.id);
-      }
-      return registerInput;
-    }));
-  }
-
   useEffect(() => {
     async function fetchData() {
       try {
         const animais = await getAnimais();
-        const animaisComImagens = await carregarImagens();
-        setRegisterAll(animaisComImagens);
+        // const animaisComImagens = await carregarImagens();
+        // setRegisterAll(animaisComImagens);
       } catch (error) {
         console.error("Erro ao carregar animais:", error);
       }
@@ -98,7 +51,7 @@ export function Modal(props) {
         <div className="modal-container-title">
           <h2>{title}</h2>
 
-          <div className="search">
+          <div className="search_animais">
             <MagnifyingGlass size={26} />
             <input
               type="text"
@@ -137,7 +90,7 @@ export function Modal(props) {
 
                           return (
                             <td key={index}>
-                              {imageUrl && <img style={{ maxWidth: '100%', height: 'auto' }} src={`data:image/jpeg;base64,${imageUrl}`} alt={`Imagem de ${registerInput.nome}`} />}
+                              <img style={{ maxWidth: '80px', height: 'auto'}} src={`data:image;base64,${registerInput.foto}`}  alt="Imagem do Animal" />
                             </td>
                           );
                         }
