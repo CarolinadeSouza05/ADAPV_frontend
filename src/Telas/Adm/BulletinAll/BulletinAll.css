@@ -1,0 +1,199 @@
+.container-main-adm-bulletin{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    padding: 16px;
+    width: 100%;
+}
+
+.header-adm-bulletin, .header-adm-bulletin .filter-button{
+    align-items: center;
+    display: flex;
+}
+
+.header-adm-bulletin{
+    border-bottom: 1px solid #333;
+    justify-content: flex-end;
+    padding-bottom: 8px;
+    width: 100%;
+}
+
+#filter{
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.container-filter-button{
+    border-radius: 6px;
+    border: 1px solid var(--pelorous);
+    cursor: pointer;
+    padding: 1px 16px;
+    position: relative;
+    transition: all .5s;
+}
+
+.container-filter-button .filter-button{
+    cursor: pointer;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.filter-button span, .filter-button svg{
+    color: var(--pelorous);
+}
+
+.filter-button span{
+    font-size: 1.4rem;
+}
+
+.filter-button svg{
+    height: 1.7rem;
+    width: 1.7rem;
+}
+
+.container-filter-button:hover{
+    background-color: var(--pelorous);
+}
+
+.container-filter-button:hover  .filter-button span, .container-filter-button:hover  .filter-button svg{
+    color: white;
+}
+
+.container-filter{
+    display: none;
+}
+
+#filter:checked{
+    height: 1.7rem;
+    left: 65%;
+    top: -150%;
+    width: 1.7rem;
+    top: 0;
+}
+
+#filter:checked + .filter-button + .container-filter{
+    align-items: flex-end;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: auto;
+    display: flex;
+    inset: 0;
+    height: 100vh;
+    justify-content: flex-end;
+    position: fixed;
+    width: 100vw;
+    z-index: 101;
+}
+
+.container-filter .filter{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    padding: 8px 16px;
+    overflow-y: auto;
+    width: 30%;
+}
+
+.filter .filter-header{
+    align-items: center;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2px;
+    width: 100%;
+}
+
+.filter-header svg{
+    cursor: pointer;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.filter .calendar{
+    border-radius: 6px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    height: 100%;
+    width: 100%;
+}
+
+.filter .filter-calendar{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.filter-calendar > span{
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.calendar-modal .react-calendar__viewContainer{
+    height: 75%;
+}
+
+.calendar-modal .react-calendar__viewContainer .react-calendar__month-view{
+    height: 100%;
+}
+
+.calendar-modal .react-calendar__viewContainer .react-calendar__month-view > div{
+    align-items: flex-start!important;
+    height: 100%;
+}
+
+.calendar-modal .react-calendar__viewContainer .react-calendar__month-view > div > div{
+    height: 100%;
+}
+
+.calendar-modal .react-calendar__viewContainer .react-calendar__month-view > div > div .react-calendar__month-view__days{
+    height: 100%;
+}
+
+.filter .btn-filter{
+    background-color: #fff;
+    border: 1px solid var(--pelorous);
+    border-radius: 8px;
+    color: var(--pelorous);
+    padding: 4px 18px;
+    transition: all 0.5s;
+    width: 100%;
+}
+
+.filter .btn-filter:hover{
+    background-color: var(--pelorous);
+    color: #fff;
+
+}
+
+.container-main-adm-bulletin table{
+    margin-top: 0;
+}
+
+.container-main-adm-bulletin table thead{
+    border-bottom: 1px solid rgb(228 228 231);
+}
+
+.container-main-adm-bulletin table th{
+    background-color: transparent;
+}
+
+.container-main-adm-bulletin table tbody td{
+    border-bottom: 1px solid rgb(228 228 231);
+}
+
+.container-main-adm-bulletin tbody td:first-child{
+    text-align: start!important;
+}
+
+.container-main-adm-bulletin tbody td:nth-child(n+1){
+    text-align: center;
+}
+
+tbody td svg{
+    cursor: pointer;
+}

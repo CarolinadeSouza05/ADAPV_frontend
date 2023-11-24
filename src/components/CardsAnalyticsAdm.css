@@ -50,17 +50,3 @@
     right: -15px;
     width: 30px;
 }
-
-@media (prefers-color-scheme: dark){
-    .card, .card-grapich .card-ball{
-        background-color: #202528;
-    }
-
-    .card .card-title{
-        color: #fff;
-    }
-
-    .card-grapich h3{
-        color: #fff;
-    }
-}

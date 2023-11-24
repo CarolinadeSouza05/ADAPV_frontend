@@ -14,9 +14,3 @@
 a.new-user-card{
     color: #3AB1B9;
 }
-
-@media (prefers-color-scheme: dark){
-    a.new-user-card{
-        color: black;
-    }
-}

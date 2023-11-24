@@ -223,6 +223,24 @@ export async function getRegisterEmailPassword(register) {
   return aux;
 }
 
+export async function getBulletinAll(register, id, token) {
+  let aux = await fetch(`${apiUser}/bulletin/${id}`, {
+      method: "POST",
+      body: JSON.stringify(register),
+      headers: {
+        "Content-Type": "application/json",
+        "token": token,
+    },
+  })
+      .then((data) => data.json())
+      .then((repos) => repos)
+      .catch((err) => err)
+
+  return aux;
+}
+
+
+
 // --------------------------------- Router AceitariaFazer ---------------------------------
 export async function getAllRegisterOffice() {
   let aux = await fetch(apiOffice, {

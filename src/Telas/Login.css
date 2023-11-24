@@ -20,11 +20,8 @@
 .main-login{
   display: grid!important;
   grid-template-columns: 45% 55%;
+  width: 100%!important;
 }
-.main-adm-register_login{
-  height: calc(100vh - 48px);
-}
-
 
 .container-form-login{
   padding: 0 1rem!important;
@@ -60,9 +57,9 @@
   align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 5px;
-  margin-top: 10px;
+  margin-right: auto;
   width: 95%;
 }
 
@@ -91,19 +88,13 @@
   font-weight: 500;
 }
 
-/* .form-login-header h2 {
+.form-login-header h2 {
   color: #3ab1b9;
   font-size: 32px;
   font-weight: bold;
   line-height: 40px;
-} */
-
-.form-login-header h2 {
-  color: var(--cod-gray);
-  font-size: 24px;
-  
-  line-height: 30px;
 }
+
 /* .section {
   height: auto;
   width: 100%;
@@ -172,9 +163,8 @@ form p {
 }
 
 .container-button {
-  /* align-items: flex-end; */
-  /* width: 100%; */
-  margin-top: -30px;
+  align-items: flex-end;
+  width: 100%;
 }
 
 .container-button .btn {

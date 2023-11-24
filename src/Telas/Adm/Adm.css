@@ -71,48 +71,6 @@
     color: white;
 }
 
-
-@media (prefers-color-scheme: dark){
-    .container-main-adm{
-        background-color: #191A1E;
-    }
-
-    .container-dashboard-adm .dashboard-adm-header{
-        background-color: #202528;
-    }
-
-    .container-main-adm svg, .dashboard-adm-header .h1{
-        color: #fff;
-    }
-    
-    .container-dashboard-adm-main h2{
-        color: white;
-    }
-
-    .dashboard-adm-header.menu-themes svg:last-child{
-        color: #f00;
-    }
-
-    .container-new-users{
-        background-color: #202528!important;
-        color: #fff!important;
-    }
-
-    .dashboard-adm-main-registers-recents table tbody tr{
-        color: #fff;
-    }
-
-    .dashboard-adm-main-registers-recents table tbody tr:nth-child(even){
-        color: #000;
-    }
-}
-
-@media (prefers-color-scheme: light){
-    .dashboard-adm-header.menu-themes svg:first-child{
-        color: #f00;
-    }
-}
-
 @media (min-width: 768px) {
     .container-adm{
         height: 100%;
