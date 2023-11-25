@@ -6,6 +6,7 @@ import { CgMenuGridO } from "react-icons/cg";
 import { FaBoxOpen, FaHands, FaTasks, FaUser } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 import { MdCategory, MdOutlinePets, MdOutlineVolunteerActivism } from "react-icons/md";
+import { RxExit } from "react-icons/rx";
 import { TbReportSearch } from "react-icons/tb";
 import { TfiAgenda } from "react-icons/tfi";
 import { Link } from "react-router-dom";
@@ -38,24 +39,24 @@ export function AsideAdm(){
 
                 <div className="aside-menu-main">
                     <ul className="container-list-menu">
-                            <li className="list-menu">
-                                <BiSolidDashboard size={26} />
-                            </li>
-                        
-                            <li className="list-menu menu-registers">
-                                <BsPeopleFill size={26} />
+                        <li className="list-menu">
+                            <BiSolidDashboard size={26} />
+                        </li>
+                    
+                        <li className="list-menu menu-registers">
+                            <BsPeopleFill size={26} />
 
-                                <ul className="container-list-menu-ul registers">
-                                    {cardsRegister.sort((card1, card2) => card1.name.localeCompare(card2.name)).map((card) => (
-                                        <>
-                                            <Link key={card.id} to={card.path}>
-                                                <card.icon />
-                                                <span>{card.name}</span>
-                                            </Link>
-                                        </>
-                                    ))}
-                                </ul>
-                            </li>
+                            <ul className="container-list-menu-ul registers">
+                                {cardsRegister.sort((card1, card2) => card1.name.localeCompare(card2.name)).map((card) => (
+                                    <>
+                                        <Link key={card.id} to={card.path}>
+                                            <card.icon />
+                                            <span>{card.name}</span>
+                                        </Link>
+                                    </>
+                                ))}
+                            </ul>
+                        </li>
 
                         <li className="list-menu menu-bulletin">
                             <TbReportSearch size={26} />
@@ -73,6 +74,12 @@ export function AsideAdm(){
                         </li>
                     </ul>
                 </div>
+
+                <footer className="footer-aside-menu-main">
+                    <Link to="/home">
+                        <RxExit size={26} />
+                    </Link>
+                </footer>
             </div>
         </aside>
     );

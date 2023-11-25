@@ -6,7 +6,7 @@ import { StoreContext } from "../context";
 import vector3 from "../imagens/vector-3.svg";
 import { toast } from "react-toastify";
 
-export function FormLogin({ formInput, setFormInput, setModal, setLoginsAll, loginsAll }) {
+export function FormLogin({ formInput, setFormInput }) {
   const useStore = useContext(StoreContext);
   const { setUser } = useStore();
 

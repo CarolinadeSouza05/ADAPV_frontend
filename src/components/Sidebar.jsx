@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   FaDonate,
   FaHome,
@@ -8,8 +8,13 @@ import {
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import { SidebarItem } from "./SidebarItem";
+import { RiAdminFill } from "react-icons/ri";
+import { StoreContext } from "../context";
 
 export function Sidebar({ active }) {
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
+
   return (
     <div className={`container-sidebar ${active}`}>
       <div className="content-sidebar">
@@ -25,6 +30,12 @@ export function Sidebar({ active }) {
         <Link to="/doacao">
             <SidebarItem Icon={FaDonate} Text="Doação" />
         </Link>
+
+        {user.role != undefined && user.role === "ADMIN" && (
+          <Link to="/adm">
+            <SidebarItem Icon={RiAdminFill} Text="Administração" />
+          </Link>
+        )}
       </div>
     </div>
   );
