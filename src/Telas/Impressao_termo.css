@@ -1,0 +1,25 @@
+.impressao_termo {
+    padding-top: 20px;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+p {
+    text-align: justify;
+    font-size: 16px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.imagem_impressao {
+    margin-top: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+

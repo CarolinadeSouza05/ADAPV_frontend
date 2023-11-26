@@ -1,30 +1,32 @@
 ﻿import { Button, Container, Table } from "react-bootstrap";
-import { FaCheck,FaTimes} from "react-icons/fa";
+import { FaCheck, FaTimes, FaPrint } from "react-icons/fa";
 import "./TabelaDenuncia.css";
-import {  urLBase } from "../api/index.js";
+import { urLBase } from "../api/index.js";
 import { useState } from "react";
+import { ImpressaoTermo } from "../Telas/Impressao_termo.jsx";
 
 
-export  function TabelaAdocao(props) {
-
+export function TabelaAdocao(props) {
+  const [mostrarImpressao, setMostrarImpressao] = useState(false);
+  const [adocaoSelecionada, setAdocaoSelecionada] = useState(null);
   const [modoEdicao, setModoEdicao] = useState(false);
 
-//Filtro sempre busca na lista original do banco de dados
-function filtrarAdocao(e) {
-  const termoBusca = e.currentTarget.value;
+  //Filtro sempre busca na lista original do banco de dados
+  function filtrarAdocao(e) {
+    const termoBusca = e.currentTarget.value;
 
-  fetch(urLBase + "/adocoes", { method: "GET" })
-    .then((resposta) => {
-      return resposta.json()
-    }).then((listadeadocoes) => {
-      if (Array.isArray(listadeadocoes)) {
-        const resultadoBusca = listadeadocoes.filter((adocao) =>
-          adocao.adotante.toLowerCase().includes(termoBusca.toLowerCase())
-        );
-        props.setAdocao(resultadoBusca);
-      }
-    })
-}
+    fetch(urLBase + "/adocoes", { method: "GET" })
+      .then((resposta) => {
+        return resposta.json()
+      }).then((listadeadocoes) => {
+        if (Array.isArray(listadeadocoes)) {
+          const resultadoBusca = listadeadocoes.filter((adocao) =>
+            adocao.adotante.toLowerCase().includes(termoBusca.toLowerCase())
+          );
+          props.setAdocao(resultadoBusca);
+        }
+      })
+  }
   // Função para autorizar a adoção
   function autorizarAdocao(adocao) {
     fetch(urLBase + "/adocoes", {
@@ -61,7 +63,7 @@ function filtrarAdocao(e) {
       },
       body: JSON.stringify({
         ...adocao,
-        status: 2 ,// Mantenha o status como 0
+        status: 2,// Mantenha o status como 0
       })
     }).then((resposta) => resposta.json())
       .then((dados) => {
@@ -80,14 +82,16 @@ function filtrarAdocao(e) {
         window.alert("Erro ao negar adoção: " + erro.message);
       });
   }
+
   
+
   return (
     <Container className="container-table-adocao body">
-  <div>
+      <div className="busca_adocao">
         <input
           type="text"
           id="termoBusca"
-          className="searchInput_agenda"
+          className="searchInput_adocao"
           onChange={filtrarAdocao}
         /></div>
 
@@ -99,15 +103,16 @@ function filtrarAdocao(e) {
             <th>Endereço</th>
             <th>Data de solicitação</th>
             <th>Concorda com os termos</th>
-            <th>Status</th> 
+            <th>Status</th>
             <th>Autorizar</th>
-            
+            <th>Imprimir Termo</th>
+
           </tr>
         </thead>
         <tbody>
           {props.listadeadocoes?.map((adocao) => {
             const dataFormatada = new Date(adocao.data).toLocaleDateString();
-            const status = adocao.status === 1 ? 'Autorizado' : (adocao.status === 0 
+            const status = adocao.status === 1 ? 'Autorizado' : (adocao.status === 0
               ? 'Em espera'
               : 'Negado');
 
@@ -123,15 +128,16 @@ function filtrarAdocao(e) {
                   <div className="botoes">
                     <Button
                       className="botao_table_autorizar"
-                    onClick={() => {
-                      autorizarAdocao(adocao) //vou só alterar no put para que ao clicar aqui o status mude para 1
-                    }}
+                      onClick={() => {
+                        autorizarAdocao(adocao) //vou só alterar no put para que ao clicar aqui o status mude para 1
+                      }}
                     ><FaCheck />
                     </Button>
+                    
                     <Button
                       className="botao_table_negar"
                       onClick={() => {
-                        if (window.confirm("Confirma a negar esta adoção?")){
+                        if (window.confirm("Confirma a negar esta adoção?")) {
                           negarAdocao(adocao)
                         }
                       }}
@@ -140,11 +146,32 @@ function filtrarAdocao(e) {
                     </Button>
                   </div>
                 </td>
+                <td>
+                  <Button
+                    className="botao_table_imprimir"
+                    onClick={() => {
+                      setAdocaoSelecionada(adocao);
+                      setMostrarImpressao(true);
+                      window.print();
+                    }}
+                  >
+                    <FaPrint />
+                  </Button>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </Table>
+      {/* Adicione uma classe específica à div que contém o termo */}
+      <div className={`impressao_termo ${mostrarImpressao ? 'visivel' : ''}`}>
+        {mostrarImpressao && (
+          <ImpressaoTermo
+            adocao={adocaoSelecionada}
+            onClose={() => setMostrarImpressao(false)}
+          />
+        )}
+      </div>
     </Container>
   );
 }

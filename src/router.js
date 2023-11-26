@@ -20,6 +20,8 @@ import { SobreNos } from './Telas/SobreNos'
 import { RegisterUser } from './Telas/RegisterUser'
 import { StoreContext } from './context'
 import { BulletinAll } from './Telas/Adm/BulletinAll'
+import {AutorizarAdocao} from './Telas/AutorizarAdocao'
+import { ImpressaoTermo } from './Telas/Impressao_termo'
 
 export function Router(){
     const useStore = useContext(StoreContext);
@@ -47,11 +49,13 @@ export function Router(){
                 <Route path='/adm/cadastro/usuario' element={<RegisterUser />} />
                 <Route path="/adm/cadastro/produto" element={<CadastroProduto />} />
                 <Route path="/adm/cadastro/designar-voluntario" element={<CadastroDesignar />} />
-                <Route path='/adm/cadastro/adocao' element={<CadastroAdocao />} />
+                <Route path='/adocao' element={<CadastroAdocao />} />
                 <Route path='/adm/cadastro/agendamento' element={<CadastroAgendamento />} />
                 <Route path="/adm/cadastro/categoria" element={<CadastroCategoria />} />
                 <Route path="/adm/cadastro/aceitafazer" element={<RegisterAcceptToDo />} />
                 <Route path="/adm/relatorio/geral" element={<BulletinAll />} />
+                <Route path="/impressao_termo" element={<ImpressaoTermo />} />
+                <Route path="/autorizar-adocao" element={<AutorizarAdocao />} />
             </Routes>
         </BrowserRouter>
     )

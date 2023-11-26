@@ -29,7 +29,11 @@ export function AutorizarAdocao(props) {
         concordo: false,
         status: false,
     });
-
+    function imprimirTermo(adocao) {
+        // Você pode passar o ID da adoção como parte da URL
+        const urlImpressao = `/impressao_termo/${adocao.codAdocao}`;
+        window.print(urlImpressao);
+    }
     function prepararParaAtualizar(adocao) {
         setModoEdicao(true);
         setAdocaoEmEdicao(adocao);
@@ -85,7 +89,7 @@ export function AutorizarAdocao(props) {
             <AsideAdm />
             <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
 
-            <div className="page_container_adocao main-adm-register">
+            <div className="page_container_autorizar_adocao  main-adm-register">
                 <div className="titulo_adocao">
                     <img
                         className="vector vectoranimais"
@@ -102,6 +106,7 @@ export function AutorizarAdocao(props) {
                     editarAdocao={prepararParaAtualizar}
                     setAdocao={setAdocao}
                     setAdocaoEmEdicao={setAdocaoEmEdicao}
+                    imprimirTermo={imprimirTermo}
                      />
 
                 {/* <div className="alinhando_imagem_adocao"><img src={img_adocao} className='img_adocao'></img></div> */}

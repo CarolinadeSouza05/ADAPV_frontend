@@ -4,8 +4,67 @@
   padding-right: 100px;
   height: auto;
   width: 100%;
- 
 }
+.page_container_autorizar_adocao {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: 100%;
+  margin-bottom: 50px;
+  /* padding-bottom: 50px; */
+}
+.impressao_termo {
+  display: none;
+}
+th{
+  text-align: center;
+}
+td{
+  text-align: center;
+}
+
+.searchInput_adocao{
+  width: 100%;
+  /* position: relative; */
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8px 16px;
+  /* border-width: 1px; */
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #3ab1b9;
+  box-sizing: border-box;
+  color: rgba(13, 13, 13, 0.3);
+  font-size: 16px;
+  font-family:var(--font-family-montserrat);
+  line-height: 24px;
+  white-space: nowrap;
+  margin-top: 20px;
+} 
+
+@media print {
+  .tabela_autorizar,
+  .titulo_adocao,
+  .busca_adocao,
+  .aside-menu-main,
+  .dashboard-adm-header,
+  .container-menu,
+  .faca_denuncia,
+  .sobre-nos,
+  .adote-um-pet,
+  .svg-menu-adm,
+  .footer.footer-aside-menu-main{
+    display: none;
+  }
+  .impressao_termo {
+    display: block !important;
+  } 
+}
+
+
+
 .alinhando_imagem_adocao{
   width: 100%;
   display: flex;
@@ -13,7 +72,7 @@
   z-index: 0;
   position: absolute;
   top: 0;
-  margin-top: 50px;
+  margin-top: 85px;
 }
 .img_adocao{
   width: 30%; 
@@ -227,6 +286,27 @@
   border-color: rgb(49, 179, 49);;
   color: rgb(49, 179, 49);
 }
+
+.botao_table_imprimir{
+  background-color:var(--pelorous);
+  border-color: var(--concrete);
+  border: 2px solid;
+  height: auto;
+  width: auto;
+  margin-top: 5px;
+
+}
+
+.botao_table_imprimir:hover{
+  background-color: var(--concrete);
+  border-color:var(--pelorous);
+  color:var(--pelorous);
+}
+.botao_table_imprimir:active{
+  background-color: var(--concrete);
+  border-color: var(--pelorous);;
+  color: var(--pelorous);
+}
 .alinhando_botao_adocao{
   display: flex;
   justify-content: flex-end;
@@ -291,7 +371,7 @@ text-align: right;
   width: fit-content;
   margin: 0 auto;
   margin-top: 20px;
-  padding-right: 130px;
+  padding-right: 30px;
   font-family: var(--font-family-montserrat);
   font-size: var(--font-size-l);
   font-weight: 700;

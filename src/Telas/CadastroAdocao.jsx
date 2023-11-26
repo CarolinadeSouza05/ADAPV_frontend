@@ -1,14 +1,14 @@
 ﻿import { useEffect, useState } from "react";
 // import Barradebusca from "../components/Barradebusca";
 import { urLBase } from "../api/index.js";
-import { HeaderAdm } from "../components/HeaderAdm";
-import { TabelaAdocao } from "../components/TabelaAdocao";
+import {Cabecalho} from '../components/Cabecalho.jsx'
 import FormAdocao from "../formularios/FormAdocao.jsx";
 import vetor3 from "../imagens/vector-3.svg";
-import { AsideAdm } from "./Adm/AsideAdm";
+
 import "./CadastroAdocao.css";
 import { Modal } from "react-bootstrap";
 import img_adocao from '../imagens/img_cad_adocao.png'
+import { Footer } from "../components/Footer.jsx";
 export function CadastroAdocao(props) {
     const [adocao, setAdocao] = useState(props.adocao);
     const [exibirModal, setExibirModal] = useState(false);
@@ -82,10 +82,10 @@ export function CadastroAdocao(props) {
     }, []);
     return (
         <>
-            <AsideAdm />
-            <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+         
+            <Cabecalho />
 
-            <div className="page_container_adocao main-adm-register">
+            <div className="page_container_adocao">
                 <div className="titulo_adocao">
                     <img
                         className="vector vectoranimais"
@@ -156,6 +156,7 @@ export function CadastroAdocao(props) {
                     setAdocao={setAdocao}
                     setAdocaoEmEdicao={setAdocaoEmEdicao} />
             </div> */}
+            <Footer />
         </>
 
     )
