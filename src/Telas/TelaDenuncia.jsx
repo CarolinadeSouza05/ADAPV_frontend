@@ -32,7 +32,7 @@ export function CadastroDenuncia() {
           <h3 className="subtitle">É CRIME, DENUNCIE!</h3>
           <p className="text">
             Lei 9605/98 Art. 32. Praticar ato <br />
-            de abuso, maus-tratos,feris ou <br />
+            de abuso, maus-tratos, ferir ou <br />
             mutilar animais silvestres, <br />
             domesticos ou domesticados, <br />
             nativos ou exoticos

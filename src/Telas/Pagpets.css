@@ -409,8 +409,8 @@
 #loading-animation p {
   animation: bounce 1s infinite ease-in-out;
   display: inline-block;
-  font-family: 'Modak', sans-serif;
-  font-weight: 400;
+  font-family: 'Montserrat';
+  font-weight: 800;
   font-size: 3rem;
   font-style: normal;
   text-indent: 1.2rem;

@@ -3,7 +3,6 @@
 * {
   margin: 0;
   padding: 0;
-  
 }
 
 .denuncia {
@@ -18,7 +17,7 @@
   display: flex;
   justify-content: center;
 
-  scale: 0.8;
+  scale: 0.7;
   width: 100%;
   margin-top: 15rem;
   margin-right: 280px;
@@ -56,6 +55,7 @@
 }
 
 .container_text {
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -102,29 +102,25 @@
   color: #3ab1b9;
 }
 
-.disk_number{
+.disk_number {
   display: flex;
   flex-direction: row;
   justify-content: center;
-
 }
 
-.disk{
+.disk {
   color: #3ab1b9;
 
   font-family: "Montserrat";
   font-size: 30px;
   font-weight: 800;
-  
 }
 
-.n1{
-  
-
+.n1 {
   color: #e32121;
 }
 
-.n2{
+.n2 {
   color: #e32121;
 }
 
@@ -135,6 +131,11 @@
   cursor: pointer;
 
   color: #e32121;
+  transition: 0.5s;
+}
+
+.link_denuncia:hover {
+  color: #3ab1b9;
 }
 
 .link {
@@ -142,7 +143,6 @@
 
   font-family: "Montserrat";
   font-weight: 600;
-  
 }
 
 /* Estilos para tela 1980x1080 */
@@ -184,3 +184,4 @@
     left: 40rem;
   }
 }
+

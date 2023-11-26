@@ -141,7 +141,7 @@ export default function Pagpets() {
                 </div>
               ))
             ) : (
-              <div id="loading-animation" class="heading large-text"><p>l</p><p>o</p><p>a</p><p>d</p><p>i</p><p>n</p><p>g</p></div>
+              <div id="loading-animation" class="heading large-text"><p>L</p><p>o</p><p>a</p><p>d</p><p>i</p><p>n</p><p>g</p><p>.</p><p>.</p><p>.</p></div>
             )}
           </div>
         </div>
