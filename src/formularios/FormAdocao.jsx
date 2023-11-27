@@ -393,7 +393,7 @@ export default function FormAdocao(props) {
                     <button type='button' className='botao_solicitar_adocao montserrat-bold-concrete-16px' >Voltar</button>
                     <button type="submit" className='botao_solicitar_adocao montserrat-bold-concrete-16px'>Solicitar Adoção</button>
                 </div> 
-                <a href='/manuais/manual_adocao.pdf' download="manual_adocao.pdf">
+                <a href='/manuais/manual_solicitar_adocao.pdf' download="manual_solicitar_adocao.pdf.pdf">
                     <img
                         className="vectorbaixar"
                         src={baixar}
