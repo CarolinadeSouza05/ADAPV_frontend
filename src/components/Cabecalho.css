@@ -50,6 +50,12 @@ a{
   width: 39px;
 }
 
+.vectorbaixar {
+  height: 22px;
+  width: 22px;
+  margin: 5px;
+}
+
 .title {
   font-family: var(--font-family-montserrat);
   font-size: var(--font-size-xxl);

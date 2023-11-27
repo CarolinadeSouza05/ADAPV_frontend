@@ -5,6 +5,8 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import { FaCartPlus } from "react-icons/fa";
 import { TabelaDesignarVoluntarios } from "../components/TabelaDesignarVoluntarios";
 import CaixadeSelecao from "../components/CaixadeSelecao";
+import baixar from "../imagens/baixar.png";
+import Tooltip from '@material-ui/core/Tooltip'; 
 
 export default function FormDesignarTarefas(props) {
     const [validado, setValidado] = useState(false);
@@ -130,36 +132,45 @@ export default function FormDesignarTarefas(props) {
 
     return (
         <div>
-            <Form onSubmit={manipulaSubmissao} validated={validado} className="Form_designar" >
-                <Row className="alinhando_linhas_form_designar">
-                <Col md={11}>
+          <Form onSubmit={manipulaSubmissao} validated={validado} className="Form_designar" >
+            <Row className="alinhando_linhas_form_designar">
+              <Col md={11}>
+                <Tooltip title="Escolha uma atividade da lista de atividades disponíveis." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+                  <div>
                     <Barradebusca
-                        placeholder={'Informe a atividade'}
-                        dados={atividades}
-                        campoChave={"id"}
-                        campoBusca={"name"}
-                        funcaoSelecao={setAtividadeSelecionada}
+                      placeholder={'Informe a atividade'}
+                      dados={atividades}
+                      campoChave={"id"}
+                      campoBusca={"name"}
+                      funcaoSelecao={setAtividadeSelecionada}
                     ></Barradebusca>
-                </Col></Row>
-                <Row style={{ marginTop: '20px' , marginBottom: '20px'}} className="alinhando_linhas_form_designar">
-                    <Form.Group as={Col} md='6' controlId="data_tarefa">
-                        <Form.Label>Data</Form.Label>
-                        <Form.Control required
-                            type="date"
-                            name="data"
-                            value={designarTarefas.data}
-                            onChange={manipularMudanca} />
-                    </Form.Group>
-                    <Form.Group as={Col} md='5' controlId="hora_tarefa">
-                        <Form.Label>Hora</Form.Label>
-                        <Form.Control required
-                            type="time"
-                            name="hora"
-                            value={designarTarefas.hora}
-                            onChange={manipularMudanca} />
-                    </Form.Group>
-                </Row>
-                {/* <Row>
+                  </div>
+                </Tooltip>
+              </Col>
+            </Row>
+            <Row style={{ marginTop: '20px' , marginBottom: '20px'}} className="alinhando_linhas_form_designar">
+              <Tooltip title="Informe a data para a designação da tarefa." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+                <Form.Group as={Col} md='6' controlId="data_tarefa">
+                  <Form.Label>Data</Form.Label>
+                  <Form.Control required
+                    type="date"
+                    name="data"
+                    value={designarTarefas.data}
+                    onChange={manipularMudanca} />
+                </Form.Group>
+              </Tooltip>
+              <Tooltip title="Informe a hora para a designação da tarefa." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+                <Form.Group as={Col} md='5' controlId="hora_tarefa">
+                  <Form.Label>Hora</Form.Label>
+                  <Form.Control required
+                    type="time"
+                    name="hora"
+                    value={designarTarefas.hora}
+                    onChange={manipularMudanca} />
+                </Form.Group>
+              </Tooltip>
+            </Row>
+            {/* <Row>
                     <div>
                         <Barradebusca
                             placeHolder={'Informe o voluntário'}
@@ -170,86 +181,104 @@ export default function FormDesignarTarefas(props) {
                         ></Barradebusca>
                     </div>
                 </Row> */}
-                <Row className="alinhando_linhas_form_designar">
-                    <Col md={11}>
+            <Row className="alinhando_linhas_form_designar">
+              <Col md={11}>
+                <Tooltip title="Selecione um voluntário da lista." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+                  <div>
                     <CaixadeSelecao url={urLBase + "/voluntarios"} campoChave={"id"} campoExibicao={"nome"} funcaoSelecao={setVoluntarioSelecionado}></CaixadeSelecao>
-                    </Col>
-                </Row>
-                <Row className="alinhando_linhas_form_designar">
-                    <Form.Group as={Col} md='2' controlId="id_voluntario">
-                        <Form.Control
-                            type={'text'}
-                            name={'id'}
-                            placeholder={'Código'}
-                            value={VoluntarioSelecionado.id}
-                            disabled={true}
-                            style={{ marginTop: '30px' }}
-                        /></Form.Group>
-
-                    <Form.Group as={Col} md='2' controlId="nome_voluntario">
-                        <Form.Control
-                            type={'text'}
-                            name={'nome'}
-                            placeholder={'Nome'}
-                            value={VoluntarioSelecionado.nome}
-                            disabled={true}
-                            style={{ marginTop: '30px' }}
-                        /></Form.Group>
-
-                    <Form.Group as={Col} md='2' controlId="telefone_voluntario">
-                        <Form.Control
-                            type={'text'}
-                            name={'telefone'}
-                            placeholder={'Telefone'}
-                            value={VoluntarioSelecionado.telefone}
-                            disabled={true}
-                            style={{ marginTop: '30px' }}
-                        /></Form.Group>
-                    <Form.Group as={Col} md='2' controlId="disponibilidade_voluntario">
-                        <Form.Control
-                            type={'text'}
-                            name={'disponibilidade'}
-                            placeholder={'Disponibilidade'}
-                            value={VoluntarioSelecionado.disponibilidade}
-                            disabled={true}
-                            style={{ marginTop: '30px' }}
-                        /></Form.Group>
-                    <Form.Group as={Col} md='2' controlId="periodo_voluntario">
-                        <Form.Control
-                            type={'text'}
-                            name={'periodo'}
-                            placeholder={'Periodo'}
-                            value={VoluntarioSelecionado.periodo}
-                            disabled={true}
-                            style={{ marginTop: '30px' }}
-                        /></Form.Group>
-
-                    <Form.Group as={Col} md='1' controlId="acrescentar">
-                        <Button className="botao_table_designar_voluntario"
-                        onClick={() => {
-                             const vol1 = {
-                                id: VoluntarioSelecionado.id,
-                                nome: VoluntarioSelecionado.nome,
-                                telefone: VoluntarioSelecionado.telefone,
-                                disponibilidade: VoluntarioSelecionado.disponibilidade,
-                                periodo: VoluntarioSelecionado.periodo
-                            }//A ... significa pegar a lista anterior e adicionar a uma nova lista podendo add novos valores
-                            setListadeVoluntariosSelecionados([...listadeVoluntariosSelecionados, vol1])}}
-                            style={{ marginTop: '30px' }}><FaCartPlus /></Button>
-                    </Form.Group>
-                </Row>
-                
-                <Row>
-                    <TabelaDesignarVoluntarios 
-                        listadevoluntarios={listadeVoluntariosSelecionados}
-                        setDesignarTarefas={setDesignarTarefas}
-                        dadosDesignarTarefas={designarTarefas}
-                        setListaItens={setListadeVoluntariosSelecionados}></TabelaDesignarVoluntarios>
-                </Row>
-               <Row className="alinhando_botao_designar">
-                <Button type="submit" className="botao_designar">Gravar Tarefa</Button>
-               </Row>
-            </Form>
+                  </div>
+                </Tooltip>
+              </Col>
+            </Row>
+            <Row className="alinhando_linhas_form_designar">
+              {/* Inputs for the selected volunteer's details. Since they are disabled and for display only, no tooltips are necessary. */}
+              <Form.Group as={Col} md='2' controlId="id_voluntario">
+                <Form.Control
+                  type={'text'}
+                  name={'id'}
+                  placeholder={'Código'}
+                  value={VoluntarioSelecionado.id}
+                  disabled={true}
+                  style={{ marginTop: '30px' }}
+                />
+              </Form.Group>
+              <Form.Group as={Col} md='2' controlId="nome_voluntario">
+                <Form.Control
+                  type={'text'}
+                  name={'nome'}
+                  placeholder={'Nome'}
+                  value={VoluntarioSelecionado.nome}
+                  disabled={true}
+                  style={{ marginTop: '30px' }}
+                />
+              </Form.Group>
+              <Form.Group as={Col} md='2' controlId="telefone_voluntario">
+                <Form.Control
+                  type={'text'}
+                  name={'telefone'}
+                  placeholder={'Telefone'}
+                  value={VoluntarioSelecionado.telefone}
+                  disabled={true}
+                  style={{ marginTop: '30px' }}
+                />
+              </Form.Group>
+              <Form.Group as={Col} md='2' controlId="disponibilidade_voluntario">
+                <Form.Control
+                  type={'text'}
+                  name={'disponibilidade'}
+                  placeholder={'Disponibilidade'}
+                  value={VoluntarioSelecionado.disponibilidade}
+                  disabled={true}
+                  style={{ marginTop: '30px' }}
+                />
+              </Form.Group>
+              <Form.Group as={Col} md='2' controlId="periodo_voluntario">
+                <Form.Control
+                  type={'text'}
+                  name={'periodo'}
+                  placeholder={'Periodo'}
+                  value={VoluntarioSelecionado.periodo}
+                  disabled={true}
+                  style={{ marginTop: '30px' }}
+                />
+              </Form.Group>
+              <Tooltip title="Clique para adicionar o voluntário selecionado à lista de tarefas." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+                <Form.Group as={Col} md='1' controlId="acrescentar">
+                  <Button className="botao_table_designar_voluntario"
+                    onClick={() => {
+                      const vol1 = {
+                        id: VoluntarioSelecionado.id,
+                        nome: VoluntarioSelecionado.nome,
+                        telefone: VoluntarioSelecionado.telefone,
+                        disponibilidade: VoluntarioSelecionado.disponibilidade,
+                        periodo: VoluntarioSelecionado.periodo
+                      }//A ... significa pegar a lista anterior e adicionar a uma nova lista podendo add novos valores
+                      setListadeVoluntariosSelecionados([...listadeVoluntariosSelecionados, vol1])
+                    }}
+                    style={{ marginTop: '30px' }}><FaCartPlus /></Button>
+                </Form.Group>
+              </Tooltip>
+            </Row>
+            <Row>
+              <TabelaDesignarVoluntarios 
+                listadevoluntarios={listadeVoluntariosSelecionados}
+                setDesignarTarefas={setDesignarTarefas}
+                dadosDesignarTarefas={designarTarefas}
+                setListaItens={setListadeVoluntariosSelecionados}></TabelaDesignarVoluntarios>
+            </Row>
+            <Row className="alinhando_botao_designar">
+              <Button type="submit" className="botao_designar">Gravar Tarefa</Button>
+            </Row>
+            <a href='/manuais/manual_designar_tarefas.pdf' download="manual_designar_tarefas.pdf">
+              <img
+                className="vectorbaixar"
+                src={baixar}
+                alt="Baixar"
+              />
+              Manual do Usuário
+            </a>
+          </Form>
         </div>
-    );
+      );
+      
 }

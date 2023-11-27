@@ -11,6 +11,7 @@ import { InputsForm } from "../../components/InputsForm";
 import { NameToAccepToDoAllFromVolunteer, ObjectEmptyValue, disponibilidadeArray, periodoArray } from "../../util";
 import { Link } from "react-router-dom";
 import { BiTask } from "react-icons/bi";
+import baixar from "../../imagens/baixar.png";
 
 
 export function FormEditVoluntario(props) {
@@ -144,6 +145,14 @@ export function FormEditVoluntario(props) {
         <div className="container-button alinhamento">
           <button type="submit">Atualizar</button>
         </div>
+        <a href='/manuais/manual_voluntario.pdf' download="manual_voluntario.pdf">
+            <img
+              className="vectorbaixar"
+              src={baixar}
+              alt="Baixar"
+            />
+            Manual do Usuário
+          </a>
       </form>
     </>
   );

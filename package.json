@@ -4,6 +4,7 @@
   "homepage": "https://CarolinadeSouza05.github.io/ADAPV_frontend",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "@phosphor-icons/react": "^2.0.9",
     "@radix-ui/react-popover": "^1.0.6",
     "@testing-library/jest-dom": "^5.16.5",

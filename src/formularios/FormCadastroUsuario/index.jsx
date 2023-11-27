@@ -12,6 +12,7 @@ import { InputsForm } from "../../components/InputsForm";
 import vector_3 from "../../imagens/vector-3.svg";
 import { ObjectEmptyValue } from "../../util";
 import { format } from "date-fns";
+import baixar from "../../imagens/baixar.png";
 
 export function FormCadastroUsuario(props) {
   const { formCadastroInput, setFormCadastroInput, setRegisterFormCadastro, setModal } = props;
@@ -127,6 +128,14 @@ export function FormCadastroUsuario(props) {
           <div className="container-button alinhamento">
             <button type="submit">Cadastrar</button>
           </div>
+          <a href='/manuais/manual_usuario.pdf' download="manual_usuario.pdf">
+            <img
+              className="vectorbaixar"
+              src={baixar}
+              alt="Baixar"
+            />
+            Manual do Usuário
+          </a>
         </form>
       </div>
     </>

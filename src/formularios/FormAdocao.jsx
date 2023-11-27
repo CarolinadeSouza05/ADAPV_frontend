@@ -4,6 +4,8 @@ import { urLBase } from '../api/index.js';
 import CaixadeSelecao from '../components/CaixadeSelecao.jsx';
 import { Form, Row, Col } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
+import baixar from "../imagens/baixar.png";
+import Tooltip from '@material-ui/core/Tooltip'; 
 
 export default function FormAdocao(props) {
     const location = useLocation();
@@ -390,7 +392,16 @@ export default function FormAdocao(props) {
                 <div className='alinhando_botao_adocao'>
                     <button type='button' className='botao_solicitar_adocao montserrat-bold-concrete-16px' >Voltar</button>
                     <button type="submit" className='botao_solicitar_adocao montserrat-bold-concrete-16px'>Solicitar Adoção</button>
-                </div> </Form>
+                </div> 
+                <a href='/manuais/manual_adocao.pdf' download="manual_adocao.pdf">
+                    <img
+                        className="vectorbaixar"
+                        src={baixar}
+                        alt="Baixar"
+                    />
+                    Manual do Usuário
+                </a>
+                </Form>
 
         </div >
     );
