@@ -1,19 +1,20 @@
 import { Cards, DotsThreeVertical } from "@phosphor-icons/react";
 import * as Popover from "@radix-ui/react-popover";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineMail, AiOutlinePhone, AiOutlineUser } from "react-icons/ai";
-import { SiMicrosoftoffice } from "react-icons/si";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidate } from "../../Telas/RegisterUser";
 import { editRegisterUser, getAllRegisterUsers } from "../../api";
 import { InputsForm } from "../../components/InputsForm";
+import { StoreContext } from "../../context";
+import baixar from "../../imagens/baixar.png";
 import vector_3 from "../../imagens/vector-3.svg";
 import { ObjectEmptyValue } from "../../util";
-import baixar from "../../imagens/baixar.png";
 
 export function FormEditUsuario(props) {
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const { formCadastroInput, setFormCadastroInput, setRegisterFormCadastro, setModal } = props;
   const [validado, setValidado] = useState(false);
 
@@ -97,11 +98,6 @@ export function FormEditUsuario(props) {
                     <Cards size={32} />
                     <span>Modal</span>
                   </button>
-
-                  <Link to="/adm/cadastro/cargo" className="button-popover-trigger" onClick={() => setModal(true)} >
-                    <SiMicrosoftoffice size={32} />
-                    <span>Cadastro de Cargos</span>
-                  </Link>
                 </Popover.Content>
               </Popover.Portal>
           </Popover.Root>
@@ -146,7 +142,7 @@ export function FormEditUsuario(props) {
     const register = { ...rest };
 
     if (ObjectEmptyValue(register)) {
-        const message = await editRegisterUser(register);
+        const message = await editRegisterUser(register, user.id, user.token);
         setValidado(false);
 
         toast.success(message, {
@@ -173,7 +169,7 @@ export function FormEditUsuario(props) {
       })
     }
 
-    setRegisterFormCadastro(await getAllRegisterUsers())
+    setRegisterFormCadastro(await getAllRegisterUsers(user.id, user.token))
     setTimeout(() => {
       setFormCadastroInput(inputsFormValidate);
     }, 6000);

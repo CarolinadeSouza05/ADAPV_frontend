@@ -1,20 +1,21 @@
 import { Cards, DotsThreeVertical } from "@phosphor-icons/react";
 import * as Popover from "@radix-ui/react-popover";
-import React, { useState } from "react";
+import { format } from "date-fns";
+import React, { useContext, useState } from "react";
 import { AiOutlineMail, AiOutlinePhone, AiOutlineUser } from "react-icons/ai";
-import { SiMicrosoftoffice } from "react-icons/si";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidate } from "../../Telas/RegisterUser";
 import { createRegisterUser, getAllRegisterUsers } from "../../api";
 import { InputsForm } from "../../components/InputsForm";
+import { StoreContext } from "../../context";
+import baixar from "../../imagens/baixar.png";
 import vector_3 from "../../imagens/vector-3.svg";
 import { ObjectEmptyValue } from "../../util";
-import { format } from "date-fns";
-import baixar from "../../imagens/baixar.png";
 
 export function FormCadastroUsuario(props) {
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const { formCadastroInput, setFormCadastroInput, setRegisterFormCadastro, setModal } = props;
   const [validado, setValidado] = useState(false);
 
@@ -98,11 +99,6 @@ export function FormCadastroUsuario(props) {
                     <Cards size={32} />
                     <span>Modal</span>
                   </button>
-
-                  <Link to="/adm/cadastro/cargo" className="button-popover-trigger" onClick={() => setModal(true)} >
-                    <SiMicrosoftoffice size={32} />
-                    <span>Cadastro de Cargos</span>
-                  </Link>
                 </Popover.Content>
               </Popover.Portal>
           </Popover.Root>
@@ -154,7 +150,7 @@ export function FormCadastroUsuario(props) {
     };
 
     if (ObjectEmptyValue(register)) {
-        const message = await createRegisterUser(register);
+        const message = await createRegisterUser(register, user.id, user.token);
         setValidado(false);
 
         toast.success(message.mensagem, {
@@ -181,7 +177,7 @@ export function FormCadastroUsuario(props) {
       })
     }
 
-    setRegisterFormCadastro(await getAllRegisterUsers());
+    setRegisterFormCadastro(await getAllRegisterUsers(user.id, user.token));
     setTimeout(() => {
       setFormCadastroInput(inputsFormValidate);
     }, 6000);

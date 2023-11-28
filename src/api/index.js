@@ -151,11 +151,12 @@ export async function deleteRegisterAccepToDo(register) {
 }
 
 // --------------------------------- Router User ---------------------------------
-export async function getAllRegisterUsers() {
-  let aux = await fetch(`${apiUser}`, {
+export async function getAllRegisterUsers(id, token) {
+  let aux = await fetch(`${apiUser}/security/${id}`, {
       method: "GET",
       headers: {
           "Content-Type": "application/json",
+          "token": token,
       },
   })
       .then((data) => data.json())
@@ -165,8 +166,8 @@ export async function getAllRegisterUsers() {
   return aux;
 }
 
-export async function createRegisterUser(register) {
-  const aux = await fetch(`${apiUser}`, {
+export async function createRegisterUser(register, id, token) {
+  const aux = await fetch(`${apiUser}/security/${id}`, {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
@@ -180,11 +181,12 @@ export async function createRegisterUser(register) {
   return aux;
 }
 
-export async function editRegisterUser(register) {
-  const aux = await fetch(`${apiUser}`, {
+export async function editRegisterUser(register, id, token) {
+  const aux = await fetch(`${apiUser}/security/${id}`, {
       method: "PUT",
       headers: {
           "Content-Type": "application/json",
+          "token": token,
       },
       body: JSON.stringify(register),
   })
@@ -194,11 +196,12 @@ export async function editRegisterUser(register) {
   return aux;
 }
 
-export async function deleteRegisterUser(register) {
-  let aux = await fetch(`${apiUser}`, {
+export async function deleteRegisterUser(register, id, token) {
+  let aux = await fetch(`${apiUser}/security/${id}`, {
       method: "DELETE",
       headers: {
           "Content-Type": "application/json",
+          "token": token
       },
       body: JSON.stringify(register),
   })

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { deleteRegisterUser, getAllRegisterUsers } from "../api";
 import { Aside } from "../components/Aside";
@@ -8,6 +8,7 @@ import { FormCadastroUsuario } from "../formularios/FormCadastroUsuario";
 import { FormEditUsuario } from "../formularios/FormCadastroUsuario/FormEditUsuario";
 import { AsideAdm } from "./Adm/AsideAdm";
 import './RegisterUser.css';
+import { StoreContext } from "../context";
 
 export const inputsFormValidate = {
   id: 0,
@@ -19,6 +20,8 @@ export const inputsFormValidate = {
 }
 
 export function RegisterUser() {
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const [formCadastroInput, setFormCadastroInput] = useState(inputsFormValidate);
   const [registerFormCadastro, setRegisterFormCadastro] = useState([]);
   const [modal, setModal] = useState(false);
@@ -27,9 +30,15 @@ export function RegisterUser() {
     "Nome",
     "Email",
     "Telefone",
-    "Senha",
-    "Cargo"
+    "Cargo",
+    "Data Criado"
   ];
+
+  useEffect(() => {
+    (async () => {
+      setRegisterFormCadastro(await getAllRegisterUsers(user.id, user.token))
+    })()
+  }, [])
   
   return (
     <>
@@ -92,8 +101,8 @@ export function RegisterUser() {
   async function deleteRegister(id) {
     if (window.confirm("Tem certeza de que deseja excluir o usuário?")) {
       const aux = registerFormCadastro.filter((user) => user.id === id);
-      const message = await deleteRegisterUser(aux);
-      setRegisterFormCadastro(await getAllRegisterUsers());
+      const message = await deleteRegisterUser(aux, user.id, user.token);
+      setRegisterFormCadastro(await getAllRegisterUsers(user.id, user.token));
       toast.success(message && "Voluntário Deletado com sucesso", {
         position: "bottom-left",
         autoClose: 5000,

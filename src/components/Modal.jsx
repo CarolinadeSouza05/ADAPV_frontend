@@ -1,6 +1,7 @@
 import { MagnifyingGlass, Pencil, Trash, X } from "@phosphor-icons/react";
 import { useState } from "react";
 import './Modal.css';
+import { format, isValid } from "date-fns";
 
 export function Modal(props) {
   const { title, tableHead, registerAll, editRegister, deleteRegister, setModal } = props;
@@ -43,7 +44,7 @@ export function Modal(props) {
               registerAll.filter((register) => Object.values(register.nome).join("").toLowerCase().includes(search.toLowerCase()))
                 .map((registerInput, index) => {
                   const register = [];
-                  Object.values(registerInput).forEach((values, index) => {
+                  Object.values(registerInput).forEach((values) => {
                     if (values !== registerInput.senha) {
                       return register.push(values);
                     }
@@ -51,7 +52,7 @@ export function Modal(props) {
 
                   return (
                     <tr key={index}>
-                      {Object.values(registerInput).map((input) => (
+                      {Object.values(register).map((input) => (
                         <>
                           {typeof input === 'object' ? (
                             <div className="td-maps horizontal-divide">
@@ -60,7 +61,7 @@ export function Modal(props) {
                               ))}
                             </div>
                             ) : (
-                              <td>{input}</td>
+                              <td>{isValid(input) ? format(new Date(input), 'dd/MM/yyyy') : input}</td>
                           )}
                         </>
                         ))}

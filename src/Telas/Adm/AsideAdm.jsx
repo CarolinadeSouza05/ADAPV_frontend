@@ -27,7 +27,8 @@ export function AsideAdm(){
     ];
 
     const cardsBulletin = [
-        { id: 1, name: "Relatório Geral de Cadastro", icon: GiArchiveRegister, path: "/adm/relatorio/geral" }
+        { id: 1, name: "Relatório Geral de Cadastro", icon: GiArchiveRegister, path: "/adm/relatorio/geral" },
+        { id: 1, name: "Relatório Geral de Cadastro", icon: GiArchiveRegister, path: "/adm/relatorio/geral" },
     ]
 
     return(
@@ -46,7 +47,7 @@ export function AsideAdm(){
                         <li className="list-menu menu-registers">
                             <BsPeopleFill size={26} />
 
-                            <ul className="container-list-menu-ul registers">
+                            <ul className="container-list-menu-ul registers" style={{ marginTop: `150%` }}>
                                 {cardsRegister.sort((card1, card2) => card1.name.localeCompare(card2.name)).map((card) => (
                                     <>
                                         <Link key={card.id} to={card.path}>
@@ -61,7 +62,7 @@ export function AsideAdm(){
                         <li className="list-menu menu-bulletin">
                             <TbReportSearch size={26} />
 
-                            <ul className="container-list-menu-ul bulletins">
+                            <ul className="container-list-menu-ul bulletins" style={{ marginTop: `${10 * cardsBulletin.length}%` }}>
                                 {cardsBulletin.sort((card1, card2) => card1.name.localeCompare(card2.name)).map((card) => (
                                     <>
                                         <Link key={card.id} to={card.path}>
