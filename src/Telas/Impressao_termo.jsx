@@ -21,7 +21,7 @@ export function ImpressaoTermo({ adocao, onClose }) {
                         Termo de adoção <span className="span1">e Responsabilidade</span>
                     </></div>
 
-                <p><br /></p>
+                <p></p>
                 <p>DADOS DO ADOTANTE:</p>
                 <p><ul>
                     <li>Nome do adotante: <b>{adocao.adotante}</b></li>

@@ -21,7 +21,7 @@ export function AsideAdm(){
         { id: 4, name: "Cadastro de Produtos", icon: FaBoxOpen, path: "/adm/cadastro/produto" },
         { id: 5, name: "Cadastro de Categoria", icon: MdCategory, path: "/adm/cadastro/categoria" },
         { id: 6, name: "Cadastro de Animais", icon: MdOutlinePets, path: "/adm/cadastro/animal" },
-        { id: 7, name: "Adoções", icon: FaHands, path: "/adm/cadastro/adocao" },
+        { id: 7, name: "Autorizar Adoções", icon: FaHands, path: "/adm/autorizar-adocao" },
         { id: 8, name: "Designar Atividades", icon: AiOutlineDeliveredProcedure, path: "/adm/cadastro/designar-voluntario" },
         { id: 9, name: "Agendamento", icon: TfiAgenda, path: "/adm/cadastro/agendamento" },
     ];
