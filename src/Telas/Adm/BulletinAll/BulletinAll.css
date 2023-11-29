@@ -14,9 +14,49 @@
 
 .header-adm-bulletin{
     border-bottom: 1px solid #333;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding-bottom: 8px;
     width: 100%;
+}
+
+.header-bulletin-help{
+    align-items: flex-end;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.header-bulletin-help svg{
+    cursor: pointer;
+    height: 1.3rem;
+    width: 1.3rem;
+}
+
+.header-bulletin-help .text-bulletin-help{
+    background-color: #fff;
+    border-radius: 8px;
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: -50%;
+    padding: 2px 16px;
+    width: auto;
+}
+
+.header-adm-bulletin .text-bulletin-help::after{
+    content: "";
+    border-color: #fff transparent transparent transparent;
+    border-style: solid;
+    border-width: .5rem;
+    bottom: -50%;
+    left: 49%;
+    position: absolute;
+}
+
+.header-adm-bulletin svg:hover + .text-bulletin-help{
+    display: block;
 }
 
 #filter{
