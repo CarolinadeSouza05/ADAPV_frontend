@@ -171,6 +171,7 @@ export async function createRegisterUser(register, id, token) {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
+          "token": token,
       },
       body: JSON.stringify(register),
   })
