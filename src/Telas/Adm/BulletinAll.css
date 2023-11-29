@@ -79,6 +79,7 @@
 }
 
 .container-filter .filter{
+    overflow-y: auto;
     background-color: #fff;
     display: flex;
     flex-direction: column;
