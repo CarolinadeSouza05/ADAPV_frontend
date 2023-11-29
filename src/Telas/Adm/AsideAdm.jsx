@@ -27,8 +27,7 @@ export function AsideAdm(){
     ];
 
     const cardsBulletin = [
-        { id: 1, name: "Relatório Geral de Cadastro", icon: GiArchiveRegister, path: "/adm/relatorio/geral" },
-        { id: 1, name: "Relatório Geral de Cadastro", icon: GiArchiveRegister, path: "/adm/relatorio/geral" },
+        { id: 1, name: "Relatório Geral de Cadastro", icon: GiArchiveRegister, path: "/adm/relatorio/geral" }
     ]
 
     return(

@@ -50,9 +50,9 @@ export function BulletinAll() {
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Data do Ultimo Cadastrado</th>
-                                <th>Nome do Ultimo Cadastro</th>
-                                <th>Quantidade de Cadastro no Intervalo de Tempo</th>
+                                <th>Data do último cadastro</th>
+                                <th>Nome do último cadastro</th>
+                                <th>Quantidade de cadastros no intervalo de tempo</th>
                                 <th>Cadastros</th>
                             </tr>
                         </thead>
