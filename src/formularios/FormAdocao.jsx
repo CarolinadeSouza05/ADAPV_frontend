@@ -27,6 +27,26 @@ export default function FormAdocao(props) {
         concordo: false,
         status: false,
     })
+
+//Mascara celular
+  function maskCel(event) {
+    var celular = event.target.value;
+    celular = celular.replace(/\D/g, ""); // Remove todos os caracteres que não são dígitos
+    celular = celular.replace(/^(\d{2})(\d)/g, "($1) $2"); // Insere o parênteses e o espaço após os dois primeiros dígitos
+    celular = celular.replace(/(\d{5})(\d)/, "$1-$2"); // Insere o hífen após os primeiros cinco dígitos
+    event.target.value = celular;
+  }
+
+  //Mascara CPF
+  function maskCPF(event) {
+    var cpf = event.target.value;
+    cpf = cpf.replace(/\D/g, ""); // Remove todos os caracteres que não são dígitos
+    cpf = cpf.replace(/^(\d{3})(\d)/g, "$1.$2"); // Insere o ponto após os três primeiros dígitos
+    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); // Insere o ponto após os seis primeiros dígitos
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // Insere o hífen no final
+    event.target.value = cpf;
+  }
+  
     //Recebendo os Dados do banco de dados
     useEffect(() => {
         fetch(urLBase + "/animais", {
@@ -272,6 +292,8 @@ export default function FormAdocao(props) {
                             placeholder='(18)99999-9999'
                             className="flex-row-item_adocao"
                             value={adocao.celular}
+                            onInput={maskCel}
+                            maxLength={15}
                             onChange={manupilaAlteracao} />
                     </Form.Group>
                     <Form.Group as={Col} md={5}   >
@@ -282,6 +304,8 @@ export default function FormAdocao(props) {
                             id='cpf'
                             name='cpf'
                             placeholder='999.999.999-99'
+                            onInput={maskCPF}
+                            maxLength={14}
                             className="flex-row-item_adocao"
                             value={adocao.cpf}
                             onChange={manupilaAlteracao} />

@@ -55,7 +55,7 @@ export function Router(){
                 <Route path="/adm/cadastro/aceitafazer" element={<RegisterAcceptToDo />} />
                 <Route path="/adm/relatorio/geral" element={<BulletinAll />} />
                 <Route path="/impressao_termo" element={<ImpressaoTermo />} />
-                <Route path="/autorizar-adocao" element={<AutorizarAdocao />} />
+                <Route path="/adm/autorizar-adocao" element={<AutorizarAdocao />} />
             </Routes>
         </BrowserRouter>
     )

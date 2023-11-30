@@ -54,8 +54,10 @@ td{
   .faca_denuncia,
   .sobre-nos,
   .adote-um-pet,
-  .svg-menu-adm,
-  .footer.footer-aside-menu-main{
+  .aside-menu-main,
+  .footer-aside-menu-main,
+  .container-aside-adm,
+  svg{
     display: none;
   }
   .impressao_termo {
