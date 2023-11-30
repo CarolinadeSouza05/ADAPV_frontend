@@ -5,6 +5,7 @@ import { Footer } from "../components/Footer";
 import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 import { getAnimais, getAnimalsPagination } from "../api";
 import { Link } from "react-router-dom";
+import { FaFilter } from "react-icons/fa";
 
 export default function Pagpets() {
   const [animaisAll, setAnimalsAll] = useState([]);
@@ -103,7 +104,10 @@ export default function Pagpets() {
               </label>
             </div>
             <div>
-              <button className="botaoprimario7">Aplicar filtros</button>
+              <button className="botaoprimario7">
+                <FaFilter size={16} />
+                <span>Aplicar filtros</span>
+              </button>
             </div>
             <div className="botaosec">
               <button className="clearFiltersButton">Limpar filtros</button>

@@ -3,7 +3,7 @@
     background-color: #FAFAFA;
     display: flex;
     justify-content: space-between;
-    height: auto;
+    height: 8%;
     padding: 4px 4px 4px 24px;
     width: 100%;
 }
@@ -17,37 +17,4 @@
     font-size: 26px;
     font-weight: bold;
     margin: 0;
-}
-
-.dashboard-adm-header.menu{
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 16px;
-    width: 100%;
-}
-
-.dashboard-adm-header.menu-themes{
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-    width: auto;
-}
-
-.dashboard-adm-header.menu-themes svg{
-    cursor: pointer;
-}
-
-.dashboard-adm-header.profile{
-    background: url("/src/imagens/Rectangle1.png");
-    border-radius: 50%;
-    cursor: pointer;
-    height: 2rem;
-    width: 2rem;
-}
-
-.dashboard-adm-header .h1{
-    width: 100%;
 }

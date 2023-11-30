@@ -40,11 +40,20 @@ export function AsideAdm(){
                 <div className="aside-menu-main">
                     <ul className="container-list-menu">
                         <li className="list-menu">
-                            <BiSolidDashboard size={26} />
+                            <div className="list-menu-icon">
+                                <Link to="/adm">
+                                    <BiSolidDashboard size={26} />
+                                </Link>
+
+                                <span>Dashboard</span>
+                            </div>
                         </li>
                     
                         <li className="list-menu menu-registers">
-                            <BsPeopleFill size={26} />
+                            <div className="list-menu-icon">
+                                <BsPeopleFill size={26} />
+                                <span>Cadastros</span>
+                            </div>
 
                             <ul className="container-list-menu-ul registers" style={{ marginTop: `150%` }}>
                                 {cardsRegister.sort((card1, card2) => card1.name.localeCompare(card2.name)).map((card) => (
@@ -59,7 +68,10 @@ export function AsideAdm(){
                         </li>
 
                         <li className="list-menu menu-bulletin">
-                            <TbReportSearch size={26} />
+                            <div className="list-menu-icon">
+                                <TbReportSearch size={26} />
+                                <span>Relatórios</span>
+                            </div>
 
                             <ul className="container-list-menu-ul bulletins" style={{ marginTop: `${10 * cardsBulletin.length}%` }}>
                                 {cardsBulletin.sort((card1, card2) => card1.name.localeCompare(card2.name)).map((card) => (
@@ -76,9 +88,13 @@ export function AsideAdm(){
                 </div>
 
                 <footer className="footer-aside-menu-main">
-                    <Link to="/home">
-                        <RxExit size={26} />
-                    </Link>
+                    <div className="list-menu-icon">
+                        <Link to="/home">
+                            <RxExit size={26} />
+                        </Link>
+
+                        <span>Sair</span>
+                    </div>
                 </footer>
             </div>
         </aside>

@@ -45,7 +45,12 @@
         height: 100%;
         inset: 0;
         position: fixed;
+        transition: all .5s;
         width: 4%;
+    }
+
+    .container-aside-adm:hover{
+        width: 11%;
     }
 
     .container-aside-adm .aside-menu-header{
@@ -60,7 +65,7 @@
         align-items: center;
         display: flex;
         flex-direction: column;
-        height: 98%;
+        height: 100%;
         margin-bottom: auto;
     }
 
@@ -80,17 +85,45 @@
     }
     
     
-    .container-list-menu .list-menu{
+    .container-list-menu .list-menu, .footer-aside-menu-main .list-menu-icon{
         align-items: center;
         cursor: pointer;
         display: flex;
-        justify-content: center;
-        padding: 4px 0;
+        padding: 5px 16px;
+        overflow: hidden;
         width: 100%;
     }
 
-    .container-list-menu .list-menu:hover{
+    .container-list-menu .list-menu:hover, .footer-aside-menu-main .list-menu-icon:hover{
         background-color: #458ACE;
+    }
+
+    .list-menu:hover .list-menu-icon svg, .list-menu:hover .list-menu-icon span, 
+    .footer-aside-menu-main .list-menu-icon:hover svg, .footer-aside-menu-main .list-menu-icon:hover span{
+        color: #fff;
+    }
+
+    .list-menu .list-menu-icon, .footer-aside-menu-main .list-menu-icon{
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        justify-content: flex-start;
+    }
+
+    .list-menu-icon span{
+        display: block;
+        font-weight: 600;
+        opacity: 0;
+    }
+
+    .container-aside-adm:hover .list-menu-icon span {
+        display: block;
+        opacity: 1;
+    }
+
+    .list-menu a {
+        color: #000;
     }
 
     .container-list-menu-ul{
@@ -171,7 +204,8 @@
         align-items: flex-end;
         display: flex;
         height: 100%;
-        justify-content: center;
+        justify-content: flex-start;
+        padding: 12px 0;
         width: 100%;
     }
 }
