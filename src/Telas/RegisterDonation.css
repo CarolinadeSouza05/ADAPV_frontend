@@ -9,7 +9,7 @@
   .main-donation {
     display: grid;
     grid-template-columns: repeat(2, 50%);
-    height: calc(140vh - 108px) !important;
+    height: calc(145vh - 108px) !important;
   }
 }
 

@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+﻿import { useEffect, useState, useContext } from "react";
 // import Barradebusca from "../components/Barradebusca";
 import { urLBase } from "../api/index.js";
 import {Cabecalho} from '../components/Cabecalho.jsx'
@@ -9,7 +9,11 @@ import "./CadastroAdocao.css";
 import { Modal } from "react-bootstrap";
 import img_adocao from '../imagens/img_cad_adocao.png'
 import { Footer } from "../components/Footer.jsx";
+import { StoreContext } from "../context/index.jsx";
+
 export function CadastroAdocao(props) {
+    const useStore = useContext(StoreContext);
+    const { user } = useStore();
     const [adocao, setAdocao] = useState(props.adocao);
     const [exibirModal, setExibirModal] = useState(false);
     const [modoEdicao, setModoEdicao] = useState(false);
@@ -37,18 +41,23 @@ export function CadastroAdocao(props) {
 
     //Realiza a exclusão dos adocoes
     function apagarAdocao(adocao) {
-        fetch(urLBase + "/adocoes", {
+        fetch(`${urLBase}/security/adocoes/${user.id}`, {
             method: "DELETE",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "token": user.token,
             },
             body: JSON.stringify(adocao)
         }).then((resposta) => resposta.json()
         ).then((dados) => {
             window.alert(dados.mensagem);
             //Fazendo um novo Get para atualizar a tabela após exclusão
-            fetch(urLBase + "/adocoes", {
-                method: "GET"
+            fetch(`${urLBase}/security/adocoes/${user.id}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "token": user.token,
+                },
             }).then((resposta) => {
                 return resposta.json();
             }).then((dados) => {
@@ -67,8 +76,12 @@ export function CadastroAdocao(props) {
 
     //Recebendo os Dados do banco de dados
     useEffect(() => {
-        fetch(urLBase + "/adocoes", {
-            method: "GET"
+        fetch(`${urLBase}/security/adocoes/${user.id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "token": user.token,
+            },
         }).then((resposta) => {
             return resposta.json();
         }).then((dados) => {

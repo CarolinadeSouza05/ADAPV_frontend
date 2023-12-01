@@ -1,14 +1,16 @@
 ﻿import { Cards } from "@phosphor-icons/react";
-import React, { useEffect, useState } from "react";
-import { urLBase } from "../api/index";
+import { useState, useEffect, useContext } from "react";import { urLBase } from "../api/index";
 import { HeaderAdm } from "../components/HeaderAdm";
 import { Modal } from "../components/ModalDesignar";
 import FormDesignarTarefas from "../formularios/FormDesignarTarefas.jsx";
 import vetor3 from '../imagens/vector-3.svg';
 import { AsideAdm } from "./Adm/AsideAdm";
 import './CadastroDesignar.css';
+import { StoreContext } from "../context/index.jsx";
 
 export function CadastroDesignar() {
+    const useStore = useContext(StoreContext);
+    const { user } = useStore();
     // Estado para controlar o modal
     const [modal, setModal] = useState(false);
 
@@ -20,8 +22,12 @@ export function CadastroDesignar() {
 
     //Recebendo os Dados do banco de dados das atividades
     useEffect(() => {
-        fetch(urLBase + "/designar_atividades", {
-            method: "GET"
+        fetch(`${urLBase}/security/designar_atividades/${user.id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "token": user.token,
+            },
         }).then((resposta) => {
             return resposta.json();
         }).then((dados) => {
@@ -43,11 +49,12 @@ export function CadastroDesignar() {
     });
 
     function apagarTarefa(id_designar) {
-        fetch(urLBase + "/designar_atividades", {
+        fetch(`${urLBase}/security/designar_atividades/${user.id}`, {
           method: "DELETE",
           headers: {
-            "Content-Type": "application/json"
-          },
+            "Content-Type": "application/json",
+            "token": user.token,
+        },
           body: JSON.stringify({ id_designar })
         })
           .then((response) => {

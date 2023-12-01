@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useContext } from "react";
+﻿import { useState, useEffect, useContext} from "react";
 // import Barradebusca from "../components/Barradebusca";
 import { Cabecalho } from "../components/Cabecalho";
 import { urLBase } from "../api/index.js";
@@ -61,8 +61,12 @@ export function CadastroAgendamento(props) {
 
     //Recebendo os Dados do banco de dados
     useEffect(() => {
-        fetch(urLBase + "/agendamentos", {
-            method: "GET"
+        fetch(`${urLBase}/security/agendamentos/${user.id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "token": user.token,
+            },
         }).then((resposta) => {
             return resposta.json();
         }).then((dados) => {

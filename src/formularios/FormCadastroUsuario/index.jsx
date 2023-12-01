@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import React, { useContext, useState } from "react";
 import { AiOutlineMail, AiOutlinePhone, AiOutlineUser } from "react-icons/ai";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { inputsFormValidate } from "../../Telas/RegisterUser";
 import { createRegisterUser, getAllRegisterUsers } from "../../api";
 import { InputsForm } from "../../components/InputsForm";
@@ -16,9 +16,13 @@ import { ObjectEmptyValue } from "../../util";
 export function FormCadastroUsuario(props) {
   const useStore = useContext(StoreContext);
   const { user } = useStore();
-  const { formCadastroInput, setFormCadastroInput, setRegisterFormCadastro, setModal } = props;
+  const {
+    formCadastroInput,
+    setFormCadastroInput,
+    setRegisterFormCadastro,
+    setModal,
+  } = props;
   const [validado, setValidado] = useState(false);
-
 
   function maskCel(event) {
     var celular = event.target.value;
@@ -71,11 +75,10 @@ export function FormCadastroUsuario(props) {
       required: true,
       minLength: 3,
     },
-  ]
+  ];
 
   return (
     <>
-    
       <div className="form-cadastro flex-col">
         <div className="form-cadastro-header">
           <div className="titulo_usuarios">
@@ -85,22 +88,27 @@ export function FormCadastroUsuario(props) {
                 src={vector_3}
                 alt="Vector"
               />
-              <span className="span0">Cadastro</span>{" "}<span className="span1">de Usuários</span></div>
+              <span className="span0">Cadastro</span>{" "}
+              <span className="span1">de Usuários</span>
             </div>
+          </div>
 
-            <Popover.Root>
-              <Popover.Trigger className="popover-trigger">
-                  <DotsThreeVertical size={32} />
-              </Popover.Trigger>
+          <Popover.Root>
+            <Popover.Trigger className="popover-trigger">
+              <DotsThreeVertical size={32} />
+            </Popover.Trigger>
 
-              <Popover.Portal>
-                <Popover.Content className="popover-content">
-                  <button className="button-popover-trigger" onClick={() => setModal(true)} >
-                    <Cards size={32} />
-                    <span>Modal</span>
-                  </button>
-                </Popover.Content>
-              </Popover.Portal>
+            <Popover.Portal>
+              <Popover.Content className="popover-content">
+                <button
+                  className="button-popover-trigger"
+                  onClick={() => setModal(true)}
+                >
+                  <Cards size={32} />
+                  <span>Modal</span>
+                </button>
+              </Popover.Content>
+            </Popover.Portal>
           </Popover.Root>
         </div>
 
@@ -108,7 +116,11 @@ export function FormCadastroUsuario(props) {
           {inputForm.map((input, index) => (
             <div className="form-input flex-col" key={index}>
               <label htmlFor={input.name}>{input.placeholder}</label>
-              <div className={`alinhamento input-container ${validado && !input.value ? "input-invalid" : ""}`}>
+              <div
+                className={`alinhamento input-container ${
+                  validado && !input.value ? "input-invalid" : ""
+                }`}
+              >
                 {input.icon && <input.icon size={32} />}
                 <InputsForm
                   key={index}
@@ -124,12 +136,8 @@ export function FormCadastroUsuario(props) {
           <div className="container-button alinhamento">
             <button type="submit">Cadastrar</button>
           </div>
-          <a href='/manuais/manual_usuario.pdf' download="manual_usuario.pdf">
-            <img
-              className="vectorbaixar"
-              src={baixar}
-              alt="Baixar"
-            />
+          <a href="/manuais/manual_usuario.pdf" download="manual_usuario.pdf">
+            <img className="vectorbaixar" src={baixar} alt="Baixar" />
             Manual do Usuário
           </a>
         </form>
@@ -141,31 +149,19 @@ export function FormCadastroUsuario(props) {
     e.preventDefault();
     const dataAux = new Date();
     const formatData = format(dataAux, "yyyy-MM-dd");
-    
+
     const { ...rest } = formCadastroInput;
     const register = {
       role: "USER",
       data: formatData,
-      ...rest 
+      ...rest,
     };
 
     if (ObjectEmptyValue(register)) {
-        const message = await createRegisterUser(register, user.id, user.token);
-        setValidado(false);
+      const message = await createRegisterUser(register, user.id, user.token);
+      setValidado(false);
 
-        toast.success(message.mensagem, {
-            position: "bottom-left",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        })
-    }
-    else {
-      toast.error('Verifique se todos os campos estão preenchidos corretamente', {
+      toast.success(message.mensagem, {
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
@@ -174,7 +170,21 @@ export function FormCadastroUsuario(props) {
         draggable: true,
         progress: undefined,
         theme: "light",
-      })
+      });
+    } else {
+      toast.error(
+        "Verifique se todos os campos estão preenchidos corretamente",
+        {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
     }
 
     setRegisterFormCadastro(await getAllRegisterUsers(user.id, user.token));
