@@ -208,4 +208,15 @@
         padding: 12px 0;
         width: 100%;
     }
+
+    .footer-aside-menu-main .list-menu-icon a{
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .footer-aside-menu-main .list-menu-icon a span{
+        color: #000;
+    }
 }

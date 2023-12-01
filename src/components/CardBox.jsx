@@ -1,17 +1,26 @@
 import "./CardBox.css";
-import { FaRegMoneyBill1 } from "react-icons/fa6";
 
-export function CardBox(){
+export function CardBox({ numberMoney, iconCard, textBodyCard, colorPrinc = "#fff", arrowIndication, porcentMonth, colorInfosMonth }){
     return(
-        <div className="container-cardbox">
+        <div className="container-cardbox" style={{ backgroundColor: colorPrinc }}>
             <header className="header-cardbox">
-                <FaRegMoneyBill1 size={28} />
+                {iconCard}
+
+                    <div className="header-candbox-info-month">
+                        {arrowIndication && (
+                            <>
+                                {arrowIndication}
+
+                                <p><span style={{ color: `${colorInfosMonth}` }}>{porcentMonth}</span> nos ultimos 30 dias</p>
+                            </>
+                        )}
+                    </div>
             </header>
 
-            <section className="body-cardbox">
-                <h3>R$4, 678.67</h3>
+            <section className="body-cardbox" style={{ color: colorPrinc === "#fff" && "#000" }}>
+                <h3>R$ {numberMoney}</h3>
 
-                <span>Rendimento Geral</span>
+                <span>{textBodyCard}</span>
             </section>
         </div>
     )

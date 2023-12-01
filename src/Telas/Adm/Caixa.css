@@ -11,8 +11,12 @@
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: .4rem;
     width: auto;
+}
+
+.caixa-header h2{
+    margin: 0;
 }
 
 .caixa-header p{
@@ -33,4 +37,39 @@
     justify-content: space-between;
     height: auto;
     width: 100%;
+}
+
+.container-caixa-main .group-buttons-box{
+    align-items: center;
+    display: flex;
+}
+
+.group-buttons-box button{
+    border: 1px solid #D8DEE4;
+    padding: 8px 16px;
+}
+
+.group-buttons-box button:first-child{
+    background-color: #F6F8FA;
+    border-radius: 8px 0 0 8px;
+}
+
+.group-buttons-box button:last-child{
+    border-radius: 0 8px 8px 0;
+}
+
+.container-caixa-main table{
+    margin-top: 0;
+}
+
+.container-caixa-main table thead tr th{
+    color: #fff;
+}
+
+.container-caixa-main table thead tr th svg{
+    margin-right: 6px;
+}
+
+.container-caixa-main table tbody tr td{
+    border: 1px solid #cacaca;
 }

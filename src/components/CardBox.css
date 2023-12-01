@@ -1,6 +1,7 @@
 .container-cardbox{
     background-color: var(--pelorous);
     border-radius: 8px;
+    box-shadow: 4px 4px 4px #00000025;
     color: #fff;
     height: 160px;
     gap: 18px;
@@ -8,6 +9,31 @@
     max-width: 340px;
     padding: 16px;
     width: 310px;
+}
+
+.container-cardbox .header-cardbox, .header-cardbox .header-candbox-info-month{
+    align-items: center;
+    display: flex;
+}
+
+.container-cardbox .header-cardbox{
+    justify-content: space-between;
+}
+
+.header-candbox-info-month svg{
+    height: 26px;
+    width: 26px;
+    transform: rotate(40deg);
+}
+
+.header-candbox-info-month p{
+    color: #000;
+    font-size: 14px;
+}
+
+.header-cardbox .header-candbox-info-month{
+    flex-direction: row;
+    gap: 6px;
 }
 
 .container-cardbox .body-cardbox, .container-cardbox{

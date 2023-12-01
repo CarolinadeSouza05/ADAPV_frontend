@@ -85,12 +85,12 @@ export function AsideAdm(){
                 </div>
 
                 <footer className="footer-aside-menu-main">
-                        <Link to="/home" className="list-menu-icon">
+                    <li className="list-menu-icon">
+                        <Link to="/home">
                             <RxExit size={26} />
-
                             <span>Sair</span>
                         </Link>
-
+                    </li>
                 </footer>
             </div>
         </aside>

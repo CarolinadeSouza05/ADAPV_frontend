@@ -5,10 +5,12 @@ import { InputsForm } from "../components/InputsForm";
 import { StoreContext } from "../context";
 import vector3 from "../imagens/vector-3.svg";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export function FormLogin({ formInput, setFormInput }) {
   const useStore = useContext(StoreContext);
   const { setUser } = useStore();
+  const navigate = useNavigate();
 
   const inputsForm = [
     {
@@ -88,36 +90,21 @@ export function FormLogin({ formInput, setFormInput }) {
 
   async function submitForm(e) {
     e.preventDefault();
+    const registerInfo = await getRegisterEmailPassword({ email: formInput.email, senha: formInput.password });
 
     if(ObjectEmptyValue(formInput)){
-      const registerInfo = await getRegisterEmailPassword({ email: formInput.email, senha: formInput.password });
       setUser(registerInfo.message.user === undefined ? {} : {
         id: registerInfo.message.user.id,
         role: registerInfo.message.user.role,
         token: registerInfo.message.token,
       });
-      toast.success("Login realizado!", {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+
+      setTimeout(() => {
+        navigate("/adm")
+      }, 5000);
     }
-    else
-      toast.error("Preencha os campos vazios!", {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+
+    toastMessageLogin(registerInfo);
   }
 
   function ObjectEmptyValue(array) {
@@ -125,5 +112,23 @@ export function FormLogin({ formInput, setFormInput }) {
       if (array.hasOwnProperty(chave) && array[chave] === "") return false;
     }
     return true;
+  }
+
+  function toastMessageLogin(messageRegister) {
+    const toastMessage = {
+      message: messageRegister?.status ? "Login feito com sucesso, Você será redirecionado!" : messageRegister?.data?.message !== undefined ? messageRegister?.response?.data : "Erro ao fazer login",
+      status: messageRegister?.status ? "success" : "error",
+    };
+
+    toast[toastMessage.status](toastMessage.message, {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 }
