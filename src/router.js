@@ -22,6 +22,7 @@ import { StoreContext } from './context'
 import { BulletinAll } from './Telas/Adm/BulletinAll'
 import {AutorizarAdocao} from './Telas/AutorizarAdocao'
 import { ImpressaoTermo } from './Telas/Impressao_termo'
+import { Caixa } from './Telas/Adm/Caixa'
 
 export function Router(){
     const useStore = useContext(StoreContext);
@@ -56,6 +57,7 @@ export function Router(){
                 <Route path="/adm/relatorio/geral" element={<BulletinAll />} />
                 <Route path="/impressao_termo" element={<ImpressaoTermo />} />
                 <Route path="/adm/autorizar-adocao" element={<AutorizarAdocao />} />
+                <Route path="/adm/caixa" element={<Caixa />} />
             </Routes>
         </BrowserRouter>
     )

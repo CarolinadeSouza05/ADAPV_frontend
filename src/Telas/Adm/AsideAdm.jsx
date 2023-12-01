@@ -40,13 +40,10 @@ export function AsideAdm(){
                 <div className="aside-menu-main">
                     <ul className="container-list-menu">
                         <li className="list-menu">
-                            <div className="list-menu-icon">
-                                <Link to="/adm">
+                                <Link to="/adm" className="list-menu-icon">
                                     <BiSolidDashboard size={26} />
+                                    <span>Dashboard</span>
                                 </Link>
-
-                                <span>Dashboard</span>
-                            </div>
                         </li>
                     
                         <li className="list-menu menu-registers">
@@ -88,13 +85,12 @@ export function AsideAdm(){
                 </div>
 
                 <footer className="footer-aside-menu-main">
-                    <div className="list-menu-icon">
-                        <Link to="/home">
+                        <Link to="/home" className="list-menu-icon">
                             <RxExit size={26} />
+
+                            <span>Sair</span>
                         </Link>
 
-                        <span>Sair</span>
-                    </div>
                 </footer>
             </div>
         </aside>

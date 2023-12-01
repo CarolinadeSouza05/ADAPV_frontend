@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+﻿import { useState, useEffect, useContext } from "react";
 // import Barradebusca from "../components/Barradebusca";
 import { Cabecalho } from "../components/Cabecalho";
 import { urLBase } from "../api/index.js";
@@ -9,8 +9,11 @@ import vetor3 from "../imagens/vector-3.svg"
 import { TabelaAgenda } from "../components/TabelaAgenda";
 import { AsideAdm } from "./Adm/AsideAdm";
 import { HeaderAdm } from "../components/HeaderAdm";
+import { StoreContext } from "../context/index.jsx";
 
 export function CadastroAgendamento(props) {
+    const useStore = useContext(StoreContext);
+    const { user } = useStore();
     const [agendamento, setAgendamento] = useState(props.agendamento);
     const [modoEdicao, setModoEdicao] = useState(false);
     // const [atualizando, setAtualizando] = useState(false);
@@ -30,10 +33,11 @@ export function CadastroAgendamento(props) {
 
     //Realiza a exclusão dos agendamentos
     function apagarAgendamento(agendamento) {
-        fetch(urLBase + "/agendamentos", {
+        fetch(`${urLBase}/security/agendamentos/${user.id}`, {
             method: "DELETE",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "token": user.token,
             },
             body: JSON.stringify(agendamento)
         }).then((resposta) => resposta.json()

@@ -1,0 +1,28 @@
+.container-cardbox{
+    background-color: var(--pelorous);
+    border-radius: 8px;
+    color: #fff;
+    height: 160px;
+    gap: 18px;
+    max-height: 200px;
+    max-width: 340px;
+    padding: 16px;
+    width: 310px;
+}
+
+.container-cardbox .body-cardbox, .container-cardbox{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-cardbox .body-cardbox{
+    gap: 4px;
+}
+
+.container-cardbox .body-cardbox h3{
+    font-size: 32px;
+}
+
+.container-cardbox .body-cardbox span{
+    opacity: 0.6;
+}
