@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { urLBase } from '../api/index.js';
 import { Form, Row, Col } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
+import baixar from "../imagens/baixar.png";
+import Tooltip from '@material-ui/core/Tooltip'; 
 
 export default function FormAdocao(props) {
     const location = useLocation();
@@ -218,241 +220,318 @@ export default function FormAdocao(props) {
     return (
         <div>
             <Form className='form-adocao' onSubmit={gravarAdocao}>
-
-                <Form.Group className="mb-3" >
-                    <Form.Control
-                        hidden
-                        type="text"
-                        id='codAdocao'
-                        name='codAdocao'
-                        value={adocao.codAdocao}
-                        onChange={manupilaAlteracao} /></Form.Group>
-
-                <Row>
-
-                    <Row className='alinhando_dados_animal'>
-                        <Form.Group as={Col} md='2' >
+                
+                <Tooltip title="Código da adoção (oculto)" placement="top">
+                    
+                        <Form.Group className="mb-3">
                             <Form.Control
-                                type={'text'}
-                                name={'especie'}
-                                placeholder={'Espécie'}
-                                // value={animalSelecionado.especie}
-                                value={animalSelecionado ? animalSelecionado.especie : ''}
-                                className="flex-row-item_adocao"
-                                disabled={true}
-
-                            /></Form.Group>
-
-                        <Form.Group as={Col} md='2' >
-                            <Form.Control
-                                type={'text'}
-                                name={'nome'}
-                                placeholder={'Nome'}
-                                className="flex-row-item_adocao"
-                                value={animalSelecionado ? animalSelecionado.nome : ''}
-                                // value={animalSelecionado.nome}
-                                disabled={true}
-
-                            /></Form.Group>
-
-                        <Form.Group as={Col} md='2' >
-                            <Form.Control
-                                type={'text'}
-                                name={'genero'}
-                                placeholder={'Gênero'}
-                                // value={animalSelecionado.genero}
-                                value={animalSelecionado ? animalSelecionado.genero : ''}
-                                className="flex-row-item_adocao"
-                                disabled={true}
-
-                            /></Form.Group>
-
-                        <Form.Group as={Col} md='2' >
-                            <Form.Control
-                                type={'text'}
-                                name={'porte'}
-                                placeholder={'Porte'}
-                                // value={animalSelecionado.porte}
-                                value={animalSelecionado ? animalSelecionado.porte : ''}
-                                className="flex-row-item_adocao"
-                                disabled={true}
-
-                            /></Form.Group>
-                        <Form.Group as={Col} md='2'>
-                            {animalSelecionado && animalSelecionado.foto && (
-                                <img
-                                    src={`data:image;base64,${animalSelecionado.foto}`}
-                                    alt={animalSelecionado.nome}
-                                    className="imagem-animal"
-                                />
-                            )}
+                                hidden
+                                type="text"
+                                id='codAdocao'
+                                name='codAdocao'
+                                value={adocao.codAdocao}
+                                onChange={manupilaAlteracao} />
                         </Form.Group>
+        
+                </Tooltip>
 
+                <Row className='alinhando_dados_animal'>
 
-                    </Row>
-                    <Form.Group as={Col} md={10}  >
-                        {/* <Form.Label>Adotante</Form.Label> */}
-                        <Form.Control
-                            required
-                            type="text"
-                            id='adotante'
-                            name='adotante'
-                            placeholder='Nome do Adotante'
-                            className="flex-row-item_adocao"
-                            value={adocao.adotante}
-                            onChange={manupilaAlteracao} />
-                    </Form.Group></Row>
-                <Row>
-                    <Form.Group as={Col} md={5}   >
-                        {/* <Form.Label>Adotante</Form.Label> */}
-                        <Form.Control
-                            required
-                            type="text"
-                            id='celular'
-                            name='celular'
-                            placeholder='(18)99999-9999'
-                            maxLength={15}
-                            className="flex-row-item_adocao"
-                            onInput={maskCel}
-                            value={adocao.celular}
-                            onChange={manupilaAlteracao} />
-                    </Form.Group>
-                    <Form.Group as={Col} md={5}   >
-                        {/* <Form.Label>Adotante</Form.Label> */}
-                        <Form.Control
-                            required
-                            type="text"
-                            id='cpf'
-                            name='cpf'
-                            placeholder='999.999.999-99'
-                            maxLength={14}
-                            onInput={maskCPF}
-                            className="flex-row-item_adocao"
-                            value={adocao.cpf}
-                            onChange={manupilaAlteracao} />
-                    </Form.Group>
+                    <Tooltip title="Espécie do animal" placement="top">
+                        
+                            <Form.Group as={Col} md='2'>
+                                <Form.Control
+                                    type={'text'}
+                                    name={'especie'}
+                                    placeholder={'Espécie'}
+                                    value={animalSelecionado.especie}
+                                    className="flex-row-item_adocao"
+                                    disabled={true}
+                                />
+                            </Form.Group>
+            
+                    </Tooltip>
+
+                    <Tooltip title="Nome do animal" placement="top">
+                        
+                            <Form.Group as={Col} md='2'>
+                                <Form.Control
+                                    type={'text'}
+                                    name={'nome'}
+                                    placeholder={'Nome'}
+                                    className="flex-row-item_adocao"
+                                    value={animalSelecionado.nome}
+                                    disabled={true}
+                                />
+                            </Form.Group>
+            
+                    </Tooltip>
+
+                    <Tooltip title="Gênero do animal" placement="top">
+                        
+                            <Form.Group as={Col} md='2'>
+                                <Form.Control
+                                    type={'text'}
+                                    name={'genero'}
+                                    placeholder={'Gênero'}
+                                    value={animalSelecionado.genero}
+                                    className="flex-row-item_adocao"
+                                    disabled={true}
+                                />
+                            </Form.Group>
+            
+                    </Tooltip>
+
+                    <Tooltip title="Porte do animal" placement="top">
+                        
+                            <Form.Group as={Col} md='2'>
+                                <Form.Control
+                                    type={'text'}
+                                    name={'porte'}
+                                    placeholder={'Porte'}
+                                    value={animalSelecionado.porte}
+                                    className="flex-row-item_adocao"
+                                    disabled={true}
+                                />
+                            </Form.Group>
+            
+                    </Tooltip>
+
+                    {/* Imagem do animal não necessita de tooltip pois não é um campo interativo */}
+                    
+                        <Form.Group as={Col} md='2'>
+                            <img
+                                src={`data:image;base64,${animalSelecionado.foto}`}
+                                alt={animalSelecionado.nome}
+                                className="imagem-animal"
+                            />
+                        </Form.Group>
+        
+
                 </Row>
-                <Form.Group as={Col} md={10}  >
-                    {/* <Form.Label>Adotante</Form.Label> */}
-                    <Form.Control
-                        required
-                        type="text"
-                        id='email'
-                        name='email'
-                        placeholder='adapv@gmail.com'
-                        className="flex-row-item_adocao"
-                        value={adocao.email}
-                        onChange={manupilaAlteracao} />
-                </Form.Group>
+
+                <Tooltip title="Nome do adotante" placement="top">
+                    
+                        <Form.Group as={Col} md={10}>
+                            <Form.Control
+                                required
+                                type="text"
+                                id='adotante'
+                                name='adotante'
+                                placeholder='Nome do Adotante'
+                                className="flex-row-item_adocao"
+                                value={adocao.adotante}
+                                onChange={manupilaAlteracao}
+                            />
+                        </Form.Group>
+        
+                </Tooltip>
+
                 <Row>
-                    <Form.Group as={Col} md={5}   >
-                        {/* <Form.Label>Adotante</Form.Label> */}
-                        <Form.Control
-                            required
-                            type="text"
-                            id='rua'
-                            name='rua'
-                            placeholder='Rua'
-                            className="flex-row-item_adocao"
-                            value={adocao.rua}
-                            onChange={manupilaAlteracao} />
-                    </Form.Group>
-                    <Form.Group as={Col} md={5}  >
-                        {/* <Form.Label>Adotante</Form.Label> */}
-                        <Form.Control
-                            required
-                            type="text"
-                            id='numero'
-                            name='numero'
-                            placeholder='Nº'
-                            className="flex-row-item_adocao"
-                            value={adocao.numero}
-                            onChange={manupilaAlteracao} />
-                    </Form.Group></Row>
+
+                    <Tooltip title="Número de celular do adotante" placement="top">
+                        
+                            <Form.Group as={Col} md={5}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    id='celular'
+                                    name='celular'
+                                    placeholder='(XX) XXXXX-XXXX'
+                                    className="flex-row-item_adocao"
+                                    value={adocao.celular}
+                                    onChange={manupilaAlteracao}
+                                />
+                            </Form.Group>
+            
+                    </Tooltip>
+
+                    <Tooltip title="CPF do adotante" placement="top">
+                        
+                            <Form.Group as={Col} md={5}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    id='cpf'
+                                    name='cpf'
+                                    placeholder='XXX.XXX.XXX-XX'
+                                    className="flex-row-item_adocao"
+                                    value={adocao.cpf}
+                                    onChange={manupilaAlteracao}
+                                />
+                            </Form.Group>
+            
+                    </Tooltip>
+
+                </Row>
+
+
+                <Tooltip title="E-mail do adotante" placement="top">
+                    
+                        <Form.Group as={Col} md={10}>
+                            <Form.Control
+                                required
+                                type="text"
+                                id='email'
+                                name='email'
+                                placeholder='exemplo@gmail.com'
+                                className="flex-row-item_adocao"
+                                value={adocao.email}
+                                onChange={manupilaAlteracao}
+                            />
+                        </Form.Group>
+        
+                </Tooltip>
+
                 <Row>
-                    <Form.Group as={Col} md={5}   >
-                        {/* <Form.Label>Adotante</Form.Label> */}
-                        <Form.Control
-                            required
-                            type="text"
-                            id='bairro'
-                            name='bairro'
-                            placeholder='Bairro'
-                            className="flex-row-item_adocao"
-                            value={adocao.bairro}
-                            onChange={manupilaAlteracao} />
-                    </Form.Group>
-                    <Form.Group as={Col} md={5}   >
-                        {/* <Form.Label>Adotante</Form.Label> */}
-                        <Form.Control
-                            required
-                            type="text"
-                            id='cidade'
-                            name='cidade'
-                            placeholder='Cidade'
-                            className="flex-row-item_adocao"
-                            value={adocao.cidade}
-                            onChange={manupilaAlteracao} />
-                    </Form.Group></Row>
-                <Form.Group as={Col} md={10}   >
-                    {/* <Form.Label>Adotante</Form.Label> */}
-                    <Form.Control
-                        required
-                        type="date"
-                        id='data'
-                        name='data'
-                        // placeholder='(18)99999-9999'
-                        className="flex-row-item_adocao"
-                        value={adocao.data}
-                        onChange={manupilaAlteracao} />
-                </Form.Group>
-                <Form.Group as={Col} md={10}  >
-                    {/* <Form.Label>Adotante</Form.Label> */}
-                    <Form.Check
-                        required
-                        type="checkbox"
-                        id='concordo'
-                        name='concordo'
-                        // className="flex-row-item_adocao"
-                        value={adocao.concordo}
-                        onChange={handleCheckboxChange}
-                        label={
-                            <span>
-                                Li e concordo com todos os{' '}
-                                <a href="#" onClick={(e) => { e.preventDefault(); props.exibirTermos() }}>
-                                    termos
-                                </a>.
-                            </span>
-                        }
-                    />
-                </Form.Group>
-                <Form.Group className="mb-3" >
-                    <Form.Control
-                        hidden
-                        type="text"
-                        id='status'
-                        name='status'
-                        value={adocao.status}
-                        onChange={manupilaAlteracao} /></Form.Group>
+
+                    <Tooltip title="Endereço de residência do adotante" placement="top">
+                        
+                            <Form.Group as={Col} md={5}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    id='rua'
+                                    name='rua'
+                                    placeholder='Rua'
+                                    className="flex-row-item_adocao"
+                                    value={adocao.rua}
+                                    onChange={manupilaAlteracao}
+                                />
+                            </Form.Group>
+            
+                    </Tooltip>
+
+
+                    <Tooltip title="Número da residência do adotante" placement="top">
+                        
+                            <Form.Group as={Col} md={5}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    id='numero'
+                                    name='numero'
+                                    placeholder='Número'
+                                    className="flex-row-item_adocao"
+                                    value={adocao.numero}
+                                    onChange={manupilaAlteracao}
+                                />
+                            </Form.Group>
+            
+                    </Tooltip>
+
+                </Row>
+
+                <Row>
+
+                    <Tooltip title="Bairro de residência do adotante" placement="top">
+                        
+                            <Form.Group as={Col} md={5}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    id='bairro'
+                                    name='bairro'
+                                    placeholder='Bairro'
+                                    className="flex-row-item_adocao"
+                                    value={adocao.bairro}
+                                    onChange={manupilaAlteracao}
+                                />
+                            </Form.Group>
+            
+                    </Tooltip>
+
+                    <Tooltip title="Cidade de residência do adotante" placement="top">
+                        
+                            <Form.Group as={Col} md={5}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    id='cidade'
+                                    name='cidade'
+                                    placeholder='Cidade'
+                                    className="flex-row-item_adocao"
+                                    value={adocao.cidade}
+                                    onChange={manupilaAlteracao}
+                                />
+                            </Form.Group>
+            
+                    </Tooltip>
+
+                </Row>
+
+                <Tooltip title="Data da adoção" placement="top">
+                    
+                        <Form.Group as={Col} md={10}>
+                            <Form.Control
+                                required
+                                type="date"
+                                id='data'
+                                name='data'
+                                className="flex-row-item_adocao"
+                                value={adocao.data}
+                                onChange={manupilaAlteracao}
+                            />
+                        </Form.Group>
+        
+                </Tooltip>
+
+                <Tooltip title="Concordo com os termos de adoção" placement="top">
+                    
+                        <Form.Group as={Col} md={10}>
+                            <Form.Check
+                                required
+                                type="checkbox"
+                                id='concordo'
+                                name='concordo'
+                                value={adocao.concordo}
+                                onChange={handleCheckboxChange}
+                                label={
+                                    <span>
+                                        Li e concordo com todos os 
+                                        <a href="#" onClick={(e) => { e.preventDefault(); props.exibirTermos() }}>
+                                            termos
+                                        </a>.
+                                    </span>
+                                }
+                            />
+                        </Form.Group>
+        
+                </Tooltip>
+
+                <Tooltip title="Status da adoção (oculto)" placement="top">
+                    
+                        <Form.Group className="mb-3">
+                            <Form.Control
+                                hidden
+                                type="text"
+                                id='status'
+                                name='status'
+                                value={adocao.status}
+                                onChange={manupilaAlteracao} />
+                        </Form.Group>
+        
+                </Tooltip>
+
+                {/* Área para os botões e download do manual, sem Tooltips */}
                 <div className='alinhando_botao_adocao'>
-                    <button type='button' className='botao_solicitar_adocao montserrat-bold-concrete-16px' >Voltar</button>
+                    <button type='button' className='botao_solicitar_adocao montserrat-bold-concrete-16px'>Voltar</button>
                     <button type="submit" className='botao_solicitar_adocao montserrat-bold-concrete-16px'>Solicitar Adoção</button>
-                </div> </Form>
-                        {/* Modal de Sucesso */}
-            <Modal show={mostrarModal} onHide={() => setMostrarModal(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Parabéns!</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    Aguarde a sua autorização ser liberada.
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setMostrarModal(false)}>
-                        Fechar
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </div >
+                </div>
+                
+                <div>
+                    <a href='/manuais/manual_adocao.pdf' download="manual_adocao.pdf">
+                        <img
+                            className="vectorbaixar"
+                            src={baixar}
+                            alt="Baixar"
+                        />
+                        Manual do Usuário
+                    </a>
+                </div>
+
+            </Form>
+        </div>
     );
 }
 
