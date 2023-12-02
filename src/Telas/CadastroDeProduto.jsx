@@ -12,13 +12,17 @@ import "./CadastroDeProduto.css";
 
 import { Cards, DotsThreeVertical, PlusCircle } from "@phosphor-icons/react";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext  } from "react";
 import { useNavigate } from "react-router-dom";
 import { editarProdutos, getProdutos, handleSubmit, } from "../api/index"; // Importar função getCategorias
 import { AsideAdm } from "./Adm/AsideAdm";
 import { format } from 'date-fns';
+import { StoreContext } from "../context/index.jsx";
+
 
 export function CadastroProduto() {
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const [allRegisters, setAllRegisters] = useState([]);
@@ -42,7 +46,7 @@ export function CadastroProduto() {
 
   useEffect(() => {
     async function fetchData() {
-      const produtos = await getProdutos();
+      const produtos = await getProdutos(user.id, user.token);
       setAllRegisters(produtos);
       try {
         const response = await fetch(apiCategoria);
@@ -120,20 +124,20 @@ export function CadastroProduto() {
         data: formatData 
       };
       
-      await handleSubmit(produtoAtualizado);
+      await handleSubmit(produtoAtualizado, user.id, user.token);
       resetForm();
     } else {
       setValidated(true);
     }
 
-    const produtos = await getProdutos();
+    const produtos = await getProdutos(user.id, user.token);
     setAllRegisters(produtos);
   }
 
   async function handleAtualizacao() {
     await editarProdutos(produto, setProduto);
 
-    const produtos = await getProdutos();
+    const produtos = await getProdutos(user.id, user.token);
     setAllRegisters(produtos);
     resetForm();
   }
