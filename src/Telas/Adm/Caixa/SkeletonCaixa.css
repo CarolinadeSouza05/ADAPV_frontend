@@ -1,0 +1,50 @@
+.skeleton.caixa-header p, 
+.skeleton.cards-box .container-cardbox .header-cardbox .header-candbox-info-month p,
+.skeleton.cards-box .container-cardbox .body-cardbox h3,
+.skeleton.cards-box .container-cardbox .body-cardbox span{
+    border-radius: 16px;
+}
+
+.skeleton.caixa-header p{
+    background-color: rgb(212 212 216);
+    height: 26px;
+    padding: 2px 6px;
+    width: 310px;
+}
+
+.skeleton.cards-box .container-cardbox{
+    background-color: rgb(212 212 216)!important;
+}
+
+.skeleton.cards-box .container-cardbox svg, 
+.skeleton.cards-box .container-cardbox .header-cardbox .header-candbox-info-month p, 
+.skeleton.cards-box .container-cardbox .header-cardbox .header-candbox-info-month p span,
+.skeleton.cards-box .container-cardbox .body-cardbox h3,
+.skeleton.cards-box .container-cardbox .body-cardbox span{
+    color: transparent!important;
+}
+
+.skeleton.cards-box .container-cardbox svg, 
+.skeleton.cards-box .container-cardbox .header-cardbox .header-candbox-info-month p,
+.skeleton.cards-box .container-cardbox .body-cardbox h3,
+.skeleton.cards-box .container-cardbox .body-cardbox span{
+    background-color: rgb(228 228 231);
+}
+
+.skeleton.cards-box .container-cardbox svg{
+    border-radius: 50%;
+}
+
+.skeleton.cards-box .container-cardbox .header-cardbox .header-candbox-info-month p{
+    background-color: rgb(228 228 231);
+    padding: 2px 0;
+    width: 162px;
+}
+
+.skeleton.cards-box .container-cardbox .body-cardbox h3{
+    width: 100px;
+}
+
+.skeleton.cards-box .container-cardbox .body-cardbox span{
+    width: 160px;
+}

@@ -209,14 +209,14 @@
         width: 100%;
     }
 
-    .footer-aside-menu-main .list-menu-icon a{
+    .footer-aside-menu-main .list-menu-icon a, .list-menu-icon a{
         align-items: center;
         display: flex;
         flex-direction: row;
         gap: 8px;
     }
 
-    .footer-aside-menu-main .list-menu-icon a span{
+    .footer-aside-menu-main .list-menu-icon a span, .footer-aside-menu-main .list-menu-icon a svg{
         color: #000;
     }
 }

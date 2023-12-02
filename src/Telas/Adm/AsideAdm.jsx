@@ -10,6 +10,7 @@ import { RxExit } from "react-icons/rx";
 import { TbReportSearch } from "react-icons/tb";
 import { TfiAgenda } from "react-icons/tfi";
 import { Link } from "react-router-dom";
+import { CiBoxes } from "react-icons/ci";
 import "./AsideAdm.css";
 
 export function AsideAdm(){
@@ -80,6 +81,15 @@ export function AsideAdm(){
                                     </>
                                 ))}
                             </ul>
+                        </li>
+
+                        <li className="list-menu">
+                            <div className="list-menu-icon">
+                                <Link to="/adm/caixa">
+                                    <CiBoxes size={26} />
+                                    <span>Caixa</span>
+                                </Link>
+                            </div>
                         </li>
                     </ul>
                 </div>
