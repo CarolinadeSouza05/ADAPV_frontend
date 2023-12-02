@@ -23,7 +23,18 @@
 .header-candbox-info-month svg{
     height: 26px;
     width: 26px;
+}
+
+.header-candbox-info-month.positive svg{
     transform: rotate(40deg);
+}
+
+.header-candbox-info-month.negative svg{
+    transform: rotate(-140deg);
+}
+
+.header-candbox-info-month.null svg{
+    transform: rotate(0deg);
 }
 
 .header-candbox-info-month p{

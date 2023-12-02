@@ -259,7 +259,21 @@ export async function getBulletinAll(register, id, token) {
   return aux;
 }
 
+export async function getAllDatesBox(register, id, token){
+  const aux = await fetch(`${apiUser}/security/caixa/${id}`, {
+    method: "POST",
+    body: JSON.stringify(register),
+    headers: {
+      "Content-Type": "application/json",
+      "token": token,
+    }
+  })
+  .then((data) => data.json())
+  .then((repos) => repos)
+  .catch((err) => err)
 
+  return aux;
+}
 
 // --------------------------------- Router AceitariaFazer ---------------------------------
 export async function getAllRegisterOffice(token, id) {

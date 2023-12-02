@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { HeaderAdm } from "../../components/HeaderAdm";
 import { AsideAdm } from "./AsideAdm";
 import "./Caixa.css";
@@ -9,42 +9,65 @@ import { MdMoneyOff } from "react-icons/md";
 import { MdDriveFileRenameOutline, MdAttachMoney, MdDateRange  } from "react-icons/md";
 import { FiUserPlus } from "react-icons/fi";
 import { BiCategory } from "react-icons/bi";
-import { format } from "date-fns";
+import { format, subMonths } from "date-fns";
+import { StoreContext } from "../../context";
+import { getAllDatesBox } from "../../api";
 
 export function Caixa(){
+    const useStore = useContext(StoreContext);
+    const { user } = useStore();
+    const [datesBox, setDatesBox] = useState([]);
     const cardsBoxArray = [
         {
-            numberMoney: "4,678.67",
+            numberMoney: datesBox[0]?.queryDatas?.reduce(
+                (accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0),
             iconCard: <FaRegMoneyBill1 size={28} />,
             colorPrinc: "#3AB1B9",
             textBodyCard: "Rendimento Geral"
         },
 
         {
-            numberMoney: "4,678.67",
+            numberMoney: datesBox[1]?.queryDatas?.reduce(
+                (accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0),
             iconCard: <MdMoneyOff size={28} />,
             colorPrinc: "#DC2626",
             textBodyCard: "Despesa Geral"
         },
 
         {
-            numberMoney: "4,678.67",
+            numberMoney: datesBox[2]?.queryDatas?.reduce(
+                (accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0),
             iconCard: <FaMoneyBillTrendUp color="#000" size={28} />,
             arrowIndication: <FaLongArrowAltUp color="#16A34A" />,
-            porcentMonth: "2.11%",
+            porcentMonth: datesBox[2]?.differencyPorcent,
             colorInfosMonth: "#16A34A",
             textBodyCard: "Rendimento Mensal",
         },
 
         {
-            numberMoney: "4,678.67",
+            numberMoney: datesBox[3]?.queryDatas?.reduce(
+                (accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0),
             iconCard: <FaMoneyCheck color="#000" size={28} />,
             arrowIndication: <FaLongArrowAltUp color="#DC2626" />,
-            porcentMonth: "2.11%",
+            porcentMonth: datesBox[3]?.differencyPorcent,
             colorInfosMonth: "#DC2626",
             textBodyCard: "Despesa Mensal",
         },
-    ]
+    ];
+
+    console.log(datesBox);
+
+    useEffect(() => {
+        (async () => {
+            const dateNow = new Date();
+            const dateMonthBack = subMonths(dateNow, 1);
+            
+            const aux = await getAllDatesBox({ dateNow, dateMonthBack }, user.id, user.token);
+
+            if(aux.status)
+                setDatesBox(aux.bulletins);
+        })()
+    }, []);
 
     return(
         <>
@@ -63,7 +86,7 @@ export function Caixa(){
                     </header>
                     
                     <section className="cards-box">
-                        {cardsBoxArray.map((card) => (
+                        {datesBox.length > 0 && cardsBoxArray.map((card) => (
                             <CardBox
                                 arrowIndication={card.arrowIndication}
                                 colorInfosMonth={card.colorInfosMonth}
