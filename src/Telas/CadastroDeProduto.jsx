@@ -46,7 +46,7 @@ export function CadastroProduto() {
 
   useEffect(() => {
     async function fetchData() {
-      const produtos = await getProdutos(user.id, user.token);
+      const produtos = await getProdutos(user.token, user.id);
       setAllRegisters(produtos);
       try {
         const response = await fetch(apiCategoria);
@@ -124,20 +124,20 @@ export function CadastroProduto() {
         data: formatData 
       };
       
-      await handleSubmit(produtoAtualizado, user.id, user.token);
+      await handleSubmit(produtoAtualizado, user.token, user.id);
       resetForm();
     } else {
       setValidated(true);
     }
 
-    const produtos = await getProdutos(user.id, user.token);
+    const produtos = await getProdutos(user.token, user.id);
     setAllRegisters(produtos);
   }
 
   async function handleAtualizacao() {
     await editarProdutos(produto, setProduto);
 
-    const produtos = await getProdutos(user.id, user.token);
+    const produtos = await getProdutos(user.token, user.id);
     setAllRegisters(produtos);
     resetForm();
   }

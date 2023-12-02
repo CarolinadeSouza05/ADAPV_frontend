@@ -7,8 +7,10 @@ import { Modal } from "../components/Modal";
 import { aceitarFazerArray, disponibilidadeArray, periodoArray } from "../util";
 import "./CadastroVoluntario.css"
 import { FormCadastroVoluntario } from "../formularios/FormCadastroVoluntario";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { deleteRegisterVoluntario, getAllRegisterVoluntario } from "../api";
+import { StoreContext } from "../context/index.jsx";
+
 
 
 export const inputsFormValidate = {
@@ -21,6 +23,8 @@ export const inputsFormValidate = {
 }
 
 export function CadastroVoluntario() {
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const [formValidate, setFormValidate] = useState(inputsFormValidate);
   const [registerVolunteers, setRegisterVolunteers] = useState([]);
   const [modal, setModal] = useState(false);
@@ -42,7 +46,7 @@ export function CadastroVoluntario() {
 
   useEffect(() => {
     (async function(){
-      setRegisterVolunteers(await getAllRegisterVoluntario());
+      setRegisterVolunteers(await getAllRegisterVoluntario(user.token, user.id));
     })()
   }, [])
 
@@ -50,7 +54,7 @@ export function CadastroVoluntario() {
 
   async function deleteRegister(id){
     await deleteRegisterVoluntario(id);
-    setRegisterVolunteers(await getAllRegisterVoluntario());
+    setRegisterVolunteers(await getAllRegisterVoluntario(user.token, user.id));
   }
 
   return (

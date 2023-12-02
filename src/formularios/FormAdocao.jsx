@@ -1,12 +1,16 @@
 ﻿import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext  } from 'react';
 import { urLBase } from '../api/index.js';
 import { Form, Row, Col } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 import baixar from "../imagens/baixar.png";
 import Tooltip from '@material-ui/core/Tooltip'; 
+import { StoreContext } from "../context/index.jsx";
+
 
 export default function FormAdocao(props) {
+    const useStore = useContext(StoreContext);
+    const { user } = useStore();
     const location = useLocation();
     const [animalSelecionado, setAnimalSelecionado] = useState({});
     const [animais, setAnimais] = useState();
@@ -63,8 +67,12 @@ export default function FormAdocao(props) {
     }
     //Recebendo os Dados do banco de dados
     useEffect(() => {
-        fetch(urLBase + "/animais", {
-            method: "GET"
+        fetch(`${urLBase}/security/adocoes/${user.id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "token": user.token,
+            },
         }).then((resposta) => {
             return resposta.json();
         }).then((dados) => {
@@ -118,7 +126,8 @@ export default function FormAdocao(props) {
                 fetch(urLBase + '/adocoes', {
                     method: "PUT",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "token": user.token,
                     },
                     body: JSON.stringify({
                         "codAdocao": adocao.codAdocao,
@@ -142,7 +151,11 @@ export default function FormAdocao(props) {
                         props.setModoEdicao(false);
                         setAdocao(adocaoInicial);
                         fetch(urLBase + '/adocoes', {
-                            method: "GET"
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "token": user.token,
+                            },
                         })  
                             .then((resposta) => resposta.json())
                             .then((adocaoAtualizado) => {
@@ -161,7 +174,8 @@ export default function FormAdocao(props) {
                 fetch(urLBase + "/adocoes", {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "token": user.token,
                     },
                     body: JSON.stringify({
                         "codAdocao": adocao.codAdocao,
@@ -185,8 +199,12 @@ export default function FormAdocao(props) {
                         props.setModoEdicao(false);
                         setAdocao(adocaoInicial);
                         // Após o cadastro bem-sucedido, faça uma nova solicitação GET para obter o adocao recém-criado
-                        fetch(urLBase + '/adocoes/', {
-                            method: "GET"
+                        fetch(`${urLBase}/security/adocoes/${user.id}`, {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "token": user.token,
+                            },
                         })
                             .then((resposta) => resposta.json())
                             .then((adocaoAtualizado) => {

@@ -5,6 +5,8 @@ import { Inputs } from "../components/inputs";
 import "./LancamentoEntrada.css";
 import vector3 from "../imagens/vector-3.svg"
 import img_entradas from "../imagens/money_cat.png"
+import { StoreContext, useContext } from "../context/index.jsx";
+
 
 import { Cards } from "@phosphor-icons/react";
 
@@ -16,6 +18,8 @@ import {
 } from "../api/index";
 
 export default function LancamentoEntrada(props) {
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const [modal, setModal] = useState(false);
   const [allRegisters, setAllRegisters] = useState([]);
 
@@ -41,7 +45,7 @@ export default function LancamentoEntrada(props) {
 
   useEffect(() => {
     async function fetchData() {
-      const entradas = await getEntradas();
+      const entradas = await getEntradas(user.token, user.id);
       setAllRegisters(entradas);
     }
     fetchData();
@@ -70,7 +74,7 @@ export default function LancamentoEntrada(props) {
       entrada.valor &&
       entrada.data
     ) {
-      await handleSubmitEntradas(entrada);
+      await handleSubmitEntradas(entrada, user.token, user.id);
       // Limpe os campos do formulário
 
     } else {
@@ -78,7 +82,7 @@ export default function LancamentoEntrada(props) {
       setValidated(true);
     }
 
-    const entradas = await getEntradas();
+    const entradas = await getEntradas(user.token, user.id);
     setAllRegisters(entradas);
     resetForm();
   }
@@ -86,7 +90,7 @@ export default function LancamentoEntrada(props) {
   async function handleAtualizacao() {
     await editarEntradas(entrada, setEntrada);
 
-    const entradas = await getEntradas();
+    const entradas = await getEntradas(user.token, user.id);
     setAllRegisters(entradas);
     resetForm();
   }

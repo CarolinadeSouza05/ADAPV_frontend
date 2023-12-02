@@ -31,7 +31,7 @@ export function CadastroCategoria(props) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const categorias = await getAllCategorias(user.id, user.token);
+        const categorias = await getAllCategorias(user.token, user.id);
         setAllRegisters(categorias);
       } catch (error) {
         console.error("Erro ao buscar categorias:", error);
@@ -50,9 +50,9 @@ export function CadastroCategoria(props) {
     e.preventDefault();
 
     if (categoria.edit === -1) {
-      await handleCadastro(user.id, user.token);
+      await handleCadastro(user.token, user.id);
     } else {
-      await handleAtualizacao(user.id, user.token);
+      await handleAtualizacao(user.token, user.id);
     }
   }
 
@@ -65,20 +65,20 @@ export function CadastroCategoria(props) {
         data: formatData,
       };
 
-      await createRegisterCategoria(categoriaAtualizado, user.id, user.token);
+      await createRegisterCategoria(categoriaAtualizado, user.token, user.id);
       resetForm();
     } else {
       setValidated(true);
     }
 
-    const categorias = await getAllCategorias(user.id, user.token);
+    const categorias = await getAllCategorias(user.token, user.id);
     setAllRegisters(categorias);
   }
 
   async function handleAtualizacao() {
     await editRegisterCategoria(categoria, setCategoria);
 
-    const categorias = await getAllCategorias(user.id, user.token);
+    const categorias = await getAllCategorias(user.token, user.id);
     setAllRegisters(categorias);
     resetForm();
   }
