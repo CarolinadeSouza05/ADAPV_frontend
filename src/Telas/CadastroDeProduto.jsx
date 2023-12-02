@@ -14,7 +14,7 @@ import { Cards, DotsThreeVertical, PlusCircle } from "@phosphor-icons/react";
 
 import { useEffect, useState, useContext  } from "react";
 import { useNavigate } from "react-router-dom";
-import { editarProdutos, getProdutos, handleSubmit, } from "../api/index"; 
+import { editarProdutos, getProdutos, handleSubmit, getAllCategorias} from "../api/index"; 
 import { AsideAdm } from "./Adm/AsideAdm";
 import { format } from 'date-fns';
 import { StoreContext } from "../context/index.jsx";
@@ -44,27 +44,28 @@ export function CadastroProduto() {
   const [categories, setCategories] = useState([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
 
-  useEffect(() => {
+useEffect(() => {
     async function fetchData() {
-      const produtos = await getProdutos(user.token, user.id);
-      setAllRegisters(produtos);
-      try {
-        const response = await fetch(apiCategoria);
-        const data = await response.json();
+        try {
+            const produtos = await getProdutos(user.token, user.id);
+            setAllRegisters(produtos);
 
-        if (response.ok) {
-          setCategories(data); // Defina as categorias recuperadas da API
-        } else {
-          console.error("Erro ao buscar categorias:", data);
+            const categorias = await getAllCategorias(user.token, user.id);
+            if (categorias) {
+                setCategories(categorias); 
+            } else {
+                console.error("Erro ao buscar categorias:", categorias);
+            }
+        } catch (error) {
+            console.error("Erro ao buscar dados:", error);
+        } finally {
+            setLoadingCategories(false);
         }
-      } catch (error) {
-        console.error("Erro ao buscar categorias:", error);
-      } finally {
-        setLoadingCategories(false);
-      }
     }
+
     fetchData();
-  }, []);
+}, [user.token, user.id]); 
+
 
   function maskPrice(event) {
     var price = event.target.value;
