@@ -459,6 +459,16 @@
   }
 
   .search-container{
-    justify-content: flex-end;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 1367px) {
+  .filtersWrapper {
+    width: 12.27%;
+  }
+
+  .checkbox-label {
+    padding: 5px;
   }
 }
