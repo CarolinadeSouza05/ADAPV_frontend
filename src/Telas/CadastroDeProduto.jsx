@@ -33,7 +33,7 @@ export function CadastroProduto() {
     nome: "",
     preco: "",
     descricao: "",
-    categoria: "", // Alterado para uma string vazia para categoria
+    categoria: "",
     edit: -1,
   });
 

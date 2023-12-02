@@ -3,10 +3,10 @@ import { AiOutlineFieldNumber } from "react-icons/ai";
 import { FaKey } from "react-icons/fa";
 import { MdAttachMoney, MdDateRange } from "react-icons/md";
 
-export function TableIncome({ datas }){
+export function TableIncome({ datas }) {
     console.log(datas);
 
-    return(
+    return (
         <>
             <thead>
                 <tr>
@@ -18,27 +18,26 @@ export function TableIncome({ datas }){
                         <FaKey size={22} />
                         Chave
                     </th>
-
                     <th>
                         <MdAttachMoney size={22} />
                         Valor
                     </th>
-
                     <th>
                         <MdDateRange size={22} />
                         Data
                     </th>
                 </tr>
             </thead>
-
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>P4vG&?0Vk1T</td>
-                    <td>R$50.00</td>
-                    <td>{format(new Date(), "dd/MM/yyyy")}</td>
-                </tr>
+                {datas &&datas.map((data, index) => (
+                    <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{data.chave}</td>
+                        <td>{data.valor}</td>
+                        <td>{format(new Date(data.data), "dd/MM/yyyy")}</td>
+                    </tr>
+                ))}
             </tbody>
         </>
-    )
+    );
 }

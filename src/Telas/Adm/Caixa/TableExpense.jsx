@@ -36,15 +36,17 @@ export function TableExpense({ datas }){
                     </th>
                 </tr>
             </thead>
-
+            
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Ração</td>
-                    <td>Produto</td>
-                    <td>R$50.00</td>
-                    <td>{format(new Date(), "dd/MM/yyyy")}</td>
-                </tr>
+                {datas && datas.map((data, index) => (
+                    <tr key={index}>
+                        <td>{index}</td>
+                        <td>{data.nome}</td>
+                        <td>{data.categoria}</td>
+                        <td>{data.valor}</td>
+                        <td>{format(new Date(data.data), "dd/MM/yyyy")}</td>
+                    </tr>
+                ))}
             </tbody>
         </>
     )
