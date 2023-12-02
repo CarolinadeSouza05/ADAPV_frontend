@@ -62,7 +62,7 @@ export function FormRegisterAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo
                 <div className="container-button alinhamento">
                     <button type="submit">Cadastrar</button>
                 </div>
-                <a href='/manuais/manual_voluntario_aceita.pdf' download="manual_voluntario_aceita.pdf">
+                <a href='/manuais/manual_tarefas_aceitas.pdf' download="manual_tarefas_aceitas.pdf">
                     <img
                     className="vectorbaixar"
                     src={baixar}
