@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import { Pencil, Trash } from "@phosphor-icons/react";
 import { deleteCategoriaP, getAllCategorias } from "../api";
 import vetor4 from "../imagens/vector-4.svg"
+import { StoreContext } from "../context/index.jsx";
+
 
 export function AsideCategoria({ setFormCategoria, onInsert }) {
+    const useStore = useContext(StoreContext);
+    const { user } = useStore();
     const tableHead = ["ID", "Nome"];
 
     const [allRegisters, setAllRegisters] = useState([]);
@@ -20,7 +24,7 @@ export function AsideCategoria({ setFormCategoria, onInsert }) {
     useEffect(() => {
         async function fetchData() {
             try {
-                const categorias = await getAllCategorias();
+                const categorias = await getAllCategorias(user.token, user.id);
                 setAllRegisters(categorias);
             } catch (error) {
                 console.error("Erro ao buscar categorias:", error);
@@ -34,7 +38,7 @@ export function AsideCategoria({ setFormCategoria, onInsert }) {
         if (confirmDelete) {
           try {
             await deleteCategoriaP(codigo);
-            const categorias = await getAllCategorias();
+            const categorias = await getAllCategorias(user.token, user.id);
             setAllRegisters(categorias);
           } catch (error) {
             console.error("Erro ao excluir a categoria:", error);
