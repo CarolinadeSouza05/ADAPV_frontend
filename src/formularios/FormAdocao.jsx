@@ -22,7 +22,7 @@ export default function FormAdocao(props) {
         numero: "",
         bairro: "",
         cidade: "",
-        data: "",
+        data: new Date().toISOString().split('T')[0],
         concordo: false,
         status: false,
     })
@@ -42,7 +42,7 @@ export default function FormAdocao(props) {
         concordo: false,
         status: false,
     };
-    const [mostrarModal, setMostrarModal] = useState(false);
+  
     //Mascara celular
     function maskCel(event) {
         var celular = event.target.value;
@@ -110,6 +110,7 @@ export default function FormAdocao(props) {
 
 
     function gravarAdocao(evento) {
+        const dataAtual = new Date().toISOString().split('T')[0];
         const form = evento.currentTarget;
         if (form.checkValidity()) {
             if (props.modoEdicao) {
@@ -130,7 +131,7 @@ export default function FormAdocao(props) {
                         "numero": adocao.numero,
                         "bairro": adocao.bairro,
                         "cidade": adocao.cidade,
-                        "data": adocao.data,
+                        "data": adocao.data || dataAtual,
                         "concordo": adocao.concordo,
                         "status": adocao.status
                     })
@@ -140,7 +141,6 @@ export default function FormAdocao(props) {
                     if (dados.status) {
                         props.setModoEdicao(false);
                         setAdocao(adocaoInicial);
-                        setMostrarModal(true);
                         fetch(urLBase + '/adocoes', {
                             method: "GET"
                         })  
@@ -174,7 +174,7 @@ export default function FormAdocao(props) {
                         "numero": adocao.numero,
                         "bairro": adocao.bairro,
                         "cidade": adocao.cidade,
-                        "data": adocao.data,
+                        "data": adocao.data || dataAtual,
                         "concordo": adocao.concordo,
                         "status": adocao.status
                     })
@@ -244,7 +244,7 @@ export default function FormAdocao(props) {
                                     type={'text'}
                                     name={'especie'}
                                     placeholder={'Espécie'}
-                                    value={animalSelecionado.especie}
+                                    value={animalSelecionado ? animalSelecionado.especie : ''}
                                     className="flex-row-item_adocao"
                                     disabled={true}
                                 />
@@ -260,7 +260,7 @@ export default function FormAdocao(props) {
                                     name={'nome'}
                                     placeholder={'Nome'}
                                     className="flex-row-item_adocao"
-                                    value={animalSelecionado.nome}
+                                    value={animalSelecionado ? animalSelecionado.nome : ''}
                                     disabled={true}
                                 />
                             </Form.Group>
@@ -274,7 +274,8 @@ export default function FormAdocao(props) {
                                     type={'text'}
                                     name={'genero'}
                                     placeholder={'Gênero'}
-                                    value={animalSelecionado.genero}
+                                     // value={animalSelecionado.genero}
+                                value={animalSelecionado ? animalSelecionado.genero : ''}
                                     className="flex-row-item_adocao"
                                     disabled={true}
                                 />
@@ -289,7 +290,8 @@ export default function FormAdocao(props) {
                                     type={'text'}
                                     name={'porte'}
                                     placeholder={'Porte'}
-                                    value={animalSelecionado.porte}
+                                                // value={animalSelecionado.porte}
+                                value={animalSelecionado ? animalSelecionado.porte : ''}
                                     className="flex-row-item_adocao"
                                     disabled={true}
                                 />
@@ -299,12 +301,14 @@ export default function FormAdocao(props) {
 
                     {/* Imagem do animal não necessita de tooltip pois não é um campo interativo */}
                     
-                        <Form.Group as={Col} md='2'>
-                            <img
-                                src={`data:image;base64,${animalSelecionado.foto}`}
-                                alt={animalSelecionado.nome}
-                                className="imagem-animal"
-                            />
+                    <Form.Group as={Col} md='2'>
+                            {animalSelecionado && animalSelecionado.foto && (
+                                <img
+                                    src={`data:image;base64,${animalSelecionado.foto}`}
+                                    alt={animalSelecionado.nome}
+                                    className="imagem-animal"
+                                />
+                            )}
                         </Form.Group>
         
 
@@ -338,6 +342,8 @@ export default function FormAdocao(props) {
                                     id='celular'
                                     name='celular'
                                     placeholder='(XX) XXXXX-XXXX'
+                                    maxLength={15}
+                                    onInput={maskCel}
                                     className="flex-row-item_adocao"
                                     value={adocao.celular}
                                     onChange={manupilaAlteracao}
@@ -355,6 +361,8 @@ export default function FormAdocao(props) {
                                     id='cpf'
                                     name='cpf'
                                     placeholder='XXX.XXX.XXX-XX'
+                                    maxLength={14}
+                                    onInput={maskCPF}
                                     className="flex-row-item_adocao"
                                     value={adocao.cpf}
                                     onChange={manupilaAlteracao}
@@ -462,17 +470,18 @@ export default function FormAdocao(props) {
 
                 <Tooltip title="Data da adoção" placement="top">
                     
-                        <Form.Group as={Col} md={10}>
-                            <Form.Control
-                                required
-                                type="date"
-                                id='data'
-                                name='data'
-                                className="flex-row-item_adocao"
-                                value={adocao.data}
-                                onChange={manupilaAlteracao}
-                            />
-                        </Form.Group>
+                <Form.Group as={Col} md={10}>
+                    <Form.Control
+                        hidden
+                        type="date"
+                        id='data'
+                        name='data'
+                        className="flex-row-item_adocao"
+                        value={adocao.data}
+                        onChange={manupilaAlteracao}
+                         // Impede que o usuário altere a data
+                    />
+                </Form.Group>
         
                 </Tooltip>
 
@@ -489,7 +498,7 @@ export default function FormAdocao(props) {
                                 label={
                                     <span>
                                         Li e concordo com todos os 
-                                        <a href="#" onClick={(e) => { e.preventDefault(); props.exibirTermos() }}>
+                                        <a href="#" style={{marginLeft: '5px'}}onClick={(e) => { e.preventDefault(); props.exibirTermos() }}>
                                             termos
                                         </a>.
                                     </span>
