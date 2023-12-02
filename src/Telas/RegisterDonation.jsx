@@ -18,10 +18,9 @@ export function RegisterDonation(){
                     </header>
 
                     <section className="aside-body">
-                        <p>Lidere a mudança para o <span>bem</span>, Junte-se a nós!</p>
+                        <p>Seja um agente transformador para o <span>bem</span> una-se a nós nesta jornada!</p>
 
-                        <p>Ajude nós a encontrar lares amorosos e até combater a fome e apoiar o <span>bem-estar</span>, 
-                            sua doação muda a história de milhões de animais de estimação e suas famílias.
+                        <p>Sua contribuição é vital. Ao nos ajudar, você não apenas oferece um lar cheio de amor para animais de estimação necessitados, mas também combate a fome e promove o <span>bem-estar</span> de inúmeras vidas. Juntos, podemos mudar a realidade de centenas de animais, criando um futuro mais esperançoso e acolhedor para todos eles.
                         </p>
                     </section>
                 </section>

@@ -5,12 +5,12 @@ import { Inputs } from "../components/inputs";
 import "./LancamentoEntrada.css";
 import vector3 from "../imagens/vector-3.svg"
 import img_entradas from "../imagens/money_cat.png"
-import { StoreContext, useContext } from "../context/index.jsx";
+import { StoreContext} from "../context/index.jsx";
 
 
 import { Cards } from "@phosphor-icons/react";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   getEntradas,
   handleSubmitEntradas,

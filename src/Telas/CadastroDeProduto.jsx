@@ -28,7 +28,7 @@ export function CadastroProduto() {
   const [allRegisters, setAllRegisters] = useState([]);
   const [menu, setMenu] = useState("CadastroProduto");
 
-  const apiCategoria = "http://localhost:4000/categoria";
+  const apiCategoria = "http://localhost:4000/security/categoria";
   const tableHead = ["Codigo", "Nome", "Preço", "Descrição", "Categoria"];
 
   const [validado, setValidated] = useState(false);
