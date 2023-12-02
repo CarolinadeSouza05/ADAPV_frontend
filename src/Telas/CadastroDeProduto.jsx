@@ -14,7 +14,7 @@ import { Cards, DotsThreeVertical, PlusCircle } from "@phosphor-icons/react";
 
 import { useEffect, useState, useContext  } from "react";
 import { useNavigate } from "react-router-dom";
-import { editarProdutos, getProdutos, handleSubmit, } from "../api/index"; // Importar função getCategorias
+import { editarProdutos, getProdutos, handleSubmit, } from "../api/index"; 
 import { AsideAdm } from "./Adm/AsideAdm";
 import { format } from 'date-fns';
 import { StoreContext } from "../context/index.jsx";

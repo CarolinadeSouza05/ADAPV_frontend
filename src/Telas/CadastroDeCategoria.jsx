@@ -1,6 +1,6 @@
 
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext  } from "react";
 import { getAllCategorias, createRegisterCategoria, editRegisterCategoria,} from "../api/index";
 import { Inputs } from "../components/inputs";
 import { ArrowLeft } from "@phosphor-icons/react";
@@ -12,10 +12,14 @@ import "./CadastroDeProduto.css";
 import { AsideAdm } from "./Adm/AsideAdm";
 import { HeaderAdm } from "../components/HeaderAdm";
 import { format } from "date-fns";
+import { StoreContext } from "../context/index.jsx";
+
 
 const menuProps = "CadatroProduto" || "CadatroCategoria"
 
 export function CadastroCategoria(props) {
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const [allRegisters, setAllRegisters] = useState([]);
   const [menu, setMenu] = useState(menuProps);
   const [categoria, setCategoria] = useState({
@@ -27,7 +31,7 @@ export function CadastroCategoria(props) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const categorias = await getAllCategorias();
+        const categorias = await getAllCategorias(user.id, user.token);
         setAllRegisters(categorias);
       } catch (error) {
         console.error("Erro ao buscar categorias:", error);
@@ -46,9 +50,9 @@ export function CadastroCategoria(props) {
     e.preventDefault();
 
     if (categoria.edit === -1) {
-      await handleCadastro();
+      await handleCadastro(user.id, user.token);
     } else {
-      await handleAtualizacao();
+      await handleAtualizacao(user.id, user.token);
     }
   }
 
@@ -61,20 +65,20 @@ export function CadastroCategoria(props) {
         data: formatData,
       };
 
-      await createRegisterCategoria(categoriaAtualizado);
+      await createRegisterCategoria(categoriaAtualizado, user.id, user.token);
       resetForm();
     } else {
       setValidated(true);
     }
 
-    const categorias = await getAllCategorias();
+    const categorias = await getAllCategorias(user.id, user.token);
     setAllRegisters(categorias);
   }
 
   async function handleAtualizacao() {
     await editRegisterCategoria(categoria, setCategoria);
 
-    const categorias = await getAllCategorias();
+    const categorias = await getAllCategorias(user.id, user.token);
     setAllRegisters(categorias);
     resetForm();
   }
