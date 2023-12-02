@@ -5,12 +5,12 @@ const apiOffice = "http://localhost:4000/security/office";
 const apiVoluntarioAceitafazer = "http://localhost:4000/security/voluntario-aceitafazer";
 const apiProdutos = "http://localhost:4000/security/produto";
 const apiEntradas = "http://localhost:4000/security/entradas";
-const apiAnimais = "http://localhost:4000/security/animais";
+const apiAnimais = "http://localhost:4000/animais";
 export const urLBase = "http://localhost:4000";
 const apiDoacao = "http://localhost:4000/security/doacao";
 const apiCategoria = "http://localhost:4000/security/categoria";
 const apiTipo = "http://localhost:4000/security/tipo";
-const apiAdocao = "http://localhost:4000/security/adocao";
+const apiAdocao = "http://localhost:4000/adocao";
 
 export async function getAllRegisterVoluntario(token, id) {
   let aux = await fetch(`${apiVoluntario}/${id}`, {
@@ -259,7 +259,21 @@ export async function getBulletinAll(register, id, token) {
   return aux;
 }
 
+export async function getAllDatesBox(register, id, token){
+  const aux = await fetch(`${apiUser}/security/caixa/${id}`, {
+    method: "POST",
+    body: JSON.stringify(register),
+    headers: {
+      "Content-Type": "application/json",
+      "token": token,
+    }
+  })
+  .then((data) => data.json())
+  .then((repos) => repos)
+  .catch((err) => err)
 
+  return aux;
+}
 
 // --------------------------------- Router AceitariaFazer ---------------------------------
 export async function getAllRegisterOffice(token, id) {
@@ -508,14 +522,10 @@ export async function excluirEntradas(id, token) {
 }
 //================== API-Animais ==================//
 
-export async function getAnimais(token, id) {
+export async function getAnimais() {
   let aux = [];
-  await fetch(`${apiAnimais}/${id}`, {
+  await fetch(apiAnimais, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "token": token,
-      },
   })
       .then((data) => data.json())
       .then((res) => (aux = res))

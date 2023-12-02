@@ -143,7 +143,7 @@ export function CadastroCategoria(props) {
                 {categoria.edit === -1 ? "Cadastrar Categoria" : "Atualizar Categoria"}
               </button>
             </div>
-            <a href='/manuais/manual_categoria.pdf' download="manual_categoria.pdf">
+            <a href='/manuais/manual_categorias_produtos.pdf' download="manual_categorias_produtos.pdf">
               <img
                 className="vectorbaixar"
                 src={baixar}

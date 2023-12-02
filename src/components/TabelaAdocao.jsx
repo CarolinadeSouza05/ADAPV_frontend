@@ -4,6 +4,7 @@ import "./TabelaDenuncia.css";
 import { urLBase } from "../api/index.js";
 import { useState } from "react";
 import { ImpressaoTermo } from "../Telas/Impressao_termo.jsx";
+import baixar from "../imagens/baixar.png";
 
 
 export function TabelaAdocao(props) {
@@ -172,6 +173,13 @@ export function TabelaAdocao(props) {
           />
         )}
       </div>
+      <a
+        href="/manuais/manual_autorizar_adocao.pdf"
+        download="manual_autorizar_adocao.pdf"
+      >
+        <img className="vectorbaixar" src={baixar} alt="Baixar" />
+        Manual do Usuário
+      </a>
     </Container>
   );
 }

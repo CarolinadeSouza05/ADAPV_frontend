@@ -6,12 +6,15 @@ export function CardBox({ numberMoney, iconCard, textBodyCard, colorPrinc = "#ff
             <header className="header-cardbox">
                 {iconCard}
 
-                    <div className="header-candbox-info-month">
+                    <div className={`header-candbox-info-month ${porcentMonth > 0 ? "positive" : porcentMonth < 0 ? "negative" : "null"}`}>
                         {arrowIndication && (
                             <>
                                 {arrowIndication}
 
-                                <p><span style={{ color: `${colorInfosMonth}` }}>{porcentMonth}</span> nos ultimos 30 dias</p>
+                                <p>
+                                    <span style={{ color: `${colorInfosMonth}` }}>{differencyPorcent()}</span> 
+                                    nos ultimos 30 dias
+                                </p>
                             </>
                         )}
                     </div>
@@ -23,5 +26,12 @@ export function CardBox({ numberMoney, iconCard, textBodyCard, colorPrinc = "#ff
                 <span>{textBodyCard}</span>
             </section>
         </div>
-    )
+    );
+
+    function differencyPorcent(){
+        if(porcentMonth !== null)
+            return `${porcentMonth}% `
+        else
+            return "0% "
+    }
 }
