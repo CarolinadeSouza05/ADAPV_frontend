@@ -1,5 +1,5 @@
 import { Clipboard } from "@phosphor-icons/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidateAccepToDoProps } from "../../Telas/RegisterAcceptToDo";
@@ -8,9 +8,12 @@ import { editRegisterAccepToDo, getAllRegisterAcceptToDo } from "../../api";
 import { InputsForm } from "../../components/InputsForm";
 import { ObjectEmptyValue } from "../../util";
 import baixar from "../../imagens/baixar.png";
+import { StoreContext } from "../../context";
 
 export function FormEditAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo, setFormValidateAccepToDo }) {
     const [validado, setValidado] = useState(false);
+    const useStore = useContext(StoreContext);
+    const { user } = useStore();
 
     const inputForm = [
         {
@@ -74,7 +77,7 @@ export function FormEditAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo, se
     async function submit(e){
         e.preventDefault();
         if(ObjectEmptyValue(formValidateAccepToDo)){
-            const message = await editRegisterAccepToDo(formValidateAccepToDo);
+            const message = await editRegisterAccepToDo(formValidateAccepToDo, user.token, user.id);
             setValidado(false);
 
             toast.success(message, {
@@ -94,7 +97,7 @@ export function FormEditAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo, se
 
         setFormValidateAccepToDo(inputsFormValidateAccepToDoProps);
         setTimeout(async () => {
-            setAcceptToDoAll(await getAllRegisterAcceptToDo());
-        }, 6000)
+            setAcceptToDoAll(await getAllRegisterAcceptToDo(user.token, user.id));
+        }, 4000);
     }
 }

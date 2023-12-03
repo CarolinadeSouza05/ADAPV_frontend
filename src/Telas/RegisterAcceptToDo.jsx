@@ -8,6 +8,7 @@ import { FormEditAcceptToDo } from "../formularios/FormRegisterAcceptToDo/FormEd
 import { AsideAdm } from "./Adm/AsideAdm";
 import "./RegisterVolunteer.css";
 import { StoreContext } from "../context";
+import { format, parseISO } from "date-fns";
 
 export const inputsFormValidateAccepToDoProps = {
   id: 0,
@@ -36,8 +37,8 @@ export function RegisterAcceptToDo() {
           <AsideAccepToDo 
             infoAll={acceptToDoAll}
             titleTable={"Registro de Tarefa"}
-            editRegister={editAccepToDo} 
-            deleteRegister={deleteAccepToDo} 
+            editRegister={editAccepToDo}
+            deleteRegister={deleteAccepToDo}
           />
         </section>
 
@@ -58,9 +59,10 @@ export function RegisterAcceptToDo() {
   );
 
   function editAccepToDo(acceptToDo) {
-    const { edit, ...rest } = acceptToDo;
+    const { edit, data, ...rest } = acceptToDo;
     const aux = {
         edit: 1,
+        data: format(parseISO(data), "yyyyy-MM-dd"),
         ...rest
     };
 
@@ -69,9 +71,7 @@ export function RegisterAcceptToDo() {
 
   async function deleteAccepToDo(acceptToDo) {
       if (window.confirm(`Quer mesmo deletar a tarefa ${acceptToDo.name}?`)) {
-          const message = await deleteRegisterAccepToDo(acceptToDo);
-          setAcceptToDoAll(await getAllRegisterAcceptToDo());
-
+          const message = await deleteRegisterAccepToDo(acceptToDo, user.token, user.id);
           if (message?.errno === 1451) {
               toast.error("Essa tarefa está associada a um voluntário, portanto não pode ser deletada!", {
                   position: "bottom-left",
@@ -84,7 +84,7 @@ export function RegisterAcceptToDo() {
                   theme: "light",
               })
           } else {
-              toast.success(message, {
+              toast.success(message.mensagem, {
                   position: "bottom-left",
                   autoClose: 5000,
                   hideProgressBar: false,
@@ -95,6 +95,9 @@ export function RegisterAcceptToDo() {
                   theme: "light",
               })
           }
+          setTimeout(async () => {
+            setAcceptToDoAll(await getAllRegisterAcceptToDo(user.token, user.id));
+          }, 5000)
       }
   }
 }

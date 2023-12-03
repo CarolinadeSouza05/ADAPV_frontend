@@ -141,7 +141,6 @@ export async function editRegisterAccepToDo(register, token, id) {
       headers: {
           "Content-Type": "application/json",
           "token": token,
-
       },
       body: JSON.stringify(register),
   })
@@ -161,6 +160,7 @@ export async function deleteRegisterAccepToDo(register, token, id) {
       body: JSON.stringify(register),
   })
       .then((data) => data.json())
+      .then((res) => res)
       .catch((err) => err)
 
   return aux;

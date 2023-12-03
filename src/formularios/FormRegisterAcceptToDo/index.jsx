@@ -85,7 +85,7 @@ export function FormRegisterAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo
                 ...rest 
             };
 
-            const message = await createRegisterAccepToDo(register);
+            const message = await createRegisterAccepToDo(register, user.token, user.id);
             setValidado(false);
             toast.success(message, {
                 position: "bottom-left",
