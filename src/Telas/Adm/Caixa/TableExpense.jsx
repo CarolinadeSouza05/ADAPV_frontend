@@ -4,7 +4,6 @@ import { BiCategory } from "react-icons/bi";
 import { MdAttachMoney, MdDateRange, MdDriveFileRenameOutline } from "react-icons/md";
 
 export function TableExpense({ datas }){
-    console.log(datas);
 
     return(
         <>

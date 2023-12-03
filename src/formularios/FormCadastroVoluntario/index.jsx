@@ -1,6 +1,6 @@
 import { Cards, DotsThreeVertical, Phone, User } from "@phosphor-icons/react";
 import * as Popover from "@radix-ui/react-popover";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidate } from '../../Telas/RegisterVolunteer';
@@ -13,11 +13,14 @@ import { Link } from "react-router-dom";
 import { BiTask } from "react-icons/bi";
 import { format } from "date-fns";
 import baixar from "../../imagens/baixar.png";
+import { StoreContext } from "../../context";
 
 
 export function FormCadastroVoluntario(props) {
   const { formValidate, setFormValidate, setRegisterVolunteers, setModal, acceptToDoAll, setAcceptToDoAll } = props;
   const [validado, setValidado] = useState(false);
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const [isOpen, setIsOpen] = useState(false);
 
   const inputForm = [
@@ -159,7 +162,7 @@ export function FormCadastroVoluntario(props) {
   async function submit(e) {
     e.preventDefault();
     if (ObjectEmptyValue(formValidate)) {
-        const aux = await getRegisterTel(formValidate.telefone);
+        const aux = await getRegisterTel(formValidate.telefone, user.token, user.id);
         if (aux.telefone === formValidate.telefone) { 
           toast.error("Voluntário já cadastrado", {
             position: "bottom-left",
@@ -178,9 +181,11 @@ export function FormCadastroVoluntario(props) {
             data: formatData,
             ...rest 
           };
+
           const auxOqueAceitariaFazer = formValidate.oQueAceitariaFazer;
-          const message = await createRegisterVoluntario(register);
-          await createRegisterVoluntarioAceitafazer({ id_voluntario: message.id, ids_aceitafazer: auxOqueAceitariaFazer });
+          const message = await createRegisterVoluntario(register, user.token, user.id);
+          
+          await createRegisterVoluntarioAceitafazer({ id_voluntario: message.id, ids_aceitafazer: auxOqueAceitariaFazer }, user.token, user.id);
           setValidado(false);
           toast.success(message.mensagem && "Voluntário Cadastrado com sucesso", {
             position: "bottom-left",
@@ -194,8 +199,8 @@ export function FormCadastroVoluntario(props) {
       setValidado(true);
     }
 
-    setRegisterVolunteers(await getAllRegisterVoluntario());
-    NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll);
+    setRegisterVolunteers(await getAllRegisterVoluntario(user.token, user.id));
+    NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, user.token, user.id);
     setTimeout(() => {
       EmptyObject();
       setFormValidate({ ...inputsFormValidate });

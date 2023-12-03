@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getByIdRegisterVoluntarioAceitafazer } from "../api";
 import "./CheckboxDropdownAcceptToDo.css";
+import { StoreContext } from "../context";
 
 export function CheckboxDropdownAcceptToDo({
   inputs,
@@ -14,6 +15,8 @@ export function CheckboxDropdownAcceptToDo({
   setIsOpen,
   isOpen,
 }) {
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const [inputsAux, setInputsAux] = useState([]);
 
   useEffect(() => {
@@ -40,16 +43,13 @@ export function CheckboxDropdownAcceptToDo({
         >
           {inputsAux?.map((option, index) => (
             <div key={option.id} className="checkbox-item" role="menuitem">
-              {console.log(option)}
               <label className="">{option.name}</label>
               <input
                 type={type}
                 className="input-checkbox-item"
                 value={option.id}
                 name={name}
-                checked={
-                  formValidate.edit !== -1 ? checkedOption(option.id) : option.isChecked
-                }
+                checked={handleChecked(formValidate.id, option)}
                 onChange={(e) => handleChangeInput(e, index)}
               />
             </div>
@@ -77,8 +77,11 @@ export function CheckboxDropdownAcceptToDo({
   async function handleIsCheckedInput() {
     const auxAcceptToDoHandleVoluntter = [];
     const volunteerAceitaFazer = await getByIdRegisterVoluntarioAceitafazer(
-      formValidate.id
+      formValidate.id,
+      user.token, 
+      user.id
     );
+    
     let aux = [];
     if (volunteerAceitaFazer.length !== undefined) {
       aux = inputs.map((input) => {
@@ -98,5 +101,13 @@ export function CheckboxDropdownAcceptToDo({
     setAcceptToDoHandleVoluntter(
       auxAcceptToDoHandleVoluntter.sort((dado1, dado2) => dado1 - dado2)
     );
+  }
+
+  function handleChecked(edit, option){
+    if(edit === -1){
+      return checkedOption(option.id);
+    }
+
+    return option.isChecked
   }
 }
