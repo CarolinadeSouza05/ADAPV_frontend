@@ -29,14 +29,14 @@ export function CadastroProduto() {
   const [menu, setMenu] = useState("CadastroProduto");
 
   const apiCategoria = "http://localhost:4000/security/categoria";
-  const tableHead = ["Codigo", "Nome", "Preço", "Descrição", "Categoria"];
+  const tableHead = ["Codigo", "Nome", "Preço", "Quantidade", "Categoria"];
 
   const [validado, setValidated] = useState(false);
   const [produto, setProduto] = useState({
     codigo: "",
     nome: "",
     preco: "",
-    descricao: "",
+    quantidade: "",
     categoria: "",
     edit: -1,
   });
@@ -112,7 +112,7 @@ useEffect(() => {
     if (
       produto.nome &&
       produto.preco &&
-      produto.descricao &&
+      produto.quantidade &&
       produto.categoria
     ) {
       const preco = produto.preco.replace(/[^\d.]/g, "");
@@ -148,7 +148,7 @@ useEffect(() => {
       codigo: "",
       nome: "",
       preco: "",
-      descricao: "",
+      quantidade: "",
       categoria: "",
       edit: -1,
     });
@@ -241,17 +241,18 @@ useEffect(() => {
           </div>
         </Tooltip>
 
-        <Tooltip title="Descreva o produto detalhadamente." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
+        <Tooltip title="Descreva a quantidade do produto." placement="left" classes={{ tooltip: 'custom-tooltip' }}>
           <div>
-            <Textarea
-              text="Descrição"
-              placeholder="Descrição"
-              value={produto.descricao}
-              id="descricao"
-              name="descricao"
+          <Inputs
+              type="text"
+              text="Quantidade"
+              placeholder="Quantidade"
+              value={produto.quantidade}
+              id="quantidade"
+              name="quantidade"
               onChange={handleChange}
               required
-              className={validado && !produto.descricao ? "input-invalid" : ""}
+              className={validado && !produto.quantidade ? "input-invalid" : ""}
             />
           </div>
         </Tooltip>

@@ -24,6 +24,7 @@ import {AutorizarAdocao} from './Telas/AutorizarAdocao'
 import { ImpressaoTermo } from './Telas/Impressao_termo'
 import { Caixa } from './Telas/Adm/Caixa'
 import { VolunteerAdm } from './Telas/VolunteerAdm'
+import {Estoque} from './Telas/Adm/Estoque'
 
 export function Router(){
     const useStore = useContext(StoreContext);
@@ -60,6 +61,7 @@ export function Router(){
                 <Route path="/impressao_termo" element={<ImpressaoTermo />} />
                 <Route path="/adm/autorizar-adocao" element={<AutorizarAdocao />} />
                 <Route path="/adm/caixa" element={<Caixa />} />
+                <Route path='/adm/estoque' element={<Estoque/>}/>
             </Routes>
         </BrowserRouter>
     )

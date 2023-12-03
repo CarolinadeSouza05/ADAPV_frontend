@@ -46,7 +46,7 @@ export default function FormAgendamento(props) {
   //Recebendo os Dados do banco de dados
   useEffect(() => {
     (async () => {
-      const aux = await getAnimais(user.id, user.token);
+      const aux = await getAnimais( user.token,user.id);
       await veterinarianToAccepToDoAllFromVolunteer(setVeterinarios, user.token, user.id);
       if(Array.isArray(aux)){
         setAnimais(aux);
@@ -135,6 +135,7 @@ export default function FormAgendamento(props) {
             return resposta.json();
           })
           .then((dados) => {
+            console.log(dados)
             if (dados.status) {
               props.setModoEdicao(false);
 
