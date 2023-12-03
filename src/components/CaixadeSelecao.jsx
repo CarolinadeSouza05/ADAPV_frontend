@@ -1,9 +1,12 @@
-﻿import { Col, Container, Row, Form, Spinner } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import './CaixadeSelecao.css'
+﻿import { useContext, useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
+import { StoreContext } from "../context";
+import './CaixadeSelecao.css';
 
 // Criando uma caixa de seleção genérica que recebe os dados de um banco de dados
 export default function CaixadeSelecao({ url, campoChave, campoExibicao, funcaoSelecao }) {
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const [valorSelecionado, setValorSelecionado] = useState({
     [campoChave]: 0,
     [campoExibicao]: "Não foi possível obter resultados do banco de dados"
@@ -15,31 +18,40 @@ export default function CaixadeSelecao({ url, campoChave, campoExibicao, funcaoS
   useEffect(() => {
     setCarregandoDados(true);
 
-    fetch(url, { method: "GET" })
-      .then((resposta) => {
-        if (resposta.ok) {
-          return resposta.json();
-        } else {
-          throw new Error("Não foi possível obter resultados do banco de dados");
+    (async () => {
+      console.log(url);
+      await fetch(url, { 
+        method: "GET",
+        headers: {
+          "token": user.token,
         }
       })
-      .then((listadedados) => {
-        setCarregandoDados(false);
-        setDados(listadedados);
-        if (listadedados.length > 0) {
-          setValorSelecionado(listadedados[0]);
-          funcaoSelecao(listadedados[0]);
-        }
-      })
-      .catch((erro) => {
-        setCarregandoDados(false);
-        setDados([
-          {
-            [campoChave]: 0,
-            [campoExibicao]: "Não foi possível obter resultados do banco de dados: " + erro.message
+        .then((resposta) => {
+          if (resposta.ok) {
+            return resposta.json();
+          } else {
+            throw new Error("Não foi possível obter resultados do banco de dados");
           }
-        ]);
-      });
+        })
+        .then((listadedados) => {
+          setCarregandoDados(false);
+          setDados(listadedados);
+          if (listadedados.length > 0) {
+            setValorSelecionado(listadedados[0]);
+            funcaoSelecao(listadedados[0]);
+          }
+        })
+        .catch((erro) => {
+          setCarregandoDados(false);
+          setDados([
+            {
+              [campoChave]: 0,
+              [campoExibicao]: "Não foi possível obter resultados do banco de dados: " + erro.message
+            }
+          ]);
+        });
+    })()
+
   }, [url, campoChave, campoExibicao, funcaoSelecao]);
 
   return (

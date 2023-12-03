@@ -227,11 +227,10 @@ export default function FormDesignarTarefas(props) {
             >
               <div>
                 <CaixadeSelecao
-                  url={urLBase + "/voluntarios"+user.id}
+                  url={urLBase + "/security/voluntarios/"+user.id}
                   campoChave={"id"}
                   campoExibicao={"nome"}
                   funcaoSelecao={setVoluntarioSelecionado}
-                  token={user.token}
                 ></CaixadeSelecao>
               </div>
             </Tooltip>
