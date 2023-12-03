@@ -21,7 +21,7 @@ export function Caixa(){
     const [loading, setLoading] = useState(true);
     const cardsBoxArray = [
         {
-            numberMoney: datesBox[0]?.queryDatas?.reduce(
+            numberMoney: datesBox[1]?.queryDatas?.reduce(
                 (accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0),
             iconCard: <FaRegMoneyBill1 size={28} />,
             colorPrinc: "#3AB1B9",
@@ -29,7 +29,7 @@ export function Caixa(){
         },
 
         {
-            numberMoney: datesBox[1]?.queryDatas?.reduce(
+            numberMoney: datesBox[0]?.queryDatas?.reduce(
                 (accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0),
             iconCard: <MdMoneyOff size={28} />,
             colorPrinc: "#DC2626",
@@ -37,21 +37,21 @@ export function Caixa(){
         },
 
         {
-            numberMoney: datesBox[2]?.queryDatas?.reduce(
+            numberMoney: datesBox[3]?.queryDatas?.reduce(
                 (accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0),
             iconCard: <FaMoneyBillTrendUp color="#000" size={28} />,
             arrowIndication: <FaLongArrowAltUp color="#16A34A" />,
-            porcentMonth: datesBox[2]?.differencyPorcent,
+            porcentMonth: datesBox[3]?.differencyPorcent,
             colorInfosMonth: "#16A34A",
             textBodyCard: "Rendimento Mensal",
         },
 
         {
-            numberMoney: datesBox[3]?.queryDatas?.reduce(
+            numberMoney: datesBox[2]?.queryDatas?.reduce(
                 (accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0),
             iconCard: <FaMoneyCheck color="#000" size={28} />,
             arrowIndication: <FaLongArrowAltUp color="#DC2626" />,
-            porcentMonth: datesBox[3]?.differencyPorcent,
+            porcentMonth: datesBox[2]?.differencyPorcent,
             colorInfosMonth: "#DC2626",
             textBodyCard: "Despesa Mensal",
         },
@@ -135,19 +135,19 @@ export function Caixa(){
         switch (tableCurrent) {
           case "Rendimento-Total":
             return (
-              <TableIncome datas={datesBox[0]?.queryDatas} />
+              <TableIncome datas={datesBox[1]?.queryDatas} />
             );
           case "Despesa-Total":
             return (
-              <TableExpense datas={datesBox[1]?.queryDatas} />
+              <TableExpense datas={datesBox[0]?.queryDatas} />
             );
           case "Rendimento-Mensal":
             return (
-                <TableIncome datas={datesBox[2]?.queryDatas} />
+                <TableIncome datas={datesBox[3]?.queryDatas} />
             );
           case "Despesa-Mensal":
             return (
-                <TableExpense datas={datesBox[3]?.queryDatas} />
+                <TableExpense datas={datesBox[2]?.queryDatas} />
             );
           default:
             return null;

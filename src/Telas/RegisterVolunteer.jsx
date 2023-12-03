@@ -37,7 +37,7 @@ export function RegisterVolunteer() {
     })();
   }, []);
 
-  const tableHead = ["Id", "Nome Completo", "Telefone", "Dias da semana", "Período", "O que aceitaria fazer"]
+  const tableHead = ["Id", "Nome Completo", "Telefone", "Dias da semana", "Período", "Data", "O que aceitaria fazer"]
 
   return (
     <>
@@ -105,8 +105,8 @@ export function RegisterVolunteer() {
   async function deleteRegister(id) {
     if (window.confirm("Tem certeza de que deseja excluir o voluntário?")) {
       const aux = registerVolunteers.filter((volunteer) => volunteer.id === id);
-      const message = await deleteRegisterVoluntario(aux[0]);
-      setRegisterVolunteers(await getAllRegisterVoluntario());
+      const message = await deleteRegisterVoluntario(aux[0], user.token, user.id);
+      setRegisterVolunteers(await getAllRegisterVoluntario(user.token, user.id));
       toast.success(message && "Voluntário Deletado com sucesso", {
         position: "bottom-left",
         autoClose: 5000,
@@ -116,7 +116,7 @@ export function RegisterVolunteer() {
       })
     }
 
-    await NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll);
+    await NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, user.token, user.id);
   }
 
   function ChangeValueObject(volunteer) {

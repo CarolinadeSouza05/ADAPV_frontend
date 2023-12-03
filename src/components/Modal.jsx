@@ -1,7 +1,7 @@
 import { MagnifyingGlass, Pencil, Trash, X } from "@phosphor-icons/react";
+import { format, isValid, parseISO } from "date-fns";
 import { useState } from "react";
 import './Modal.css';
-import { format, isValid } from "date-fns";
 
 export function Modal(props) {
   const { title, tableHead, registerAll, editRegister, deleteRegister, setModal } = props;
@@ -60,8 +60,10 @@ export function Modal(props) {
                                 <td key={`td-map-${indexItem}`}>{item}</td>
                               ))}
                             </div>
-                            ) : (
-                              <td>{isValid(input) ? format(new Date(input), 'dd/MM/yyyy') : input}</td>
+                            ) : typeof input === "number" ? (
+                              <td>{input}</td>
+                          ) : (
+                            <td>{isValid(input) ? format(parseISO(input), 'dd/MM/yyyy') : input}</td>
                           )}
                         </>
                         ))}

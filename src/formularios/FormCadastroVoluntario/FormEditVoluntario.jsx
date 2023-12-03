@@ -1,6 +1,6 @@
 import { Cards, DotsThreeVertical, Phone, User } from "@phosphor-icons/react";
 import * as Popover from "@radix-ui/react-popover";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidate } from '../../Telas/RegisterVolunteer'
@@ -12,11 +12,14 @@ import { NameToAccepToDoAllFromVolunteer, ObjectEmptyValue, disponibilidadeArray
 import { Link } from "react-router-dom";
 import { BiTask } from "react-icons/bi";
 import baixar from "../../imagens/baixar.png";
+import { StoreContext } from "../../context";
 
 
 export function FormEditVoluntario(props) {
   const { formValidate, setFormValidate, setRegisterVolunteers, setModal, acceptToDoAll, setAcceptToDoAll } = props;
   const [acceptToDoHandleVoluntter, setAcceptToDoHandleVoluntter] = useState([]);
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const [validado, setValidado] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -161,9 +164,8 @@ export function FormEditVoluntario(props) {
     e.preventDefault();
 
     if (ObjectEmptyValue(formValidate)) {
-
-      const message = await editRegisterVoluntario(formValidate);
-      await editRegisterVoluntarioAceitafazer({ id_voluntario: formValidate.id, ids_aceitafazer: acceptToDoHandleVoluntter })
+      const message = await editRegisterVoluntario(formValidate, user.token, user.id);
+      await editRegisterVoluntarioAceitafazer({ id_voluntario: formValidate.id, ids_aceitafazer: acceptToDoHandleVoluntter }, user.token, user.id)
 
       setValidado(false);
       toast.success(typeof message === "string" && "Voluntário Editado com sucesso", {
@@ -180,9 +182,9 @@ export function FormEditVoluntario(props) {
       setValidado(true);
     }
 
-    setRegisterVolunteers(await getAllRegisterVoluntario());
+    setRegisterVolunteers(await getAllRegisterVoluntario(user.token, user.id));
     setIsOpen(false);
-    setAcceptToDoAll(await getAllRegisterAcceptToDo());
+    setAcceptToDoAll(await getAllRegisterAcceptToDo(user.token, user.id));
     NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll);
     setTimeout(() => {
       EmptyObject();

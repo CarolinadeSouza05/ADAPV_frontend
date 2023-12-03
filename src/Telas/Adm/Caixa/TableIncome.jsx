@@ -4,7 +4,6 @@ import { FaKey } from "react-icons/fa";
 import { MdAttachMoney, MdDateRange } from "react-icons/md";
 
 export function TableIncome({ datas }) {
-    console.log(datas);
 
     return (
         <>
@@ -29,7 +28,7 @@ export function TableIncome({ datas }) {
                 </tr>
             </thead>
             <tbody>
-                {datas &&datas.map((data, index) => (
+                {datas && datas.map((data, index) => (
                     <tr key={index}>
                         <td>{index + 1}</td>
                         <td>{data.chave}</td>

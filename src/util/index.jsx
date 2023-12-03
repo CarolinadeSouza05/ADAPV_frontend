@@ -134,9 +134,9 @@ export function onChangeInput(name, value, setFormInput, formInput) {
 }
 
 export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, token, id){
-  const volunteers = await getAllRegisterVoluntario();
+  const volunteers = await getAllRegisterVoluntario(token, id);
   const acceptToDoAllAux = await getAllRegisterAcceptToDo(token, id);
-  const allAcceptToDoVolunteer = await getAllRegisterVoluntarioAceitafazer();
+  const allAcceptToDoVolunteer = await getAllRegisterVoluntarioAceitafazer(token, id);
 
     volunteers.forEach((volunteer) => {
       volunteer.oQueAceitariaFazer = [];
@@ -150,20 +150,4 @@ export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, set
 
     setRegisterVolunteers(volunteers);
     setAcceptToDoAll(acceptToDoAllAux);
-}
-
-export async function NameToOfficeFromUser(setRegisterUser, setOffices){
-  const users = await getAllRegisterUsers();
-  const offices = await getAllRegisterOffice();
-
-    users.forEach((user) => {
-      offices.forEach((office) => {
-        if (user.id_office === office.id) {
-          user.id_office = office.name;
-        }
-      })
-    });
-
-    setRegisterUser(users);
-    setOffices(offices);
 }
