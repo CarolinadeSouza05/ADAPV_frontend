@@ -91,7 +91,7 @@ export function FormLogin({ formInput, setFormInput }) {
   async function submitForm(e) {
     e.preventDefault();
     const registerInfo = await getRegisterEmailPassword({ email: formInput.email, senha: formInput.password });
-
+    console.log(registerInfo);
     if(ObjectEmptyValue(formInput)){
       setUser(registerInfo.message.user === undefined ? {} : {
         id: registerInfo.message.user.id,

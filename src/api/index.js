@@ -522,10 +522,13 @@ export async function excluirEntradas(id, token) {
 }
 //================== API-Animais ==================//
 
-export async function getAnimais() {
+export async function getAnimais(id, token) {
   let aux = [];
-  await fetch(apiAnimais, {
+  await fetch(`${apiAnimais}/security/${id}`, {
       method: "GET",
+      headers: {
+        "token": token,
+      }
   })
       .then((data) => data.json())
       .then((res) => (aux = res))

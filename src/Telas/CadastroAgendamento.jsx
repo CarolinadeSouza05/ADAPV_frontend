@@ -83,42 +83,45 @@ export function CadastroAgendamento(props) {
             <AsideAdm />
             <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
 
-            <div className="page_container_agenda">
-                <div className="titulo_agenda">
-                    <img
-                        className="vector vectoranimais"
-                        src={vetor3}
-                        alt="Vector"
+            <main className="main-adm-register">
+
+                <div className="page_container_agenda">
+                    <div className="titulo_agenda">
+                        <img
+                            className="vector vectoranimais"
+                            src={vetor3}
+                            alt="Vector"
+                        />
+                        <>
+                            Novos <span className="span1">Agendamentos</span>
+                        </></div>
+                    <FormAgendamento
+                        listadeagendamentos={agendamento}
+                        setAgendamento={setAgendamento}
+                        setModoEdicao={setModoEdicao}
+                        modoEdicao={modoEdicao}
+                        agendamentoEmEdicao={agendamentoEmEdicao}
+                        setAgendamentoEmEdicao={setAgendamentoEmEdicao}
                     />
-                    <>
-                        Novos <span className="span1">Agendamentos</span>
-                    </></div>
-                <FormAgendamento
-                    listadeagendamentos={agendamento}
-                    setAgendamento={setAgendamento}
-                    setModoEdicao={setModoEdicao}
-                    modoEdicao={modoEdicao}
-                    agendamentoEmEdicao={agendamentoEmEdicao}
-                    setAgendamentoEmEdicao={setAgendamentoEmEdicao}
-                />
-            </div>
-            <div className="page_container_agenda">
-                <div className="titulo_agenda">
-                    <img
-                        className="vector vectoranimais"
-                        src={vetor3}
-                        alt="Vector"
-                    />
-                    <>
-                        Agendamentos <span className="span1">Realizados</span>
-                    </></div>
-                <TabelaAgenda
-                    listadeagendamentos={agendamento}
-                    excluirAgendamento={apagarAgendamento}
-                    editarAgendamento={prepararParaAtualizar}
-                    setAgendamento={setAgendamento}
-                    setAgendamentoEmEdicao={setAgendamentoEmEdicao} />
-            </div>
+                </div>
+                <div className="page_container_agenda">
+                    <div className="titulo_agenda">
+                        <img
+                            className="vector vectoranimais"
+                            src={vetor3}
+                            alt="Vector"
+                        />
+                        <>
+                            Agendamentos <span className="span1">Realizados</span>
+                        </></div>
+                    <TabelaAgenda
+                        listadeagendamentos={agendamento}
+                        excluirAgendamento={apagarAgendamento}
+                        editarAgendamento={prepararParaAtualizar}
+                        setAgendamento={setAgendamento}
+                        setAgendamentoEmEdicao={setAgendamentoEmEdicao} />
+                </div>
+            </main>
         </>
     )
 }

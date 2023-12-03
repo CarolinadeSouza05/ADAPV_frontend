@@ -1,4 +1,4 @@
-import { getAllRegisterAcceptToDo, getAllRegisterOffice, getAllRegisterUsers, getAllRegisterVoluntario, getAllRegisterVoluntarioAceitafazer } from "../api";
+import { getAllRegisterAcceptToDo, getAllRegisterVoluntario, getAllRegisterVoluntarioAceitafazer } from "../api";
 
 export const disponibilidadeArray = [
   {
@@ -138,16 +138,36 @@ export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, set
   const acceptToDoAllAux = await getAllRegisterAcceptToDo(token, id);
   const allAcceptToDoVolunteer = await getAllRegisterVoluntarioAceitafazer(token, id);
 
-    volunteers.forEach((volunteer) => {
-      volunteer.oQueAceitariaFazer = [];
-      allAcceptToDoVolunteer.forEach((accept) => {
-        if (volunteer.id === accept.id_voluntario) {
-          const auxIndexOfAccepTodo = acceptToDoAllAux.find(acceptToDo => acceptToDo.id === accept.id_aceitafazer).name;
-          volunteer.oQueAceitariaFazer.push(auxIndexOfAccepTodo);
-        }
-      });
+  volunteers.forEach((volunteer) => {
+    volunteer.oQueAceitariaFazer = [];
+    allAcceptToDoVolunteer.forEach((accept) => {
+      if (volunteer.id === accept.id_voluntario) {
+        const auxIndexOfAccepTodo = acceptToDoAllAux.find(acceptToDo => acceptToDo.id === accept.id_aceitafazer).name;
+        volunteer.oQueAceitariaFazer.push(auxIndexOfAccepTodo);
+      }
     });
+  });
 
-    setRegisterVolunteers(volunteers);
-    setAcceptToDoAll(acceptToDoAllAux);
+  setRegisterVolunteers(volunteers);
+  setAcceptToDoAll(acceptToDoAllAux);
+}
+
+export async function veterinarianToAccepToDoAllFromVolunteer(setRegisterVolunteers, token, id){
+  const volunteers = await getAllRegisterVoluntario(token, id);
+  const acceptToDoAllAux = await getAllRegisterAcceptToDo(token, id);
+  const allAcceptToDoVolunteer = await getAllRegisterVoluntarioAceitafazer(token, id);
+
+  const volunteerAux = [];
+  volunteers.forEach((volunteer) => {
+    allAcceptToDoVolunteer.forEach((accept) => {
+      if (volunteer.id === accept.id_voluntario) {
+        const auxIndexOfAccepTodo = acceptToDoAllAux.find(acceptToDo => acceptToDo.id === accept.id_aceitafazer).name;
+        
+        auxIndexOfAccepTodo.toLowerCase() === "veterinario" && volunteerAux.push(volunteer);
+        
+      }
+    });
+  });
+
+  setRegisterVolunteers(volunteerAux);
 }

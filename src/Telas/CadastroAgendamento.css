@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   /* height: auto; */
-  width: 30%;
+  width: 60%;
   float: left
 }
  .searchInput_agenda{
@@ -201,6 +201,7 @@
   padding: 8px 16px;
   margin-left: 10px;
   font-family: var(--font-family-montserrat);
+  width: 100%;
 }
 
 .flex-row-item::placeholder {
@@ -221,8 +222,7 @@
 }
 
 .form_agenda label{
-width: 100px;
-text-align: right;
+  text-align: right;
 }
 
 .titulo_agenda {
@@ -239,4 +239,86 @@ text-align: right;
   width: 100%;
   display: flex;
   justify-content: flex-end;
+}
+
+.container-input{
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+.container-veterinario{
+  align-items: center;
+  border: 2px solid var(--pelorous);
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-end;
+  height: auto;
+  padding: 12px 4px;
+  position: relative;
+  width: 100%;
+}
+
+.container-veterinario label{
+  align-items: center;
+  display: flex;
+  height: 100%;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  text-align: start;
+  width: calc(100% - 4px);
+}
+
+.container-veterinario #veterinario{
+  display: none;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.container-veterinario .veterinarios{
+  background-color: #fff;
+  display: none;
+  height: auto;
+  left: 0;
+  position: absolute;
+  top: 105%;
+  width: calc(100% + 4px);
+}
+
+.veterinarios .veterinario-input{
+  align-items: center;
+  border: 1px solid var(--pelorous);
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+  gap: 8px;
+  padding: 4px 8px;
+  position: relative;
+  width: 100%;
+}
+
+.veterinario-input input{
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+
+.veterinario-input input:checked + label{
+  background-color: var(--pelorous);
+  color: white;
+}
+
+.veterinario-input label{
+  display: inline-block;
+  padding: 0 4px;
+  width: 100%;
+}
+
+#veterinario:checked + .veterinarios{
+  display: block;
 }

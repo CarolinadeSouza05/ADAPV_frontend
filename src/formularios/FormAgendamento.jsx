@@ -1,22 +1,24 @@
-﻿import React from "react";
-import { useEffect, useState, useContext } from "react";
-import { urLBase } from "../api/index.js";
+﻿import Tooltip from "@material-ui/core/Tooltip";
+import React, { useContext, useEffect, useState } from "react";
+import { FaArrowDown } from "react-icons/fa6";
+import { getAnimais, urLBase } from "../api/index.js";
 import Barradebusca from "../components/Barradebusca";
-import baixar from "../imagens/baixar.png";
-import Tooltip from "@material-ui/core/Tooltip";
 import { StoreContext } from "../context/index.jsx";
+import baixar from "../imagens/baixar.png";
+import { veterinarianToAccepToDoAllFromVolunteer } from "../util/index.jsx";
 
 export default function FormAgendamento(props) {
   const useStore = useContext(StoreContext);
   const { user } = useStore();
   const [animalSelecionado, setAnimalSelecionado] = useState({});
-  const [animais, setAnimais] = useState([]); //adicionei a lista vazia
+  const [veterinarios, setVeterinarios] = useState([]);
+  const [animais, setAnimais] = useState([]);
   const [validado, setValidado] = useState(false);
   const [agendamento, setAgendamento] = useState({
     codag: 0,
     animal: {},
     servico: "",
-    veterinario: "",
+    veterinario: 0,
     data: "",
     hora: "",
   });
@@ -26,7 +28,7 @@ export default function FormAgendamento(props) {
       codag: 0,
       animal: {},
       servico: "",
-      veterinario: "",
+      veterinario: 0,
       data: "",
       hora: "",
     });
@@ -43,23 +45,17 @@ export default function FormAgendamento(props) {
 
   //Recebendo os Dados do banco de dados
   useEffect(() => {
-    fetch(`${urLBase}/animais`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      },
-    })
-      .then((resposta) => {
-        return resposta.json();
-      })
-      .then((dados) => {
-        if (Array.isArray(dados)) {
-          setAnimais(dados);
-        } else {
-        }
-      });
+    (async () => {
+      const aux = await getAnimais(user.id, user.token);
+      await veterinarianToAccepToDoAllFromVolunteer(setVeterinarios, user.token, user.id);
+      if(Array.isArray(aux)){
+        setAnimais(aux);
+      }
+    })()
   }, []);
 
+  console.log(agendamento);
+  
   function manupilaAlteracao(e) {
     const elemForm = e.currentTarget;
     const id = elemForm.id;
@@ -215,7 +211,7 @@ export default function FormAgendamento(props) {
           placement="left"
           classes={{ tooltip: "custom-tooltip" }}
         >
-          <div>
+          <div className="container-input">
             <label htmlFor="servico" className="montserrat-bold-cod-gray-12px">
               Serviço:
             </label>
@@ -239,15 +235,17 @@ export default function FormAgendamento(props) {
           placement="left"
           classes={{ tooltip: "custom-tooltip" }}
         >
-          <div>
+          <div className="container-veterinario">
             <label
               htmlFor="veterinario"
               className="montserrat-bold-cod-gray-12px"
             >
               Veterinário:
             </label>
+            <FaArrowDown size={18} />
+
             <input
-              type="text"
+              type="checkbox"
               id="veterinario"
               name="veterinario"
               value={agendamento.veterinario}
@@ -255,6 +253,25 @@ export default function FormAgendamento(props) {
               className="flex-row-item "
               required
             />
+
+            <div className="veterinarios">
+            {veterinarios.length > 0 && veterinarios.map((veterinario, index) => (
+              <div className="veterinario-input" key={index}>
+                <input 
+                  type="radio" 
+                  name={`veterinario-agendamento-${index}`}
+                  value={veterinario.id}
+                  id={`veterinario-agendamento-${index}`}
+                  checked={agendamento.veterinario === veterinario.id}
+                  onChange={(e) => setAgendamento({ ...agendamento, veterinario: parseInt(e.target.value) })}
+                />
+                <label htmlFor={`veterinario-agendamento-${index}`}>
+                  <span>{veterinario.nome}</span>
+                </label>
+              </div>
+            ))}
+
+            </div>
           </div>
         </Tooltip>
         <Tooltip
@@ -262,7 +279,7 @@ export default function FormAgendamento(props) {
           placement="left"
           classes={{ tooltip: "custom-tooltip" }}
         >
-          <div>
+          <div className="container-input">
             <label htmlFor="data" className="montserrat-bold-cod-gray-12px">
               Data:
             </label>
@@ -282,7 +299,7 @@ export default function FormAgendamento(props) {
           placement="left"
           classes={{ tooltip: "custom-tooltip" }}
         >
-          <div>
+          <div className="container-input">
             <label htmlFor="hora" className="montserrat-bold-cod-gray-12px">
               Hora:
             </label>
