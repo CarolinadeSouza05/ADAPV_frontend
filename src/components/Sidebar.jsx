@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import { SidebarItem } from "./SidebarItem";
 import { RiAdminFill } from "react-icons/ri";
+import { MdOutlineVolunteerActivism } from "react-icons/md";
 import { StoreContext } from "../context";
 
 export function Sidebar({ active }) {
@@ -29,6 +30,9 @@ export function Sidebar({ active }) {
         </Link>
         <Link to="/doacao">
             <SidebarItem Icon={FaDonate} Text="Doação" />
+        </Link>
+        <Link to="/cadastro-voluntario">
+            <SidebarItem Icon={MdOutlineVolunteerActivism} Text="Voluntário" />
         </Link>
 
         {user.role != undefined && user.role === "ADMIN" && (

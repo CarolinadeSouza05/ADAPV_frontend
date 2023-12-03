@@ -1,3 +1,7 @@
+.main-register-volunteer{
+  height: auto;
+}
+
 .form-cadastro-voluntario {
   display: flex;
   flex-direction: column;

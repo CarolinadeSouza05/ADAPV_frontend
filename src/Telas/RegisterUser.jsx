@@ -9,6 +9,7 @@ import { FormEditUsuario } from "../formularios/FormCadastroUsuario/FormEditUsua
 import { AsideAdm } from "./Adm/AsideAdm";
 import './RegisterUser.css';
 import { StoreContext } from "../context";
+import { format, parseISO } from "date-fns";
 
 export const inputsFormValidate = {
   id: 0,
@@ -85,9 +86,11 @@ export function RegisterUser() {
 
   function editRegister(register, index) {
     if (register.email !== undefined) {
-      const { ...rest } = register;
+      const { senha, data, ...rest } = register;
       const auxRegisters = {
         edit: index,
+        senha: "",
+        data: format(parseISO(data), "yyyy-MM-dd"),
         ...rest
       };
 

@@ -16,7 +16,7 @@ import "./AsideAdm.css";
 export function AsideAdm(){
     const [menu, setMenu] = useState(false);
     const cardsRegister = [
-        { id: 1, name: "Cadastro de Voluntários", icon: MdOutlineVolunteerActivism, path: "/adm/cadastro/voluntario" },
+        { id: 1, name: "Voluntários", icon: MdOutlineVolunteerActivism, path: "/adm/cadastro/voluntario" },
         { id: 2, name: "Cadastro de Tarefas", icon: FaTasks, path: "/adm/cadastro/aceitafazer" },
         { id: 3, name: "Cadastro de Usuário", icon: FaUser, path: "/adm/cadastro/usuario" },
         { id: 4, name: "Cadastro de Produtos", icon: FaBoxOpen, path: "/adm/cadastro/produto" },

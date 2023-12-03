@@ -46,7 +46,7 @@ export function Router(){
                 <Route path='/doacao' element={<RegisterDonation />} />
                 <Route path='/adm' element={<Adm />}  />
                 <Route path='/adm/cadastro/animal' element={<CadastroAnimal />} />
-                <Route path='/adm/cadastro/voluntario' element={<RegisterVolunteer />} />
+                <Route path='/cadastro-voluntario' element={<RegisterVolunteer />} />
                 <Route path='/adm/cadastro/usuario' element={<RegisterUser />} />
                 <Route path="/adm/cadastro/produto" element={<CadastroProduto />} />
                 <Route path="/adm/cadastro/designar-voluntario" element={<CadastroDesignar />} />

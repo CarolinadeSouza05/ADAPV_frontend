@@ -81,27 +81,6 @@ export function FormCadastroVoluntario(props) {
               alt="Vector"
             />
             <span className="span0"> Cadastro </span><span className="span1"> de Voluntários</span></div>
-
-
-          <Popover.Root>
-            <Popover.Trigger className="popover-trigger">
-                <DotsThreeVertical size={32} />
-            </Popover.Trigger>
-
-            <Popover.Portal>
-              <Popover.Content className="popover-content">
-                <button className="button-popover-trigger" onClick={() => setModal(true)} >
-                  <Cards size={32} />
-                  <span>Modal</span>
-                </button>
-
-                <Link to="/adm/cadastro/aceitafazer" className="button-popover-trigger" onClick={() => setModal(true)} >
-                    <BiTask size={32} />
-                    <span>Cadastro Aceita Fazer</span>
-                  </Link>
-              </Popover.Content>
-            </Popover.Portal>
-          </Popover.Root>
         </div>
         {inputForm.map((input, index) => (
           <div className="form-input flex-col" key={index}>

@@ -99,9 +99,11 @@ export function FormLogin({ formInput, setFormInput }) {
         token: registerInfo.message.token,
       });
 
-      setTimeout(() => {
-        navigate("/adm")
-      }, 5000);
+      if(registerInfo.message.user.role === "ADMIN"){
+        setTimeout(() => {
+          navigate("/adm")
+        }, 5000);
+      }
     }
 
     toastMessageLogin(registerInfo);

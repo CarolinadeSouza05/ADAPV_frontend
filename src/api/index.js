@@ -1,5 +1,5 @@
-const apiVoluntario = "http://localhost:4000/security/voluntarios";
-const apiAcceptToDo = "http://localhost:4000/security/aceitariafazer";
+const apiVoluntario = "http://localhost:4000/voluntarios";
+const apiAcceptToDo = "http://localhost:4000/aceitariafazer";
 const apiUser = "http://localhost:4000/user";
 const apiOffice = "http://localhost:4000/security/office";
 const apiVoluntarioAceitafazer = "http://localhost:4000/security/voluntario-aceitafazer";
@@ -13,7 +13,7 @@ const apiTipo = "http://localhost:4000/security/tipo";
 const apiAdocao = "http://localhost:4000/adocao";
 
 export async function getAllRegisterVoluntario(token, id) {
-  let aux = await fetch(`${apiVoluntario}/${id}`, {
+  let aux = await fetch(`${apiVoluntario}/security/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export async function createRegisterVoluntario(register, token, id) {
 }
 
 export async function editRegisterVoluntario(register, token, id) {
-  const message = await fetch(`${apiVoluntario}/${id}`, {
+  const message = await fetch(`${apiVoluntario}/security/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export async function editRegisterVoluntario(register, token, id) {
 }
 
 export async function deleteRegisterVoluntario(register, token, id) {
-  let aux = await fetch(`${apiVoluntario}/${id}`, {
+  let aux = await fetch(`${apiVoluntario}/security/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +75,7 @@ export async function deleteRegisterVoluntario(register, token, id) {
 }
 
 export async function getByName(name, token, id) {
-  let aux = await fetch(`${apiVoluntario}/name/${name}/${id}`, {
+  let aux = await fetch(`${apiVoluntario}/security/name/${name}/${id}`, {
       method: "GET",
       headers: {
           "Content-Type": "application/json",
@@ -121,7 +121,7 @@ export async function getAllRegisterAcceptToDo(token, id) {
 }
 
 export async function createRegisterAccepToDo(register, token, id) {
-  const message = await fetch(`${apiAcceptToDo}/${id}`, {
+  const message = await fetch(`${apiAcceptToDo}/security/${id}`, {
       method: "POST",
       body: JSON.stringify(register),
       headers: {
@@ -136,7 +136,7 @@ export async function createRegisterAccepToDo(register, token, id) {
 }
 
 export async function editRegisterAccepToDo(register, token, id) {
-  const message = await fetch(`${apiAcceptToDo}/${id}`, {
+  const message = await fetch(`${apiAcceptToDo}/security/${id}`, {
       method: "PUT",
       headers: {
           "Content-Type": "application/json",
@@ -151,7 +151,7 @@ export async function editRegisterAccepToDo(register, token, id) {
 }
 
 export async function deleteRegisterAccepToDo(register, token, id) {
-  let aux = await fetch(`${apiAcceptToDo}/${id}`, {
+  let aux = await fetch(`${apiAcceptToDo}/security/${id}`, {
       method: "DELETE",
       headers: {
           "Content-Type": "application/json",

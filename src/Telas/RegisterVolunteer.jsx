@@ -3,14 +3,14 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { deleteRegisterVoluntario, getAllRegisterVoluntario } from "../api";
 import { Aside } from "../components/Aside";
-import { HeaderAdm } from "../components/HeaderAdm";
 import { Modal } from "../components/Modal";
 import { FormCadastroVoluntario } from "../formularios/FormCadastroVoluntario";
 import { FormEditVoluntario } from "../formularios/FormCadastroVoluntario/FormEditVoluntario";
 import { NameToAccepToDoAllFromVolunteer, disponibilidadeArray, periodoArray } from "../util";
-import { AsideAdm } from "./Adm/AsideAdm";
 import "./RegisterVolunteer.css";
 import { StoreContext } from "../context";
+import { Cabecalho } from "../components/Cabecalho";
+import { Footer } from "../components/Footer";
 
 export const inputsFormValidate = {
   id: 0,
@@ -41,15 +41,13 @@ export function RegisterVolunteer() {
 
   return (
     <>
-      <AsideAdm />
-      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
-      <main className="main-adm-register">
+      <Cabecalho />
+      <main className="main-register-volunteer">
             <section className="container-main cadastros flex-col">
               <Aside />
             </section>
 
             <section className="container-main form-cadastro alinhamento">
-              {formValidate.edit === -1 ? (
                 <FormCadastroVoluntario 
                   formValidate={formValidate} 
                   setFormValidate={setFormValidate} 
@@ -58,16 +56,6 @@ export function RegisterVolunteer() {
                   acceptToDoAll={acceptToDoAll}
                   setAcceptToDoAll={setAcceptToDoAll}
                 />
-              ) : (
-                <FormEditVoluntario 
-                  formValidate={formValidate} 
-                  setFormValidate={setFormValidate} 
-                  setRegisterVolunteers={setRegisterVolunteers}
-                  setModal={setModal}
-                  acceptToDoAll={acceptToDoAll}
-                  setAcceptToDoAll={setAcceptToDoAll}
-                />
-              )}
             </section>          
       </main>
       {modal && (
@@ -81,7 +69,8 @@ export function RegisterVolunteer() {
         />
       )}
 
-    <ToastContainer />
+      <ToastContainer />
+      <Footer />
     </>
   );
 
