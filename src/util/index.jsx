@@ -101,22 +101,22 @@ export const periodoArray = [
 
 export const listadedenuncias = [
   {
-      id:"1",
-      rua: "R. das Margaridas ",
-      numero: "123",
-      cep: "19060-260",
-      cidade: "Presidente Prudente",
-      observacoes: "Sem comida",
-      tel: ""
+    id: "1",
+    rua: "R. das Margaridas ",
+    numero: "123",
+    cep: "19060-260",
+    cidade: "Presidente Prudente",
+    observacoes: "Sem comida",
+    tel: ""
   },
-  {   
-      id:"2",
-      rua: "R. das Aboboras",
-      numero: "321",
-      cep: "19060-120",
-      cidade: "Pres. Prudente",
-      observacoes: "Não tem onde dormir",
-      tel: "(18)99999-9999"
+  {
+    id: "2",
+    rua: "R. das Aboboras",
+    numero: "321",
+    cep: "19060-120",
+    cidade: "Pres. Prudente",
+    observacoes: "Não tem onde dormir",
+    tel: "(18)99999-9999"
   },
 ];
 
@@ -133,7 +133,7 @@ export function onChangeInput(name, value, setFormInput, formInput) {
   setFormInput({ ...formInput, [name]: value });
 }
 
-export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, token, id){
+export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, token, id) {
   const volunteers = await getAllRegisterVoluntario(token, id);
   const acceptToDoAllAux = await getAllRegisterAcceptToDo(token, id);
   const allAcceptToDoVolunteer = await getAllRegisterVoluntarioAceitafazer(token, id);

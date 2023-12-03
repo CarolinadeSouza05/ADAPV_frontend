@@ -318,7 +318,7 @@ export default function FormAgendamento(props) {
           <button
             type="button"
             id="limpar"
-            className="botao_denuncia montserrat-bold-concrete-16px"
+            className="botao_limpar_agenda montserrat-bold-concrete-16px"
             onClick={limparFormulario}
           >
             Limpar

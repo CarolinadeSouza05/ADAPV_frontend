@@ -44,7 +44,7 @@ export function CadastroAgendamento(props) {
         ).then((dados) => {
             window.alert(dados.mensagem);
             //Fazendo um novo Get para atualizar a tabela após exclusão
-            fetch(urLBase + "/agendamentos", {
+            fetch(`${urLBase}/security/agendamentos/${user.id}`, {
                 method: "GET"
             }).then((resposta) => {
                 return resposta.json();

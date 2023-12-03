@@ -23,7 +23,6 @@ export async function getAllRegisterVoluntario(token, id) {
     .then((data) => data.json())
     .then((repos) => repos)
     .catch((e) => e);
-
   return aux;
 }
 

@@ -19,7 +19,7 @@ export default function CaixadeSelecao({ url, campoChave, campoExibicao, funcaoS
     setCarregandoDados(true);
 
     (async () => {
-      console.log(url);
+
       await fetch(url, { 
         method: "GET",
         headers: {

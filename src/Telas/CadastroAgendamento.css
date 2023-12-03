@@ -5,6 +5,9 @@
   width: 60%;
   float: left
 }
+.container_agendamento{
+  margin-left: 5%;
+}
  .searchInput_agenda{
   width: 95%;
   /* position: relative; */
@@ -191,6 +194,27 @@
 .botao_agendar:hover {
   color: var(--pelorous);
   background-color: var(--concrete);
+}
+.botao_limpar_agenda {
+  align-items: center;
+  background-color: var(--concrete);
+  border-style: solid;
+  color: var(--pelorous);
+  border-radius: 8px;
+  border-color: var(--pelorous);
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px 18px;
+  position: relative;
+  width: fit-content;
+  margin-right: 3px;
+}
+
+.botao_limpar_agenda:hover {
+  color: var(--concrete);
+  background-color: var(--pelorous);
 }
 
 .flex-row-item {
