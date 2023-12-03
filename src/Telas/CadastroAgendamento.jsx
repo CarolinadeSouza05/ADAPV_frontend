@@ -44,7 +44,7 @@ export function CadastroAgendamento(props) {
         ).then((dados) => {
             window.alert(dados.mensagem);
             //Fazendo um novo Get para atualizar a tabela após exclusão
-            fetch(urLBase + "/agendamentos", {
+            fetch(`${urLBase}/security/agendamentos/${user.id}`, {
                 method: "GET"
             }).then((resposta) => {
                 return resposta.json();
@@ -82,7 +82,7 @@ export function CadastroAgendamento(props) {
         <>
             <AsideAdm />
             <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
-
+            <div className="container_agendamento">
             <div className="page_container_agenda">
                 <div className="titulo_agenda">
                     <img
@@ -118,7 +118,7 @@ export function CadastroAgendamento(props) {
                     editarAgendamento={prepararParaAtualizar}
                     setAgendamento={setAgendamento}
                     setAgendamentoEmEdicao={setAgendamentoEmEdicao} />
-            </div>
+            </div></div>
         </>
     )
 }

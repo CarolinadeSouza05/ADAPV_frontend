@@ -32,7 +32,7 @@ export default function FormDesignarTarefas(props) {
 
   //Recebendo os Dados do banco de dados das atividades
   useEffect(() => {
-    fetch(`${urLBase}/security/aceitariafazer/${user.id}`, {
+    fetch(`${urLBase}/aceitariafazer/${user.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -108,7 +108,22 @@ export default function FormDesignarTarefas(props) {
       })
       .then((dados) => {
         if (dados.status) {
-          setDesignarTarefas({ ...designarTarefas, id: dados.id });
+          // setDesignarTarefas({ ...designarTarefas, id: dados.id });
+          const novoDesignarTarefas = {
+            ...designarTarefas,
+            id: dados.id || designarTarefas.id,
+          };
+  
+          setDesignarTarefas({
+            id_designar: 0,
+            cod_atividade: {},
+            data: "",
+            hora: "",
+            listadeVoluntarios: [],
+          });
+  
+          setListadeVoluntariosSelecionados([]);
+  
           fetch(`${urLBase}/security/designar_atividades/${user.id}`, {
             method: "GET",
             headers: {
@@ -227,7 +242,7 @@ export default function FormDesignarTarefas(props) {
             >
               <div>
                 <CaixadeSelecao
-                  url={urLBase + "/security/voluntarios/"+user.id}
+                  url={urLBase + "/voluntarios/security/"+user.id}
                   campoChave={"id"}
                   campoExibicao={"nome"}
                   funcaoSelecao={setVoluntarioSelecionado}

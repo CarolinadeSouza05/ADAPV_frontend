@@ -101,22 +101,22 @@ export const periodoArray = [
 
 export const listadedenuncias = [
   {
-      id:"1",
-      rua: "R. das Margaridas ",
-      numero: "123",
-      cep: "19060-260",
-      cidade: "Presidente Prudente",
-      observacoes: "Sem comida",
-      tel: ""
+    id: "1",
+    rua: "R. das Margaridas ",
+    numero: "123",
+    cep: "19060-260",
+    cidade: "Presidente Prudente",
+    observacoes: "Sem comida",
+    tel: ""
   },
-  {   
-      id:"2",
-      rua: "R. das Aboboras",
-      numero: "321",
-      cep: "19060-120",
-      cidade: "Pres. Prudente",
-      observacoes: "Não tem onde dormir",
-      tel: "(18)99999-9999"
+  {
+    id: "2",
+    rua: "R. das Aboboras",
+    numero: "321",
+    cep: "19060-120",
+    cidade: "Pres. Prudente",
+    observacoes: "Não tem onde dormir",
+    tel: "(18)99999-9999"
   },
 ];
 
@@ -133,21 +133,23 @@ export function onChangeInput(name, value, setFormInput, formInput) {
   setFormInput({ ...formInput, [name]: value });
 }
 
-export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, token, id){
+export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, token, id) {
   const volunteers = await getAllRegisterVoluntario(token, id);
   const acceptToDoAllAux = await getAllRegisterAcceptToDo(token, id);
   const allAcceptToDoVolunteer = await getAllRegisterVoluntarioAceitafazer(token, id);
-
+  if (Array.isArray(allAcceptToDoVolunteer)) {
     volunteers.forEach((volunteer) => {
       volunteer.oQueAceitariaFazer = [];
-      allAcceptToDoVolunteer.forEach((accept) => {
+      allAcceptToDoVolunteer?.forEach((accept) => {
         if (volunteer.id === accept.id_voluntario) {
           const auxIndexOfAccepTodo = acceptToDoAllAux.find(acceptToDo => acceptToDo.id === accept.id_aceitafazer).name;
           volunteer.oQueAceitariaFazer.push(auxIndexOfAccepTodo);
         }
       });
     });
+  }
 
-    setRegisterVolunteers(volunteers);
-    setAcceptToDoAll(acceptToDoAllAux);
+
+  setRegisterVolunteers(volunteers);
+  setAcceptToDoAll(acceptToDoAllAux);
 }

@@ -47,7 +47,7 @@ export function Modal(props) {
                   {head}
                 </th>
               ))}
-              <th scope="col">Editar</th>
+              {/* <th scope="col">Editar</th> */}
               <th scope="col">Deletar</th>
             </tr>
           </thead>
@@ -72,12 +72,12 @@ export function Modal(props) {
                           </div>
                         ))}
                       </td>
-                      <td>
+                      {/* <td>
                         <Pencil
                           size={32}
                         //  onClick={() => handleEditClick(registerInput)}
                         />
-                      </td>
+                      </td> */}
                       <td>
                         <Trash
                           size={32}
