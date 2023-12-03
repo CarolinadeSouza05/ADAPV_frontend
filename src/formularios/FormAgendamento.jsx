@@ -43,11 +43,10 @@ export default function FormAgendamento(props) {
 
   //Recebendo os Dados do banco de dados
   useEffect(() => {
-    fetch(`${urLBase}/security/animais/${user.id}`, {
+    fetch(`${urLBase}/animais`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
-        token: user.token,
+        "Content-Type": "application/json"
       },
     })
       .then((resposta) => {
@@ -100,7 +99,7 @@ export default function FormAgendamento(props) {
                 method: "GET",
                 headers: {
                   "Content-Type": "application/json",
-                  token: user.token,
+                  "token": user.token,
                 },
               })
                 .then((resposta) => resposta.json())
@@ -124,7 +123,7 @@ export default function FormAgendamento(props) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            token: user.token,
+            "token": user.token,
           },
           body: JSON.stringify({
             codag: agendamento.codag,

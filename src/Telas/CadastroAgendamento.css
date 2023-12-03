@@ -1,8 +1,8 @@
-﻿.page_container {
+﻿.page_container_agenda{
   margin: 0;
   padding: 0;
-  height: auto;
-  width: 50%;
+  /* height: auto; */
+  width: 30%;
   float: left
 }
  .searchInput_agenda{

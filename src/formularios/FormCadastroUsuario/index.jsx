@@ -152,7 +152,7 @@ export function FormCadastroUsuario(props) {
 
     const { ...rest } = formCadastroInput;
     const register = {
-      role: "USER",
+      role: "ADMIN",
       data: formatData,
       ...rest,
     };

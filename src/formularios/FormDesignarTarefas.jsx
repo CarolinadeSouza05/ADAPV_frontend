@@ -36,7 +36,7 @@ export default function FormDesignarTarefas(props) {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        token: user.token,
+        "token": user.token,
       },
     })
       .then((resposta) => {
@@ -90,11 +90,11 @@ export default function FormDesignarTarefas(props) {
         id: item.id,
       });
     }
-    fetch(`${urLBase}/security//designar_atividades/${user.id}`, {
+    fetch(`${urLBase}/security/designar_atividades/${user.id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        token: user.token,
+        "token": user.token,
       },
       body: JSON.stringify({
         atividade: { id: atividadeSelecionada.id },
@@ -109,11 +109,11 @@ export default function FormDesignarTarefas(props) {
       .then((dados) => {
         if (dados.status) {
           setDesignarTarefas({ ...designarTarefas, id: dados.id });
-          fetch(`${urLBase}/security//designar_atividades/${user.id}`, {
+          fetch(`${urLBase}/security/designar_atividades/${user.id}`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              token: user.token,
+              "token": user.token,
             },
           })
             .then((resposta) => {
@@ -227,10 +227,11 @@ export default function FormDesignarTarefas(props) {
             >
               <div>
                 <CaixadeSelecao
-                  url={urLBase + "/voluntarios"}
+                  url={urLBase + "/voluntarios"+user.id}
                   campoChave={"id"}
                   campoExibicao={"nome"}
                   funcaoSelecao={setVoluntarioSelecionado}
+                  token={user.token}
                 ></CaixadeSelecao>
               </div>
             </Tooltip>

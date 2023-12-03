@@ -83,7 +83,7 @@ export function CadastroAgendamento(props) {
             <AsideAdm />
             <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
 
-            <div className="page_container main-adm-register">
+            <div className="page_container_agenda">
                 <div className="titulo_agenda">
                     <img
                         className="vector vectoranimais"
@@ -102,7 +102,7 @@ export function CadastroAgendamento(props) {
                     setAgendamentoEmEdicao={setAgendamentoEmEdicao}
                 />
             </div>
-            <div className="page_container main-adm-register">
+            <div className="page_container_agenda">
                 <div className="titulo_agenda">
                     <img
                         className="vector vectoranimais"
