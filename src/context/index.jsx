@@ -10,7 +10,7 @@ export const UserValueDefault = {
   role: "USER",
 };
 
-const UserDTOValuesDefault = {
+export const UserDTOValuesDefault = {
     id: "",
     role: "",
     token: ""

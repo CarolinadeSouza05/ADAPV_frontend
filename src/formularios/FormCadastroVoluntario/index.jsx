@@ -1,19 +1,16 @@
-import { Cards, DotsThreeVertical, Phone, User } from "@phosphor-icons/react";
-import * as Popover from "@radix-ui/react-popover";
+import { Phone, User } from "@phosphor-icons/react";
+import { format } from "date-fns";
 import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidate } from '../../Telas/RegisterVolunteer';
-import vector_3 from "../../imagens/vector-3.svg"
 import { createRegisterVoluntario, createRegisterVoluntarioAceitafazer, getAllRegisterVoluntario, getRegisterTel } from "../../api";
 import { CheckboxDropdownAcceptToDo } from "../../components/CheckboxDropdownAcceptToDo";
 import { InputsForm } from "../../components/InputsForm";
-import { ObjectEmptyValue, NameToAccepToDoAllFromVolunteer, disponibilidadeArray, periodoArray } from "../../util";
-import { Link } from "react-router-dom";
-import { BiTask } from "react-icons/bi";
-import { format } from "date-fns";
-import baixar from "../../imagens/baixar.png";
 import { StoreContext } from "../../context";
+import baixar from "../../imagens/baixar.png";
+import vector_3 from "../../imagens/vector-3.svg";
+import { NameToAccepToDoAllFromVolunteer, ObjectEmptyValue, disponibilidadeArray, periodoArray } from "../../util";
 
 
 export function FormCadastroVoluntario(props) {

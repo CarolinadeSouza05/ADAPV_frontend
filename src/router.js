@@ -23,6 +23,7 @@ import { BulletinAll } from './Telas/Adm/BulletinAll'
 import {AutorizarAdocao} from './Telas/AutorizarAdocao'
 import { ImpressaoTermo } from './Telas/Impressao_termo'
 import { Caixa } from './Telas/Adm/Caixa'
+import { VolunteerAdm } from './Telas/VolunteerAdm'
 
 export function Router(){
     const useStore = useContext(StoreContext);
@@ -44,9 +45,10 @@ export function Router(){
                 <Route path='/pets' element={<Pagpets />} />
                 <Route path="/sobre" element={<SobreNos />} />
                 <Route path='/doacao' element={<RegisterDonation />} />
+                <Route path='/cadastro-voluntario' element={<RegisterVolunteer />} />
                 <Route path='/adm' element={<Adm />}  />
                 <Route path='/adm/cadastro/animal' element={<CadastroAnimal />} />
-                <Route path='/cadastro-voluntario' element={<RegisterVolunteer />} />
+                <Route path='/adm/cadastro/voluntario' element={<VolunteerAdm />} />
                 <Route path='/adm/cadastro/usuario' element={<RegisterUser />} />
                 <Route path="/adm/cadastro/produto" element={<CadastroProduto />} />
                 <Route path="/adm/cadastro/designar-voluntario" element={<CadastroDesignar />} />

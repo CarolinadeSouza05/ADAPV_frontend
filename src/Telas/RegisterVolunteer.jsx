@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { deleteRegisterVoluntario, getAllRegisterVoluntario } from "../api";
 import { Aside } from "../components/Aside";
-import { Modal } from "../components/Modal";
-import { FormCadastroVoluntario } from "../formularios/FormCadastroVoluntario";
-import { FormEditVoluntario } from "../formularios/FormCadastroVoluntario/FormEditVoluntario";
-import { NameToAccepToDoAllFromVolunteer, disponibilidadeArray, periodoArray } from "../util";
-import "./RegisterVolunteer.css";
-import { StoreContext } from "../context";
 import { Cabecalho } from "../components/Cabecalho";
 import { Footer } from "../components/Footer";
+import { StoreContext } from "../context";
+import { FormCadastroVoluntario } from "../formularios/FormCadastroVoluntario";
+import { NameToAccepToDoAllFromVolunteer, disponibilidadeArray, periodoArray } from "../util";
+import "./RegisterVolunteer.css";
 
 export const inputsFormValidate = {
   id: 0,
@@ -58,16 +55,6 @@ export function RegisterVolunteer() {
                 />
             </section>          
       </main>
-      {modal && (
-        <Modal
-          title={"Cadastro de Voluntários"}
-          tableHead={tableHead}
-          registerAll={registerVolunteers}
-          editRegister={editRegister}
-          deleteRegister={deleteRegister}
-          setModal={setModal}
-        />
-      )}
 
       <ToastContainer />
       <Footer />
@@ -89,23 +76,6 @@ export function RegisterVolunteer() {
     else {
       setFormValidate(register);
     }
-  }
-
-  async function deleteRegister(id) {
-    if (window.confirm("Tem certeza de que deseja excluir o voluntário?")) {
-      const aux = registerVolunteers.filter((volunteer) => volunteer.id === id);
-      const message = await deleteRegisterVoluntario(aux[0], user.token, user.id);
-      setRegisterVolunteers(await getAllRegisterVoluntario(user.token, user.id));
-      toast.success(message && "Voluntário Deletado com sucesso", {
-        position: "bottom-left",
-        autoClose: 5000,
-        closeOnClick: true,
-        draggable: true,
-        theme: "light",
-      })
-    }
-
-    await NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, user.token, user.id);
   }
 
   function ChangeValueObject(volunteer) {
