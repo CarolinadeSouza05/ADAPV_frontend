@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { getAllRegisterAcceptToDo } from "../api";
 import { Aside } from "../components/Aside";
 import { Cabecalho } from "../components/Cabecalho";
 import { Footer } from "../components/Footer";
-import { StoreContext } from "../context";
 import { FormCadastroVoluntario } from "../formularios/FormCadastroVoluntario";
-import { NameToAccepToDoAllFromVolunteer, disponibilidadeArray, periodoArray } from "../util";
+import { disponibilidadeArray, periodoArray } from "../util";
 import "./RegisterVolunteer.css";
 
 export const inputsFormValidate = {
@@ -23,18 +23,15 @@ export const inputsFormValidate = {
 export function RegisterVolunteer() {
   const [formValidate, setFormValidate] = useState(inputsFormValidate);
   const [acceptToDoAll, setAcceptToDoAll] = useState([]);
-  const [registerVolunteers, setRegisterVolunteers] = useState([]);
-  const [modal, setModal] = useState(false);
-  const useStore = useContext(StoreContext);
-  const { user } = useStore();
 
   useEffect(() => {
     (async function () {
-      await NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, user.token, user.id);
+      const aux = await getAllRegisterAcceptToDo();
+
+      setAcceptToDoAll(aux);
     })();
   }, []);
 
-  const tableHead = ["Id", "Nome Completo", "Telefone", "Dias da semana", "Período", "Data", "O que aceitaria fazer"]
 
   return (
     <>
@@ -48,10 +45,7 @@ export function RegisterVolunteer() {
                 <FormCadastroVoluntario 
                   formValidate={formValidate} 
                   setFormValidate={setFormValidate} 
-                  setRegisterVolunteers={setRegisterVolunteers} 
-                  setModal={setModal} 
                   acceptToDoAll={acceptToDoAll}
-                  setAcceptToDoAll={setAcceptToDoAll}
                 />
             </section>          
       </main>

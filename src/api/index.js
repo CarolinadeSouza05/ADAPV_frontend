@@ -2,7 +2,7 @@ const apiVoluntario = "http://localhost:4000/voluntarios";
 const apiAcceptToDo = "http://localhost:4000/aceitariafazer";
 const apiUser = "http://localhost:4000/user";
 const apiOffice = "http://localhost:4000/security/office";
-const apiVoluntarioAceitafazer = "http://localhost:4000/security/voluntario-aceitafazer";
+const apiVoluntarioAceitafazer = "http://localhost:4000/voluntario-aceitafazer/security";
 const apiProdutos = "http://localhost:4000/security/produto";
 const apiEntradas = "http://localhost:4000/security/entradas";
 const apiAnimais = "http://localhost:4000/animais";
@@ -26,13 +26,12 @@ export async function getAllRegisterVoluntario(token, id) {
   return aux;
 }
 
-export async function createRegisterVoluntario(register, token, id) {
-  const newUrl = new URL(`${apiVoluntario}/${id}`)
+export async function createRegisterVoluntario(register) {
+  const newUrl = new URL(`${apiVoluntario}`)
   const message = await fetch(newUrl.href, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "token": token,
     },
     body: JSON.stringify(register),
   })
@@ -104,12 +103,11 @@ export async function getRegisterTel(telefone, token, id) {
 }
 
 // --------------------------------- Router AceitariaFazer ---------------------------------
-export async function getAllRegisterAcceptToDo(token, id) {
-  let aux = await fetch(`${apiAcceptToDo}/${id}`, {
+export async function getAllRegisterAcceptToDo() {
+  let aux = await fetch(`${apiAcceptToDo}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "token": token,
       },
   })
       .then((data) => data.json())
@@ -351,13 +349,12 @@ export async function getAllRegisterVoluntarioAceitafazer(token, id) {
   return aux;
 }
 
-export async function createRegisterVoluntarioAceitafazer(register, token, id) {
-  const message = await fetch(`${apiVoluntarioAceitafazer}/${id}`, {
+export async function createRegisterVoluntarioAceitafazer(register) {
+  const message = await fetch(`${apiVoluntarioAceitafazer}`, {
       method: "POST",
       body: JSON.stringify(register),
       headers: {
         "Content-Type": "application/json",
-        "token": token,
     },
   })
       .then(() => "Cargo cadastrado com sucesso")

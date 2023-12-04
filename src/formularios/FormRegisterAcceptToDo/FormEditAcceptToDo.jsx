@@ -97,7 +97,7 @@ export function FormEditAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo, se
 
         setFormValidateAccepToDo(inputsFormValidateAccepToDoProps);
         setTimeout(async () => {
-            setAcceptToDoAll(await getAllRegisterAcceptToDo(user.token, user.id));
+            setAcceptToDoAll(await getAllRegisterAcceptToDo());
         }, 4000);
     }
 }

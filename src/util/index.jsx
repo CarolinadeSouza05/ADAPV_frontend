@@ -135,7 +135,7 @@ export function onChangeInput(name, value, setFormInput, formInput) {
 
 export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, token, id) {
   const volunteers = await getAllRegisterVoluntario(token, id);
-  const acceptToDoAllAux = await getAllRegisterAcceptToDo(token, id);
+  const acceptToDoAllAux = await getAllRegisterAcceptToDo();
   const allAcceptToDoVolunteer = await getAllRegisterVoluntarioAceitafazer(token, id);
 
   volunteers.forEach((volunteer) => {
@@ -154,7 +154,7 @@ export async function NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, set
 
 export async function veterinarianToAccepToDoAllFromVolunteer(setRegisterVolunteers, token, id){
   const volunteers = await getAllRegisterVoluntario(token, id);
-  const acceptToDoAllAux = await getAllRegisterAcceptToDo(token, id);
+  const acceptToDoAllAux = await getAllRegisterAcceptToDo();
   const allAcceptToDoVolunteer = await getAllRegisterVoluntarioAceitafazer(token, id);
 console.log(allAcceptToDoVolunteer)
   const volunteerAux = [];

@@ -24,7 +24,7 @@ export function RegisterAcceptToDo() {
 
   useEffect(() => {
     (async function () {
-      setAcceptToDoAll(await getAllRegisterAcceptToDo(user.token, user.id));
+      setAcceptToDoAll(await getAllRegisterAcceptToDo());
     })()
   }, [])
 
@@ -96,7 +96,7 @@ export function RegisterAcceptToDo() {
               })
           }
           setTimeout(async () => {
-            setAcceptToDoAll(await getAllRegisterAcceptToDo(user.token, user.id));
+            setAcceptToDoAll(await getAllRegisterAcceptToDo());
           }, 5000)
       }
   }

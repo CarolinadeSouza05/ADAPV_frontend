@@ -4,17 +4,17 @@ import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { inputsFormValidate } from '../../Telas/RegisterVolunteer';
-import { createRegisterVoluntario, createRegisterVoluntarioAceitafazer, getAllRegisterVoluntario, getRegisterTel } from "../../api";
+import { createRegisterVoluntario, createRegisterVoluntarioAceitafazer, getRegisterTel } from "../../api";
 import { CheckboxDropdownAcceptToDo } from "../../components/CheckboxDropdownAcceptToDo";
 import { InputsForm } from "../../components/InputsForm";
 import { StoreContext } from "../../context";
 import baixar from "../../imagens/baixar.png";
 import vector_3 from "../../imagens/vector-3.svg";
-import { NameToAccepToDoAllFromVolunteer, ObjectEmptyValue, disponibilidadeArray, periodoArray } from "../../util";
+import { ObjectEmptyValue, disponibilidadeArray, periodoArray } from "../../util";
 
 
 export function FormCadastroVoluntario(props) {
-  const { formValidate, setFormValidate, setRegisterVolunteers, setModal, acceptToDoAll, setAcceptToDoAll } = props;
+  const { formValidate, setFormValidate, acceptToDoAll } = props;
   const [validado, setValidado] = useState(false);
   const useStore = useContext(StoreContext);
   const { user } = useStore();
@@ -161,7 +161,7 @@ export function FormCadastroVoluntario(props) {
           const auxOqueAceitariaFazer = formValidate.oQueAceitariaFazer;
           const message = await createRegisterVoluntario(register, user.token, user.id);
           
-          await createRegisterVoluntarioAceitafazer({ id_voluntario: message.id, ids_aceitafazer: auxOqueAceitariaFazer }, user.token, user.id);
+          await createRegisterVoluntarioAceitafazer({ id_voluntario: message.id, ids_aceitafazer: auxOqueAceitariaFazer });
           setValidado(false);
           toast.success(message.mensagem && "Voluntário Cadastrado com sucesso", {
             position: "bottom-left",
@@ -175,8 +175,6 @@ export function FormCadastroVoluntario(props) {
       setValidado(true);
     }
 
-    setRegisterVolunteers(await getAllRegisterVoluntario(user.token, user.id));
-    NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll, user.token, user.id);
     setTimeout(() => {
       EmptyObject();
       setFormValidate({ ...inputsFormValidate });

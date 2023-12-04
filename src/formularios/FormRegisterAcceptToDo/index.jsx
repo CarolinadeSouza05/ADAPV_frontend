@@ -104,7 +104,7 @@ export function FormRegisterAcceptToDo({ setAcceptToDoAll, formValidateAccepToDo
 
         setFormValidateAccepToDo(inputsFormValidateAccepToDoProps);
         setTimeout(async () => {
-            setAcceptToDoAll(await getAllRegisterAcceptToDo(user.token, user.id));
+            setAcceptToDoAll(await getAllRegisterAcceptToDo());
         }, 6000)
     }
 }

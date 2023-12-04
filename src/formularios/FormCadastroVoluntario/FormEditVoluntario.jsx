@@ -184,7 +184,7 @@ export function FormEditVoluntario(props) {
 
     setRegisterVolunteers(await getAllRegisterVoluntario(user.token, user.id));
     setIsOpen(false);
-    setAcceptToDoAll(await getAllRegisterAcceptToDo(user.token, user.id));
+    setAcceptToDoAll(await getAllRegisterAcceptToDo());
     NameToAccepToDoAllFromVolunteer(setRegisterVolunteers, setAcceptToDoAll);
     setTimeout(() => {
       EmptyObject();
