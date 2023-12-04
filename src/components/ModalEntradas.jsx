@@ -1,12 +1,15 @@
 import { MagnifyingGlass, Pencil, Trash, X } from "@phosphor-icons/react";
 import './Modal.css'
 import { excluirEntradas, getEntradas } from "../api/index";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { StoreContext } from "../context/index.jsx";
 
 export function Modal(props) {
   const { title, tableHead, registerAll, setRegisterAll, setFormValidate, ChangeValueObject, setModal } = props;
   console.log(registerAll);
   const [search, setSearch] = useState("");
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
 
   function editRegister(register, index) {
     if (ChangeValueObject) {
@@ -35,12 +38,12 @@ export function Modal(props) {
   }
   
 
-  async function deletarEntrada(id) {
+  async function deletarEntrada(codigo) {
     const confirmDelete = window.confirm("Tem certeza de que deseja excluir a entrada?");
     if (confirmDelete) {
       try {
-        await excluirEntradas(id);
-        const entradas = await getEntradas();
+        await excluirEntradas(codigo,user.token,user.id);
+        const entradas = await getEntradas(user.token,user.id);
         setRegisterAll(entradas);
       } catch (error) {
         console.error("Erro ao excluir o entrada:", error);

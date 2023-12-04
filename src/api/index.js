@@ -499,7 +499,7 @@ export async function editarEntradas(entrada, token, id) {
   }
 }
 
-export async function excluirEntradas(id, token) {
+export async function excluirEntradas(codigo,token, id) {
   try {
     await fetch(`${apiEntradas}/${id}`, {
       method: "DELETE",
@@ -507,7 +507,7 @@ export async function excluirEntradas(id, token) {
         "Content-Type": "application/json",
         "token": token,
       },
-      body: JSON.stringify({ id: id }),
+      body: JSON.stringify({ id: codigo }),
     });
 
     alert("entrada deletado com sucesso!");

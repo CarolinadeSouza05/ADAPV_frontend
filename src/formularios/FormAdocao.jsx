@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import baixar from "../imagens/baixar.png";
 import Tooltip from '@material-ui/core/Tooltip'; 
 import { StoreContext } from "../context/index.jsx";
+import { LinkContainer } from 'react-router-bootstrap';
 
 
 export default function FormAdocao(props) {
@@ -46,6 +47,7 @@ export default function FormAdocao(props) {
         concordo: false,
         status: false,
     };
+   
   
     //Mascara celular
     function maskCel(event) {
@@ -548,7 +550,7 @@ export default function FormAdocao(props) {
 
                 {/* Área para os botões e download do manual, sem Tooltips */}
                 <div className='alinhando_botao_adocao'>
-                    <button type='button' className='botao_solicitar_adocao montserrat-bold-concrete-16px'>Voltar</button>
+                <LinkContainer to="/pets"><button type='button' className='botao_solicitar_adocao montserrat-bold-concrete-16px'>Voltar</button></LinkContainer>
                     <button type="submit" className='botao_solicitar_adocao montserrat-bold-concrete-16px'>Solicitar Adoção</button>
                 </div>
                 

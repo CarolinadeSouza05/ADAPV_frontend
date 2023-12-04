@@ -88,7 +88,7 @@ export default function LancamentoEntrada(props) {
   }
 
   async function handleAtualizacao() {
-    await editarEntradas(entrada, setEntrada);
+    await editarEntradas(entrada, user.token, user.id);
 
     const entradas = await getEntradas(user.token, user.id);
     setAllRegisters(entradas);

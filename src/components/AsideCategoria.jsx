@@ -37,8 +37,8 @@ export function AsideCategoria({ setFormCategoria, onInsert }) {
         const confirmDelete = window.confirm("Tem certeza de que deseja excluir a categoria?");
         if (confirmDelete) {
           try {
-            await deleteCategoriaP(codigo, user.token, user.id);
-            const categorias = await getAllCategorias(user.token, user.id);
+            await deleteCategoriaP(codigo,  user.id,user.token);
+            const categorias = await getAllCategorias(user.token,user.id);
             setAllRegisters(categorias);
           } catch (error) {
             console.error("Erro ao excluir a categoria:", error);
