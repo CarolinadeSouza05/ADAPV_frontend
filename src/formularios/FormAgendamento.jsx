@@ -136,6 +136,7 @@ export default function FormAgendamento(props) {
             return resposta.json();
           })
           .then((dados) => {
+            console.log(dados)
             if (dados.status) {
               props.setModoEdicao(false);
 

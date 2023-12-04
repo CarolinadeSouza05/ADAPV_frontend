@@ -156,7 +156,7 @@ export async function veterinarianToAccepToDoAllFromVolunteer(setRegisterVolunte
   const volunteers = await getAllRegisterVoluntario(token, id);
   const acceptToDoAllAux = await getAllRegisterAcceptToDo(token, id);
   const allAcceptToDoVolunteer = await getAllRegisterVoluntarioAceitafazer(token, id);
-
+console.log(allAcceptToDoVolunteer)
   const volunteerAux = [];
   volunteers.forEach((volunteer) => {
     allAcceptToDoVolunteer.forEach((accept) => {
