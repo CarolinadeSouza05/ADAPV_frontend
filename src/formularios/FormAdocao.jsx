@@ -486,7 +486,7 @@ export default function FormAdocao(props) {
 
                 </Row>
 
-                <Tooltip title="Data da adoção" placement="top">
+                {/* <Tooltip title="Data da adoção" placement="top"> */}
                     
                 <Form.Group as={Col} md={10}>
                     <Form.Control
@@ -501,7 +501,7 @@ export default function FormAdocao(props) {
                     />
                 </Form.Group>
         
-                </Tooltip>
+                {/* </Tooltip> */}
 
                 <Tooltip title="Concordo com os termos de adoção" placement="top">
                     
