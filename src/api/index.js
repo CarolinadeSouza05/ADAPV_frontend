@@ -531,7 +531,7 @@ export async function getAnimais() {
 }
 
 export async function handleSubmitAnimais(animal, token, id) {
-  const aux = await fetch(`${apiAnimais}/${id}`, {
+  const aux = await fetch(`${apiAnimais}/security/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

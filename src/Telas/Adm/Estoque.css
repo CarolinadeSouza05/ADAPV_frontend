@@ -113,7 +113,7 @@ padding-top: 20px;
     margin: 0 5px; /* ou ajuste conforme necessário */
   }
 
-  th{
+  .cabecalho_estoque {
     color: var(--concrete);
   }
   

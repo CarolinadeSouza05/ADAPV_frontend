@@ -7,7 +7,7 @@ import baixar from "../imagens/baixar.png";
 import vector3 from "../imagens/vector-3.svg";
 import "./CadastroAnimal.css";
 import { Cards } from "@phosphor-icons/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useContext} from "react";
 import {
   editarAnimais,
   getAnimais,
@@ -19,8 +19,11 @@ import { format } from "date-fns";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Form, Row, Col } from "react-bootstrap";
+import { StoreContext } from "../context/index.jsx";
 
 export function CadastroAnimal(props) {
+  const useStore = useContext(StoreContext);
+  const { user } = useStore();
   const [modal, setModal] = useState(false);
   const [allRegisters, setAllRegisters] = useState([]);
   const tableHead = ["Código", "Especie", "Nome", "Idade", "Pelagem", "Genero", "Porte", "Especial", "Vacinado", "Castrado", "Foto"];
@@ -96,7 +99,7 @@ export function CadastroAnimal(props) {
         ...rest,
       }
 
-      const aux = await handleSubmitAnimais(register);
+      const aux = await handleSubmitAnimais(register,user.token, user.id);
       
       toastMessageLogin(aux);
     } else {
@@ -269,7 +272,7 @@ export function CadastroAnimal(props) {
                 id="genero"
                 value={animal.genero}
                 onChange={handleChange}
-                options={["Macho", "Femea"]}
+                options={["Macho", "Fêmea"]}
                 className={validado && !animal.genero ? "input-invalid" : ""}
                 required
               />
@@ -285,7 +288,7 @@ export function CadastroAnimal(props) {
                 value={animal.porte}
                 onChange={handleChange}
                 className={validado && !animal.porte ? "input-invalid" : ""}
-                options={["Grande", "Medio", "Pequeno"]}
+                options={["Grande", "Médio", "Pequeno"]}
                 required
               />
             </div>

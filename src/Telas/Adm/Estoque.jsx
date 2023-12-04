@@ -198,11 +198,11 @@ export function Estoque() {
                     <table>
                         <thead>
                             <tr>
-                                <th>Nome</th>
-                                <th>Preço</th>
-                                <th>Quantidade</th>
-                                <th>Categoria</th>
-                                <th>Data</th>
+                                <th className="cabecalho_estoque ">Nome</th>
+                                <th className="cabecalho_estoque ">Preço</th>
+                                <th className="cabecalho_estoque ">Quantidade</th>
+                                <th className="cabecalho_estoque ">Categoria</th>
+                                <th className="cabecalho_estoque ">Data</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -232,9 +232,9 @@ export function Estoque() {
                     <table>
                         <thead>
                             <tr>
-                                <th>Categoria</th>
-                                <th>Quantidade Retirada</th>
-                                <th>Data Retirada</th>
+                                <th className="cabecalho_estoque ">Categoria</th>
+                                <th className="cabecalho_estoque ">Quantidade Retirada</th>
+                                <th className="cabecalho_estoque ">Data Retirada</th>
                             </tr>
                         </thead>
                         <tbody>
