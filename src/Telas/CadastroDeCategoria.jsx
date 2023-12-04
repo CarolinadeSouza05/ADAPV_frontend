@@ -76,7 +76,7 @@ export function CadastroCategoria(props) {
   }
 
   async function handleAtualizacao() {
-    await editRegisterCategoria(categoria, setCategoria);
+    await editRegisterCategoria(categoria,user.token, user.id);
 
     const categorias = await getAllCategorias(user.token, user.id);
     setAllRegisters(categorias);

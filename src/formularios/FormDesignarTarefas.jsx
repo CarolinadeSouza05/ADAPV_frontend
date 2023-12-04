@@ -32,7 +32,7 @@ export default function FormDesignarTarefas(props) {
 
   //Recebendo os Dados do banco de dados das atividades
   useEffect(() => {
-    fetch(`${urLBase}/aceitariafazer/${user.id}`, {
+    fetch(`${urLBase}/aceitariafazer`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

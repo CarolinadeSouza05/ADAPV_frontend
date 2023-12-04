@@ -142,7 +142,7 @@ export default function LancamentoEntrada(props) {
             />
 
             <Inputs
-              type="text"
+              type="number"
               text="Valor Arrecadado"
               placeholder="R$..."
               value={entrada.valor}
@@ -150,7 +150,7 @@ export default function LancamentoEntrada(props) {
               name="valor"
               onChange={handleChange}
               required
-              maskPrice={maskPrice}
+              // maskPrice={maskPrice}
               className={validado && !entrada.valor ? "input-invalid" : ""}
             />
 

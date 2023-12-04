@@ -711,7 +711,7 @@ export async function editRegisterCategoria(categoria, token, id) {
   }
 }
 
-export async function deleteCategoriaP(id, token) {
+export async function deleteCategoriaP(codigo,id, token) {
   try {
     await fetch(`${apiCategoria}/${id}`, {
       method: "DELETE",
@@ -719,7 +719,7 @@ export async function deleteCategoriaP(id, token) {
         'Content-Type': 'application/json',
         "token": token,
       },
-      body: JSON.stringify({ id: id }),
+      body: JSON.stringify({ id: codigo }),
     });
 
     alert("Categoria deletado com sucesso!");
