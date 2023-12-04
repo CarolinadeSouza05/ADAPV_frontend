@@ -8,7 +8,7 @@ import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { GiArchiveRegister } from "react-icons/gi";
 import { MdCategory, MdOutlinePets, MdOutlineVolunteerActivism } from "react-icons/md";
 import { RxExit } from "react-icons/rx";
-import { TbReportSearch } from "react-icons/tb";
+import { TbPigMoney, TbReportSearch } from "react-icons/tb";
 import { TfiAgenda } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { CiBoxes } from "react-icons/ci";
@@ -88,8 +88,17 @@ export function AsideAdm(){
                         <li className="list-menu">
                             <div className="list-menu-icon">
                                 <Link to="/adm/caixa">
-                                    <CiBoxes size={26} />
+                                    <TbPigMoney  size={26} />
                                     <span>Caixa</span>
+                                </Link>
+                            </div>
+                        </li>
+
+                        <li className="list-menu">
+                            <div className="list-menu-icon">
+                                <Link to="/adm/estoque">
+                                    <CiBoxes size={26} />
+                                    <span>Estoque</span>
                                 </Link>
                             </div>
                         </li>
