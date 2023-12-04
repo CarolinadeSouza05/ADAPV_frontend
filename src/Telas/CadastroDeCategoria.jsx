@@ -98,7 +98,7 @@ export function CadastroCategoria(props) {
       <AsideAdm />
       <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
       <main className="mainSection main-adm-register">
-        <section className="FormProduto_container">
+        <section className="FormProduto_container form-categoria">
           <div className="form-produtos-titulo centro_logo">
             <div className="titulo">
               <img

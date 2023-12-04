@@ -20,6 +20,11 @@
     padding-top: 50px;
     height: auto;
     width: 45%;
+    margin-right: 50px;
+}
+
+.form-categoria{
+    margin-right: 10px;
 }
 
 
@@ -131,7 +136,7 @@
 }
 
 .img_produto {
-    width: 100%;
+    width: 85%;
     height: 100%;
 }
 
@@ -298,6 +303,11 @@
     color: black;
     cursor: pointer;
     width: auto;
+    transition: .5s;
+}
+
+.arrow:hover{
+    color: #3ab1b9;
 }
 
 .popover-trigger{

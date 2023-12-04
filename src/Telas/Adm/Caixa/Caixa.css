@@ -49,24 +49,29 @@
 }
 
 .group-buttons-box button.Rendimento-Total:first-child{
-    background-color: #F6F8FA;
+    background-color: #3ab1b9;
+    color: white;
 }
 
 .group-buttons-box button.Despesa-Total:nth-child(2){
-    background-color: #F6F8FA;
+    background-color: #3ab1b9;
+    color: white;
 }
 
 .group-buttons-box button.Rendimento-Mensal:nth-child(3){
-    background-color: #F6F8FA;
+    background-color: #3ab1b9;
+    color: white;
 }
 
 .group-buttons-box button.Despesa-Mensal:last-child{
-    background-color: #F6F8FA;
+    background-color: #3ab1b9;
+    color: white;
 }
 
 .group-buttons-box button{
     border: 1px solid #D8DEE4;
     padding: 8px 16px;
+    transition: .5s;
 }
 
 .group-buttons-box button:first-child{
