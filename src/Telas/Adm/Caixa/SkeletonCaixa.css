@@ -14,6 +14,12 @@
 
 .skeleton.cards-box .container-cardbox{
     background-color: rgb(212 212 216)!important;
+    height: auto;
+    width: 22%;
+}
+
+.skeleton.cards-box .container-cardbox .body-cardbox{
+    height: auto;
 }
 
 .skeleton.cards-box .container-cardbox svg, 
@@ -39,7 +45,7 @@
 .skeleton.cards-box .container-cardbox .header-cardbox .header-candbox-info-month p{
     background-color: rgb(228 228 231);
     padding: 2px 0;
-    width: 162px;
+    width: auto;
 }
 
 .skeleton.cards-box .container-cardbox .body-cardbox h3{

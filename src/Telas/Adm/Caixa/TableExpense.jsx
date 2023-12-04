@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import { BiCategory } from "react-icons/bi";
 import { MdAttachMoney, MdDateRange, MdDriveFileRenameOutline } from "react-icons/md";
 
-export function TableExpense({ datas }){
+export function TableExpense({ datas, categoryAll }){
 
     return(
         <>
@@ -34,7 +34,7 @@ export function TableExpense({ datas }){
                 {datas && datas.map((data, index) => (
                     <tr key={index}>
                         <td>{data.nome}</td>
-                        <td>{data.categoria}</td>
+                        <td>{categoryAll.find((cat) => cat.id === data.categoria).nome}</td>
                         <td>{data.valor}</td>
                         <td>{format(new Date(data.data), "dd/MM/yyyy")}</td>
                     </tr>

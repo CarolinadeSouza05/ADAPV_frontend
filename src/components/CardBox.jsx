@@ -32,6 +32,6 @@ export function CardBox({ numberMoney, iconCard, textBodyCard, colorPrinc = "#ff
         if(porcentMonth !== null)
             return `${parseFloat(porcentMonth).toFixed(2)}% `
         else
-            return "0% "
+            return `${parseFloat(0).toFixed(2)}% `
     }
 }

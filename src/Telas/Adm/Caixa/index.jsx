@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { FaLongArrowAltUp, FaMoneyCheck } from "react-icons/fa";
 import { FaMoneyBillTrendUp, FaRegMoneyBill1 } from "react-icons/fa6";
 import { MdMoneyOff } from "react-icons/md";
-import { getAllDatesBox } from "../../../api";
+import { getAllCategorias, getAllDatesBox } from "../../../api";
 import { CardBox } from "../../../components/CardBox";
 import { HeaderAdm } from "../../../components/HeaderAdm";
 import { StoreContext } from "../../../context";
@@ -18,6 +18,7 @@ export function Caixa(){
     const { user } = useStore();
     const [datesBox, setDatesBox] = useState([]);
     const [tableCurrent, setTableCurrent] = useState("Rendimento-Total");
+    const [categoryAll, setCategoryAll] = useState([]);
     const [loading, setLoading] = useState(true);
     const cardsBoxArray = [
         {
@@ -62,10 +63,12 @@ export function Caixa(){
             const dateNow = new Date();
             const dateMonthBack = subMonths(dateNow, 1);
             
-            const aux = await getAllDatesBox({ dateNow, dateMonthBack }, user.id, user.token);
+            const datesBox = await getAllDatesBox({ dateNow, dateMonthBack }, user.id, user.token);
+            const categoryAll = await getAllCategorias(user.token, user.id);
+            setCategoryAll(categoryAll);
 
-            if(aux.status)
-                setDatesBox(aux.bulletins);
+            if(datesBox.status)
+                setDatesBox(datesBox.bulletins);
 
             const timeout = setTimeout(() => {
                 setLoading(false);
@@ -74,8 +77,6 @@ export function Caixa(){
             return () => clearTimeout(timeout);
         })()
     }, []);
-
-    console.log(datesBox);
 
     return(
         <>
@@ -92,11 +93,9 @@ export function Caixa(){
                                 <h2 className="h2">Caixa Geral</h2>
 
                                 <p>Você gastou 
-                                    <span className="expenses">{` R$
-                                        ${datesBox[2]?.queryDatas?.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0)} `}
+                                    <span className="expenses">{` R$${parseFloat(datesBox[2]?.queryDatas?.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0)).toFixed(2)} `}
                                     </span> e ganhou
-                                    <span className="incomes">{` R$ 
-                                        ${datesBox[3]?.queryDatas?.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0)}`}
+                                    <span className="incomes">{` R$ ${parseFloat(datesBox[3]?.queryDatas?.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0)).toFixed(2)}`}
                                     </span> este mês
                                 </p>
                             </header>
@@ -141,7 +140,7 @@ export function Caixa(){
             );
           case "Despesa-Total":
             return (
-              <TableExpense datas={datesBox[1]?.queryDatas} />
+              <TableExpense datas={datesBox[1]?.queryDatas} categoryAll={categoryAll} />
             );
           case "Rendimento-Mensal":
             return (
@@ -149,7 +148,7 @@ export function Caixa(){
             );
           case "Despesa-Mensal":
             return (
-                <TableExpense datas={datesBox[2]?.queryDatas} />
+                <TableExpense datas={datesBox[2]?.queryDatas} categoryAll={categoryAll} />
             );
           default:
             return null;
