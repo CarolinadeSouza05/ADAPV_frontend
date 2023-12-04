@@ -25,7 +25,7 @@ box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.366);
 p{font-size: 18px;}
 
 .formulario_retiradas{
-width: 51%;
+width: 54%;
 margin: 0 auto;
 padding-top: 20px;
 }
@@ -37,7 +37,7 @@ padding-top: 20px;
 .titulo_estoque {
     width: fit-content;
     margin: 0 auto;
-   margin-top: 20px;
+   /* margin-top: 20px; */
     font-family: var(--font-family-montserrat);
     font-size: var(--font-size-xl);
     font-weight: 700;
@@ -47,7 +47,7 @@ padding-top: 20px;
   .titulo_estoque_table {
     width: fit-content;
     margin: 0 auto;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     font-family: var(--font-family-montserrat);
     font-size: var(--font-size-l);
     font-weight: 700;
@@ -100,7 +100,7 @@ padding-top: 20px;
     display: flex;
     justify-content: space-between;
     margin-left: 6%;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 50px;
      /* ou outra propriedade de alinhamento desejada */
   }
@@ -117,3 +117,4 @@ padding-top: 20px;
     color: var(--concrete);
   }
   
+ 

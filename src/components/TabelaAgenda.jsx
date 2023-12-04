@@ -72,12 +72,12 @@ export function TabelaAgenda(props) {
         <Table>
           <thead>
             <tr>
-              <th>Animal</th>
-              <th>Serviço</th>
-              <th>Veterinário</th>
-              <th>Data</th>
-              <th>Hora</th>
-              <th>Ações</th>
+              <th className="cabeçalho_agenda">Animal</th>
+              <th className="cabeçalho_agenda">Serviço</th>
+              <th className="cabeçalho_agenda">Veterinário</th>
+              <th className="cabeçalho_agenda">Data</th>
+              <th className="cabeçalho_agenda">Hora</th>
+              <th className="cabeçalho_agenda">Ações</th>
             </tr>
           </thead>
           <tbody>

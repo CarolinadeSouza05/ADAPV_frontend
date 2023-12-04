@@ -259,7 +259,7 @@ export default function Pagpets() {
                         src="https://file.rendit.io/n/ilD2joUeeLVTRBHLtWzP.svg"
                       />
                        {/* Usando o Link para conectar com a página de adoção */}
-                       <Link to={`/adocao?animalId=${animal.id}`}>
+                       <Link to={`/adocao?animalId=${animal.id}`} state={{ animal: animal }}>
                         <button className="applyFiltersButton">Quero adotar</button>
                       </Link>
                     </div>

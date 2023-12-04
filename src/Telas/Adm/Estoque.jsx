@@ -139,7 +139,7 @@ export function Estoque() {
                         </div>
                     ))}
                 </div>
-
+                
                 {/* ---------------------------------------------------- */}
 
 
@@ -181,6 +181,7 @@ export function Estoque() {
             {/* ---------------------------------------------------- */}
             {/* Tabelas */}
             {/* // Renderização das últimas 3 retiradas */}
+            <hr/>
             <div className="tabelas-container_estoque">
                 
                 {/* // Renderização das últimas 3 entradas */}

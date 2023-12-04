@@ -99,14 +99,14 @@ export function TabelaAdocao(props) {
       <Table className="tabela_autorizar">
         <thead>
           <tr>
-            <th>Nome do animal</th>
-            <th>Adotante</th>
-            <th>Endereço</th>
-            <th>Data de solicitação</th>
-            <th>Concorda com os termos</th>
-            <th>Status</th>
-            <th>Autorizar</th>
-            <th>Imprimir Termo</th>
+            <th className="cabecalho_adocao">Nome do animal</th>
+            <th className="cabecalho_adocao">Adotante</th>
+            <th className="cabecalho_adocao">Endereço</th>
+            <th className="cabecalho_adocao">Data de solicitação</th>
+            <th className="cabecalho_adocao">Concorda com os termos</th>
+            <th className="cabecalho_adocao">Status</th>
+            <th className="cabecalho_adocao">Autorizar</th>
+            <th className="cabecalho_adocao">Imprimir Termo</th>
 
           </tr>
         </thead>
@@ -173,7 +173,7 @@ export function TabelaAdocao(props) {
           />
         )}
       </div>
-      <a
+      <a className="manual_tabela_adocao"
         href="/manuais/manual_autorizar_adocao.pdf"
         download="manual_autorizar_adocao.pdf"
       >

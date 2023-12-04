@@ -5,6 +5,10 @@
   width: 60%;
   float: left
 }
+
+.cabeçalho_agenda{
+  color: var(--pelorous);
+}
 .container_agendamento{
   margin-left: 5%;
 }

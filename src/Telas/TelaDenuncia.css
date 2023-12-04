@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150vh;
+  height: 130vh;
   
 }
 
@@ -20,7 +20,7 @@
 
   scale: 0.7;
   width: 100%;
-  margin-top: 15rem;
+  margin-top: 7rem;
   margin-right: 280px;
 }
 
@@ -28,7 +28,8 @@
   position: absolute;
   display: flex;
   align-items: center;
-  margin-left: 58.9em;
+  /* margin-left: 58.9em; */
+  margin-left: 54.8em;
   margin-top: -550px;  
 }
 
@@ -36,7 +37,8 @@
   position: absolute;
   display: flex;
   align-items: center;
-  margin-left: 75rem;
+  margin-left: 72rem;
+  /* margin-left: 75rem; */
   margin-top: -484px;
 }
 
@@ -63,6 +65,7 @@
   align-items: center;
   margin-left: 670px;
   margin-bottom: 15rem;
+  margin-top: 20px;
 }
 
 .title_denuncia {

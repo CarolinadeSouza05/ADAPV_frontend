@@ -89,13 +89,19 @@ export default function FormAdocao(props) {
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
         const animalId = searchParams.get('animalId');
-
+      
         // Verifica se animais é uma matriz e se animalId está definido
         if (Array.isArray(animais) && animalId) {
-            const animalSelecionadoFake = animais.find(animal => String(animal.id) === animalId);
-            setAnimalSelecionado(animalSelecionadoFake || {});
+          const animalSelecionadoFake = animais.find(
+            (animal) => String(animal.id) === animalId
+          );
+          setAnimalSelecionado(animalSelecionadoFake || {});
+        } else if (location.state && location.state.animal) {
+          // Access animal data from location state
+          setAnimalSelecionado(location.state.animal);
         }
-    }, [location.search, animais]);
+      }, [location.search, location.state, animais]);
+      
 
     useEffect(() => {
         setAdocao(props.adocaoEmEdicao);

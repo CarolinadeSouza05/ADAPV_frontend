@@ -39,7 +39,7 @@ export function CadastroDenuncia() {
           </p>
 
           <div className="disk_number">
-            <p className="disk"> Disk: <span className="n1">32812033</span>, <span className="n2">39069200</span> </p>
+            <p className="disk"> Disk: <span className="n1">(18) 3281-2033</span>, <span className="n2">(18) 3906-9200</span> </p>
           </div>
 
           <div>

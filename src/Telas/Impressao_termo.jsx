@@ -29,7 +29,7 @@ export function ImpressaoTermo({ adocao, onClose }) {
                     <li>Celular: <b>{adocao.celular}</b></li>
                     <li>E-mail: <b>{adocao.email}</b></li>
                     <li>Endereço: <b>{adocao.rua}, {adocao.numero}, {adocao.bairro}, {adocao.cidade}</b>.</li>
-                    <li>Concordou com todos os termos abaixo: <b>{adocao.concordou}</b>.</li>
+                    <li>Concordou com todos os termos abaixo: <b>{adocao.concordo ? 'Sim' : 'Não'}</b>.</li>
                 </ul></p>
                 <p>DADOS DO ANIMAL:</p>
                 <p><ul>
@@ -52,12 +52,12 @@ export function ImpressaoTermo({ adocao, onClose }) {
                     guarda e manutenção, além de conhecer todos os riscos inerentes à espécie e raça no convivo com
                     humanos, estando apto a guarda-lo e vigiá-lo, comprometendo-me a proporcionar boas condições de
                     alojamento e alimentações, assim como, espaço físico que possibilite o animal se exercitar.</p>
-
+                    <br /><br /><br /><br /><br /><br />
                 <p>Responsabilizo-me por preservar a saúde e integridade do animal e a submetê-lo aos cuidados médicos
                     veterinários sempre que necessário. Comprometo-me a não transmitir a posse deste animal a outrem
                     sem o conhecimento do doador (ONG ADAPV). Comprometo-me também, a permitir o acesso do doador
                     ao local onde se encontra o animal para averiguação de suas condições.</p>
-                <br /><br /><br /><br /><br /><br />
+                
                 <p>Tenho conhecimento de que caso seja constatado por parte do doador situação inadequada para o
                     bem-estar do animal,perderei a sua guarda, sem prejuízo das penalidades legais. Comprometo-me ainda
                     em castrar o animal adotado se o doador já não o tiver feito, contribuindo assim para o controle da

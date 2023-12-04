@@ -57,6 +57,8 @@ td{
   .aside-menu-main,
   .footer-aside-menu-main,
   .container-aside-adm,
+  .vectorbaixar,
+  .manual_tabela_adocao,
   svg{
     display: none;
   }
@@ -66,7 +68,9 @@ td{
 }
 
 
-
+.cabecalho_adocao{
+  color: var(--pelorous);
+}
 .alinhando_imagem_adocao{
   width: 100%;
   display: flex;
