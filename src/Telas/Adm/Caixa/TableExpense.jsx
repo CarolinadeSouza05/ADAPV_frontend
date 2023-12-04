@@ -1,5 +1,4 @@
 import { format } from "date-fns";
-import { AiOutlineFieldNumber } from "react-icons/ai";
 import { BiCategory } from "react-icons/bi";
 import { MdAttachMoney, MdDateRange, MdDriveFileRenameOutline } from "react-icons/md";
 
@@ -9,11 +8,6 @@ export function TableExpense({ datas }){
         <>
             <thead>
                 <tr>
-                    <th>
-                        <AiOutlineFieldNumber size={22} />
-                        Id
-                    </th>
-
                     <th>
                         <MdDriveFileRenameOutline size={22} />
                         Nome
@@ -39,7 +33,6 @@ export function TableExpense({ datas }){
             <tbody>
                 {datas && datas.map((data, index) => (
                     <tr key={index}>
-                        <td>{index}</td>
                         <td>{data.nome}</td>
                         <td>{data.categoria}</td>
                         <td>{data.valor}</td>

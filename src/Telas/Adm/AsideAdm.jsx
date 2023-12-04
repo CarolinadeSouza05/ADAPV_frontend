@@ -4,6 +4,7 @@ import { BiSolidDashboard } from "react-icons/bi";
 import { BsPeopleFill } from "react-icons/bs";
 import { CgMenuGridO } from "react-icons/cg";
 import { FaBoxOpen, FaHands, FaTasks, FaUser } from "react-icons/fa";
+import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { GiArchiveRegister } from "react-icons/gi";
 import { MdCategory, MdOutlinePets, MdOutlineVolunteerActivism } from "react-icons/md";
 import { RxExit } from "react-icons/rx";
@@ -25,6 +26,7 @@ export function AsideAdm(){
         { id: 7, name: "Autorizar Adoções", icon: FaHands, path: "/adm/autorizar-adocao" },
         { id: 8, name: "Designar Atividades", icon: AiOutlineDeliveredProcedure, path: "/adm/cadastro/designar-voluntario" },
         { id: 9, name: "Agendamento", icon: TfiAgenda, path: "/adm/cadastro/agendamento" },
+        { id: 10, name: "Lançamento de Entrada", icon: FaMoneyCheckDollar, path: "/adm/cadastro/lancar-entrada" },
     ];
 
     const cardsBulletin = [

@@ -1,21 +1,21 @@
 import { Modal } from "../components/ModalEntradas";
-import { Cabecalho } from "../components/Cabecalho";
-import { Footer } from "../components/Footer";
 import { Inputs } from "../components/inputs";
+import { StoreContext } from "../context/index.jsx";
+import img_entradas from "../imagens/money_cat.png";
+import vector3 from "../imagens/vector-3.svg";
 import "./LancamentoEntrada.css";
-import vector3 from "../imagens/vector-3.svg"
-import img_entradas from "../imagens/money_cat.png"
-import { StoreContext} from "../context/index.jsx";
 
 
 import { Cards } from "@phosphor-icons/react";
 
-import { useState, useEffect, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
+  editarEntradas,
   getEntradas,
   handleSubmitEntradas,
-  editarEntradas,
 } from "../api/index";
+import { HeaderAdm } from "../components/HeaderAdm.jsx";
+import { AsideAdm } from "./Adm/AsideAdm.jsx";
 
 export default function LancamentoEntrada(props) {
   const useStore = useContext(StoreContext);
@@ -108,8 +108,9 @@ export default function LancamentoEntrada(props) {
 
   return (
     <>
-      <Cabecalho />
-      <main className="mainSectionEntrada">
+      <AsideAdm />
+      <HeaderAdm h1Text={"Cadastro"} classNameRegister="true" />
+      <main className="mainSectionEntrada main-adm-register">
         <section className="FormEntrada_container">
           <div className="form-entradas-titulo centro_logo">
             <div className="tituloEntrada">
@@ -118,7 +119,8 @@ export default function LancamentoEntrada(props) {
                 src={vector3}
                 alt="Vector"
               />
-              <span className="span0"> Lançamento </span><span className="span1"> de Entradas</span></div>
+              <span className="span0"> Lançamento </span><span className="span1"> de Entradas</span>
+            </div>
             <Cards
               className="svg-modal"
               size={32}
@@ -195,8 +197,6 @@ export default function LancamentoEntrada(props) {
           setFormValidate={setEntrada}
         />
       ) : null}
-
-      <Footer />
     </>
   );
 }

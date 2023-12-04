@@ -21,7 +21,7 @@ export function CardBox({ numberMoney, iconCard, textBodyCard, colorPrinc = "#ff
             </header>
 
             <section className="body-cardbox" style={{ color: colorPrinc === "#fff" && "#000" }}>
-                <h3>R$ {numberMoney}</h3>
+                <h3>R$ {parseFloat(numberMoney).toFixed(2)}</h3>
 
                 <span>{textBodyCard}</span>
             </section>
@@ -30,7 +30,7 @@ export function CardBox({ numberMoney, iconCard, textBodyCard, colorPrinc = "#ff
 
     function differencyPorcent(){
         if(porcentMonth !== null)
-            return `${porcentMonth}% `
+            return `${parseFloat(porcentMonth).toFixed(2)}% `
         else
             return "0% "
     }

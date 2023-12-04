@@ -47,6 +47,7 @@ export default function FormAgendamento(props) {
   useEffect(() => {
     (async () => {
       const aux = await getAnimais(user.id, user.token);
+
       await veterinarianToAccepToDoAllFromVolunteer(setVeterinarios, user.token, user.id);
       if(Array.isArray(aux)){
         setAnimais(aux);
@@ -54,7 +55,7 @@ export default function FormAgendamento(props) {
     })()
   }, []);
 
-  console.log(agendamento);
+  console.log(animais);
   
   function manupilaAlteracao(e) {
     const elemForm = e.currentTarget;

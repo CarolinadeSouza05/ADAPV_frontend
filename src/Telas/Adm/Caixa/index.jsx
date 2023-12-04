@@ -21,7 +21,7 @@ export function Caixa(){
     const [loading, setLoading] = useState(true);
     const cardsBoxArray = [
         {
-            numberMoney: datesBox[1]?.queryDatas?.reduce(
+            numberMoney: datesBox[0]?.queryDatas?.reduce(
                 (accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0),
             iconCard: <FaRegMoneyBill1 size={28} />,
             colorPrinc: "#3AB1B9",
@@ -29,7 +29,7 @@ export function Caixa(){
         },
 
         {
-            numberMoney: datesBox[0]?.queryDatas?.reduce(
+            numberMoney: datesBox[1]?.queryDatas?.reduce(
                 (accumulator, currentValue) => accumulator + parseInt(currentValue.valor),0),
             iconCard: <MdMoneyOff size={28} />,
             colorPrinc: "#DC2626",
@@ -75,12 +75,14 @@ export function Caixa(){
         })()
     }, []);
 
+    console.log(datesBox);
+
     return(
         <>
             <HeaderAdm h1Text={"Caixa"} classNameRegister={true} />
             <AsideAdm />
 
-            <main className="main-adm-register">
+            <main className="main-adm-register main-box">
                 <div className="container-caixa-main">
                     {loading ? (
                         <SkeletonCaixa datesBox={datesBox} cardsBoxArray={cardsBoxArray} />
@@ -135,11 +137,11 @@ export function Caixa(){
         switch (tableCurrent) {
           case "Rendimento-Total":
             return (
-              <TableIncome datas={datesBox[1]?.queryDatas} />
+              <TableIncome datas={datesBox[0]?.queryDatas} />
             );
           case "Despesa-Total":
             return (
-              <TableExpense datas={datesBox[0]?.queryDatas} />
+              <TableExpense datas={datesBox[1]?.queryDatas} />
             );
           case "Rendimento-Mensal":
             return (

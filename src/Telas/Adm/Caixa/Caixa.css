@@ -1,3 +1,7 @@
+.main-box{
+    overflow-y: auto;
+}
+
 .container-caixa-main{
     display: flex;
     flex-direction: column;

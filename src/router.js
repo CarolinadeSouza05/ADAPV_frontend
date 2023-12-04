@@ -41,7 +41,7 @@ export function Router(){
                 <Route path='*' element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path="/cadastro-denuncia" element={<CadastroDenuncia />} />
-                <Route path="/lancar-entrada" element={<LancamentoEntrada/>} />
+                <Route path="/adm/cadastro/lancar-entrada" element={<LancamentoEntrada/>} />
                 <Route path='/pets' element={<Pagpets />} />
                 <Route path="/sobre" element={<SobreNos />} />
                 <Route path='/doacao' element={<RegisterDonation />} />
