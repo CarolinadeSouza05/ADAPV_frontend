@@ -1,4 +1,119 @@
+
 .container_estoque{
-    margin-left: 8%;
+    margin-left: 6%;
     margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    
 }
+
+.card_estoque{
+border: 2px solid #3ab1b9;
+background-color: var(--pelorous);
+color: var( --concrete);
+border-radius: 8px;
+margin-bottom: 2px;
+margin-left: 4px;
+width: fit-content;
+font-weight: 500;
+text-shadow: rgba(0, 0, 0, 0.471) 1px 0.5px 5px;
+padding: 5px 15px;
+float: left;
+box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.366);
+}
+
+p{font-size: 18px;}
+
+.formulario_retiradas{
+width: 51%;
+margin: 0 auto;
+padding-top: 20px;
+}
+.caixa_selecao_estoque{
+   width: 55%;
+   margin-bottom: 20px;
+}
+
+.titulo_estoque {
+    width: fit-content;
+    margin: 0 auto;
+   margin-top: 20px;
+    font-family: var(--font-family-montserrat);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  .titulo_estoque_table {
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-family: var(--font-family-montserrat);
+    font-size: var(--font-size-l);
+    font-weight: 700;
+  }
+
+  .cards_do_estoque{
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  .botao_estoque {
+    align-items: center;
+  background-color: var(--pelorous);
+  border-style: solid;
+  border-radius: 8px;
+  border-color: var(--pelorous);
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px 18px;
+  position: relative;
+  width: fit-content;
+  margin-right: 3px;
+  }
+
+  .botao_estoque:hover {
+    color: var(--pelorous);
+    background-color: var(--concrete);
+  }
+
+  .flex-row-item-estoque {
+    border: 2px solid;
+    border-color: var(--pelorous);
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin-left: 10px;
+    font-family: var(--font-family-montserrat);
+    width: 25%;
+  }
+
+  .alinha_botao_estoque{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+  }
+
+  .tabelas-container_estoque {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 6%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+     /* ou outra propriedade de alinhamento desejada */
+  }
+  
+  .ultimas_retiradas,
+  .ultimas_entradas {
+    flex: 1;
+    /* border: 1px solid #ccc; */
+    padding: 10px;
+    margin: 0 5px; /* ou ajuste conforme necessário */
+  }
+
+  th{
+    color: var(--concrete);
+  }
+  
