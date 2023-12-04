@@ -44,6 +44,8 @@ export function ModalBulletin({ infosModal, setModal }) {
                           </div>
                         ) : isValid(parseISO(input)) && typeof input === 'string' ? (
                           <span>{format(parseISO(input), 'dd/MM/yyyy')}</span>
+                        ) : input.length > 100 ? (
+                          <img style={{ maxWidth: '80px', height: 'auto'}} src={`data:image;base64,${registerInput.foto}`}  alt="Imagem do Animal" />
                         ) : (
                           <span>{input}</span>
                         )}
